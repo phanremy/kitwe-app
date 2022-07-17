@@ -1,0 +1,16 @@
+<%= turbo_frame_tag 'post_form' do %>
+  <%= form_with model: post, builder: TailwindBuilder, data: { "turbo-frame" => "_top" } do |f| %>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'w-100' %>
+    </div>
+    <div class="field">
+      <%= f.label :body %>
+      <%= f.text_area :body %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :user_id, value: current_user&.id %>
+      <%= f.submit 'Submit' %>
+    </div>
+  <% end %>
+<% end %>

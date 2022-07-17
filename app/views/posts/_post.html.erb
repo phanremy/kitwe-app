@@ -1,0 +1,8 @@
+<%= turbo_frame_tag dom_id(post) do %>
+  <div class="post">
+    <h2><%= link_to post.title, post_path(post), target: '_top' %></h2>
+    <div class="post__body">
+      <%= post.body %>
+    </div>
+  </div>
+<% end %>
