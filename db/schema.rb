@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_17_003717) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_185633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_17_003717) do
     t.datetime "updated_at", null: false
     t.bigint "creator_id", null: false
     t.index ["creator_id"], name: "index_events_on_creator_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_follows_on_profile_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -45,6 +54,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_17_003717) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "profile_events", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_profile_events_on_event_id"
+    t.index ["profile_id"], name: "index_profile_events_on_profile_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.bigint "user_id"
     t.string "pseudo"
@@ -58,20 +76,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_17_003717) do
     t.string "phone_privacy", default: "public", null: false
     t.date "birth_date"
     t.string "birth_date_privacy", default: "public", null: false
-    t.text "notes"
-    t.string "tiktok_url"
-    t.string "twitter_url"
-    t.string "linkedin_url"
-    t.string "address"
-    t.string "address_privacy", default: "public", null: false
-    t.string "wedding_date"
-    t.string "date"
-    t.string "wedding_date_privacy", default: "public", null: false
-    t.string "kids"
-    t.string "kids_privacy", default: "public", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id", null: false
+    t.string "tiktok_url"
+    t.string "twitter_url"
+    t.string "linkedin_url"
+    t.text "notes"
+    t.string "address"
+    t.string "address_privacy", default: "public", null: false
+    t.date "wedding_date"
+    t.string "wedding_date_privacy", default: "public", null: false
+    t.string "kids"
+    t.string "kids_privacy", default: "public", null: false
     t.index ["creator_id"], name: "index_profiles_on_creator_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
@@ -99,10 +116,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_17_003717) do
   end
 
   add_foreign_key "events", "users", column: "creator_id"
+  add_foreign_key "follows", "profiles"
+  add_foreign_key "follows", "users"
   add_foreign_key "friendships", "users", column: "addressee_id"
   add_foreign_key "friendships", "users", column: "requester_id"
   add_foreign_key "friendships", "users", column: "specifier_id"
   add_foreign_key "posts", "users"
+  add_foreign_key "profile_events", "events"
+  add_foreign_key "profile_events", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "profiles", "users", column: "creator_id"
 end

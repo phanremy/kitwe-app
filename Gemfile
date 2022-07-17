@@ -23,6 +23,8 @@ gem "jbuilder"
 # gem "kredis"
 # Use Pagy for paginating with infinite scrolling options
 gem 'pagy'
+# Use Paper Trail for logging modifications
+gem 'paper_trail'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]

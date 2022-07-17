@@ -3,9 +3,9 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(_user)
+  def initialize(user)
     can :manage, Post
-    can :manage, Profile
+    can :manage, Profile, creator: user
 
     # Define abilities for the passed in user here. For example:
     #

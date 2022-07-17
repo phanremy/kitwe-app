@@ -16,16 +16,6 @@ class CreateProfiles < ActiveRecord::Migration[7.0]
       t.string :phone_privacy, default: 'public', null: false
       t.date :birth_date
       t.string :birth_date_privacy, default: 'public', null: false
-      t.text :notes
-      t.string :tiktok_url
-      t.string :twitter_url
-      t.string :linkedin_url
-      t.string :address
-      t.string :address_privacy, default: 'public', null: false
-      t.string :wedding_date, :date
-      t.string :wedding_date_privacy, default: 'public', null: false
-      t.string :kids
-      t.string :kids_privacy, default: 'public', null: false
 
       t.timestamps
     end
