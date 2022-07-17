@@ -1,0 +1,12 @@
+<%= link_to profile_path(profile) do %>
+  <div class="flex align-items-start my-2 p-5 border border-white hover:border-gray-300 rounded-lg">
+    <div class="grow">
+      <p>👨‍💻 <%= profile.pseudo.presence %></p>
+      <p>👤 <%= profile.full_name.presence %></p>
+    </div>
+    <div style="flex: 0 0 40%; width: 40%; overflow: hidden;">
+      <p>＠ <%= profile.email.presence %></p>
+      <p>📞 <%= profile.phone.presence %></p>
+    </div>
+  </div>
+<% end %>

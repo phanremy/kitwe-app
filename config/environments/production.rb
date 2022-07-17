@@ -53,14 +53,14 @@ Rails.application.configure do
   config.log_level = :info
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "rails7_importmaps_tailwind_project_template_production"
+  # config.active_job.queue_name_prefix = "kitwe_app_production"
 
   config.action_mailer.perform_caching = false
 

@@ -5,6 +5,8 @@ class Ability
 
   def initialize(_user)
     can :manage, Post
+    can :manage, Profile
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

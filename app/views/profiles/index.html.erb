@@ -1,0 +1,15 @@
+<div>
+  <%= link_to t('.create_new_profile'), new_profile_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  <ul class="mt-10">
+    <% @profiles.each_with_index do |profile, index| %>
+      <li>
+        <%= render 'card', profile: profile %>
+      </li>
+      <% unless index + 1 == @profiles.count %>
+        <div class="text-gray-300 flex justify-center cursor-default" onselectstart="return false">
+          ________________
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

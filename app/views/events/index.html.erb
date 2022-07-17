@@ -1,0 +1,15 @@
+<div>
+  <%= link_to t('.create_new_event'), new_event_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  <ul class="mt-10">
+    <% @events.each_with_index do |event, index| %>
+      <li>
+        <%= render event %>
+      </li>
+      <% unless index + 1 == @events.count %>
+        <div class="text-gray-300 flex justify-center cursor-default" onselectstart="return false">
+          ________________
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

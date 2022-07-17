@@ -1,0 +1,15 @@
+<%= button_to t('edit'), edit_profile_path, method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+<%#= link_to t('.delete'), profile_path, method: :delete, data: { confirm: t('.confirm_delete'), turbo: false }, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+<%#= link_to t('delete'), profile_path, data: { "turbo-method": 'delete', "turbo-confirm": t('.confirm_delete') }, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+<%= button_to t('delete'), profile_path, method: :delete, class: 'bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %> <br>
+
+<%= t('pseudo', scope: 'activerecord.attributes.profile') %>: <%= @profile.pseudo %> <br>
+<%= t('first_name', scope: 'activerecord.attributes.profile') %>: <%= @profile.first_name %> <br>
+<%= t('last_name', scope: 'activerecord.attributes.profile') %>: <%= @profile.last_name %> <br>
+<%= t('email', scope: 'activerecord.attributes.profile') %>: <%= @profile.email %> <br>
+<%= t('phone', scope: 'activerecord.attributes.profile') %>: <%= @profile.phone %> <br>
+<%= t('birth_date', scope: 'activerecord.attributes.profile') %>: <%= @profile.birth_date %> <br>
+<%= t('tiktok_url', scope: 'activerecord.attributes.profile') %>: <%= @profile.tiktok_url %> <br>
+<%= t('twitter_url', scope: 'activerecord.attributes.profile') %>: <%= @profile.twitter_url %> <br>
+<%= t('linkedin_url', scope: 'activerecord.attributes.profile') %>: <%= @profile.linkedin_url %> <br>
+<%= t('notes', scope: 'activerecord.attributes.profile') %>: <%= @profile.notes %>

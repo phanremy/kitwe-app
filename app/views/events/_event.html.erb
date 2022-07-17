@@ -1,0 +1,11 @@
+<%= link_to event_path(event) do %>
+  <div class="flex align-items-start my-2 p-5 border border-white hover:border-gray-300 rounded-lg">
+    <div class="grow">
+      <p>💍 <%= event.category %></p>
+      <p>📆 <%= event.date %></p>
+    </div>
+    <div style="flex: 0 0 40%; width: 40%; overflow: hidden;">
+      <p>👥 <%= event.profiles %></p>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+<%= form_with model: @event, builder: TailwindBuilder do |form| %>
+  <%= form.hidden_field :creator_id, value: current_user&.id %>
+  <div class="mb-6">
+    <%= form.label :category %>
+    <%= form.select :category, Event::CATEGORIES, {} %>
+  </div>
+  <div class="mb-6">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+  <div class="mb-6">
+    <%= form.label :privacy %>
+     <%= form.select :privacy, event_privacies, {} %>
+  </div>
+  <div class="actions">
+    <%= form.submit t('submit') %>
+  </div>
+<% end %>
