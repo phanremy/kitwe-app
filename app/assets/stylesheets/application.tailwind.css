@@ -16,6 +16,19 @@ input:focus-within ~ label {
   @apply text-blue-500;
 }
 
+textarea:focus-within ~ label {
+  @apply transform scale-75 -translate-y-6 text-blue-500;
+}
+
+textarea:focus-within ~ label,
+textarea:not(:placeholder-shown) ~ label {
+  @apply transform scale-75 -translate-y-6;
+}
+
+textarea:focus-within ~ label {
+  @apply text-blue-500;
+}
+
 select:focus-within ~ label {
   @apply transform scale-75 -translate-y-6 text-blue-500;
 }
@@ -30,3 +43,9 @@ select:focus-within ~ label {
 }
 
 /* FOR FLOATING FORM FIELD - END */
+
+
+.my-8 {
+  margin-bottom: 2rem !important;
+  margin-top: 2rem !important;
+}
