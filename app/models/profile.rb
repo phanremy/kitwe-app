@@ -33,4 +33,15 @@ class Profile < ApplicationRecord
   def full_name
     [first_name, last_name].join(' ')
   end
+
+  def designation
+    option_bis = email.present? ? email : phone
+    option = full_name.present? ? full_name : option_bis
+    pseudo.present? ? pseudo : option
+  end
+
+  def next_birthday
+    date = Date.new(Time.zone.today.year, birth_date.month, birth_date.day)
+    date.past? ? date + 1.year : date
+  end
 end
