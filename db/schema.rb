@@ -76,9 +76,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_185633) do
     t.string "phone_privacy", default: "public", null: false
     t.date "birth_date"
     t.string "birth_date_privacy", default: "public", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "creator_id", null: false
     t.string "tiktok_url"
     t.string "twitter_url"
     t.string "linkedin_url"
@@ -89,6 +86,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_185633) do
     t.string "wedding_date_privacy", default: "public", null: false
     t.string "kids"
     t.string "kids_privacy", default: "public", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "creator_id", null: false
     t.index ["creator_id"], name: "index_profiles_on_creator_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

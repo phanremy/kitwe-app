@@ -160,6 +160,12 @@
   </div>
 <% end %>
 
+<% if @profile.wedding_date %>
+  <div class="flex items-center justify-start">
+    <%= t('wedding_date', scope: 'activerecord.attributes.profile') %>: <%= @profile.wedding_date %>
+  </div>
+<% end %>
+
 <%= t('tiktok_url', scope: 'activerecord.attributes.profile') %>: <%= @profile.tiktok_url %> <br>
 <%= t('twitter_url', scope: 'activerecord.attributes.profile') %>: <%= @profile.twitter_url %> <br>
 <%= t('linkedin_url', scope: 'activerecord.attributes.profile') %>: <%= @profile.linkedin_url %> <br>
