@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_185633) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_16_215853) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +43,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_185633) do
     t.index ["addressee_id"], name: "index_friendships_on_addressee_id"
     t.index ["requester_id"], name: "index_friendships_on_requester_id"
     t.index ["specifier_id"], name: "index_friendships_on_specifier_id"
+  end
+
+  create_table "parent_profiles", force: :cascade do |t|
+    t.bigint "parent_id", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id", "profile_id"], name: "index_parent_profiles_on_parent_id_and_profile_id", unique: true
+    t.index ["parent_id"], name: "index_parent_profiles_on_parent_id"
+    t.index ["profile_id"], name: "index_parent_profiles_on_profile_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -121,6 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_185633) do
   add_foreign_key "friendships", "users", column: "addressee_id"
   add_foreign_key "friendships", "users", column: "requester_id"
   add_foreign_key "friendships", "users", column: "specifier_id"
+  add_foreign_key "parent_profiles", "profiles"
+  add_foreign_key "parent_profiles", "profiles", column: "parent_id"
   add_foreign_key "posts", "users"
   add_foreign_key "profile_events", "events"
   add_foreign_key "profile_events", "profiles"
