@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'application#homepage'
   resources :profiles
+  get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
   # resources :events
   resources :friendships
 

@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   load_and_authorize_resource
 
   before_action :authenticate_user!
-  before_action :set_profile, except: %i[index new create]
+  before_action :set_profile, except: %i[index new create birthdays]
 
   def index
     @profiles = Profile.all
@@ -13,6 +13,12 @@ class ProfilesController < ApplicationController
 
   def show
     # @events = @profile.events
+  end
+
+  def birthdays
+    @birthdays = Profile.where.not(birth_date: nil)
+                        .map { |profile| { name: profile.designation, date: profile.next_birthday } }
+                        .sort_by { |p| p[:date] }
   end
 
   def new

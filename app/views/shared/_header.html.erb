@@ -23,6 +23,7 @@
       <% if user_signed_in? %>
         <%= link_to 'Contacts', profiles_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
         <%#= link_to 'Events', events_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+        <%= link_to 'Birthdays', profile_birthdays_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
         <%= link_to 'Log out', destroy_user_session_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
       <% else %>
         <%= link_to 'Log in', new_user_session_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
