@@ -5,20 +5,22 @@ class ProfilesController < ApplicationController
   load_and_authorize_resource
 
   before_action :authenticate_user!
-  before_action :set_profile, except: %i[index new create birthdays]
+  before_action :set_profiles, only: %i[index birthdays]
+  before_action :set_profile, except: %i[index new create birthdays children]
 
-  def index
-    @profiles = Profile.accessible_by(current_ability)
-  end
+  def index; end
 
-  def show
-    # @events = @profile.events
-  end
+  def show; end
+  # @events = @profile.events
 
   def birthdays
-    @birthdays = Profile.where.not(birth_date: nil)
-                        .map { |profile| { name: profile.designation, date: profile.next_birthday } }
-                        .sort_by { |p| p[:date] }
+    @birthdays = @profiles.where.not(birth_date: nil)
+                          .map { |profile| { name: profile.designation, date: profile.next_birthday } }
+                          .sort_by { |p| p[:date] }
+  end
+
+  def children
+    @children = @profiles.where.not(parents_id: nil)
   end
 
   def new
@@ -32,7 +34,7 @@ class ProfilesController < ApplicationController
       redirect_to @profile
     else
       flash.now[:error] = @profile.errors.full_messages
-      render :new
+      render_flash
     end
   end
 
@@ -44,7 +46,7 @@ class ProfilesController < ApplicationController
       redirect_to @profile
     else
       flash.now[:error] = @profile.errors.full_messages
-      render :edit
+      render_flash
     end
   end
 
@@ -54,7 +56,7 @@ class ProfilesController < ApplicationController
       redirect_to profiles_path
     else
       flash.now[:error] = 'Something went wrong'
-      redirect_to @profile
+      render_flash
     end
   end
 
@@ -62,6 +64,10 @@ class ProfilesController < ApplicationController
 
   def current_ability
     @current_ability ||= ::Ability.new(current_user)
+  end
+
+  def set_profiles
+    @profiles = Profile.accessible_by(current_ability)
   end
 
   def set_profile

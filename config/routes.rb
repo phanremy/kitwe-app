@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :couples
   get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
+  get '/children', to: 'profiles#children', as: 'profile_children'
   # resources :events
   # resources :friendships
 

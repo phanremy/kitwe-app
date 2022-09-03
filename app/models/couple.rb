@@ -10,4 +10,10 @@ class Couple < ApplicationRecord
                           message: :uniqueness }
 
   # TODO: do something to check profile_id pairing in both ways
+
+  def designation
+    partner1 = profile1.designation
+    partner2 = profile2&.designation
+    profile2_id ? [partner1, partner2].join(' & ') : partner1
+  end
 end

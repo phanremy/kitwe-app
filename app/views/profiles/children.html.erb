@@ -1,0 +1,3 @@
+<% @children.each do |child| %>
+  <p><%= child.designation %>: child of <%= child.parents.designation %></p>
+<% end %>

@@ -2,7 +2,7 @@
 
 # top level description of ProfilesHelper
 module ProfilesHelper
-  def profile_privacies
+  def profile_privacy_options
     Profile::PRIVACIES.map { |option| [t(option, scope: :privacy), option] }
   end
 
@@ -11,6 +11,14 @@ module ProfilesHelper
       "#{"text=#{CGI.escape("#{profile.designation}'s birthday")}"}" \
       "&dates=#{CGI.escape(profile.next_birthday.strftime('%Y%m%d'))}/" \
       "#{CGI.escape(profile.next_birthday.strftime('%Y%m%d'))}" \
+      "&ctz=#{Rails.application.config.time_zone}"
+  end
+
+  def create_google_calendar_wedding_anniversary(profile)
+    "https://calendar.google.com/calendar/u/0/r/eventedit?" \
+      "#{"text=#{CGI.escape("#{profile.designation}'s wedding")}"}" \
+      "&dates=#{CGI.escape(profile.next_wedding_anniversary.strftime('%Y%m%d'))}/" \
+      "#{CGI.escape(profile.next_wedding_anniversary.strftime('%Y%m%d'))}" \
       "&ctz=#{Rails.application.config.time_zone}"
   end
 end
