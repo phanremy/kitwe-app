@@ -1,3 +1,3 @@
 <% @birthdays.each do |birthday| %>
-  <p><%= birthday[:name] %> - <%= birthday[:date] %> - in <%= (birthday[:date] - Date.today).to_i %> days</p>
+  <p><%= birthday[:name] %> - <%= l birthday[:date], format: :fr_long %> - in <%= (birthday[:date] - Date.today).to_i %> days</p>
 <% end %>
