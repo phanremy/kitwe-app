@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'application#homepage'
   resources :profiles
+  resources :couples
   get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
   # resources :events
-  resources :friendships
+  # resources :friendships
 
   resources :posts
   get '/open-modal', to: 'pages#open_modal', as: 'open_modal'

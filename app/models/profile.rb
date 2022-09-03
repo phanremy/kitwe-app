@@ -6,8 +6,8 @@ class Profile < ApplicationRecord
 
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
   belongs_to :user, optional: true
-  has_many :parent_profiles, dependent: :delete_all
-  has_many :parents, through: :parent_profiles
+
+  belongs_to :parents, class_name: 'Couple', foreign_key: 'parents_id'
 
   # has_many :profile_events,           dependent: :delete_all
   # has_many :events,                   inverse_of: :profiles, through: :profile_events

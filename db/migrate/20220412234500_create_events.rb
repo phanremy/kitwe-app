@@ -5,6 +5,7 @@ class CreateEvents < ActiveRecord::Migration[7.0]
   def change
     create_table :events do |t|
       t.string :category
+      t.string :note
       t.string :privacy, default: 'public', null: false
       t.date :date
 

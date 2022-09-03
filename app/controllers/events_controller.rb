@@ -25,7 +25,7 @@
 #       redirect_to @event
 #     else
 #       flash.now[:error] = @event.errors.full_messages
-#       render :new
+#       render_flash
 #     end
 #   end
 
@@ -38,7 +38,7 @@
 #       redirect_to @event
 #     else
 #       flash.now[:error] = @event.errors.full_messages
-#       render :edit
+#       render_flash
 #     end
 #   end
 

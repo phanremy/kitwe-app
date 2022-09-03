@@ -10,6 +10,10 @@ AllCops:
     - 'tmp/**/*'
     - 'test/**/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - 'db/schema.rb'
+
 Style/ConditionalAssignment:
   Enabled: false
 Style/StringLiterals:

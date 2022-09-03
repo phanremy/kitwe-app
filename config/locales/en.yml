@@ -28,3 +28,9 @@ en:
         twitter_url: Twitter
         linkedin_url: Linkedin
         notes: Notes
+    errors:
+      models:
+        couple:
+          attributes:
+            profile1_id:
+              uniqueness: already paired with partner 2

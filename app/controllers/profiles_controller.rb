@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
   before_action :set_profile, except: %i[index new create birthdays]
 
   def index
-    @profiles = Profile.all
+    @profiles = Profile.accessible_by(current_ability)
   end
 
   def show

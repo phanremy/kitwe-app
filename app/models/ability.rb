@@ -6,6 +6,7 @@ class Ability
   def initialize(user)
     can :manage, Post
     can :manage, Profile, creator: user
+    can :manage, Couple
 
     # Define abilities for the passed in user here. For example:
     #

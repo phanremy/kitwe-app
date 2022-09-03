@@ -24,7 +24,7 @@ gem "jbuilder"
 # Use Pagy for paginating with infinite scrolling options
 gem 'pagy'
 # Use Paper Trail for logging modifications
-gem 'paper_trail'
+# gem 'paper_trail'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 # Use the Puma web server [https://github.com/puma/puma]
@@ -55,8 +55,6 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   # Use Faker for seeding fake info
   gem 'faker'
-  # Use for Rails Locale
-  gem 'rails-i18n', '~> 7.0.0'
 end
 
 group :development do

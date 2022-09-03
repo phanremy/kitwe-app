@@ -1,0 +1,12 @@
+<div>
+  <%= link_to t('.create_new_couple'), new_couple_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  <ul class="mt-10">
+    <% @couples.each do |couple| %>
+      <div class="flex">
+        <%= couple.profile1.designation %> - <%= couple.profile2&.designation %>
+        <%= button_to edit_couple_path(couple), method: :get do %> 📝 <% end %>
+        <%= button_to couple_path(couple), method: :delete do %> ❌ <% end %>
+      </div>
+    <% end %>
+  </ul>
+</div>
