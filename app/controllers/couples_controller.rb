@@ -7,7 +7,7 @@ class CouplesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @couples = Couple.all
+    @couples = Couple.accessible_by(current_ability)
   end
 
   def show
@@ -63,6 +63,6 @@ class CouplesController < ApplicationController
   end
 
   def couple_params
-    params.require(:couple).permit(:profile1_id, :profile2_id)
+    params.require(:couple).permit(:profile1_id, :profile2_id, :creator_id)
   end
 end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Couple < ApplicationRecord
+  belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
   belongs_to :profile1, class_name: 'Profile', foreign_key: 'profile1_id'
   belongs_to :profile2, class_name: 'Profile', foreign_key: 'profile2_id', optional: true
 

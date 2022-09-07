@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_03_141841) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_07_185453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_03_141841) do
     t.bigint "profile2_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "creator_id"
+    t.index ["creator_id"], name: "index_couples_on_creator_id"
     t.index ["profile1_id", "profile2_id"], name: "index_couples_on_profile1_id_and_profile2_id", unique: true
     t.index ["profile1_id"], name: "index_couples_on_profile1_id"
     t.index ["profile2_id"], name: "index_couples_on_profile2_id"
@@ -130,6 +132,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_03_141841) do
 
   add_foreign_key "couples", "profiles", column: "profile1_id"
   add_foreign_key "couples", "profiles", column: "profile2_id"
+  add_foreign_key "couples", "users", column: "creator_id"
   add_foreign_key "events", "users", column: "creator_id"
   add_foreign_key "follows", "profiles"
   add_foreign_key "follows", "users"
