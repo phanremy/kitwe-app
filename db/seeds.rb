@@ -61,6 +61,7 @@ Profile.create(pseudo: nil,
 
 profile_number += 1
 date = profile_date(profile_number)
+Couple.create!(profile1_id: Profile.first.id, profile2_id: Profile.last.id)
 
 Profile.create!(pseudo: 'WC',
                 creator_id: admin.id,
@@ -71,6 +72,8 @@ Profile.create!(pseudo: 'WC',
                 birth_date: nil, birth_date_privacy: 'private',
                 wedding_date: date, wedding_date_privacy: 'only_friends',
                 address_privacy: 'only_friends',
-                kids_privacy: 'only_friends')
+                kids_privacy: 'only_friends',
+                parents_id: Couple.first.id)
+
 
 puts 'End Seed'
