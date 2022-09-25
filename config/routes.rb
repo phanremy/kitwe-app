@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'application#homepage'
   resources :profiles
   resources :couples
+  resources :families, only: %w[index create]
   get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
   get '/children', to: 'profiles#children', as: 'profile_children'
   # resources :events

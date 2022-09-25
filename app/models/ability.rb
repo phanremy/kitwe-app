@@ -7,6 +7,7 @@ class Ability
     can :manage, Post
     can :manage, Profile, creator: user
     can :manage, Couple, creator: user
+    can :manage, :family
 
     # Define abilities for the passed in user here. For example:
     #

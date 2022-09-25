@@ -22,7 +22,7 @@ designations = Profile.all.map(&:designation)
 
 profile_number = 1
 
-unless designations.include?('Jean Chevalier')
+if Profile.count.zero?
   date = profile_date(profile_number)
 
   Profile.create!(pseudo: nil,
@@ -35,9 +35,10 @@ unless designations.include?('Jean Chevalier')
                   wedding_date: date, wedding_date_privacy: 'public',
                   address_privacy: 'public',
                   kids_privacy: 'public')
-end
 
-unless designations.include?('anonymous')
+  jc = Profile.last
+  Couple.create!(profile1_id: jc.id, profile2_id: nil, creator_id: admin.id)
+
   Profile.create!(pseudo: 'anonymous',
                   creator_id: admin.id,
                   first_name: 'Valentin', first_name_privacy: 'private',
@@ -47,10 +48,11 @@ unless designations.include?('anonymous')
                   birth_date: nil, birth_date_privacy: 'private',
                   wedding_date: nil, wedding_date_privacy: 'private',
                   address_privacy: 'private',
-                  kids_privacy: 'private')
-end
+                  kids_privacy: 'private',
+                  parents_id: Couple.first.id)
 
-unless designations.include?('Julien Alfonso')
+  anonymous = Profile.last
+
   profile_number += 1
   date = profile_date(profile_number)
 
@@ -65,10 +67,9 @@ unless designations.include?('Julien Alfonso')
                  address_privacy: 'only_friends',
                  kids_privacy: 'only_friends')
 
-  Couple.create!(profile1_id: Profile.first.id, profile2_id: Profile.last.id, creator_id: admin.id)
-end
+  ja = Profile.last
+  Couple.create!(profile1_id: anonymous.id, profile2_id: ja.id, creator_id: admin.id)
 
-unless designations.include?('WC')
   profile_number += 1
   date = profile_date(profile_number)
   Profile.create!(pseudo: 'WC',
@@ -81,7 +82,7 @@ unless designations.include?('WC')
                   wedding_date: date, wedding_date_privacy: 'only_friends',
                   address_privacy: 'only_friends',
                   kids_privacy: 'only_friends',
-                  parents_id: Couple.first.id)
+                  parents_id: Couple.last.id)
 end
 
 puts 'End Seed'
