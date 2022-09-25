@@ -53,6 +53,13 @@ class Profile < ApplicationRecord
     pseudo.present? ? pseudo : option
   end
 
+  def parents_profiles
+    couple = parents
+    return nil if couple.nil?
+
+    Profile.where(id: [couple.profile1_id, couple.profile2_id])
+  end
+
   def next_birthday
     date = Date.new(Time.zone.today.year, birth_date.month, birth_date.day)
     date.past? ? date + 1.year : date

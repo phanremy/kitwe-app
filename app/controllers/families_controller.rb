@@ -9,11 +9,11 @@ class FamiliesController < ApplicationController
   def index; end
 
   def create
-    @family_tree = Profiles::FamilyTree.new(params[:profile_id]).call
     render turbo_stream: turbo_stream.update(
       :family_tree,
       partial: 'family_tree',
-      locals: { family_tree: @family_tree }
+      locals: { data: Profiles::FamilyTree.new(params[:profile_id]).call,
+                profile_id: params[:profile_id] }
     )
   end
 
