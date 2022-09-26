@@ -8,10 +8,10 @@ class Profile < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :parents, class_name: 'Couple', foreign_key: 'parents_id', optional: true
 
-  has_many :couples, class_name: 'Couple', foreign_key: :profile1_id,
-                     dependent: :nullify, inverse_of: :profile1
-  has_many :couples, class_name: 'Couple', foreign_key: :profile2_id,
-                     dependent: :nullify, inverse_of: :profile2
+  has_many :couples1, class_name: 'Couple', foreign_key: :profile1_id,
+                      dependent: :nullify, inverse_of: :profile1
+  has_many :couples2, class_name: 'Couple', foreign_key: :profile2_id,
+                      dependent: :nullify, inverse_of: :profile2
 
   # has_many :profile_events,           dependent: :delete_all
   # has_many :events,                   inverse_of: :profiles, through: :profile_events
@@ -53,11 +53,31 @@ class Profile < ApplicationRecord
     pseudo.present? ? pseudo : option
   end
 
+  def couples
+    [couples1, couples2].flatten
+  end
+
+  def partner_ids
+    [
+      Couple.where(profile1_id: self).pluck(:profile2_id),
+      Couple.where(profile2_id: self).pluck(:profile1_id)
+    ].flatten
+  end
+
   def parents_profiles
     couple = parents
     return nil if couple.nil?
 
     Profile.where(id: [couple.profile1_id, couple.profile2_id])
+  end
+
+  def children_profiles
+    couples.map(&:children).flatten
+  end
+
+  def close_family
+    ids = [id, partner_ids, parents_profiles&.pluck(:id), children_profiles&.pluck(:id)].flatten
+    Profile.where(id: ids)
   end
 
   def next_birthday

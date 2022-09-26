@@ -7,17 +7,21 @@ import FamilyTree from '@balkangraph/familytree.js'
  * Notes:
  *
  * Example:
- *
+ * // https:// balkan . app / FamilyTreeJS / Docs / Edit
  */
 export default class extends Controller {
   initialize () {
     console.log('family tree building')
     console.log(this.element.dataset.familyTree)
     const family = new FamilyTree(this.element, {
+      enableSearch: false,
+      editForm: { readOnly: true,
+                  buttons: { pdf: null, share: null } },
+      generateElementsFromFields: false,
       nodeBinding: {
         field_0: "name"
       },
-      nodes: this.defaultNode()
+      nodes: JSON.parse(this.element.dataset.familyTree)
     })
   }
 
