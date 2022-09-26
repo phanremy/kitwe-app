@@ -64,11 +64,18 @@ class Profile < ApplicationRecord
     ].flatten
   end
 
-  def parents_profiles
-    couple = parents
-    return nil if couple.nil?
+  def parents_ids
+    [parents&.profile1_id, parents&.profile2_id]
+  end
 
-    Profile.where(id: [couple.profile1_id, couple.profile2_id])
+  def sibling_profiles
+    parents&.children
+  end
+
+  def parents_profiles
+    return nil if parents.nil?
+
+    Profile.where(id: parents_ids)
   end
 
   def children_profiles
@@ -76,7 +83,11 @@ class Profile < ApplicationRecord
   end
 
   def close_family
-    ids = [id, partner_ids, parents_profiles&.pluck(:id), children_profiles&.pluck(:id)].flatten
+    ids = [id,
+           sibling_profiles&.pluck(:id),
+           partner_ids,
+           parents_ids,
+           children_profiles&.pluck(:id)].flatten
     Profile.where(id: ids)
   end
 
