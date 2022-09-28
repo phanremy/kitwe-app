@@ -9,13 +9,21 @@ module Profiles
     def call
       return if @profile_id.blank?
 
-      Profile.find(@profile_id).close_family.map do |profile|
+      extended_family.map do |profile|
         { id: profile.id,
           name: profile.designation,
           pids: profile.partner_ids,
           mid: profile.parents_profiles&.first&.id,
           fid: profile.parents_profiles&.second&.id }
       end
+    end
+
+    def extended_family
+      Profile.find(@profile_id).extended_family
+    end
+
+    def close_family
+      Profile.find(@profile_id).close_family
     end
   end
 end

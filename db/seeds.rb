@@ -18,11 +18,8 @@ visitor = User.find_or_create_by(email: 'visitor@example.com') { |user| user.pas
 Post.create!(title: 'Visitor\'s first post', body: 'This is the first post of the visitor', user: visitor)
 Post.create!(title: 'Admin\'s first post', body: 'This is the first post of the admin', user: admin)
 
-designations = Profile.all.map(&:designation)
-
-profile_number = 1
-
 if Profile.count.zero?
+  profile_number = 1
   date = profile_date(profile_number)
 
   Profile.create!(pseudo: nil,
@@ -83,6 +80,58 @@ if Profile.count.zero?
                   address_privacy: 'only_friends',
                   kids_privacy: 'only_friends',
                   parents_id: Couple.last.id)
+end
+
+if Profile.find_by(pseudo: 'papa').nil?
+  pat_grand_pa = Profile.create!(pseudo: 'Paternal Grand Ma', creator: admin)
+  pat_grand_ma = Profile.create!(pseudo: 'Paternal Grand Pa', creator: admin)
+  pat_grand_parents = Couple.create!(
+    profile1_id: pat_grand_pa.id, profile2_id: pat_grand_ma.id, creator_id: admin.id
+  )
+
+  mat_grand_pa = Profile.create!(pseudo: 'Maternal Grand Ma', creator: admin)
+  mat_grand_ma = Profile.create!(pseudo: 'Maternal Grand Pa', creator: admin)
+  mat_grand_parents = Couple.create!(
+    profile1_id: mat_grand_pa.id, profile2_id: mat_grand_ma.id, creator_id: admin.id
+  )
+
+  dad = Profile.create!(pseudo: 'Dad', creator: admin, parents_id: pat_grand_parents.id)
+  mom = Profile.create!(pseudo: 'Mom', creator: admin, parents_id: mat_grand_parents.id)
+  parents = Couple.create!(
+    profile1_id: dad.id, profile2_id: mom.id, creator_id: admin.id
+  )
+
+  mistress = Profile.create!(pseudo: 'Mistress', creator: admin)
+  affair = Couple.create!(
+    profile1_id: dad.id, profile2_id: mistress.id, creator_id: admin.id
+  )
+
+  me = Profile.create!(pseudo: 'Me', creator: admin, parents_id: parents.id)
+  _sister = Profile.create!(pseudo: 'Sister', creator: admin, parents_id: parents.id)
+  _brother_in_law = Profile.create!(pseudo: 'Brother in Law', creator: admin, parents_id: affair.id)
+
+  pat_aunt = Profile.create!(pseudo: 'Paternal Aunt', creator: admin, parents_id: pat_grand_parents.id)
+  _mat_uncle = Profile.create!(pseudo: 'Uncle', creator: admin, parents_id: mat_grand_parents.id)
+
+  pat_aunt_bf = Profile.create!(pseudo: 'Paternal Aunt Bf', creator: admin)
+  pat_family = Couple.create!(
+    profile1_id: pat_aunt.id, profile2_id: pat_aunt_bf.id, creator_id: admin.id
+  )
+
+  _cousin = Profile.create!(pseudo: 'Cousin', creator: admin, parents_id: pat_family.id)
+
+  bf_dad = Profile.create!(pseudo: 'BF Dad', creator: admin)
+  bf_mom = Profile.create!(pseudo: 'BF Mom', creator: admin)
+  bf_parents = Couple.create!(
+    profile1_id: bf_dad.id, profile2_id: bf_mom.id, creator_id: admin.id
+  )
+
+  boyfriend = Profile.create!(pseudo: 'boyfriend', creator: admin, parents_id: bf_parents.id)
+  relation = Couple.create!(
+    profile1_id: me.id, profile2_id: boyfriend.id, creator_id: admin.id
+  )
+
+  _adopted = Profile.create!(pseudo: 'Adopted Daughter', creator: admin, parents_id: relation.id)
 end
 
 puts 'End Seed'

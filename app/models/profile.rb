@@ -64,10 +64,6 @@ class Profile < ApplicationRecord
     ].flatten
   end
 
-  def parents_ids
-    [parents&.profile1_id, parents&.profile2_id]
-  end
-
   def sibling_profiles
     parents&.children
   end
@@ -83,12 +79,18 @@ class Profile < ApplicationRecord
   end
 
   def close_family
-    ids = [id,
-           sibling_profiles&.pluck(:id),
-           partner_ids,
-           parents_ids,
-           children_profiles&.pluck(:id)].flatten
-    Profile.where(id: ids)
+    Profile.where(id: close_family_ids)
+  end
+
+  def extended_family
+    data = close_family
+
+    3.times do |_i|
+      _count = data.count
+      data = Profile.where(id: data.map(&:close_family).flatten.pluck(:id).uniq)
+    end
+
+    data
   end
 
   def next_birthday
@@ -99,5 +101,19 @@ class Profile < ApplicationRecord
   def next_wedding_anniversary
     date = Date.new(Time.zone.today.year, wedding_date.month, wedding_date.day)
     date.past? ? date + 1.year : date
+  end
+
+  private
+
+  def parents_ids
+    [parents&.profile1_id, parents&.profile2_id]
+  end
+
+  def close_family_ids
+    [id,
+     sibling_profiles&.pluck(:id),
+     partner_ids,
+     parents_ids,
+     children_profiles&.pluck(:id)].flatten.uniq
   end
 end
