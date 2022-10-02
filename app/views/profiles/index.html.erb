@@ -1,6 +1,13 @@
-<div>
-  <%= link_to t('.create_new_profile'), new_profile_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
-  <ul class="mt-10">
+<div class="flex justify-between">
+  <%= render layout: 'shared/options' do %>
+    <%= button_to t('create_new_profile'), new_profile_path, method: :get, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+  <% end %>
+  <%= render 'search', url: profiles_path%>
+</div>
+<ul class="mt-10">
+  <% if @profiles.count.zero? %>
+    <p> No Profiles found</p>
+  <% else %>
     <% @profiles.each_with_index do |profile, index| %>
       <li>
         <%= render 'card', profile: profile %>
@@ -11,5 +18,5 @@
         </div>
       <% end %>
     <% end %>
-  </ul>
-</div>
+  <% end %>
+</ul>

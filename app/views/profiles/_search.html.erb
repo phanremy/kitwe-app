@@ -1,0 +1,5 @@
+<div class="search">
+  <%= form_with url: url, method: :get do |form| %>
+    <%= form.text_field :search, value: params[:search], placeholder: 'Search a profile' %>
+  <% end %>
+</div>

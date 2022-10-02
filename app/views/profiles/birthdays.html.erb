@@ -1,3 +1,11 @@
-<% @birthdays.each do |birthday| %>
-  <p><%= birthday[:name] %> - <%= l birthday[:date], format: :fr_long %> - in <%= (birthday[:date] - Date.today).to_i %> days</p>
+<div class="flex justify-between">
+  <div></div>
+  <%= render 'search', url: profile_birthdays_path %>
+</div>
+<% if @birthdays.count.zero? %>
+  <p> No Birthdays found</p>
+<% else %>
+  <% @birthdays.each do |birthday| %>
+    <p><%= birthday[:name] %> - <%= l birthday[:date], format: :fr_long %> - in <%= (birthday[:date] - Date.today).to_i %> days</p>
+  <% end %>
 <% end %>

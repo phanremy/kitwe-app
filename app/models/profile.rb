@@ -31,6 +31,12 @@ class Profile < ApplicationRecord
             :birth_date_privacy,
             inclusion: { in: Profile::PRIVACIES }
 
+  scope :related_to, lambda { |value|
+                       where("profiles.first_name ILIKE '%#{value}%' OR profiles.last_name ILIKE '%#{value}%' OR
+                        profiles.email ILIKE '%#{value}%' OR profiles.phone ILIKE '%#{value}%' OR
+                        profiles.pseudo ILIKE '%#{value}%'")
+                     }
+
   def any_essential_info_present?
     return unless Profile::ESSENTIALS.all? { |attr| self[attr].blank? }
 

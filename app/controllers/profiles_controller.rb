@@ -68,6 +68,7 @@ class ProfilesController < ApplicationController
 
   def set_profiles
     @profiles = Profile.accessible_by(current_ability)
+    @profiles = @profiles.related_to(params[:search]) if params[:search]
   end
 
   def set_profile
