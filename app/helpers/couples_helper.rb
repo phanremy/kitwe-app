@@ -7,9 +7,11 @@ module CouplesHelper
     couples.push([nil, nil])
   end
 
-  def couple_profile_options
-    profiles = Profile.accessible_by(current_ability).map { |profile| [profile.designation, profile.id] }
-    profiles.push([nil, nil])
+  def couple_profile_options(profile_id = nil)
+    options = Profile.accessible_by(current_ability).map { |profile| [profile.designation, profile.id] }
+                     .push([nil, nil])
+
+    options_for_select(options, profile_id)
   end
   # TO DO: do something to make dynamically show only available options for the second pairing
   # (cannot be paired with an already paired profile)

@@ -1,3 +1,7 @@
-<% @children.each do |child| %>
-  <p><%= child.designation %>: child of <%= child.parents.designation %></p>
+<% if @children.count.zero? %>
+  <p>No Children found</p>
+<% else %>
+  <% @children.each do |child| %>
+    <p><%= child.designation %>: child of <%= child.parents.designation %></p>
+  <% end %>
 <% end %>

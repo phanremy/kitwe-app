@@ -11,8 +11,19 @@ class Couple < ApplicationRecord
             presence: true,
             uniqueness: { scope: :profile2_id,
                           message: :uniqueness }
+  validate :couple_with_oneself?
+
+  scope :related_to, lambda { |value|
+                       where(profile1_id: value).or(where(profile2_id: value))
+                     }
 
   # TODO: do something to check profile_id pairing in both ways
+
+  def couple_with_oneself?
+    return unless profile1_id == profile2_id
+
+    errors.add :base, "Partner 1 is same as partner 2"
+  end
 
   def designation
     partner1 = profile1.designation

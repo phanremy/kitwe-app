@@ -8,6 +8,7 @@ class CouplesController < ApplicationController
 
   def index
     @couples = Couple.accessible_by(current_ability)
+    @couples = @couples.related_to(params[:profile_id]) if params[:profile_id]
   end
 
   def show

@@ -20,7 +20,12 @@ class ProfilesController < ApplicationController
   end
 
   def children
-    @children = @profiles.where.not(parents_id: nil)
+    if params[:profile_id]
+      profile = Profile.find(params[:profile_id])
+      @children = profile.children_profiles
+    else
+      @children = @profiles.where.not(parents_id: nil)
+    end
   end
 
   def new

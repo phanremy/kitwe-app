@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   # root "articles#index"
   root 'application#homepage'
   resources :profiles
-  resources :couples
-  resources :families, only: %w[index create]
-  get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
-  get '/children', to: 'profiles#children', as: 'profile_children'
-  # resources :events
-  # resources :friendships
+  scope "(:profile_id)" do
+    resources :couples
+    resources :families, only: %w[index create]
+    get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
+    get '/children', to: 'profiles#children', as: 'profile_children'
+    # resources :events
+    # resources :friendships
+  end
 
   resources :posts
   get '/open-modal', to: 'pages#open_modal', as: 'open_modal'

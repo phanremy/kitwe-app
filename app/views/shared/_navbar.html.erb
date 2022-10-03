@@ -30,21 +30,25 @@
        class="mt-10 lg:mt-16 w-full hidden lg:block transition-all delay-300">
     <div class="text-sm flex flex-col flex-grow">
       <% if user_signed_in? %>
-        <%= link_to 'Profiles', profiles_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+        <%= link_to 'Profiles', profiles_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
         <%#= link_to 'Events', events_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
-        <%= link_to 'Birthdays', profile_birthdays_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
-        <%= link_to 'Couples', couples_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
-        <%= link_to 'Children', profile_children_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
-        <%= link_to 'Families', families_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
-        <%= link_to 'Download (soon)', '#', class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+        <%= link_to 'Birthdays', profile_birthdays_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+        <%#= link_to 'Couples', couples_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+        <%#= link_to 'Children', profile_children_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+        <%#= link_to 'Families', families_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+        <%#= link_to 'Download (soon)', '#', class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
         <%= link_to 'Log out', destroy_user_session_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
       <% else %>
         <%= link_to 'Log in', new_user_session_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
       <% end %>
     </div>
-    <div class="hidden">
-      <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded border-white hover:border-transparent hover:text-black-500 hover:bg-white mt-4 lg:mt-0">Download</a>
-    </div>
+    <% if (params[:controller] == 'profiles'  && params[:action] == 'show') || params[:profile_id] %>
+      <% profile_id = params[:controller] == 'profiles'  && params[:action] == 'show' ? params[:id] : params[:profile_id] %>
+      <%= link_to 'Profile', profiles_path(profile_id), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+      <%= link_to 'Couples', couples_path(profile_id: profile_id), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+      <%= link_to 'Children', profile_children_path(profile_id: profile_id), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+      <%= link_to 'Families', families_path(profile_id: profile_id), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+    <% end %>
   </div>
   <div id='menu-user-settings' class="hidden relative">
     <div>

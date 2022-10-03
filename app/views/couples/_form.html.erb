@@ -1,7 +1,7 @@
 <%= form_with model: @couple do |form| %>
   <%= form.hidden_field :creator_id, value: current_user&.id %>
   <div class="mb-6">
-    <%= form.select :profile1_id, couple_profile_options, {} %>
+    <%= form.select :profile1_id, couple_profile_options(params[:profile_id]), {} %>
   </div>
   <div class="mb-6">
     <%= form.select :profile2_id, couple_profile_options, {} %>

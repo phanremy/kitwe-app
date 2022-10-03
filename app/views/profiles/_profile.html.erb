@@ -1,5 +1,6 @@
 <%= render layout: 'shared/options' do %>
   <%= button_to t('edit'), edit_profile_path, method: :get, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+  <%= link_to t('create_new_couple'), new_couple_path(profile_id: params[:id]), method: :get, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'%>
   <%= button_to t('delete'), profile_path, method: :delete, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
 <% end %>
 
