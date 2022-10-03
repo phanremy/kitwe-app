@@ -6,19 +6,28 @@ module ProfilesHelper
     Profile::PRIVACIES.map { |option| [t(option, scope: :privacy), option] }
   end
 
-  def create_google_calendar_birthday(profile)
-    "https://calendar.google.com/calendar/u/0/r/eventedit?" \
-      "#{"text=#{CGI.escape("#{profile.designation}'s birthday")}"}" \
-      "&dates=#{CGI.escape(profile.next_birthday.strftime('%Y%m%d'))}/" \
-      "#{CGI.escape(profile.next_birthday.strftime('%Y%m%d'))}" \
-      "&ctz=#{Rails.application.config.time_zone}"
+  def profile_parents_options(couple_id = nil)
+    options = [nil] +
+              Couple.accessible_by(current_ability).map { |couple| [couple.designation, couple.id] }
+
+    options_for_select(options, @profile.parents&.id || couple_id)
   end
 
-  def create_google_calendar_wedding_anniversary(profile)
-    "https://calendar.google.com/calendar/u/0/r/eventedit?" \
-      "#{"text=#{CGI.escape("#{profile.designation}'s wedding")}"}" \
-      "&dates=#{CGI.escape(profile.next_wedding_anniversary.strftime('%Y%m%d'))}/" \
-      "#{CGI.escape(profile.next_wedding_anniversary.strftime('%Y%m%d'))}" \
-      "&ctz=#{Rails.application.config.time_zone}"
+  def couple_profile_options(partner_id = nil)
+    options = [nil] +
+              Profile.accessible_by(current_ability).map { |profile| [profile.designation, profile.id] }
+
+    options_for_select(options, partner_id)
+  end
+  # TO DO: do something to make dynamically show only available options for the second pairing
+  # (cannot be paired with an already paired profile)
+
+  def child_of(parents)
+    content_tag(:div, class: 'flex') do
+      safe_join([I18n.t('child_of'),
+      content_tag(:div, class: 'flex w-full' ) do
+        partners_links(parents)
+      end])
+    end
   end
 end

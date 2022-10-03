@@ -1,4 +1,4 @@
-<%= render layout: 'shared/options' do %>
+<%= render layout: 'shared/options', locals: { page_header: true } do %>
   <%= button_to t('edit'), edit_profile_path, method: :get, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
   <%= link_to t('create_new_couple'), new_couple_path(profile_id: params[:id]), method: :get, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'%>
   <%= button_to t('delete'), profile_path, method: :delete, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
@@ -7,16 +7,29 @@
 <div class="flex items-center justify-center">
   <h1 class="text-xl"><%= @profile.designation %></h1>
 </div>
-<%= t('pseudo', scope: 'activerecord.attributes.profile') %>: <%= @profile.pseudo %> <br>
-<%= t('first_name', scope: 'activerecord.attributes.profile') %>: <%= @profile.first_name %> <br>
-<%= t('last_name', scope: 'activerecord.attributes.profile') %>: <%= @profile.last_name %> <br>
-<%= t('email', scope: 'activerecord.attributes.profile') %>: <%= @profile.email %> <br>
-<%= t('phone', scope: 'activerecord.attributes.profile') %>: <%= @profile.phone %> <br>
+<div class="py-2">
+  <%= child_of(@profile.parents) if @profile.parents %>
+</div>
+<div class="py-2">
+  <%= t('pseudo', scope: 'activerecord.attributes.profile') %>: <%= @profile.pseudo %>
+</div>
+<div class="py-2">
+  <%= t('first_name', scope: 'activerecord.attributes.profile') %>: <%= @profile.first_name %>
+</div>
+<div class="py-2">
+  <%= t('last_name', scope: 'activerecord.attributes.profile') %>: <%= @profile.last_name %>
+</div>
+<div class="py-2">
+  <%= t('email', scope: 'activerecord.attributes.profile') %>: <%= @profile.email %>
+</div>
+<div class="py-2">
+  <%= t('phone', scope: 'activerecord.attributes.profile') %>: <%= @profile.phone %>
+</div>
 
 <% if @profile.birth_date %>
   <div class="flex items-center justify-start">
     <%= t('birth_date', scope: 'activerecord.attributes.profile') %>: <%= l @profile.birth_date, format: :fr_short %>
-    <%= link_to create_google_calendar_birthday(@profile), target: '_blank', class: 'text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-2 mb-2' do %>
+    <%= link_to create_google_calendar_birthday(@profile), target: '_blank', class: 'text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white mx-2 py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-2 mb-2' do %>
       <div class="flex">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -27,21 +40,25 @@
   </div>
 <% end %>
 
-<% if @profile.wedding_date %>
-  <div class="flex items-center justify-start">
-    <%= t('wedding_date', scope: 'activerecord.attributes.profile') %>: <%= l @profile.wedding_date, format: :fr_long %>
-    <%= link_to create_google_calendar_wedding_anniversary(@profile), target: '_blank', class: 'text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-2 mb-2' do %>
-      <div class="flex">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <p class="ml-1">Google Calendar</p>
-      </div>
-    <% end %>
-  </div>
+<% if false %>
+  <% if @profile.wedding_date %>
+    <div class="flex items-center justify-start">
+      <%= t('wedding_date', scope: 'activerecord.attributes.profile') %>: <%= l @profile.wedding_date, format: :fr_long %>
+      <%= link_to create_google_calendar_wedding_anniversary(@profile), target: '_blank', class: 'text-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white mx-2 py-2 px-4 border border-blue-500 hover:border-transparent rounded mr-2 mb-2' do %>
+        <div class="flex">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <p class="ml-1">Google Calendar</p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>
+<div class="py-2">
+  <%= t('notes', scope: 'activerecord.attributes.profile') %>: <%= @profile.notes %>
+</div>
 
-<%= t('notes', scope: 'activerecord.attributes.profile') %>: <%= @profile.notes %>
 <%#= t('tiktok_url', scope: 'activerecord.attributes.profile') %> <%#= @profile.tiktok_url %> <br>
 <%#= t('twitter_url', scope: 'activerecord.attributes.profile') %> <%#= @profile.twitter_url %> <br>
 <%#= t('linkedin_url', scope: 'activerecord.attributes.profile') %> <%#= @profile.linkedin_url %> <br>

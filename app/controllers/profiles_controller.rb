@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
 
   def birthdays
     @birthdays = @profiles.where.not(birth_date: nil)
-                          .map { |profile| { name: profile.designation, date: profile.next_birthday } }
+                          .map { |profile| { id: profile.id, name: profile.designation, date: profile.next_birthday } }
                           .sort_by { |p| p[:date] }
   end
 
@@ -23,6 +23,7 @@ class ProfilesController < ApplicationController
     if params[:profile_id]
       profile = Profile.find(params[:profile_id])
       @children = profile.children_profiles
+      @couples = profile.couples
     else
       @children = @profiles.where.not(parents_id: nil)
     end

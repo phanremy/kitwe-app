@@ -1,7 +1,21 @@
+<% if params[:profile_id] && @couples.count.positive? %>
+  <%= render layout: 'shared/options', locals: { page_header: true } do %>
+    <% @couples.each do |couple| %>
+      <%= link_to t('create_new_child_for', couple_designation: couple.designation), new_profile_path(profile_id: params[:profile_id], couple_id: couple.id), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+    <% end %>
+  <% end %>
+<% end %>
+
 <% if @children.count.zero? %>
   <p>No Children found</p>
 <% else %>
-  <% @children.each do |child| %>
-    <p><%= child.designation %>: child of <%= child.parents.designation %></p>
-  <% end %>
+  <ul>
+    <% @children.each do |child| %>
+      <li class="flex">
+        <%= link_to child.designation, profile_path(child) %>
+        : 
+        <%= child_of(child.parents) %>
+      </li>
+    <% end %>
+  </ul>
 <% end %>

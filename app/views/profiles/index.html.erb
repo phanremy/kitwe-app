@@ -1,10 +1,10 @@
 <div class="flex justify-between">
-  <%= render layout: 'shared/options' do %>
+  <%= render layout: 'shared/options', locals: { page_header: true } do %>
     <%= button_to t('create_new_profile'), new_profile_path, method: :get, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
   <% end %>
   <%= render 'search', url: profiles_path%>
 </div>
-<ul class="mt-10">
+<ul>
   <% if @profiles.count.zero? %>
     <p> No Profiles found</p>
   <% else %>

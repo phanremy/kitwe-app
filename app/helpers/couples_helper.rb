@@ -2,17 +2,13 @@
 
 # top level description of CouplesHelper
 module CouplesHelper
-  def profile_parents_options
-    couples = Couple.accessible_by(current_ability).map { |couple| [couple.designation, couple.id] }
-    couples.push([nil, nil])
-  end
+  def partners_links(couple)
+    content = couple.partners.map do |partner|
+      next unless partner
 
-  def couple_profile_options(profile_id = nil)
-    options = Profile.accessible_by(current_ability).map { |profile| [profile.designation, profile.id] }
-                     .push([nil, nil])
+      link_to(partner.designation, profile_path(partner.id, profile_id: nil))
+    end.compact
 
-    options_for_select(options, profile_id)
+    safe_join(content, raw('<div class="mx-1"> & </div>'))
   end
-  # TO DO: do something to make dynamically show only available options for the second pairing
-  # (cannot be paired with an already paired profile)
 end

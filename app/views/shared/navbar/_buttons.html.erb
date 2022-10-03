@@ -1,0 +1,8 @@
+<div class="<%= "bg-gray-50" if is_active %>  px-4 text-xs inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+  <div class="flex flex-col items-center py-1">
+    <div class="py-3">
+      <%= image_tag "#{category.to_s}.svg", size: "20x15" %>
+    </div>
+    <%= category.to_s.capitalize %>
+  </div>
+</div>

@@ -8,30 +8,30 @@
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
         <%= form.text_field :first_name, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
         <%= form.label :first_name, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-        <%= form.select :first_name_privacy, profile_privacy_options, {} %>
+        <%= form.select :first_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :last_name, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :last_name, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :last_name_privacy, profile_privacy_options, {} %>
+      <%= form.select :last_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
   </div>
   <div class="flex flex-wrap my-8 ">
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :email, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :email, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :email_privacy, profile_privacy_options, {} %>
+      <%= form.select :email_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :phone, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :phone, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :phone_privacy, profile_privacy_options, {} %>
+      <%= form.select :phone_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
   </div>
   <div class="flex relative my-8 border-b-2 focus-within:border-blue-500">
     <%= form.date_field :birth_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
     <%= form.label :birth_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%= form.select :birth_date_privacy, profile_privacy_options, {} %>
+    <%= form.select :birth_date_privacy, profile_privacy_options, {}, class: 'hidden' %>
   </div>
   <%# <div class="flex"> %>
     <%# <div class="flex-grow relative border-b-2 focus-within:border-blue-500"> %>
@@ -53,7 +53,7 @@
   </div>
   <div class="relative my-8 focus-within:border-blue-500">
     <%= form.label :parents_id, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-    <%= form.select :parents_id, profile_parents_options, {} %>
+    <%= form.select :parents_id, profile_parents_options(params[:couple_id]), {} %>
   </div>
   <div class="actions">
     <%= form.submit t('submit'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>

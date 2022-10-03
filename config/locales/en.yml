@@ -1,7 +1,13 @@
 en:
+  log_in: Log in
+  log_out: Log out
   delete: Delete
   edit: Edit
   submit: Submit
+  create_new_child_for: Create a child from %{couple_designation}
+  create_new_child: Create a child from this couple
+  create_new_couple: Register a new couple relationship
+  child_of: child of 
   privacy:
     public: Public
     only_involved: Involved only

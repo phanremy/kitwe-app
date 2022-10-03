@@ -15,16 +15,16 @@ export default class extends Controller {
   static targets = ['button', 'content']
 
   connect () {
-    this.contentTarget.style.width = "0px"
-    this.contentTarget.classList.add('hidden')
+    // this.contentTarget.style.width = "0px"
+    // this.contentTarget.classList.add('hidden')
     this.setClickListenerOutOfContent()
   }
 
   process () {
     if (this.contentTarget.style.width === '0px') {
-      this.contentTarget.style.width = ""
+      // this.contentTarget.style.width = ""
     } else {
-      this.contentTarget.style.width = "0px"
+      // this.contentTarget.style.width = "0px"
     }
     this.contentTarget.classList.toggle('hidden')
   }

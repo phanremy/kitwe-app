@@ -1,9 +1,9 @@
-<%= form_with path: families_path, method: :post, local: true, data: { turbo: true, turbo_frame: '', controller: '' } do |form| %>
-  <%= form.select :family_profile_id, couple_profile_options(params[:profile_id]), {} %>
-  <%= form.submit t('submit'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
-<% end %>
+<%#= form_with path: families_path, method: :post, local: true, data: { turbo: true, turbo_frame: '', controller: '' } do |form| %>
+  <%#= form.select :family_profile_id, couple_profile_options(params[:profile_id]), {} %>
+  <%#= form.submit t('submit'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+<%# end %>
 
-<div class="mt-2">
+<div class="">
   <%= turbo_frame_tag :family_tree do %>
     <% if params[:profile_id] %>
       <%= render 'family_tree', data: Profiles::FamilyTree.new(params[:profile_id]).call%>

@@ -6,6 +6,12 @@
   <p> No Birthdays found</p>
 <% else %>
   <% @birthdays.each do |birthday| %>
-    <p><%= birthday[:name] %> - <%= l birthday[:date], format: :fr_long %> - in <%= (birthday[:date] - Date.today).to_i %> days</p>
+    <p>
+      <%= link_to profile_path(birthday[:id]) do %>
+        <%= birthday[:name] %>
+      <% end %>
+       - <%= l birthday[:date], format: :fr_long %>
+       - in <%= (birthday[:date] - Date.today).to_i %> days
+    </p>
   <% end %>
 <% end %>

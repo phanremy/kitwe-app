@@ -21,6 +21,7 @@ class CouplesController < ApplicationController
 
   def create
     @couple = Couple.new(couple_params)
+    @couple.profile1_id = params[:profile_id] if params[:profile_id]
     if @couple.save
       flash[:success] = 'Event successfully created'
       redirect_to couples_path

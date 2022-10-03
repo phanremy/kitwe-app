@@ -25,6 +25,10 @@ class Couple < ApplicationRecord
     errors.add :base, "Partner 1 is same as partner 2"
   end
 
+  def partners
+    [profile1, profile2]
+  end
+
   def designation
     partner1 = profile1.designation
     partner2 = profile2&.designation
