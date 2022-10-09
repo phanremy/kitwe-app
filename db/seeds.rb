@@ -8,8 +8,13 @@
 
 require 'faker'
 
-def profile_date(number)
-  Date.today - number.month - number.day
+def profile_date
+  random = (0..9).to_a
+  date = Date.today
+  random.sample.times do |_i|
+    date += random.sample.year + random.sample.month + random.sample.day + random.sample.hour
+  end
+  date
 end
 
 def random_privacy
@@ -29,8 +34,8 @@ def random_info
     last_name: Faker::Name.last_name,
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number_with_country_code ,
-    birth_date: profile_date((0..9).to_a.sample),
-    wedding_date: profile_date((0..9).to_a.sample)
+    birth_date: profile_date,
+    wedding_date: profile_date
   }.merge(random_privacy)
 end
 
@@ -43,8 +48,7 @@ Post.create!(title: 'Visitor\'s first post', body: 'This is the first post of th
 Post.create!(title: 'Admin\'s first post', body: 'This is the first post of the admin', user: admin)
 
 if Profile.count.zero?
-  profile_number = 1
-  date = profile_date(profile_number)
+  date = profile_date
 
   Profile.create!(pseudo: nil,
                   creator_id: admin.id,
@@ -74,8 +78,7 @@ if Profile.count.zero?
 
   anonymous = Profile.last
 
-  profile_number += 1
-  date = profile_date(profile_number)
+  date = profile_date
 
   Profile.create(pseudo: nil,
                  creator_id: admin.id,
@@ -91,8 +94,7 @@ if Profile.count.zero?
   ja = Profile.last
   Couple.create!(profile1_id: anonymous.id, profile2_id: ja.id, creator_id: admin.id)
 
-  profile_number += 1
-  date = profile_date(profile_number)
+  date = profile_date
   Profile.create!(pseudo: 'WC',
                   creator_id: admin.id,
                   first_name: 'William', first_name_privacy: 'only_friends',

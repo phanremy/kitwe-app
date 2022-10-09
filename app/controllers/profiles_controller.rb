@@ -14,9 +14,7 @@ class ProfilesController < ApplicationController
   # @events = @profile.events
 
   def birthdays
-    @birthdays = @profiles.where.not(birth_date: nil)
-                          .map { |profile| { id: profile.id, name: profile.designation, date: profile.next_birthday } }
-                          .sort_by { |p| p[:date] }
+    @birthdays_data = Profiles::Birthdays.new(@profiles).call
   end
 
   def children
