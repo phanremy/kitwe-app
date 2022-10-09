@@ -12,6 +12,17 @@ def profile_date(number)
   Date.today - number.month - number.day
 end
 
+def random_privacy
+  {
+    first_name_privacy: %w[public only_shared only_friends private].sample,
+    last_name_privacy: %w[public only_shared only_friends private].sample,
+    email_privacy: %w[public only_shared only_friends private].sample,
+    phone_privacy: %w[public only_shared only_friends private].sample,
+    birth_date_privacy: %w[public only_shared only_friends private].sample,
+    wedding_date_privacy: %w[public only_shared only_friends private].sample
+  }
+end
+
 def random_info
   {
     first_name: Faker::Name.first_name,
@@ -19,14 +30,8 @@ def random_info
     email: Faker::Internet.email,
     phone: Faker::PhoneNumber.phone_number_with_country_code ,
     birth_date: profile_date((0..9).to_a.sample),
-    wedding_date: profile_date((0..9).to_a.sample),
-    first_name_privacy: %w[public only_shared only_friends private].sample,
-    last_name_privacy: %w[public only_shared only_friends private].sample,
-    email_privacy: %w[public only_shared only_friends private].sample,
-    phone_privacy: %w[public only_shared only_friends private].sample,
-    birth_date_privacy: %w[public only_shared only_friends private].sample,
-    wedding_date_privacy: %w[public only_shared only_friends private].sample,
-  }
+    wedding_date: profile_date((0..9).to_a.sample)
+  }.merge(random_privacy)
 end
 
 puts 'Start Seed'
