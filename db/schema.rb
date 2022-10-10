@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_07_185453) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_10_062541) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -28,12 +28,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_07_185453) do
 
   create_table "events", force: :cascade do |t|
     t.string "category"
-    t.string "note"
+    t.string "sub_category"
     t.string "privacy", default: "public", null: false
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id", null: false
+    t.text "notes"
     t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 

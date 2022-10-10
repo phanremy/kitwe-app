@@ -2,6 +2,6 @@
 
 # # top level documentation for ProfileEvent
 class ProfileEvent < ApplicationRecord
-  # belongs_to :profile
-  # belongs_to :event
+  belongs_to :profile
+  belongs_to :event
 end
