@@ -8,10 +8,19 @@
   <% if @profiles.count.zero? %>
     <p> No Profiles found</p>
   <% else %>
-    <% @profiles.each_with_index do |profile, index| %>
-      <li>
-        <%= render 'card', profile: profile %>
-      </li>
+    <%= turbo_frame_tag :profiles do %>
+      <% @profiles.each do |profile| %>
+        <li>
+          <%= render 'card', profile: profile %>
+        </li>
+      <% end %>
+      <% if @pagy.next %>
+        <%= turbo_frame_tag :profiles, loading: :lazy, src: url_for(only_path: false, params: { page: @pagy.next }.merge(request.query_parameters.except(:page))) do %>
+          <div class="spinner-container">
+            <i class="fas fa-circle-notch fa-spin"></i>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 </ul>

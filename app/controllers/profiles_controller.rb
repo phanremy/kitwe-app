@@ -8,7 +8,9 @@ class ProfilesController < ApplicationController
   before_action :set_profiles, only: %i[index birthdays]
   before_action :set_profile, except: %i[index new create birthdays children]
 
-  def index; end
+  def index
+    @pagy, @profiles = pagy(@profiles, items: 5)
+  end
 
   def show; end
   # @events = @profile.events
@@ -74,7 +76,7 @@ class ProfilesController < ApplicationController
   end
 
   def set_profiles
-    @profiles = Profile.accessible_by(current_ability)
+    @profiles = Profile.accessible_by(current_ability).order(updated_at: :desc)
     @profiles = @profiles.related_to(params[:search]) if params[:search]
   end
 

@@ -2,6 +2,8 @@
 
 # top level description of ProfilesHelper
 module ProfilesHelper
+  include Pagy::Frontend
+
   def profile_privacy_options
     Profile::PRIVACIES.map { |option| [t(option, scope: :privacy), option] }
   end
