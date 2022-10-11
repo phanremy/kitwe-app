@@ -25,9 +25,9 @@ module ProfilesHelper
   def child_of(parents)
     content_tag(:div, class: 'flex') do
       safe_join([I18n.t('child_of'),
-      content_tag(:div, class: 'flex w-full' ) do
-        partners_links(parents)
-      end])
+                 content_tag(:div, class: 'flex w-full') do
+                   partners_links(parents)
+                 end])
     end
   end
 end
