@@ -1,13 +1,26 @@
 en:
-  log_in: Log in
-  log_out: Log out
+  child_of: child of 
+  confirm_delete: Are you sure? Deleting is permanent
   delete: Delete
   edit: Edit
+  general_error: Something went wrong
+  log_in: Log in
+  log_out: Log out
   submit: Submit
-  create_new_child_for: Create a child from %{couple_designation}
-  create_new_child: Create a child from this couple
-  create_new_couple: Register a new couple relationship
-  child_of: child of 
+
+  children:
+    create_new: Create a child from this relationship
+    create_new_for: Create a child from %{couple_designation}
+
+  couples:
+    create_new: Register a new relationship
+    destroy_success: Relationship was successfully deleted.
+    with_children_error: This relationship has associated children to be taken care of first.
+
+  profiles:
+    destroy_success: Profile was successfully deleted.
+    with_couples_error: This profile has associated relationships to be taken care of first.
+
   privacy:
     public: Public
     only_involved: Involved only

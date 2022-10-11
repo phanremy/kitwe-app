@@ -1,23 +1,27 @@
 <div>
   <%= render layout: 'shared/options', locals: { page_header: true } do %>
-    <%= link_to t('create_new_couple'), new_couple_path(profile_id: params[:profile_id]), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+    <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:profile_id]), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
   <% end %>
 
   <ul>
-    <% @couples.each do |couple| %>
-      <li class="py-2">
-        <div class="flex items-center">
-          <div class="flex w-full">
-            <%= partners_links(couple) %>
-          </div>
+    <% if @couples.count.zero? %>
+        <p> No Couples found</p>
+    <% else %>
+      <% @couples.each do |couple| %>
+        <li class="py-2">
+          <div class="flex items-center">
+            <div class="flex w-full">
+              <%= partners_links(couple) %>
+            </div>
 
-          <%= render layout: 'shared/options', locals: { page_header: false } do %>
-            <%= link_to t('create_new_child'), new_profile_path(couple_id: couple.id, profile_id: nil), method: :get, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
-            <%= button_to t('edit'), edit_couple_path(couple), method: :get, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-            <%= button_to t('delete'), couple_path(couple), method: :delete, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-          <% end %>
-        </div>
-      </li>
+            <%= render layout: 'shared/options', locals: { page_header: false } do %>
+              <%= link_to t('children.create_new'), new_profile_path(couple_id: couple.id, profile_id: nil), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+              <%= link_to t('edit'), edit_couple_path(couple), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+              <%= button_to t('delete'), couple_path(couple), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>

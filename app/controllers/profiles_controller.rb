@@ -55,11 +55,14 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-    if @profile.destroy
-      flash[:success] = 'Profile was successfully deleted.'
+    if @profile.couples.count.positive?
+      flash.now[:error] = I18n.t('profiles.with_couples_error')
+      render_flash
+    elsif @profile.destroy
+      flash[:success] = I18n.t('profiles.destroy_success')
       redirect_to profiles_path
     else
-      flash.now[:error] = 'Something went wrong'
+      flash.now[:error] = I18n.t('general_error')
       render_flash
     end
   end

@@ -45,11 +45,14 @@ class CouplesController < ApplicationController
   end
 
   def destroy
-    if @couple.destroy
-      flash[:success] = 'Couple was successfully deleted.'
+    if @couple.children.count.positive?
+      flash.now[:error] = I18n.t('couples.with_children_error')
+      render_flash
+    elsif @couple.destroy
+      flash[:success] = I18n.t('couples.destroy_success')
       redirect_to couples_path
     else
-      flash.now[:error] = 'Something went wrong'
+      flash.now[:error] = I18n.t('general_error')
       render_flash
     end
   end

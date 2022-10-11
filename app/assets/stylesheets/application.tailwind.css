@@ -44,8 +44,20 @@ select:focus-within ~ label {
 
 /* FOR FLOATING FORM FIELD - END */
 
-
 .my-8 {
   margin-bottom: 2rem !important;
   margin-top: 2rem !important;
 }
+
+
+/* TAILWIND BUILDER AND FORMS */
+
+.actions {
+  @apply my-2;
+}
+
+h2 {
+  @apply font-bold;
+}
+
+/* TAILWIND BUILDER AND FORMS - END */

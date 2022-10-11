@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root 'application#homepage'
+  root 'profiles#birthdays'
   resources :profiles
   scope "(:profile_id)" do
-    resources :couples
+    resources :couples, controllers: 'couples'
     resources :families, only: %w[index create]
     get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
     get '/children', to: 'profiles#children', as: 'profile_children'
