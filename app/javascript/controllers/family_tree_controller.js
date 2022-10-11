@@ -14,12 +14,20 @@ export default class extends Controller {
     console.log('family tree building')
     console.log(this.element.dataset.familyTree)
     const family = new FamilyTree(this.element, {
+      menu: {
+        pdf: { text: "Export PDF" },
+        png: { text: "Export PNG" },
+        svg: { text: "Export SVG" },
+        csv: { text: "Export CSV" },
+        json: { text: "Export JSON" }
+      },
       enableSearch: false,
-      editForm: { readOnly: true,
-                  buttons: { pdf: null, share: null } },
+      editForm: { readOnly: true , buttons: { pdf: null, share: null } },
       generateElementsFromFields: false,
       nodeBinding: {
-        field_0: "name"
+        field_0: "name",
+        img_0: "img",
+        url_0: "url",
       },
       nodes: JSON.parse(this.element.dataset.familyTree)
     })

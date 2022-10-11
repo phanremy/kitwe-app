@@ -11,6 +11,8 @@ gem 'acts_as_votable'
 gem "bootsnap", require: false
 # Use Cancan for authorization
 gem 'cancancan'
+# Use Cloudinary for image upload
+gem "cloudinary"
 # Use Devise for permission
 gem 'devise'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
