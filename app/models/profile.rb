@@ -2,6 +2,7 @@
 
 # top level documentation for Profile
 class Profile < ApplicationRecord
+  has_one_attached :photo
   # has_paper_trail
 
   belongs_to :creator, class_name: 'User', foreign_key: 'creator_id'
@@ -20,7 +21,7 @@ class Profile < ApplicationRecord
   ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name first_name_privacy last_name last_name_privacy email email_privacy
                        phone phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
-                       notes parents_id].freeze
+                       notes parents_id photo].freeze
 
   validate :any_essential_info_present?
   validate :profile_with_same_designation?

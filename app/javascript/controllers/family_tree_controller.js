@@ -19,7 +19,8 @@ export default class extends Controller {
                   buttons: { pdf: null, share: null } },
       generateElementsFromFields: false,
       nodeBinding: {
-        field_0: "name"
+        field_0: "name",
+        img_0: "img"
       },
       nodes: JSON.parse(this.element.dataset.familyTree)
     })

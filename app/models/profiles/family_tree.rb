@@ -14,7 +14,8 @@ module Profiles
           name: profile.designation,
           pids: profile.partner_ids,
           mid: profile.parents_profiles&.first&.id,
-          fid: profile.parents_profiles&.second&.id }
+          fid: profile.parents_profiles&.second&.id,
+          img: profile.photo.url(width: 150, height: 150, crop: 'fill') }
       end
     end
 
