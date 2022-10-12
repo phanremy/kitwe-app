@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root 'profiles#birthdays'
+  root 'profiles#index'
   resources :profiles
   scope "(:profile_id)" do
     resources :couples, controllers: 'couples'
