@@ -27,11 +27,12 @@
   </div>
   <div id='menu-dropdown'
        data-reveal-target="content"
-       class="mt-10 lg:mt-16 w-full hidden lg:block transition-all delay-300">
+       class="mt-10 lg:mt-16 w-full lg:block transition-all delay-300">
     <div class="text-sm flex flex-col flex-grow">
       <% if user_signed_in? %>
         <%= link_to t('log_out'), destroy_user_session_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
         <%= link_to 'Profiles', profiles_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
+        <%= link_to t('create_new_profile'), new_profile_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
         <%#= link_to 'Events', events_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
         <%= link_to 'Birthdays', profile_birthdays_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>
         <%#= link_to 'Couples', couples_path, class: 'block mb-4 lg:inline-block text-black-200 mr-4' %>

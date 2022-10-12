@@ -10,7 +10,7 @@
     <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
   </head>
-  <body class="bg-gray-200 lg:flex">
+  <body class="bg-gray-200 lg:flex overflow-y-visible">
     <%= render 'shared/navbar' %>
     <main class="container mx-auto lg:mt-28 bg-white rounded p-5 overflow-y-scroll" style="height:80vh">
       <%= turbo_frame_tag 'flash' do %>

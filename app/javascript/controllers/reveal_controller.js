@@ -17,7 +17,7 @@ export default class extends Controller {
   connect () {
     // this.contentTarget.style.width = "0px"
     // this.contentTarget.classList.add('hidden')
-    this.setClickListenerOutOfContent()
+    // this.setClickListenerOutOfContent()
   }
 
   process () {

@@ -1,8 +1,4 @@
 <div>
-  <%= render layout: 'shared/options', locals: { page_header: true } do %>
-    <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:profile_id]), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-  <% end %>
-
   <ul>
     <% if @couples.count.zero? %>
         <p> No Couples found</p>
@@ -24,4 +20,9 @@
       <% end %>
     <% end %>
   </ul>
+</div>
+<div class="mt-16 pt-16">
+  <%= render layout: 'shared/options', locals: { page_header: true } do %>
+    <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:profile_id]), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+  <% end %>
 </div>

@@ -1,9 +1,3 @@
-<%= render layout: 'shared/options', locals: { page_header: true } do %>
-  <%= link_to t('edit'), edit_profile_path, method: :get, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
-  <%= link_to t('create_new_couple'), new_couple_path(profile_id: params[:id]), method: :get, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1'%>
-  <%= button_to t('delete'), profile_path, method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
-<% end %>
-
 <div class="flex flex-col items-center justify-center">
   <% if @profile.photo.attached? %>
     <%= cl_image_tag @profile.photo.key, height: 200, width: 200, crop: :fill %>
@@ -61,6 +55,11 @@
 <div class="py-2">
   <span class="text-xs"><%= t('notes', scope: 'activerecord.attributes.profile') %>:</span> <%= @profile.notes %>
 </div>
+<%= render layout: 'shared/options', locals: { page_header: true } do %>
+  <%= link_to t('edit'), edit_profile_path, method: :get, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
+  <%= link_to t('create_new_couple'), new_couple_path(profile_id: params[:id]), method: :get, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1'%>
+  <%= button_to t('delete'), profile_path, method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
+<% end %>
 
 <%#= t('tiktok_url', scope: 'activerecord.attributes.profile') %> <%#= @profile.tiktok_url %> <br>
 <%#= t('twitter_url', scope: 'activerecord.attributes.profile') %> <%#= @profile.twitter_url %> <br>
