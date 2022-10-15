@@ -2,17 +2,23 @@
 
 # top level documentation for ProfilesController
 class ProfilesController < ApplicationController
-  load_and_authorize_resource
+  include UrlTokenizer
 
-  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: %i[show]
+
+  before_action :validate_token, only: :show
   before_action :set_profiles, only: %i[index birthdays]
   before_action :set_profile, except: %i[index new create birthdays children]
+
+  load_and_authorize_resource
 
   def index
     @pagy, @profiles = pagy(@profiles, items: 5)
   end
 
-  def show; end
+  def show
+    @tokenized_url = tokenized_url('profile', id: @profile.id)
+  end
   # @events = @profile.events
 
   def birthdays
@@ -72,7 +78,7 @@ class ProfilesController < ApplicationController
   private
 
   def current_ability
-    @current_ability ||= ::Ability.new(current_user)
+    @current_ability ||= ::Ability.new(current_user, params[:token].present?)
   end
 
   def set_profiles

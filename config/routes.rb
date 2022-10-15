@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'profiles#index'
-  resources :profiles
+  resources :profiles do
+    scope module: 'profiles' do
+      resource :shared_links, only: :create
+    end
+  end
   scope "(:profile_id)" do
     resources :couples, controllers: 'couples'
     resources :families, only: %w[index create]

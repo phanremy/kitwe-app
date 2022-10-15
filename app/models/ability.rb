@@ -3,7 +3,9 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(user, token = nil)
+    can :read, Profile if token.present?
+
     can :manage, Post
     can :manage, Profile, creator: user
     can :manage, Couple, creator: user

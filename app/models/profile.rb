@@ -2,6 +2,8 @@
 
 # top level documentation for Profile
 class Profile < ApplicationRecord
+  include ProfileIdentity
+
   has_one_attached :photo
   # has_paper_trail
 
@@ -50,30 +52,14 @@ class Profile < ApplicationRecord
     errors.add :base, "Another profile goes by the same designation: #{designation}"
   end
 
-  def age
-    return if birth_date.nil?
-
-    dob = birth_date
-    now = Time.now.utc.to_date
-    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  def next_birthday
+    date = Date.new(Time.zone.today.year, birth_date.month, birth_date.day)
+    date.past? ? date + 1.year : date
   end
 
-  def full_name
-    [first_name, last_name].join(' ').strip
-  end
-
-  def designation
-    option_bis = email.present? ? email : phone
-    option = full_name.present? ? full_name : option_bis
-    pseudo.present? ? pseudo : option
-  end
-
-  def full_designation
-    return designation unless full_name.present? && pseudo.present?
-
-    ["#{first_name} ",
-     "\"#{pseudo}\"",
-     " #{last_name}"].join(' ').strip
+  def next_wedding_anniversary
+    date = Date.new(Time.zone.today.year, wedding_date.month, wedding_date.day)
+    date.past? ? date + 1.year : date
   end
 
   def couples
@@ -116,16 +102,6 @@ class Profile < ApplicationRecord
     end
 
     data
-  end
-
-  def next_birthday
-    date = Date.new(Time.zone.today.year, birth_date.month, birth_date.day)
-    date.past? ? date + 1.year : date
-  end
-
-  def next_wedding_anniversary
-    date = Date.new(Time.zone.today.year, wedding_date.month, wedding_date.day)
-    date.past? ? date + 1.year : date
   end
 
   private

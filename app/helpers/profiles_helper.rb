@@ -4,8 +4,10 @@
 module ProfilesHelper
   include Pagy::Frontend
 
-  def profile_id_detected
-    (params[:controller] == 'profiles'  && params[:action] == 'show') || params[:profile_id]
+  def profile_id_detected_and_owned
+    detected = (params[:controller] == 'profiles' && params[:action] == 'show') || params[:profile_id]
+    owned = (can? :manage, @profile)
+    detected && owned
   end
 
   def profile_privacy_options

@@ -21,6 +21,8 @@ gem 'devise'
 gem 'importmap-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+# Use jwt to create tokens
+gem 'jwt', '~> 2.2'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 # Use Pagy for paginating with infinite scrolling options
