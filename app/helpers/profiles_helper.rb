@@ -4,6 +4,10 @@
 module ProfilesHelper
   include Pagy::Frontend
 
+  def profile_id_detected
+    (params[:controller] == 'profiles'  && params[:action] == 'show') || params[:profile_id]
+  end
+
   def profile_privacy_options
     Profile::PRIVACIES.map { |option| [t(option, scope: :privacy), option] }
   end
@@ -27,9 +31,7 @@ module ProfilesHelper
   def child_of(parents)
     content_tag(:div, class: 'flex') do
       safe_join([I18n.t('child_of'),
-                 content_tag(:div, class: 'flex w-full') do
-                   partners_links(parents)
-                 end])
+                 partners_links(parents)])
     end
   end
 end

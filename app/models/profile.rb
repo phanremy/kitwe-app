@@ -50,6 +50,14 @@ class Profile < ApplicationRecord
     errors.add :base, "Another profile goes by the same designation: #{designation}"
   end
 
+  def age
+    return if birth_date.nil?
+
+    dob = birth_date
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
+
   def full_name
     [first_name, last_name].join(' ').strip
   end
@@ -58,6 +66,14 @@ class Profile < ApplicationRecord
     option_bis = email.present? ? email : phone
     option = full_name.present? ? full_name : option_bis
     pseudo.present? ? pseudo : option
+  end
+
+  def full_designation
+    return designation unless full_name.present? && pseudo.present?
+
+    ["#{first_name} ",
+     "\"#{pseudo}\"",
+     " #{last_name}"].join(' ').strip
   end
 
   def couples
@@ -72,7 +88,9 @@ class Profile < ApplicationRecord
   end
 
   def sibling_profiles
-    parents&.children
+    return unless parents
+
+    parents.children
   end
 
   def parents_profiles

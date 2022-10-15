@@ -9,7 +9,9 @@ import { Controller } from '@hotwired/stimulus'
  *
  */
 export default class extends Controller {
-  static targets = ['modal']
+  static get targets() {
+    return [ "modal" ]
+  }
 
   process () {
     if (document.getElementById('post_form_modal'))

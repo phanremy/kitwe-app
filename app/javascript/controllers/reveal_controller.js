@@ -12,7 +12,9 @@ import { Controller } from '@hotwired/stimulus'
 // -->
 
 export default class extends Controller {
-  static targets = ['button', 'content']
+  static get targets() {
+    return [ "button", "content" ]
+  }
 
   connect () {
     // this.contentTarget.style.width = "0px"

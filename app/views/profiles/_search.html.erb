@@ -1,5 +1,8 @@
-<div class="search">
+<div class="search flex justify-center items-center">
   <%= form_with url: url, method: :get do |form| %>
     <%= form.text_field :search, value: params[:search], placeholder: 'Search a profile' %>
   <% end %>
+  <div class="ml-2">
+    <%= link_to t('advanced_filter'), '#' %>
+  </div>
 </div>

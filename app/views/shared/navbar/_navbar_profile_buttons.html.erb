@@ -1,0 +1,5 @@
+<% profile_id = params[:controller] == 'profiles' && params[:action] == 'show' ? params[:id] : params[:profile_id] %>
+<%= render 'shared/navbar/profile_buttons', category: :profile, path: profile_path(profile_id, profile_id: nil) %>
+<%= render 'shared/navbar/profile_buttons', category: :couples, path: couples_path(profile_id: profile_id) %>
+<%= render 'shared/navbar/profile_buttons', category: :children, path: profile_children_path(profile_id: profile_id) %>
+<%= render 'shared/navbar/profile_buttons', category: :families, path: families_path(profile_id: profile_id) %>

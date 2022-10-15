@@ -12,7 +12,7 @@ def profile_date
   random = (0..9).to_a
   date = Date.today
   random.sample.times do |_i|
-    date += random.sample.year + random.sample.month + random.sample.day + random.sample.hour
+    date += random.sample.year * (-1) + random.sample.month + random.sample.day + random.sample.hour
   end
   date
 end
@@ -51,7 +51,7 @@ if Profile.count.zero?
   date = profile_date
 
   Profile.create!(pseudo: nil,
-                  creator_id: admin.id,
+                  creator_id: visitor.id,
                   first_name: 'Jean', first_name_privacy: 'public',
                   last_name: 'Chevalier', last_name_privacy: 'public',
                   email: 'jean.chevalier@example.com', email_privacy: 'public',
@@ -62,10 +62,10 @@ if Profile.count.zero?
                   kids_privacy: 'public')
 
   jc = Profile.last
-  Couple.create!(profile1_id: jc.id, profile2_id: nil, creator_id: admin.id)
+  Couple.create!(profile1_id: jc.id, profile2_id: nil, creator_id: visitor.id)
 
   Profile.create!(pseudo: 'anonymous',
-                  creator_id: admin.id,
+                  creator_id: visitor.id,
                   first_name: 'Valentin', first_name_privacy: 'private',
                   last_name: 'Dupont', last_name_privacy: 'private',
                   email: nil, email_privacy: 'private',
@@ -81,7 +81,7 @@ if Profile.count.zero?
   date = profile_date
 
   Profile.create(pseudo: nil,
-                 creator_id: admin.id,
+                 creator_id: visitor.id,
                  first_name: 'Julien', first_name_privacy: 'only_friends',
                  last_name: 'Alfonso', last_name_privacy: 'only_friends',
                  email: 'julien.alfonso@example.com', email_privacy: 'only_friends',
@@ -92,11 +92,11 @@ if Profile.count.zero?
                  kids_privacy: 'only_friends')
 
   ja = Profile.last
-  Couple.create!(profile1_id: anonymous.id, profile2_id: ja.id, creator_id: admin.id)
+  Couple.create!(profile1_id: anonymous.id, profile2_id: ja.id, creator_id: visitor.id)
 
   date = profile_date
   Profile.create!(pseudo: 'WC',
-                  creator_id: admin.id,
+                  creator_id: visitor.id,
                   first_name: 'William', first_name_privacy: 'only_friends',
                   last_name: 'Cloitre', last_name_privacy: 'only_friends',
                   email: 'william.cloitre@example.com', email_privacy: 'only_friends',

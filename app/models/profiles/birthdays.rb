@@ -18,7 +18,8 @@ module Profiles
     def data(profile)
       { id: profile.id,
         name: profile.designation,
-        date: profile.next_birthday }
+        date: profile.next_birthday,
+        age: profile.age }
     end
   end
 end

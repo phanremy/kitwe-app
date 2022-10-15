@@ -9,7 +9,9 @@ import { Controller } from '@hotwired/stimulus'
  *
  */
 export default class extends Controller {
-  static targets = ['background', 'panel']
+  static get targets() {
+    return [ "background", "panel" ]
+  }
 
   initialize () {
     setTimeout(() => {
