@@ -4,7 +4,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user, token = nil)
-    can :read, Profile if token.present?
+    token_abilities(token)
 
     can :manage, Post
     can :manage, Profile, creator: user
@@ -37,5 +37,11 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+  end
+
+  def token_abilities(token)
+    return unless token.present?
+
+    can :read, Profile
   end
 end

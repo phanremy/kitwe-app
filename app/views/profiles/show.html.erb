@@ -6,7 +6,7 @@
     <%= render layout: 'shared/options', locals: { page_header: true } do %>
       <%= link_to t('edit'), edit_profile_path, method: :get, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
       <input id="token" hidden class="hidden" value="<%= @tokenized_url %>">
-      <%#= button_to t('profiles.share_link'), profile_shared_links_path(@profile.id), method: :post, id: 'js-clipboard', data: { 'clipboard-text': @tokenized_url }, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
+      <%= button_to t('profiles.share_link'), profile_shared_links_path(@profile.id), method: :post, id: 'js-clipboard', data: { 'clipboard-text': @tokenized_url }, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
       <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:id]), method: :get, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1'%>
       <%= button_to t('delete'), profile_path, method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
     <% end %>

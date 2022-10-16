@@ -22,7 +22,7 @@ en:
     create_new: Create a new profile
     import: Import profiles (soon)
     export: Export all filtered profiles (soon)
-    share_link: Share this profile (soon)
+    share_link: Share this profile
     destroy_success: Profile was successfully deleted.
     with_couples_error: This profile has associated relationships to be taken care of first.
 

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
   scope "(:profile_id)" do
-    resources :couples, controllers: 'couples'
+    resources :couples, controllers: 'couples', except: :show
     resources :families, only: %w[index create]
     get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
     get '/children', to: 'profiles#children', as: 'profile_children'

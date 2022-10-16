@@ -4,9 +4,9 @@
 class ProfilesController < ApplicationController
   include UrlTokenizer
 
-  skip_before_action :authenticate_user!, only: %i[show]
+  skip_before_action :authenticate_user!, only: %i[show children]
 
-  before_action :validate_token, only: :show
+  before_action :validate_token, only: %i[show children]
   before_action :set_profiles, only: %i[index birthdays]
   before_action :set_profile, except: %i[index new create birthdays children]
 

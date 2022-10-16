@@ -2,10 +2,11 @@
 
 # # top level documentation for FamiliesController
 class FamiliesController < ApplicationController
+  include UrlTokenizer
+
+  skip_before_action :authenticate_user!, only: %i[index]
+  before_action :validate_token, only: %i[index]
   authorize_resource class: false
-
-  before_action :authenticate_user!
-
   def index; end
 
   def create
@@ -21,10 +22,6 @@ class FamiliesController < ApplicationController
 
   def current_ability
     @current_ability ||= ::Ability.new(current_user)
-  end
-
-  def set_event
-    @couple = Couple.find(params[:id])
   end
 
   def couple_params

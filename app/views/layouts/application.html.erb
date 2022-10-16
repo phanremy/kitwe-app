@@ -12,7 +12,7 @@
   </head>
   <body class="bg-gray-200 lg:flex overflow-y-hidden">
     <%= render 'shared/navbar' %>
-    <main class="w-full lg:mt-28 bg-white rounded p-5 overflow-y-scroll <%= profile_id_detected_and_owned ? 'container-height-with-profile-id' : 'container-height-without-profile-id' %> lg:container-height">
+    <main class="w-full lg:mt-28 bg-white rounded p-5 overflow-y-scroll <%= profile_id_detected ? 'container-height-with-profile-id' : 'container-height-without-profile-id' %> lg:container-height">
       <%= turbo_frame_tag 'flash' do %>
         <%= render 'shared/flash' %>
       <% end %>

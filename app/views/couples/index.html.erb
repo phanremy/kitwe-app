@@ -1,8 +1,11 @@
-<div class="text-right">
-  <%= render layout: 'shared/options', locals: { page_header: true } do %>
-    <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:profile_id]), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-  <% end %>
-</div>
+<% if can? :manage, Couple %>
+  <div class="text-right">
+    <%= render layout: 'shared/options', locals: { page_header: true } do %>
+      <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:profile_id]), class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+    <% end %>
+  </div>
+<% end %>
+
 <div class="mt-8">
   <ul>
     <% if @couples.count.zero? %>
