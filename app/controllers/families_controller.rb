@@ -5,23 +5,26 @@ class FamiliesController < ApplicationController
   include UrlTokenizer
 
   skip_before_action :authenticate_user!, only: %i[index]
+
   before_action :validate_token, only: %i[index]
+
   authorize_resource class: false
+
   def index; end
 
-  def create
-    render turbo_stream: turbo_stream.update(
-      :family_tree,
-      partial: 'family_tree',
-      locals: { data: Profiles::FamilyTree.new(params[:family_profile_id]).call,
-                profile_id: params[:family_profile_id] }
-    )
-  end
+  # def create
+  #   render turbo_stream: turbo_stream.update(
+  #     :family_tree,
+  #     partial: 'family_tree',
+  #     locals: { data: Profiles::FamilyTree.new(params[:family_profile_id]).call,
+  #               profile_id: params[:family_profile_id] }
+  #   )
+  # end
 
   private
 
   def current_ability
-    @current_ability ||= ::Ability.new(current_user)
+    @current_ability ||= ::Ability.new(current_user, params[:token])
   end
 
   def couple_params

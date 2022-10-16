@@ -1,10 +1,10 @@
-<% is_active = request.original_fullpath == path %>
+<% is_active = request.url == url %>
 
 <div class="grow lg:mx-0 mx-1">
   <% if is_active %>
     <%= render 'shared/navbar/buttons', category: category, is_active: is_active  %>
   <% else %>
-    <%= link_to path do %>
+    <%= link_to url do %>
       <%= render 'shared/navbar/buttons', category: category, is_active: is_active  %>
     <% end %>
   <% end %>

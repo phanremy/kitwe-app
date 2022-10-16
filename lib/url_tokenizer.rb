@@ -4,7 +4,8 @@ module UrlTokenizer
   include Rails.application.routes.url_helpers
 
   ALLOWED_URLS = {
-    'profile' => :profile_url
+    'profile' => :profile_url,
+    'families' => :families_url
   }.freeze
 
   def tokenized_url(type, params)
@@ -56,7 +57,7 @@ module UrlTokenizer
   def allowed_urls
     [
       profile_url(profile_id, profile_id: nil),
-      profile_url(profile_id)
+      families_url(profile_id: profile_id)
     ].compact
   end
 

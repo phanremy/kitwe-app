@@ -6,6 +6,8 @@ class Ability
   def initialize(user, token = nil)
     token_abilities(token)
 
+    return unless user
+
     can :manage, Post
     can :manage, Profile, creator: user
     can :manage, Couple, creator: user
@@ -43,5 +45,6 @@ class Ability
     return unless token.present?
 
     can :read, Profile
+    can :index, :family
   end
 end

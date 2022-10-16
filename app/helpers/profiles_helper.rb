@@ -2,8 +2,6 @@
 
 # top level description of ProfilesHelper
 module ProfilesHelper
-  include Pagy::Frontend
-
   def profile_id_detected
     (params[:controller] == 'profiles' && params[:action] == 'show') || params[:profile_id]
   end
