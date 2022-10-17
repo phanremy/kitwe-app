@@ -35,9 +35,11 @@ class Profile < ApplicationRecord
             inclusion: { in: Profile::PRIVACIES }
 
   scope :related_to, lambda { |value|
-                       where("profiles.first_name ILIKE '%#{value}%' OR profiles.last_name ILIKE '%#{value}%' OR
-                        profiles.email ILIKE '%#{value}%' OR profiles.phone ILIKE '%#{value}%' OR
-                        profiles.pseudo ILIKE '%#{value}%'")
+                       where("UNACCENT(profiles.first_name) ILIKE :query OR
+                        UNACCENT(profiles.last_name) ILIKE :query OR
+                        UNACCENT(profiles.email) ILIKE :query OR
+                        UNACCENT(profiles.phone) ILIKE :query OR
+                        UNACCENT(profiles.pseudo) ILIKE :query", query: "%#{I18n.transliterate(value)}%")
                      }
 
   def any_essential_info_present?
