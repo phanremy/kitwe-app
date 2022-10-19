@@ -4,6 +4,8 @@
 class Profile < ApplicationRecord
   include ProfileIdentity
 
+  MAX_DEGREE_OF_SEPARATION = 10
+
   has_one_attached :photo
   # has_paper_trail
 
@@ -95,12 +97,16 @@ class Profile < ApplicationRecord
     Profile.where(id: close_family_ids)
   end
 
-  def extended_family
+  def full_family
     data = close_family
 
-    3.times do |_i|
-      _count = data.count
-      data = Profile.where(id: data.map(&:close_family).flatten.pluck(:id).uniq)
+    (1..Profile::MAX_DEGREE_OF_SEPARATION).to_a.each do |degree|
+      temp = Profile.where(id: data.map(&:close_family).flatten.pluck(:id).uniq)
+
+      puts degree
+      return temp if data.count == temp.count
+
+      data = temp
     end
 
     data

@@ -11,7 +11,7 @@ module Profiles
     def call
       return if @profile_id.blank?
 
-      extended_family.map do |profile|
+      full_family.map do |profile|
         { id: profile.id,
           name: profile.designation,
           pids: profile.partner_ids,
@@ -26,8 +26,8 @@ module Profiles
       @host ||= ENV.fetch('HOST', nil)
     end
 
-    def extended_family
-      Profile.find(@profile_id).extended_family
+    def full_family
+      Profile.find(@profile_id).full_family
     end
 
     def close_family
