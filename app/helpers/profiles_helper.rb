@@ -12,7 +12,7 @@ module ProfilesHelper
 
   def profile_parents_options(couple_id = nil)
     options = [nil] +
-              Couple.accessible_by(current_ability).map { |couple| [couple.designation, couple.id] }
+              Couple.includes(:profile1, :profile2).accessible_by(current_ability).map { |couple| [couple.designation, couple.id] }
 
     options_for_select(options, @profile.parents&.id || couple_id)
   end
