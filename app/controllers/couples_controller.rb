@@ -9,7 +9,7 @@ class CouplesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @couples = Couple.accessible_by(current_ability)
+    @couples = Couple.includes(:profile1, :profile2).accessible_by(current_ability)
     @couples = @couples.related_to(params[:profile_id]) if params[:profile_id]
   end
 

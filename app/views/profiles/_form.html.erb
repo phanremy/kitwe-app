@@ -1,5 +1,6 @@
 <%= form_with model: @profile do |form| %>
   <%= form.hidden_field :creator_id, value: current_user&.id %>
+  <%= hidden_field_tag :coupled_with, params[:coupled_with] %>
   <div class="relative my-4 border-b-2 focus-within:border-blue-500">
     <%= form.text_field :pseudo , class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
     <%= form.label :pseudo, class: 'absolute top-0 -z-1 duration-300 origin-0' %>

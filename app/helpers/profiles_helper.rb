@@ -12,16 +12,23 @@ module ProfilesHelper
 
   def profile_parents_options(couple_id = nil)
     options = [nil] +
-              Couple.includes(:profile1, :profile2).accessible_by(current_ability).map { |couple| [couple.designation, couple.id] }
+              Couple.includes(:profile1, :profile2)
+                    .accessible_by(current_ability)
+                    .map { |couple| [couple.designation, couple.id] }
 
     options_for_select(options, @profile.parents&.id || couple_id)
   end
 
-  def couple_profile_options(partner_id = nil)
-    options = [nil] +
-              Profile.accessible_by(current_ability).map { |profile| [profile.designation, profile.id] }
+  def couple_profile_options(profile1_id:, profile2_id:, blocked: true)
+    collection = if blocked
+                   [Profile.find(profile1_id)]
+                 else
+                   [nil] + Profile.accessible_by(current_ability).where.not(id: profile1_id)
+                 end
 
-    options_for_select(options, partner_id)
+    first = blocked ? profile1_id : profile2_id
+
+    options_for_select(collection.map { |profile| [profile&.designation, profile&.id] }, first)
   end
   # TO DO: do something to make dynamically show only available options for the second pairing
   # (cannot be paired with an already paired profile)

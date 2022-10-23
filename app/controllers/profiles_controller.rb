@@ -43,7 +43,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.new(profile_params)
     if @profile.save
       flash[:success] = 'Profile successfully created'
-      redirect_to @profile
+      create_success_redirection
     else
       flash.now[:error] = @profile.errors.full_messages
       render_flash
@@ -79,6 +79,15 @@ class ProfilesController < ApplicationController
 
   def current_ability
     @current_ability ||= ::Ability.new(current_user, params[:token].present?)
+  end
+
+  def create_success_redirection
+    if params[:coupled_with].present?
+      Couple.create!(profile1_id: params[:coupled_with], profile2_id: @profile.id, creator_id: current_user.id)
+      redirect_to couples_path(profile_id: params[:coupled_with])
+    else
+      redirect_to @profile
+    end
   end
 
   def set_profiles
