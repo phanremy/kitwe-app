@@ -3,7 +3,7 @@
                        search_url: profile_birthdays_path %>
 </div>
 <% if @birthdays_data.count.zero? %>
-  <p> No Birthdays found</p>
+  <p><%= t('birthdays.not_found') %></p>
 <% else %>
   <% @birthdays_data.each do |birthday_datum| %>
     <h1 class="text-xl py-2 text-gray-500"><%= Date::MONTHNAMES[birthday_datum[0]] %></h1>

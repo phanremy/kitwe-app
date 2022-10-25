@@ -13,6 +13,7 @@ class ProfilesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @profiles_ids = @profiles.ids
     @pagy, @profiles = pagy(@profiles, items: 5)
   end
 

@@ -14,16 +14,22 @@ en:
   children:
     create_new: Create a child from this relationship
     create_new_for: Create a child from %{couple_designation}
+    not_found: No children
 
   couples:
     create_new: Register a new relationship
     destroy_success: Relationship was successfully deleted.
+    not_found: No relationships
     with_children_error: This relationship has associated children to be taken care of first.
+
+  birthdays:
+    not_found: No birthdays found
 
   profiles:
     create_new: Create a new profile
     import: Import profiles (soon)
     export: Export all filtered profiles (soon)
+    not_found: No profiles found
     share_link: Share this profile
     destroy_success: Profile was successfully deleted.
     with_couples_error: This profile has associated relationships to be taken care of first.
