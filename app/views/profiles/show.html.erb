@@ -23,6 +23,9 @@
   <%= child_of(@profile.parents) if @profile.parents %>
 </div>
 <div class="py-2">
+  <span class="text-xs"><%= t('category', scope: 'activerecord.attributes.profile') %>:</span> <%= @profile.category %>
+</div>
+<div class="py-2">
   <span class="text-xs"><%= t('pseudo', scope: 'activerecord.attributes.profile') %>:</span> <%= @profile.pseudo %>
 </div>
 <div class="py-2">

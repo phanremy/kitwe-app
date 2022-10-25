@@ -1,6 +1,16 @@
 <%= form_with model: @profile do |form| %>
   <%= form.hidden_field :creator_id, value: current_user&.id %>
   <%= hidden_field_tag :coupled_with, params[:coupled_with] %>
+  <div class="flex flex-wrap justify-between mb-5">
+    <div class="sm:w-full w-1/2 relative focus-within:border-blue-500">
+      <%= form.label :parents_id, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.select :parents_id, profile_parents_options(params[:couple_id]), {}, class: 'w-full' %>
+    </div>
+    <div class="sm:w-full w-1/2 relative focus-within:border-blue-500">
+      <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.select :category, profile_category_options, {}, class: 'w-full' %>
+    </div>
+  </div>
   <div class="relative my-4 border-b-2 focus-within:border-blue-500">
     <%= form.text_field :pseudo , class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
     <%= form.label :pseudo, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
@@ -51,10 +61,6 @@
   <div class="relative my-8 border-b-2 focus-within:border-blue-500">
     <%= form.text_area :notes, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
     <%= form.label :notes, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-  </div>
-  <div class="relative my-8 focus-within:border-blue-500">
-    <%= form.label :parents_id, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-    <%= form.select :parents_id, profile_parents_options(params[:couple_id]), {} %>
   </div>
   <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
     <%= form.label :photo, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>

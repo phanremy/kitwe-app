@@ -1,0 +1,19 @@
+<%= render layout: 'shared/modal' do %>
+  <%= form_with url: profiles_path, method: :get, data: { turbo: false, target: '_top' }, class: "pt-5" do |form| %>
+    <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+      <%= form.text_field :search, value: params[:search], class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.label :search, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+    </div>
+    <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+      <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.select :category, profile_category_options(params[:category]), {}, class: 'w-full' %>
+    </div>
+    <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+      <%= form.label :birthdays, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.select :birthdays, profile_birthday_options(params[:birthdays]), {}, class: 'w-full' %>
+    </div>
+    <div class="actions">
+      <%= form.submit t('filter'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+    </div>
+  <% end %>
+<% end %>

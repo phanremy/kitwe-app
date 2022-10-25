@@ -1,8 +1,13 @@
-<div class="search flex justify-center items-center">
-  <%= form_with url: url, method: :get do |form| %>
-    <%= form.text_field :search, value: params[:search], placeholder: 'Search a profile' %>
+<div class="search flex flex-wrap justify-center items-center">
+  <%= form_with url: search_url, method: :get do |form| %>
+    <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+      <%= form.text_field :search, value: params[:search], class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.label :search, t('search_a_profile'), class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+    </div>
   <% end %>
-  <div class="ml-2 text-xs text-blue-500">
-    <%#= link_to t('advanced_filter'), '#' %>
-  </div>
+  <%= turbo_frame_tag 'filter' do %>
+    <div class="ml-2 my-4 text-xs text-blue-500">
+      <%= link_to t('advanced_filter'), filter_url, data: { turbo: true } %>
+    </div>
+  <% end %>
 </div>
