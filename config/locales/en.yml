@@ -1,9 +1,10 @@
 en:
-  advanced_filter: Advanced filter
+  advanced_filter: Advanced Filter
   child_of: child of 
   confirm_delete: Are you sure? Deleting is permanent
   delete: Delete
   edit: Edit
+  filter: Filter
   general_error: Something went wrong
   log_in: Log in
   log_out: Log out
@@ -34,9 +35,9 @@ en:
       colleague: colleague
     birthday:
       any: ""
-      with: with birthday
-      without: without birthday
-      centenarian: centenarian
+      with: with birthdays
+      without: without birthdays
+      centenarian: centenarians
 
   privacy:
     public: Public
