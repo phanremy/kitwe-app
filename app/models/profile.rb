@@ -25,7 +25,7 @@ class Profile < ApplicationRecord
   ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name first_name_privacy last_name last_name_privacy email email_privacy
                        phone phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
-                       notes parents_id photo].freeze
+                       notes parents_id category photo].freeze
   MAX_DEGREE_OF_SEPARATION = 10
 
   validate :any_essential_info_present?
@@ -37,13 +37,28 @@ class Profile < ApplicationRecord
             :birth_date_privacy,
             inclusion: { in: Profile::PRIVACIES }
 
-  scope :related_to, lambda { |value|
-                       where("UNACCENT(profiles.first_name) ILIKE :query OR
-                        UNACCENT(profiles.last_name) ILIKE :query OR
-                        UNACCENT(profiles.email) ILIKE :query OR
-                        UNACCENT(profiles.phone) ILIKE :query OR
-                        UNACCENT(profiles.pseudo) ILIKE :query", query: "%#{I18n.transliterate(value)}%")
-                     }
+  scope :designation_query, lambda { |value|
+                              where("UNACCENT(profiles.first_name) ILIKE :query OR
+                                UNACCENT(profiles.last_name) ILIKE :query OR
+                                UNACCENT(profiles.email) ILIKE :query OR
+                                UNACCENT(profiles.phone) ILIKE :query OR
+                                UNACCENT(profiles.pseudo) ILIKE :query", query: "%#{I18n.transliterate(value)}%")
+                            }
+
+  # without family friend colleague
+  scope :category_query, lambda { |value| value == 'without' ? where(category: '') : where(category: value) }
+
+  # without with centenarian
+  scope :birth_date_query, lambda { |value|
+                             case value
+                             when 'without'
+                               where(birth_date: nil)
+                             when 'with'
+                               where.not(birth_date: nil)
+                             when 'centenarian'
+                               where('profiles.birth_date <= ?', 100.year.ago)
+                             end
+                           }
 
   def any_essential_info_present?
     return unless Profile::ESSENTIALS.all? { |attr| self[attr].blank? }

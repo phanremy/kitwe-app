@@ -19,6 +19,20 @@ module ProfilesHelper
     options_for_select(options, @profile.parents&.id || couple_id)
   end
 
+  def profile_category_options(category = nil)
+    options = [nil] + %w[without family friend colleague]
+              .map { |option| [I18n.t("profiles.category.#{option}"), option] }
+
+    options_for_select(options, @profile&.category || category)
+  end
+
+  def profile_birthday_options(birthday_option)
+    options = [nil] + %w[without with centenarian]
+              .map { |option| [I18n.t("profiles.birthday.#{option}"), option] }
+
+    options_for_select(options, birthday_option)
+  end
+
   def couple_profile_options(profile1_id:, profile2_id:, blocked: true)
     collection = if blocked
                    [Profile.find(profile1_id)]

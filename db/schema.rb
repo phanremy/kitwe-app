@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_17_063021) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_24_205211) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -133,6 +133,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_17_063021) do
     t.datetime "updated_at", null: false
     t.bigint "creator_id", null: false
     t.bigint "parents_id"
+    t.string "category", default: ""
+    t.index ["category"], name: "index_profiles_on_category"
     t.index ["creator_id"], name: "index_profiles_on_creator_id"
     t.index ["parents_id"], name: "index_profiles_on_parents_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"

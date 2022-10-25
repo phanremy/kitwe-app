@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   resources :profiles do
     scope module: 'profiles' do
       resource :shared_links, only: :create
+      collection do
+        resources :filters, only: :new,
+                            as: :profile_filters
+      end
     end
   end
   scope "(:profile_id)" do

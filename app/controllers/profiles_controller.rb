@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @pagy, @profiles = pagy(@profiles, items: 25)
+    @pagy, @profiles = pagy(@profiles, items: 5)
   end
 
   def show
@@ -92,7 +92,9 @@ class ProfilesController < ApplicationController
 
   def set_profiles
     @profiles = Profile.accessible_by(current_ability).order(updated_at: :desc)
-    @profiles = @profiles.related_to(params[:search]) if params[:search]
+    @profiles = @profiles.designation_query(params[:search]) if params[:search].present?
+    @profiles = @profiles.birth_date_query(params[:birthdays]) if params[:birthdays].present?
+    @profiles = @profiles.category_query(params[:category]) if params[:category].present?
   end
 
   def set_profile

@@ -1,5 +1,5 @@
 en:
-  advanced_filter: Advanced filter (soon)
+  advanced_filter: Advanced filter
   child_of: child of 
   confirm_delete: Are you sure? Deleting is permanent
   delete: Delete
@@ -7,6 +7,7 @@ en:
   general_error: Something went wrong
   log_in: Log in
   log_out: Log out
+  search_a_profile: Search a profile
   submit: Submit
 
   children:
@@ -25,6 +26,17 @@ en:
     share_link: Share this profile
     destroy_success: Profile was successfully deleted.
     with_couples_error: This profile has associated relationships to be taken care of first.
+    category:
+      any: ""
+      without: no category
+      family: family
+      friend: friend
+      colleague: colleague
+    birthday:
+      any: ""
+      with: with birthday
+      without: without birthday
+      centenarian: centenarian
 
   privacy:
     public: Public
@@ -51,6 +63,7 @@ en:
         tiktok_url: Tiktok
         twitter_url: Twitter
         linkedin_url: Linkedin
+        category: category
         notes: Notes
     errors:
       models:

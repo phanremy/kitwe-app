@@ -5,8 +5,8 @@
       <p><%= non_breaking(['👤', profile.full_name.presence].join(' ')) %></p>
     </div>
     <div style="flex: 0 0 40%; width: 40%; overflow: hidden;">
-      <p><%= non_breaking(['＠', profile.email.presence].join(' ')) %></p>
-      <p><%= non_breaking(['📞', profile.phone.presence].join(' ')) %></p>
+      <p><%= non_breaking(['＠', profile.category].join(' ')) %></p>
+      <p><%= non_breaking(['📞', profile.birth_date].join(' ')) %></p>
     </div>
   </div>
 <% end %>
