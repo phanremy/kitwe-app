@@ -1,7 +1,9 @@
 <div class="flex justify-between mb-5">
-  <%= render 'search', search_url: profiles_path, filter_url: new_profile_filter_path(search: params[:search],
-                                                                                      category: params[:category],
-                                                                                      birthdays: params[:birthdays]) %>
+  <%= render 'search', filter: true,
+                       search_url: profiles_path,
+                       filter_url: new_profile_filter_path(search: params[:search],
+                                                           category: params[:category],
+                                                           birthdays: params[:birthdays]) %>
   <%#= render layout: 'shared/options', locals: { page_header: true } do %>
     <%#= link_to t('profiles.create_new'), new_profile_path, class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
     <%#= link_to t('profiles.export'), '#', class: 'text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>

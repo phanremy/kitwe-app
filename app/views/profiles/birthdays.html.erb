@@ -1,6 +1,6 @@
 <div class="flex justify-between">
-  <div></div>
-  <%= render 'search', url: profile_birthdays_path %>
+  <%= render 'search', filter: false,
+                       search_url: profile_birthdays_path %>
 </div>
 <% if @birthdays_data.count.zero? %>
   <p> No Birthdays found</p>

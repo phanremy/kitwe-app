@@ -5,9 +5,11 @@
       <%= form.label :search, t('search_a_profile'), class: 'absolute top-0 -z-1 duration-300 origin-0' %>
     </div>
   <% end %>
-  <%= turbo_frame_tag 'filter' do %>
-    <div class="ml-2 my-4 text-xs text-blue-500">
-      <%= link_to t('advanced_filter'), filter_url, data: { turbo: true } %>
-    </div>
+  <% if filter %>
+    <%= turbo_frame_tag 'filter' do %>
+      <div class="ml-2 my-4 text-xs text-blue-500">
+        <%= link_to t('advanced_filter'), filter_url, data: { turbo: true } %>
+      </div>
+    <% end %>
   <% end %>
 </div>

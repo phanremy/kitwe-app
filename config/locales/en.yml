@@ -64,7 +64,7 @@ en:
         tiktok_url: Tiktok
         twitter_url: Twitter
         linkedin_url: Linkedin
-        category: category
+        category: Category
         notes: Notes
     errors:
       models:

@@ -1,16 +1,6 @@
 <%= form_with model: @profile do |form| %>
   <%= form.hidden_field :creator_id, value: current_user&.id %>
   <%= hidden_field_tag :coupled_with, params[:coupled_with] %>
-  <div class="flex flex-wrap justify-between mb-5">
-    <div class="sm:w-full w-1/2 relative focus-within:border-blue-500">
-      <%= form.label :parents_id, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%= form.select :parents_id, profile_parents_options(params[:couple_id]), {}, class: 'w-full' %>
-    </div>
-    <div class="sm:w-full w-1/2 relative focus-within:border-blue-500">
-      <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%= form.select :category, profile_category_options, {}, class: 'w-full' %>
-    </div>
-  </div>
   <div class="relative my-4 border-b-2 focus-within:border-blue-500">
     <%= form.text_field :pseudo , class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
     <%= form.label :pseudo, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
@@ -27,6 +17,21 @@
       <%= form.select :last_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
   </div>
+  <div class="flex relative my-8 border-b-2 focus-within:border-blue-500">
+    <%= form.date_field :birth_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+    <%= form.label :birth_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+    <%= form.select :birth_date_privacy, profile_privacy_options, {}, class: 'hidden' %>
+  </div>
+  <div class="flex flex-wrap justify-between">
+    <div class="relative focus-within:border-blue-500 mb-5">
+      <%= form.label :parents_id, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.select :parents_id, profile_parents_options(params[:couple_id]), {}, class: 'w-full' %>
+    </div>
+    <div class="relative focus-within:border-blue-500 mb-5">
+      <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.select :category, profile_category_options, {}, class: 'w-full' %>
+    </div>
+  </div>
   <div class="flex flex-wrap my-8 ">
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :email, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
@@ -38,11 +43,6 @@
       <%= form.label :phone, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
       <%= form.select :phone_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
-  </div>
-  <div class="flex relative my-8 border-b-2 focus-within:border-blue-500">
-    <%= form.date_field :birth_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-    <%= form.label :birth_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%= form.select :birth_date_privacy, profile_privacy_options, {}, class: 'hidden' %>
   </div>
   <%# <div class="flex"> %>
     <%# <div class="flex-grow relative border-b-2 focus-within:border-blue-500"> %>
