@@ -19,7 +19,7 @@ module Profiles
       { id: profile.id,
         name: profile.designation,
         date: profile.next_birthday,
-        age: profile.age }
+        age: profile.age + 1 }
     end
   end
 end
