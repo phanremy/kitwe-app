@@ -34,4 +34,12 @@ class Couple < ApplicationRecord
     partner2 = profile2&.designation
     profile2_id ? [partner1, partner2].join(' & ') : partner1
   end
+
+  def csv_designation
+    if profile2_id
+      [profile1.designation, profile2&.designation].join(';')
+    else
+      profile1.designation
+    end
+  end
 end

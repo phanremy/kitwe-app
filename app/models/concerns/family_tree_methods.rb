@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ProfileFamilyTree
+module FamilyTreeMethods
   extend ActiveSupport::Concern
 
   included do
@@ -13,8 +13,7 @@ module ProfileFamilyTree
       data = close_family
 
       (1..Profile::MAX_DEGREE_OF_SEPARATION).to_a.each do |_degree|
-        temp = Profile.includes(:parents, :photo_attachment, couples1: :children, couples2: :children)
-                      .where(id: data.map(&:close_family).flatten.pluck(:id).uniq)
+        temp = Profile.where(id: data.map(&:close_family).flatten.pluck(:id).uniq)
 
         return temp if data.count == temp.count
 

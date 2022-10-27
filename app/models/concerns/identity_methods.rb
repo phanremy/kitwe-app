@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ProfileIdentity
+module IdentityMethods
   extend ActiveSupport::Concern
 
   included do

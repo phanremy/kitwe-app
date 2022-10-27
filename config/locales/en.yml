@@ -28,7 +28,7 @@ en:
   profiles:
     create_new: Create a new profile
     import: Import profiles (soon)
-    export: Export all filtered profiles (soon)
+    export: Export all filtered profiles
     not_found: No profiles found
     share_link: Share this profile
     destroy_success: Profile was successfully deleted.
@@ -44,6 +44,10 @@ en:
       with: with birthdays
       without: without birthdays
       centenarian: centenarians
+
+  export:
+    copy: Copy to Clipboard
+    download: Download in CSV
 
   privacy:
     public: Public

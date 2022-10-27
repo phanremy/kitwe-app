@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ProfileFamily
+module FamilyMethods
   extend ActiveSupport::Concern
 
   included do

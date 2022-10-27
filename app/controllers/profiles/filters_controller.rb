@@ -4,7 +4,7 @@ module Profiles
   class FiltersController < ApplicationController
     def new
       render turbo_stream: turbo_stream.append(
-        :filter,
+        :modal,
         partial: 'profiles/filters/new'
       )
     end

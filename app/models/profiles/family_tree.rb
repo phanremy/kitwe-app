@@ -27,11 +27,15 @@ module Profiles
     end
 
     def profile_full_family
-      Profile.find(@profile_id).full_family
+      Profile.includes(:parents, :photo_attachment, couples1: :children, couples2: :children)
+             .find(@profile_id)
+             .full_family
     end
 
     def profile_close_family
-      Profile.find(@profile_id).close_family
+      Profile.includes(:parents, :photo_attachment, couples1: :children, couples2: :children)
+             .find(@profile_id)
+             .close_family
     end
   end
 end

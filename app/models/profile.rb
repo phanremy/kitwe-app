@@ -2,9 +2,9 @@
 
 # top level documentation for Profile
 class Profile < ApplicationRecord
-  include ProfileIdentity
-  include ProfileFamily
-  include ProfileFamilyTree
+  include IdentityMethods
+  include FamilyMethods
+  include FamilyTreeMethods
 
   has_one_attached :photo
   # has_paper_trail
@@ -27,9 +27,11 @@ class Profile < ApplicationRecord
                        phone phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
                        notes parents_id category photo].freeze
   MAX_DEGREE_OF_SEPARATION = 10
+  WITH_SELF_CAPTION = 'with self'
 
   validate :any_essential_info_present?
   validate :profile_with_same_designation?
+  validate :forbidden_designation?
   validates :first_name_privacy,
             :last_name_privacy,
             :email_privacy,
@@ -46,7 +48,9 @@ class Profile < ApplicationRecord
                             }
 
   # without family friend colleague
-  scope :category_query, lambda { |value| value == 'without' ? where(category: '') : where(category: value) }
+  scope :category_query, lambda { |value|
+                           value == 'without' ? where(category: '') : where(category: value)
+                         }
 
   # without with centenarian
   scope :birth_date_query, lambda { |value|
@@ -72,6 +76,13 @@ class Profile < ApplicationRecord
     errors.add :base, "Another profile goes by the same designation: #{designation}"
   end
 
+  # TODO
+  def forbidden_designation?
+    return unless [Profile::WITH_SELF_CAPTION].include?(designation)
+
+    errors.add :base, "Forbidden designation, please change it: #{designation}"
+  end
+
   def next_birthday
     date = Date.new(Time.zone.today.year, birth_date.month, birth_date.day)
     date.past? ? date + 1.year : date
@@ -80,5 +91,13 @@ class Profile < ApplicationRecord
   def next_wedding_anniversary
     date = Date.new(Time.zone.today.year, wedding_date.month, wedding_date.day)
     date.past? ? date + 1.year : date
+  end
+
+  def partner_csv_designations
+    ids = partner_ids
+    designations = Profile.where(id: ids)
+                          .map(&:designation)
+    designations += [Profile::WITH_SELF_CAPTION] if ids.include?(nil)
+    designations.join(';')
   end
 end

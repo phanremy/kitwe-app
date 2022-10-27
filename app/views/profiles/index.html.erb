@@ -4,11 +4,16 @@
                        filter_url: new_profile_filter_path(search: params[:search],
                                                            category: params[:category],
                                                            birthdays: params[:birthdays]) %>
-  <%= render layout: 'shared/options', locals: { page_header: true } do %>
-    <%= link_to t('profiles.create_new'), new_profile_path, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-    <%= button_to t('profiles.export'), profile_exports_path, method: :post, params: { profile_ids: @profiles_ids }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-    <%= link_to t('profiles.import'), '#', class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-  <% end %>
+  <div class="lg:w-auto w-full flex flex-wrap justify-between items-center">
+    <div class="mb-5 mr-2 text-sm">
+      <%= @profile_ids.count %> profiles
+    </div>
+    <%= render layout: 'shared/options', locals: { page_header: true } do %>
+      <%= link_to t('profiles.create_new'), new_profile_path, class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+      <%= button_to t('profiles.export'), profile_exports_path, method: :post, params: { profile_ids: @profile_ids }, class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+      <%= link_to t('profiles.import'), '#', class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+    <% end %>
+  </div>
 </div>
 <ul>
   <% if @profiles.count.zero? %>
