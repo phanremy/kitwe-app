@@ -2,6 +2,8 @@
 
 module Profiles
   class ExportsController < ApplicationController
+    # TODO: check permission
+
     def create
       return render_error unless params[:profile_ids] && acceptable_profile_ids_count
 
@@ -9,7 +11,7 @@ module Profiles
 
       render turbo_stream: turbo_stream.append(
         :modal,
-        partial: 'profiles/exports/new'
+        partial: 'profiles/exports/create'
       )
     end
 

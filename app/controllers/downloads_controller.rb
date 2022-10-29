@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class DownloadsController < ApplicationController
+  # TODO: check permission
+
   def create
     respond_to do |format|
       format.html

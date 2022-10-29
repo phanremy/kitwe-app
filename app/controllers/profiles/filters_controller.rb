@@ -2,6 +2,8 @@
 
 module Profiles
   class FiltersController < ApplicationController
+    # TODO: check permission
+
     def new
       render turbo_stream: turbo_stream.append(
         :modal,

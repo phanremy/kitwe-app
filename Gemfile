@@ -64,6 +64,8 @@ end
 group :development do
   # Use Byebug
   gem 'byebug'
+  # Use dotenv-rails to manage credentials
+  gem "dotenv-rails"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
   # Use Rubocop Rails with yml ignoring comments
