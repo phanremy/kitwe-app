@@ -5,7 +5,7 @@ class Couple < ApplicationRecord
   belongs_to :profile1, class_name: 'Profile', foreign_key: 'profile1_id'
   belongs_to :profile2, class_name: 'Profile', foreign_key: 'profile2_id', optional: true
 
-  has_many :children, class_name: 'Profile', foreign_key: 'parents_id'
+  has_many :children, class_name: 'Profile', foreign_key: 'parents_id', dependent: :nullify
 
   validates :profile1_id,
             presence: true,

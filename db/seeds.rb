@@ -44,8 +44,8 @@ puts 'Start Seed'
 admin = User.find_or_create_by(email: 'admin@example.com') { |user| user.password = 'password' }
 visitor = User.find_or_create_by(email: 'visitor@example.com') { |user| user.password = 'password' }
 
-Post.create!(title: 'Visitor\'s first post', body: 'This is the first post of the visitor', user: visitor)
-Post.create!(title: 'Admin\'s first post', body: 'This is the first post of the admin', user: admin)
+# Post.create!(title: 'Visitor\'s first post', body: 'This is the first post of the visitor', user: visitor)
+# Post.create!(title: 'Admin\'s first post', body: 'This is the first post of the admin', user: admin)
 
 if Profile.count.zero?
   date = profile_date
