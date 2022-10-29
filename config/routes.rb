@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
         resources :exports, only: :create,
                             as: :profile_exports
+
+        resources :imports, only: %w[new create],
+                            as: :profile_imports
       end
     end
   end

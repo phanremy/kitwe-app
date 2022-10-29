@@ -27,8 +27,13 @@ en:
 
   profiles:
     create_new: Create a new profile
-    import: Import profiles (soon)
-    export: Export all filtered profiles
+    import_option: Import profiles
+    imports:
+      form:
+        title: Import up to 100 profiles
+        description: "Warning: Profile with the same designation will have their info and relationships updated"
+        label: Upload a CSV file
+    export_option: Export all filtered profiles
     not_found: No profiles found
     share_link: Share this profile
     destroy_success: Profile was successfully deleted.

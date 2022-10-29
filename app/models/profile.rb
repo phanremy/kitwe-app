@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
   include IdentityMethods
   include FamilyMethods
   include FamilyTreeMethods
+  include ImportMethods
 
   has_one_attached :photo
   # has_paper_trail
@@ -14,7 +15,7 @@ class Profile < ApplicationRecord
   belongs_to :parents, class_name: 'Couple', foreign_key: 'parents_id', optional: true
 
   has_many :couples1, class_name: 'Couple', foreign_key: :profile1_id,
-                      dependent: :nullify, inverse_of: :profile1
+                      dependent: :destroy, inverse_of: :profile1
   has_many :couples2, class_name: 'Couple', foreign_key: :profile2_id,
                       dependent: :nullify, inverse_of: :profile2
 
@@ -26,8 +27,21 @@ class Profile < ApplicationRecord
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name first_name_privacy last_name last_name_privacy email email_privacy
                        phone phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
                        notes parents_id category photo].freeze
+  CSV_HEADERS = { 'Designation' => nil,
+                  'Pseudo' => 'pseudo',
+                  'First name' => 'first_name',
+                  'Last name' => 'last_name',
+                  'Email' => 'email',
+                  'Phone' => 'phone',
+                  'Birthday' => 'birth_date',
+                  'Parents' => nil,
+                  'Couples' => nil,
+                  'Category' => 'category',
+                  'Photo url' => nil,
+                  'Exporter' => nil }.freeze
+
   MAX_DEGREE_OF_SEPARATION = 10
-  WITH_SELF_CAPTION = 'with self'
+  WITH_SELF_CAPTION = 'with nobody'
 
   validate :any_essential_info_present?
   validate :profile_with_same_designation?
@@ -40,11 +54,10 @@ class Profile < ApplicationRecord
             inclusion: { in: Profile::PRIVACIES }
 
   scope :designation_query, lambda { |value|
-                              where("UNACCENT(profiles.first_name) ILIKE :query OR
-                                UNACCENT(profiles.last_name) ILIKE :query OR
-                                UNACCENT(profiles.email) ILIKE :query OR
-                                UNACCENT(profiles.phone) ILIKE :query OR
-                                UNACCENT(profiles.pseudo) ILIKE :query", query: "%#{I18n.transliterate(value)}%")
+                              where("UNACCENT(concat(profiles.first_name , ' ' , profiles.last_name)) ILIKE :query OR
+                                     UNACCENT(profiles.email) ILIKE :query OR
+                                     UNACCENT(profiles.phone) ILIKE :query OR
+                                     UNACCENT(profiles.pseudo) ILIKE :query", query: "%#{I18n.transliterate(value)}%")
                             }
 
   # without family friend colleague
@@ -91,13 +104,5 @@ class Profile < ApplicationRecord
   def next_wedding_anniversary
     date = Date.new(Time.zone.today.year, wedding_date.month, wedding_date.day)
     date.past? ? date + 1.year : date
-  end
-
-  def partner_csv_designations
-    ids = partner_ids
-    designations = Profile.where(id: ids)
-                          .map(&:designation)
-    designations += [Profile::WITH_SELF_CAPTION] if ids.include?(nil)
-    designations.join(';')
   end
 end

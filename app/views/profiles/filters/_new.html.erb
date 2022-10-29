@@ -6,7 +6,7 @@
     </div>
     <div class="relative my-4 border-b-2 focus-within:border-blue-500">
       <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%= form.select :category, profile_category_options(params[:category]), {}, class: 'w-full' %>
+      <%= form.select :category, profile_category_search_options(params[:category]), {}, class: 'w-full' %>
     </div>
     <div class="relative my-4 border-b-2 focus-within:border-blue-500">
       <%= form.label :birthdays, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
