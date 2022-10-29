@@ -25,6 +25,10 @@ class Couple < ApplicationRecord
     errors.add :base, "Partner 1 is same as partner 2"
   end
 
+  def self.search_couple(partner1, partner2)
+    where(profile1: partner1, profile2: partner2).or(where(profile1: partner2, profile2: partner1))
+  end
+
   def partners
     [profile1, profile2]
   end

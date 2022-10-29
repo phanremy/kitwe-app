@@ -10,7 +10,7 @@ module Profiles
       @profiles.where.not(birth_date: nil)
                .map { |profile| data(profile) }
                .sort_by { |p| p[:date] }
-               .group_by { |p| p[:date].month }
+               .group_by { |p| p[:date].beginning_of_month }
     end
 
     private

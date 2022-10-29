@@ -19,9 +19,16 @@ module ProfilesHelper
     options_for_select(options, @profile.parents&.id || couple_id)
   end
 
-  def profile_category_options(category = nil)
-    options = [nil] + %w[without family friend colleague]
-              .map { |option| [I18n.t("profiles.category.#{option}"), option] }
+  def profile_category_attribute_options(category = nil)
+    profile_category_options(%w[family friend colleague], category)
+  end
+
+  def profile_category_search_options(category = nil)
+    profile_category_options(%w[without family friend colleague], category)
+  end
+
+  def profile_category_options(options, category)
+    options = [nil] + options.map { |option| [I18n.t("profiles.category.#{option}"), option] }
 
     options_for_select(options, @profile&.category || category)
   end

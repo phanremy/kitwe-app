@@ -7,7 +7,7 @@ module Profiles
     def create
       return render_error unless params[:profile_ids] && acceptable_profile_ids_count
 
-      @data = Profiles::CsvExport.new(params[:profile_ids]).call
+      @data = Profiles::Export.new(params[:profile_ids]).call
 
       render turbo_stream: turbo_stream.append(
         :modal,
