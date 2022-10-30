@@ -31,7 +31,7 @@ en:
     imports:
       form:
         title: Import up to 100 profiles
-        description: "Warning: Profile with the same designation will have their info and relationships updated"
+        description: "Warning: Existing profile with the same designation will have their info and relationships updated"
         label: Upload a CSV file
     export_option: Export all filtered profiles
     not_found: No profiles found

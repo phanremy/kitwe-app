@@ -25,6 +25,10 @@ class Couple < ApplicationRecord
     errors.add :base, "Partner 1 is same as partner 2"
   end
 
+  def self.search_couple(partner1, partner2)
+    where(profile1: partner1, profile2: partner2).or(where(profile1: partner2, profile2: partner1)).first
+  end
+
   def partners
     [profile1, profile2]
   end
@@ -36,10 +40,9 @@ class Couple < ApplicationRecord
   end
 
   def csv_designation
-    if profile2_id
-      [profile1.designation, profile2&.designation].join(';')
-    else
-      profile1.designation
-    end
+    [
+      profile1.designation,
+      profile2_id.nil? ? Profile::WITH_SELF_CAPTION : profile2.designation
+    ].join(';')
   end
 end

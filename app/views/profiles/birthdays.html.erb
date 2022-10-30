@@ -6,7 +6,7 @@
   <p><%= t('birthdays.not_found') %></p>
 <% else %>
   <% @birthdays_data.each do |birthday_datum| %>
-    <h1 class="text-xl py-2 text-gray-500"><%= Date::MONTHNAMES[birthday_datum[0]] %></h1>
+    <h1 class="text-xl py-2 text-gray-500"><%= year_month_label(birthday_datum[0]) %></h1>
     <% birthday_datum[1].each do |birthday| %>
       <p>
         <%= link_to profile_path(birthday[:id]) do %>
