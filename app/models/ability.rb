@@ -51,6 +51,6 @@ class Ability
     return unless token.present?
 
     can :read, Profile
-    can :index, :family
+    can [:index, :tree], :family
   end
 end

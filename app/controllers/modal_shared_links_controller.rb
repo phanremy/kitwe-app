@@ -6,7 +6,7 @@ class ModalSharedLinksController < ApplicationController
   def create
     flash.now[:success] = 'Copied in clipboard'
     render_modal_flash
-  en
+  end
 
   private
 

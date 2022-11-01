@@ -1,0 +1,6 @@
+<%= turbo_frame_tag :family_tree do %>
+  <div style="width:100%; height:700px;"
+       data-controller="family_tree"
+       data-family-tree="<%= @data.to_json %>">
+  </div>
+<% end %>

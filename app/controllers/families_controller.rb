@@ -4,11 +4,15 @@
 class FamiliesController < ApplicationController
   include Tokenizer
 
-  skip_before_action :authenticate_user!, only: %i[index]
-  before_action :validate_url_token, only: %i[index]
+  skip_before_action :authenticate_user!, only: %i[index tree]
+  before_action :validate_url_token, only: %i[index tree]
   authorize_resource class: false
 
   def index; end
+
+  def tree
+    @data = Profiles::FamilyTree.new(params[:profile_id]).call
+  end
 
   # def create
   #   render turbo_stream: turbo_stream.update(
