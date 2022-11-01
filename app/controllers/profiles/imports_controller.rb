@@ -4,6 +4,8 @@ module Profiles
   class ImportsController < ApplicationController
     include Tokenizer
 
+    authorize_resource class: false
+
     def new
       render turbo_stream: turbo_stream.append(
         :modal,
@@ -26,6 +28,10 @@ module Profiles
     end
 
     private
+
+    def current_ability
+      @current_ability ||= ::Ability.new(current_user)
+    end
 
     def wrong_token?
       return if params[:token].blank?
