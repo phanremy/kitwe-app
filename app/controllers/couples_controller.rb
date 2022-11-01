@@ -2,10 +2,10 @@
 
 # # top level documentation for CouplesController
 class CouplesController < ApplicationController
-  include UrlTokenizer
+  include Tokenizer
 
   skip_before_action :authenticate_user!, only: %i[index]
-  before_action :validate_token, only: %i[index]
+  before_action :validate_url_token, only: %i[index]
   load_and_authorize_resource
 
   def index

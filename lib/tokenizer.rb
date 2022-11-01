@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module UrlTokenizer
+module Tokenizer
   include Rails.application.routes.url_helpers
 
   ALLOWED_URLS = {
@@ -18,9 +18,9 @@ module UrlTokenizer
                              ))
   end
 
-  def validate_token
+  def validate_url_token
     return unless params[:token].present?
-    return if valid_token?
+    return if valid_url_token?
 
     raise "Invalid token"
   rescue StandardError => _e
@@ -28,16 +28,6 @@ module UrlTokenizer
       format.html { redirect_to root_path, flash: { danger: 'Access denied.' } }
     end
   end
-
-  def valid_token?
-    return false unless params[:token]
-
-    decoded_url = jwt_decode(params[:token])
-    allowed_urls.include?(decoded_url) ||
-      jwt_decode(params[:token])['id'].to_s == profile_id
-  end
-
-  private
 
   def jwt_encode(payload)
     token = JWT.encode({ data: payload }, jwt_secret, 'HS256')
@@ -48,7 +38,11 @@ module UrlTokenizer
     token = token.sub('-', '.')
     decoded_token = JWT.decode token, jwt_secret, true, algorithm: 'HS256'
     decoded_token[0]['data']
+  rescue JWT::DecodeError
+    nil
   end
+
+  private
 
   def jwt_secret
     ENV.fetch('JWT_SECRET', nil) || 'jwt_secret'
@@ -59,6 +53,14 @@ module UrlTokenizer
       profile_url(profile_id, profile_id: nil),
       families_url(profile_id: profile_id)
     ].compact
+  end
+
+  def valid_url_token?
+    return false unless params[:token]
+
+    decoded_url = jwt_decode(params[:token])
+    allowed_urls.include?(decoded_url) ||
+      jwt_decode(params[:token])['id'].to_s == profile_id
   end
 
   def profile_id

@@ -22,6 +22,8 @@ class Profile < ApplicationRecord
   # has_many :profile_events,           dependent: :delete_all
   # has_many :events,                   inverse_of: :profiles, through: :profile_events
 
+  after_save :nullify_photo_url
+
   PRIVACIES = %w[public only_shared only_friends private].freeze
   ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name first_name_privacy last_name last_name_privacy email email_privacy
@@ -37,7 +39,7 @@ class Profile < ApplicationRecord
                   'Parents' => nil,
                   'Couples' => nil,
                   'Category' => 'category',
-                  'Photo url' => nil,
+                  'Photo url' => 'photo_url',
                   'Exporter' => nil }.freeze
 
   MAX_DEGREE_OF_SEPARATION = 10
@@ -96,6 +98,12 @@ class Profile < ApplicationRecord
     errors.add :base, "Forbidden designation, please change it: #{designation}"
   end
 
+  def nullify_photo_url
+    return unless photo.url && photo_url
+
+    update!(photo_url: nil)
+  end
+
   def next_birthday
     date = Date.new(Time.zone.today.year, birth_date.month, birth_date.day)
     date.past? ? date + 1.year : date
@@ -104,5 +112,9 @@ class Profile < ApplicationRecord
   def next_wedding_anniversary
     date = Date.new(Time.zone.today.year, wedding_date.month, wedding_date.day)
     date.past? ? date + 1.year : date
+  end
+
+  def small_photo_url
+    photo.url(width: 150, height: 150, crop: 'fill') || photo_url
   end
 end

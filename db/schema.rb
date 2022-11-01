@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_24_205211) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_01_092743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -134,10 +134,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_205211) do
     t.bigint "creator_id", null: false
     t.bigint "parents_id"
     t.string "category", default: ""
+    t.string "photo_url"
     t.index ["category"], name: "index_profiles_on_category"
     t.index ["creator_id"], name: "index_profiles_on_creator_id"
     t.index ["parents_id"], name: "index_profiles_on_parents_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "category"
+    t.string "name"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -179,4 +190,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_24_205211) do
   add_foreign_key "profiles", "couples", column: "parents_id"
   add_foreign_key "profiles", "users"
   add_foreign_key "profiles", "users", column: "creator_id"
+  add_foreign_key "tokens", "users"
 end

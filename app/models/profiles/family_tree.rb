@@ -18,7 +18,7 @@ module Profiles
           mid: profile.parents_profiles&.first&.id,
           fid: profile.parents_profiles&.second&.id,
           url: host ? profile_url(profile, host: host) : profile_path(profile),
-          img: profile.photo.url(width: 150, height: 150, crop: 'fill') }
+          img: profile.small_photo_url }
       end
     end
 

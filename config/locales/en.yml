@@ -32,7 +32,9 @@ en:
       form:
         title: Import up to 100 profiles
         description: "Warning: Existing profile with the same designation will have their info and relationships updated"
-        label: Upload a CSV file
+        csv_label: Upload a CSV file
+        token_label: Provide token
+        or: OR
     export_option: Export all filtered profiles
     not_found: No profiles found
     share_link: Share this profile

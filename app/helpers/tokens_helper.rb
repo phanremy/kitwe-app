@@ -2,5 +2,5 @@
 
 # top level description of TokensHelper
 module TokensHelper
-  include UrlTokenizer
+  include Tokenizer
 end

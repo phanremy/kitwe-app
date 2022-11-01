@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'profiles#index'
+  resource :modal_shared_links, only: :create
   resource :shared_links, only: :create
   resource :downloads, only: :create
 

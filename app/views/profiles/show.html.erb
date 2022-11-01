@@ -1,11 +1,10 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
-<script>new ClipboardJS('#js-clipboard');</script>
-
 <% if can? :manage, @profile %>
-  <div class="text-right">
+  <div class="text-right"
+       data-controller="clipboard"
+       data-clipboard-target-value="#token-url">
     <%= render layout: 'shared/options', locals: { page_header: true } do %>
       <%= link_to t('edit'), edit_profile_path, method: :get, class: 'text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
-      <%= button_to t('profiles.share_link'), shared_links_path, method: :post, id: 'js-clipboard', data: { 'clipboard-text': @tokenized_url }, class: 'w-full text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
+      <%= button_to t('profiles.share_link'), shared_links_path, method: :post, id: 'token-url', data: { 'clipboard-text': @tokenized_url }, class: 'w-full text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
       <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:id]), method: :get, class: 'text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1'%>
       <%= button_to t('delete'), profile_path, method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
     <% end %>
@@ -15,6 +14,8 @@
 <div class="flex flex-col items-center justify-center">
   <% if @profile.photo.attached? %>
     <%= cl_image_tag @profile.photo.key, height: 200, width: 200, crop: :fill %>
+  <% elsif @profile.photo_url.present? %>
+    <%= image_tag @profile.photo_url, height: 200, width: 200, crop: :fill %>
   <% end %>
   <h1 class="text-xl"><%= @profile.full_designation %></h1>
 </div>

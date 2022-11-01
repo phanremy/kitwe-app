@@ -4,20 +4,22 @@ require 'csv'
 
 module Profiles
   class Import
-    attr_reader :file, :errors, :imported_profile_count
+    attr_reader :errors, :imported_profile_count
 
-    def initialize(file, current_user)
+    def initialize(file:, content:, user:)
       @file = file
+      @content = content
       @errors = []
       @imported_profile_count = 0
       @options = { col_sep: "\;", headers: :first_row }
-      @profiles = Profile.includes(:creator, :couples1, :couples2).where(creator: current_user)
-      @couples = Couple.where(creator: current_user)
+      @profiles = Profile.includes(:creator, :couples1, :couples2).where(creator: user)
+      @couples = Couple.where(creator: user)
     end
 
     def call
       ActiveRecord::Base.transaction do
-        CSV.foreach(file.path, **@options) { |row| import(row) }
+        CSV.foreach(@file.path, **@options) { |row| import(row) } if @file
+        CSV.parse(@content, **@options).each { |row| import(row) } if @content
       end
       @imported_profile_count = @find_or_build_profile.count
       @errors = @errors.first(10) + ['more'] if @errors.count > 10
@@ -39,7 +41,6 @@ module Profiles
 
       profile.parents = find_or_build_parents(row['Parents'])
       profile.tap(&:save!)
-      # TODO: manage photo
     end
 
     def find_or_build_profile(designation)

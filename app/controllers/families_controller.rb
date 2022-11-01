@@ -2,10 +2,10 @@
 
 # # top level documentation for FamiliesController
 class FamiliesController < ApplicationController
-  include UrlTokenizer
+  include Tokenizer
 
   skip_before_action :authenticate_user!, only: %i[index]
-  before_action :validate_token, only: %i[index]
+  before_action :validate_url_token, only: %i[index]
   authorize_resource class: false
 
   def index; end
