@@ -16,10 +16,11 @@ module Profiles
     private
 
     def data(profile)
+      differential = profile.next_birthday == Date.today ? 0 : 1
       { id: profile.id,
         name: profile.designation,
         date: profile.next_birthday,
-        age: profile.age + 1 }
+        age: profile.age + differential }
     end
   end
 end
