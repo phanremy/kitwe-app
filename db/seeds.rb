@@ -12,7 +12,7 @@ def profile_date
   random = (0..9).to_a
   date = Date.today
   random.sample.times do |_i|
-    date += random.sample.year * (-1) + random.sample.month + random.sample.day + random.sample.hour
+    date += (random.sample.year * -1) + random.sample.month + random.sample.day + random.sample.hour
   end
   date
 end

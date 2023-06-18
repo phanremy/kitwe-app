@@ -11,7 +11,8 @@ class FamiliesController < ApplicationController
   def index; end
 
   def tree
-    @data = Profiles::FamilyTree.new(params[:profile_id]).call
+    @data = Profiles::FamilyTreeBalkan.new(params[:profile_id]).call
+    # [:id, :name, :pids, :mid, :fid, :url, :img]
   end
 
   # def create

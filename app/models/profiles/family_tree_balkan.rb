@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Profiles
-  class FamilyTree
+  class FamilyTreeBalkan
     include Rails.application.routes.url_helpers
 
     def initialize(profile_id)
