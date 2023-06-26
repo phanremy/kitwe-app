@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import FamilyTree from '@balkangraph/familytree.js'
+// import FamilyTree from '@balkangraph/familytree.js'
 
 /*
  * Values:
