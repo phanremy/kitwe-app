@@ -12,15 +12,16 @@
     } from "solid-js";
     import { render } from "solid-js/web";
     import html from "solid-js/html";
+    import App from "components/App/App";
 
-    const App = () => {
-      const [count, setCount] = createSignal(0),
-        timer = setInterval(() => setCount(count() + 1), 1000);
-      onCleanup(() => clearInterval(timer));
-      return html`<div>${count}</div>`;
-      // or
-      return h("div", {}, count);
-    };
+    // const App = () => {
+    //   const [count, setCount] = createSignal(0),
+    //     timer = setInterval(() => setCount(count() + 1), 1000);
+    //   onCleanup(() => clearInterval(timer));
+    //   return html`<div>${count}</div>`;
+    //   // or
+    //   return h("div", {}, count);
+    // };
 
     render(App, document.getElementById('family_tree'));
   </script>
