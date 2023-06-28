@@ -3,26 +3,34 @@
        <%# style="width:100%; height:700px;" %>
        <%# data-controller="family_tree_balkan" %>
        <%# data-controller="family_tree_creator" %>
-       data-family-tree="<%= @data.to_json %>">
+       data-family-tree="<%#= @data.to_json %>">
   </div>
   <script type="module">
-    import {
-      createSignal,
-      onCleanup,
-    } from "solid-js";
-    import { render } from "solid-js/web";
-    import html from "solid-js/html";
-    import App from "components/App/App";
+    // import {
+    //   createSignal,
+    //   onCleanup,
+    // } from "solid-js";
 
+    // import html from "solid-js/html";
     // const App = () => {
-    //   const [count, setCount] = createSignal(0),
+      //   const [count, setCount] = createSignal(0),
     //     timer = setInterval(() => setCount(count() + 1), 1000);
     //   onCleanup(() => clearInterval(timer));
-    //   return html`<div>${count}</div>`;
+    //   return html` <h1>Hello ${() => html`` + " " + 'last'}</h1> `;
+    // };
+
+    // import h from "solid-js/html";
+    // const App = () => {
+      //   const [count, setCount] = createSignal(0),
+    //     timer = setInterval(() => setCount(count() + 1), 1000);
+    //   onCleanup(() => clearInterval(timer));
+    //   // return html`<div>${count}</div>`;
     //   // or
     //   return h("div", {}, count);
     // };
 
+    import { render } from "solid-js/web";
+    import App from "components/App/App";
     render(App, document.getElementById('family_tree'));
   </script>
 <% end %>

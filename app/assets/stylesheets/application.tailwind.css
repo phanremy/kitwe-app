@@ -74,3 +74,125 @@ h2 {
 }
 
 /* TAILWIND BUILDER AND FORMS - END */
+
+/* SOLID JS FAMILY TREE CREATOR */
+
+.solid__app__root {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  background: #eee;
+}
+
+.solid__app__header {
+  display: flex;
+  height: 48px;
+  padding: 0 20px;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 999;
+}
+
+.solid__app__title {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.solid__app__wrapper {
+  flex: 1;
+}
+
+.solid__app__tree {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.solid__app__reset {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  padding: 4px 10px;
+  line-height: 1;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.solid__node__root {
+  position: absolute;
+  display: flex;
+  padding: 10px;
+}
+
+.solid__node__inner {
+  display: flex;
+  flex: 1;
+  border: 2px solid rgba(0, 0, 0, .2);
+  border-radius: 10px 0;
+}
+
+.solid__node__male {
+  background: #a4ecff;
+}
+
+.solid__node__female {
+  background: #fdaed8;
+}
+
+.solid__node__isRoot {
+  border-color: rgba(0, 0, 0, .4);;
+}
+
+.solid__node__sub {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  width: 14px;
+  height: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, .2);
+  border-radius: 4px 0;
+  cursor: pointer;
+}
+
+.solid__node__sub.solid__node__male {
+  background: #fdaed8;
+}
+
+.solid__node__sub.solid__node__female {
+  background: #a4ecff;
+}
+
+.solid__pinchzoompan__root {
+  position: relative;
+  transform: translateZ(0);
+  overflow: hidden;
+}
+
+.solid__pinchzoompan__point {
+  position: absolute;
+  width: 0;
+  height: 0;
+  transform: translate(0, 0) scale(1);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.solid__pinchzoompan__canvas {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.solid__tree__root {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* SOLID JS FAMILY TREE CREATOR - END */

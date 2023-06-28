@@ -1,44 +1,36 @@
-import { JSX, onCleanup } from 'solid-js';
-import { create } from 'pinch-zoom-pan';
+import { onCleanup } from 'solid-js';
+// import { create } from 'pinch-zoom-pan';
+import html from "solid-js/html";
 
 // import css from './PinchZoomPan.module.css';
 
-interface IProps {
-  min?: number;
-  max?: number;
-  captureWheel?: boolean;
-  class?: string;
-  children: JSX.Element;
-}
+function PinchZoomPan(props) {
+  let element;
+  let cleanup;
 
-function PinchZoomPan(props: IProps) {
-  let element: HTMLDivElement;
-  let cleanup: () => void;
-
-  setTimeout(() => {
-    cleanup = create({
-      element,
-      minZoom: props.min,
-      maxZoom: props.max,
-      captureWheel: props.captureWheel,
-    });
-  });
+  // setTimeout(() => {
+  //   cleanup = create({
+  //     element,
+  //     minZoom: props.min,
+  //     maxZoom: props.max,
+  //     captureWheel: props.captureWheel,
+  //   });
+  // });
 
   onCleanup(() => cleanup());
 
   return (
-    <div
-      // @ts-ignore
-      ref={element}
-      class={css.root}
-      classList={{ [props.class || '']: !!props.class }}
-    >
-      <div class={css.point}>
-        <div class={css.canvas}>
-          {props.children}
-        </div>
-      </div>
-    </div>
+    html`<div
+          ref={element}
+          class="solid__pinchzoompan__root"
+          classList="{{ [props.class || '']: !!props.class }}"
+        >
+          <div class="solid__pinchzoompan__point">
+            <div class="solid__pinchzoompan__canvas">
+              ${props.children}
+            </div>
+          </div>
+        </div>`
   );
 }
 
