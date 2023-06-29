@@ -66,7 +66,7 @@ function App() {
             class="solid__app__wrapper"
           >
             <${Tree}
-              nodes=${nodes as Node[]}
+              nodes=${nodes}
               rootId=${rootId()}
               width=${WIDTH}
               height=${HEIGHT}
