@@ -1,8 +1,9 @@
-import { byGender, relToNode, withId } from '../utils';
-import { newUnit } from '../utils/units';
-import { newFamily } from '../utils/family';
-import { setDefaultUnitShift } from '../utils/setDefaultUnitShift';
-import { createChildUnitsFunc } from '../utils/createChildUnitsFunc';
+import { byGender, relToNode, withId } from 'relatives-tree/utils';
+import { newUnit } from 'relatives-tree/utils/units';
+import { newFamily } from 'relatives-tree/utils/family';
+import { setDefaultUnitShift } from 'relatives-tree/utils/setDefaultUnitShift';
+import { createChildUnitsFunc } from 'relatives-tree/utils/createChildUnitsFunc';
+
 const hasSameRelation = (node) => ((rel) => !node || node.children.some(withId(rel.id)));
 const getChildUnitsFunc = (store) => {
     const toNode = relToNode(store);

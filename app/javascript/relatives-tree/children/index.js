@@ -1,8 +1,9 @@
-import { withType } from '../utils/family';
-import { hasChildren, nodeIds } from '../utils/units';
-import { createFamilyFunc } from './create';
-import { updateFamilyFunc } from './update';
-import { arrangeFamiliesFunc } from './arrange';
+import { withType } from 'relatives-tree/utils/family';
+import { hasChildren, nodeIds } from 'relatives-tree/utils/units';
+import { createFamilyFunc } from 'relatives-tree/children/create';
+import { updateFamilyFunc } from 'relatives-tree/children/update';
+import { arrangeFamiliesFunc } from 'relatives-tree/children/arrange';
+
 const getUnitsWithChildren = (family) => (family.children.filter(hasChildren).reverse());
 export const inChildDirection = (store) => {
     const createFamily = createFamilyFunc(store);

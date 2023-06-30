@@ -1,5 +1,6 @@
-import { toMap, withId } from './utils';
-import { withType } from './utils/family';
+import { toMap, withId } from 'relatives-tree/utils';
+import { withType } from 'relatives-tree/utils/family';
+
 class Store {
     constructor(nodes, rootId) {
         if (!nodes.find(withId(rootId)))
