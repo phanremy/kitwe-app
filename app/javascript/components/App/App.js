@@ -9,34 +9,64 @@ import Tree from '../Tree/Tree';
 // import nodes from 'relatives-tree/samples/average-tree.json';
 // import css from './App.module.css';
 // const tree = calcTree({}, { rootId });
-const myID = 'kuVISwh7w';
-
 const WIDTH = 70;
 const HEIGHT = 80;
 
+// const myID = 'kuVISwh7w';
+
+// const nodes = [
+//   {
+//     "id": "kuVISwh7w",
+//     "gender": "male",
+//     "parents": [],
+//     "siblings": [],
+//     "spouses": [],
+//     "children": []
+//   }
+// ]
+
+const myID = 'dyTpfj6sr';
+
 const nodes = [
   {
-    "id": "jsyRsE5sr",
+    "id": "dyTpfj6sr",
     "gender": "male",
-    "parents": [],
+    "spouses": [],
     "siblings": [],
-    "spouses": [
+    "parents": [],
+    "children": [
       {
-        "id": "pdRwdtR54",
-        "type": "married"
+        "id": "ahfR5lR2s",
+        "type": "blood"
+      },
+      {
+        "id": "aoF9dn5Ew",
+        "type": "blood"
+      }
+    ]
+  },
+  {
+    "id": "ahfR5lR2s",
+    "gender": "female",
+    "spouses": [],
+    "siblings": [],
+    "parents": [
+      {
+        "id": "dyTpfj6sr",
+        "type": "blood"
       }
     ],
     "children": []
   },
   {
-    "id": "pdRwdtR54",
-    "gender": "female",
-    "parents": [],
+    "id": "aoF9dn5Ew",
+    "gender": "male",
+    "spouses": [],
     "siblings": [],
-    "spouses": [
+    "parents": [
       {
-        "id": "jsyRsE5sr",
-        "type": "married"
+        "id": "dyTpfj6sr",
+        "type": "blood"
       }
     ],
     "children": []

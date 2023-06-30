@@ -18,33 +18,65 @@ function Tree(props) {
     }),
   );
 
+  const Connectors = () => {
+    return html`
+      <${For} each=${tree().connectors}>
+        ${(connector) => {
+          // console.log(connector, width, height)
+          return (html`<${Connector} connector=${connector} width=${width} height=${height}/>`)
+        }}
+      </For>`;
+  };
+
+  const Nodes = () => {
+    return html`
+      <${For} each=${tree().nodes}>
+        ${(node) => {
+          // console.log(props.width, props.height, node.left, node.top, node.id, width, height, props.rootId)
+          return (html`
+            <${Node}
+              isRoot=${node.id === props.rootId}
+              node=${node}
+              style=''
+              onSubClick=${props.onChangeRoot} />`)
+        }}
+      </For>`;
+  };
+
+  // console.group(`tree`)
+  //   console.log(tree())
+  //   console.log(tree().canvas)
+  //   console.log(width)
+  //   console.log(height)
+  // console.groupEnd()
+
+  // return (
+  //   html`
+  //     <div
+  //       class="solid__tree__root"
+  //       style=${{
+  //         position: 'relative',
+  //         width: tree().canvas.width * width + `px`,
+  //         height: tree().canvas.height * height + `px`,
+  //       }}
+  //     >
+  //       ${Connectors()}
+  //       ${Nodes()}
+  //    </div>`
+  // );
   return (
-    html`<div
-      class="solid__tree__root"
-      style={{
-        position: 'relative',
-        width: "${tree().canvas.width * width}px",
-        height: "${tree().canvas.height * height}px",
-      }}
-    >
-      <For each={tree().connectors}>
-        {(connector) => <Connector connector={connector} width={width} height={height} />}
-      </For>
-      <For each={tree().nodes}>
-        {(node) => (
-          <Node
-            isRoot={node.id === props.rootId}
-            node={node}
-            style={{
-              width: "${props.width}px",
-              height: "${props.height}px",
-              transform: "translate(${node.left * width}px, ${node.top * height}px)",
-            }}
-            onSubClick={props.onChangeRoot}
-          />
-        )}
-      </For>
-    </div>`
+    html`
+      <div
+        class="solid__tree__root"
+        style=${{
+          position: 'relative',
+          width: '100%',
+          height: '70vh',
+        }}
+      >
+        ${Connectors()}
+        ${Nodes()}
+     </div>`
   );
 }
 

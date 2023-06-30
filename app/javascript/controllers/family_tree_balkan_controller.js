@@ -11,8 +11,8 @@ import { Controller } from '@hotwired/stimulus'
  */
 export default class extends Controller {
   initialize () {
-    console.log('family tree building')
-    console.log(this.element.dataset.familyTree)
+    // console.log('family tree building')
+    // console.log(this.element.dataset.familyTree)
     const family = new FamilyTree(this.element, {
       menu: {
         pdf: { text: "Export PDF" },
