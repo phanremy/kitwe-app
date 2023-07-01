@@ -19,6 +19,11 @@ function Tree(props) {
   );
 
   const Connectors = () => {
+    // console.group(`Connectors`)
+    //   console.log(tree().connectors)
+    //   console.log(width)
+    //   console.log(height)
+    // console.groupEnd()
     return html`
       <${For} each=${tree().connectors}>
         ${(connector) => {
@@ -29,15 +34,24 @@ function Tree(props) {
   };
 
   const Nodes = () => {
+    // console.group(`Nodes`)
+    //   console.log(tree().nodes)
+    //   console.log(props.width)
+    //   console.log(props.height)
+    //   console.log(props.onChangeRoot)
+    // console.groupEnd()
     return html`
       <${For} each=${tree().nodes}>
         ${(node) => {
-          // console.log(props.width, props.height, node.left, node.top, node.id, width, height, props.rootId)
           return (html`
             <${Node}
               isRoot=${node.id === props.rootId}
               node=${node}
-              style=''
+              style=${{
+                width: `${props.width}px`,
+                height: `${props.height}px`,
+                transform: `translate(${node.left * width}px, ${node.top * height}px)`,
+              }}
               onSubClick=${props.onChangeRoot} />`)
         }}
       </For>`;
@@ -50,20 +64,9 @@ function Tree(props) {
   //   console.log(height)
   // console.groupEnd()
 
-  // return (
-  //   html`
-  //     <div
-  //       class="solid__tree__root"
-  //       style=${{
-  //         position: 'relative',
-  //         width: tree().canvas.width * width + `px`,
-  //         height: tree().canvas.height * height + `px`,
-  //       }}
-  //     >
-  //       ${Connectors()}
-  //       ${Nodes()}
-  //    </div>`
-  // );
+  // width: tree().canvas.width * width + `px`,
+  // height: tree().canvas.height * height + `px`,
+
   return (
     html`
       <div

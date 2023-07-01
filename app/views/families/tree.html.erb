@@ -13,21 +13,44 @@
 
     // import html from "solid-js/html";
     // const App = () => {
-      //   const [count, setCount] = createSignal(0),
+    //     const [count, setCount] = createSignal(0),
     //     timer = setInterval(() => setCount(count() + 1), 1000);
     //   onCleanup(() => clearInterval(timer));
-    //   return html` <h1>Hello ${() => html`` + " " + 'last'}</h1> `;
+    //   return html`<div>${count}</div>`;
     // };
 
     // import h from "solid-js/html";
     // const App = () => {
-      //   const [count, setCount] = createSignal(0),
+    //     const [count, setCount] = createSignal(0),
     //     timer = setInterval(() => setCount(count() + 1), 1000);
     //   onCleanup(() => clearInterval(timer));
     //   // return html`<div>${count}</div>`;
     //   // or
     //   return h("div", {}, count);
     // };
+
+    // const App = () => {
+    //   // create a reactive signal for time
+    //   const [time, setTime] = createSignal(0);
+
+    //   // create an interval to update the time every second
+    //   const interval = setInterval(() => {
+    //     setTime(time() + 1);
+    //   }, 1000);
+
+    //   // clean up the interval when the component is unmounted
+    //   onCleanup(() => { clearInterval(interval); });
+
+    //   // function to reset the time
+    //   const resetTime = () => { setTime(0);};
+
+    //   return (html`
+    //     <>
+    //       <div>Time: ${time}</div>
+    //       <button onClick=${resetTime}>Reset timer</button>
+    //     </>
+    //     `);
+    // }
 
     import { render } from "solid-js/web";
     import App from "components/App/App";

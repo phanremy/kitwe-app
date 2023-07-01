@@ -81,7 +81,7 @@ h2 {
   display: flex;
   height: 100%;
   flex-direction: column;
-  background: #eee;
+  /* background: #eee; */
 }
 
 .solid__app__header {
@@ -91,7 +91,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   background: #fff;
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd; */
   z-index: 999;
 }
 
@@ -192,7 +192,7 @@ h2 {
 .solid__tree__root {
   background: #fff;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 8px;
 }
 
 /* SOLID JS FAMILY TREE CREATOR - END */

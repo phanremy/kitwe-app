@@ -25,7 +25,7 @@ function Connector({ connector, width, height, thickness = MIN_THICKNESS }) {
             width: calcSide(x2 - x1, width, thickness) + 'px',
             height: calcSide(y2 - y1, height, thickness) + 'px',
             background: "#999",
-            transform: 'translate(' + x1 * width - (thickness / 2) + 'px ,' + y1 * height - (thickness / 2) + 'px)',
+            transform: `translate(${x1 * width - (thickness / 2)}px, ${y1 * height - (thickness / 2)}px)`,
             pointerEvents: 'none',
           }}
         />`

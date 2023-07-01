@@ -8,9 +8,13 @@ function Node(props) {
   const onClick = () => props.onSubClick(props.node.id);
 
   // console.group(`node`)
-  //   console.log(props.node)
-  //   console.log(props.isRoot)
   //   console.log(props.style)
+  //   console.log(props.node)
+  //   console.log(props.node.id)
+  //   console.log(props.onSubClick(props.node.id))
+  //   console.log(props.node.gender)
+  //   console.log(props.node.hasSubTree)
+  //   console.log(props.isRoot)
   //   console.log(props.onSubClick)
   // console.groupEnd()
 
