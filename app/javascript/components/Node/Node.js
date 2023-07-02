@@ -16,6 +16,7 @@ function Node(props) {
   //   console.log(props.node.hasSubTree)
   //   console.log(props.isRoot)
   //   console.log(props.onSubClick)
+  //   console.log(onClick)
   // console.groupEnd()
 
   return (
@@ -27,7 +28,9 @@ function Node(props) {
               ['solid__node__female']: props.node.gender === 'female',
               ['solid__node__isRoot']: props.isRoot,
             }}
-          />
+          >
+            <div class="solid__node__id">${props.node.id}</div>
+          </div>
           <${Show} when=${props.node.hasSubTree}>
             <div
               class="solid__node__sub"

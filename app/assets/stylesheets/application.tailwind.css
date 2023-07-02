@@ -124,6 +124,13 @@ h2 {
   cursor: pointer;
 }
 
+.solid__node__id {
+  margin-left: 4px;
+  font-size: 7px;
+  line-height: 1;
+  opacity: .7;
+}
+
 .solid__node__root {
   position: absolute;
   display: flex;
@@ -151,9 +158,12 @@ h2 {
 
 .solid__node__sub {
   position: absolute;
-  top: 6px;
+  /* top: 6px;
   right: 14px;
-  width: 14px;
+  width: 14px;*/
+  top: 2px;
+  right: 9px;
+  width: 25px;
   height: 10px;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, .2);
@@ -191,8 +201,8 @@ h2 {
 
 .solid__tree__root {
   background: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  /* border: 1px solid #ddd;
+  border-radius: 8px; */
 }
 
 /* SOLID JS FAMILY TREE CREATOR - END */

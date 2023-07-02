@@ -716,11 +716,18 @@ const nodes = [
 function App() {
   const [rootId, setRootId] = createSignal(myID);
 
-  const onResetClick = () => setRootId(myID);
-  const onChangeRoot = (id) => setRootId(id);
+  const onResetClick = () => {
+    console.log(`Reset from ${rootId()} to ${myID}`)
+    setRootId(myID)
+  };
+  const onChangeRoot = (id) => {
+    console.log(`Change root from ${rootId()} to ${id}`)
+    setRootId(id)
+    console.log(`rootId ${rootId()}`)
+  };
 
 
-//   <${PinchZoomPan}
+// <${PinchZoomPan}
 //   min=${0.5}
 //   max=${2.5}
 //   captureWheel
@@ -743,7 +750,9 @@ function App() {
             <h1 class="solid__app__title">
               Family Tree
             </h1>
-            <a target="_blank" href="https://github.com/SanichKotikov/solid-family-tree-example">Credits to SanichKotikov</a>
+            <small>
+              <a target="_blank" href="https://github.com/SanichKotikov/solid-family-tree-example">Credits to SanichKotikov</a>
+            </small>
           </header>
           <${Tree}
             nodes=${nodes}
