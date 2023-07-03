@@ -1,6 +1,6 @@
 import { getParentsX, withType } from 'relatives-tree/utils/family';
 import { getUnitX, nodeCount, nodeIds } from 'relatives-tree/utils/units';
-import { inAscOrder, max, min, withId, withIds } from 'relatives-tree/utils';
+import { inAscOrder, max, min, withId, withIds } from 'relatives-tree/utils/methods';
 import { HALF_SIZE, NODES_IN_COUPLE, SIZE } from 'relatives-tree/constants';
 
 export const children = (families) => (families

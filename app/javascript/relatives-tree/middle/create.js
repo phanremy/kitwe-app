@@ -2,7 +2,7 @@ import { createChildUnitsFunc } from 'relatives-tree/utils/createChildUnitsFunc'
 import { createFamilyFunc } from 'relatives-tree/children/create';
 import { getSpouseNodesFunc } from 'relatives-tree/utils/getSpouseNodesFunc';
 import { setDefaultUnitShift } from 'relatives-tree/utils/setDefaultUnitShift';
-import { prop, withRelType } from 'relatives-tree/utils';
+import { prop, withRelType } from 'relatives-tree/utils/methods';
 import { newFamily } from 'relatives-tree/utils/family';
 import { unitsToNodes } from 'relatives-tree/utils/units';
 import { NODES_IN_COUPLE } from 'relatives-tree/constants';

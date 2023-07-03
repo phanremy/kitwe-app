@@ -1,6 +1,6 @@
 import { correctUnitsShift, getUnitX, sameAs } from 'relatives-tree/utils/units';
 import { rightOf } from 'relatives-tree/utils/family';
-import { nextIndex, withId } from 'relatives-tree/utils';
+import { nextIndex, withId } from 'relatives-tree/utils/methods';
 import { arrangeParentsIn } from 'relatives-tree/utils/arrangeParentsIn';
 
 const arrangeNextFamily = (family, nextFamily) => {

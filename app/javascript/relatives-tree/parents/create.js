@@ -1,4 +1,4 @@
-import { byGender, prop } from 'relatives-tree/utils';
+import { byGender, prop } from 'relatives-tree/utils/methods';
 import { arrangeInOrder, newUnit } from 'relatives-tree/utils/units';
 import { newFamily } from 'relatives-tree/utils/family';
 

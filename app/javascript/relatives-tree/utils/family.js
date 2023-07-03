@@ -1,5 +1,5 @@
 import { SIZE } from 'relatives-tree/constants';
-import { max } from './index';
+import { max } from 'relatives-tree/utils/methods';
 import { getUnitX, nodeCount, rightSide } from 'relatives-tree/utils/units';
 
 export const newFamily = (id, type, main = false) => ({

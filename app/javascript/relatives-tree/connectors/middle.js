@@ -1,4 +1,4 @@
-import { inAscOrder, withId } from 'relatives-tree/utils';
+import { inAscOrder, withId } from 'relatives-tree/utils/methods';
 import { getUnitX, nodeCount } from 'relatives-tree/utils/units';
 import { withType } from 'relatives-tree/utils/family';
 import { HALF_SIZE, NODES_IN_COUPLE, SIZE } from 'relatives-tree/constants';

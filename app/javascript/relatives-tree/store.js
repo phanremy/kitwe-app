@@ -1,4 +1,4 @@
-import { toMap, withId } from 'relatives-tree/utils';
+import { toMap, withId } from 'relatives-tree/utils/methods';
 import { withType } from 'relatives-tree/utils/family';
 
 class Store {

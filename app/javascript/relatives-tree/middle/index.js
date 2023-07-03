@@ -1,4 +1,4 @@
-import { hasDiffParents } from 'relatives-tree/utils';
+import { hasDiffParents } from 'relatives-tree/utils/methods';
 import { rightOf } from 'relatives-tree/utils/family';
 import { createBloodFamilies, createDiffTypeFamilies, createFamilyWithoutParents } from 'relatives-tree/middle/create';
 

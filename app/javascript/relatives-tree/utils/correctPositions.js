@@ -1,4 +1,4 @@
-import { min, prop } from './index';
+import { min, prop } from 'relatives-tree/utils/methods';
 import { withType } from 'relatives-tree/utils/family';
 import { getUnitX } from 'relatives-tree/utils/units';
 

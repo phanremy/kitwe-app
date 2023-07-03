@@ -7,7 +7,7 @@ import { connectors } from 'relatives-tree/connectors';
 import { correctPositions } from 'relatives-tree/utils/correctPositions';
 import { getCanvasSize } from 'relatives-tree/utils/getCanvasSize';
 import { getExtendedNodes } from 'relatives-tree/utils/getExtendedNodes';
-import { pipe } from 'relatives-tree/utils';
+import { pipe } from 'relatives-tree/utils/methods';
 
 const calcFamilies = pipe(inMiddleDirection, inParentDirection, inChildDirection, correctPositions);
 export default (nodes, options) => {

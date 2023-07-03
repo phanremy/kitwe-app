@@ -1,4 +1,4 @@
-import { withId, withIds } from './index';
+import { withId, withIds } from 'relatives-tree/utils/methods';
 import { nodeIds } from 'relatives-tree/utils/units';
 
 const inUnits = (units, nodeId) => (units.some(unit => unit.nodes.some(withId(nodeId))));

@@ -1,4 +1,4 @@
-import { min, prop } from './index';
+import { min, prop } from 'relatives-tree/utils/methods';
 import { arrangeParentsIn } from 'relatives-tree/utils/arrangeParentsIn';
 import { arrangeInOrder, correctUnitsShift } from 'relatives-tree/utils/units';
 

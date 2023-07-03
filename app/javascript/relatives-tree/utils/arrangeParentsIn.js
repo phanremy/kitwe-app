@@ -1,5 +1,5 @@
 import { SIZE } from 'relatives-tree/constants';
-import { prop, withIds } from './index';
+import { prop, withIds } from 'relatives-tree/utils/methods';
 import { unitNodesCount } from 'relatives-tree/utils/family';
 
 const calcShifts = (units, ids) => (units.reduce((acc, unit) => {

@@ -1,4 +1,4 @@
-import { byGender, relToNode, withId } from 'relatives-tree/utils';
+import { byGender, relToNode, withId } from 'relatives-tree/utils/methods';
 import { newUnit } from 'relatives-tree/utils/units';
 import { newFamily } from 'relatives-tree/utils/family';
 import { setDefaultUnitShift } from 'relatives-tree/utils/setDefaultUnitShift';

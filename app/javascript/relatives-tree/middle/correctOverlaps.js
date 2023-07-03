@@ -1,4 +1,4 @@
-import { prop, withId, withIds } from 'relatives-tree/utils';
+import { prop, withId, withIds } from 'relatives-tree/utils/methods';
 import { unitsToNodes } from 'relatives-tree/utils/units';
 import { setDefaultUnitShift } from 'relatives-tree/utils/setDefaultUnitShift';
 
