@@ -1,6 +1,7 @@
-import { getUnitX } from './units';
-import { hasHiddenRelatives } from './hasHiddenRelatives';
-import { SIZE } from '../constants';
+import { getUnitX } from 'relatives-tree/utils/units';
+import { hasHiddenRelatives } from 'relatives-tree/utils/hasHiddenRelatives';
+import { SIZE } from 'relatives-tree/constants';
+
 const extendNode = (family) => ((unit) => (unit.nodes.map((node, idx) => ({
     ...node,
     top: family.Y + (unit.child && !!family.parents.length ? SIZE : 0),

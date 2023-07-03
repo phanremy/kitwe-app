@@ -1,7 +1,8 @@
-import { prop, withIds } from '../utils';
-import { getUnitX, nodeCount } from '../utils/units';
-import { getParentsX, withType } from '../utils/family';
-import { HALF_SIZE, NODES_IN_COUPLE, SIZE } from '../constants';
+import { prop, withIds } from 'relatives-tree/utils';
+import { getUnitX, nodeCount } from 'relatives-tree/utils/units';
+import { getParentsX, withType } from 'relatives-tree/utils/family';
+import { HALF_SIZE, NODES_IN_COUPLE, SIZE } from 'relatives-tree/constants';
+
 const getChildIDs = (unit) => (unit.nodes.map(prop('children')).flat().map(prop('id')));
 const calcConnectors = (family) => ((connectors, unit) => {
     const pX = getParentsX(family, unit);

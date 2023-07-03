@@ -1,6 +1,7 @@
-import { SIZE } from '../constants';
+import { SIZE } from 'relatives-tree/constants';
 import { prop, withIds } from './index';
-import { unitNodesCount } from './family';
+import { unitNodesCount } from 'relatives-tree/utils/family';
+
 const calcShifts = (units, ids) => (units.reduce((acc, unit) => {
     const index = unit.nodes.findIndex(withIds(ids));
     if (index !== -1)

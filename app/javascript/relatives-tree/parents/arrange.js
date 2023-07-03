@@ -1,7 +1,8 @@
-import { SIZE } from '../constants';
-import { correctUnitsShift, getUnitX, nodeCount, sameAs } from '../utils/units';
-import { rightOf, unitNodesCount, widthOf } from '../utils/family';
-import { nextIndex } from '../utils';
+import { SIZE } from 'relatives-tree/constants';
+import { correctUnitsShift, getUnitX, nodeCount, sameAs } from 'relatives-tree/utils/units';
+import { rightOf, unitNodesCount, widthOf } from 'relatives-tree/utils/family';
+import { nextIndex } from 'relatives-tree/utils';
+
 const arrangeNextFamily = (family, nextFamily) => {
     const unit = family.children[0];
     const index = nextFamily.parents.findIndex(sameAs(unit));

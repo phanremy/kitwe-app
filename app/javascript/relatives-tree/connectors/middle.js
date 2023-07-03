@@ -1,7 +1,8 @@
-import { inAscOrder, withId } from '../utils';
-import { getUnitX, nodeCount } from '../utils/units';
-import { withType } from '../utils/family';
-import { HALF_SIZE, NODES_IN_COUPLE, SIZE } from '../constants';
+import { inAscOrder, withId } from 'relatives-tree/utils';
+import { getUnitX, nodeCount } from 'relatives-tree/utils/units';
+import { withType } from 'relatives-tree/utils/family';
+import { HALF_SIZE, NODES_IN_COUPLE, SIZE } from 'relatives-tree/constants';
+
 const calcConnectors = (family, families) => ((connectors, unit) => {
     const pX = getUnitX(family, unit) + HALF_SIZE;
     const pY = family.Y + HALF_SIZE;

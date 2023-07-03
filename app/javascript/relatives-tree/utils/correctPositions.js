@@ -1,6 +1,7 @@
 import { min, prop } from './index';
-import { withType } from './family';
-import { getUnitX } from './units';
+import { withType } from 'relatives-tree/utils/family';
+import { getUnitX } from 'relatives-tree/utils/units';
+
 const alignGenerations = (families, root) => {
     const parents = families.find(family => family.cid === root.id);
     if (parents) {

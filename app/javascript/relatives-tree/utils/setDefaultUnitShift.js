@@ -1,6 +1,7 @@
 import { min, prop } from './index';
-import { arrangeParentsIn } from './arrangeParentsIn';
-import { arrangeInOrder, correctUnitsShift } from './units';
+import { arrangeParentsIn } from 'relatives-tree/utils/arrangeParentsIn';
+import { arrangeInOrder, correctUnitsShift } from 'relatives-tree/utils/units';
+
 export const setDefaultUnitShift = (family) => {
     const units = [family.parents, family.children];
     units.forEach(arrangeInOrder);

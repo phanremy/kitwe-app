@@ -1,4 +1,4 @@
-import { relToNode } from '../utils';
+import { relToNode } from 'relatives-tree/utils';
 const createRel = (id, type = "blood") => ({ id, type });
 const createNode = (gender) => ({
     id: `${gender}-ph`,

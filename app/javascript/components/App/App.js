@@ -1,8 +1,8 @@
 import { createSignal } from 'solid-js';
 import { Show } from 'solid-js/web';
 import html from "solid-js/html";
-import PinchZoomPan from '../PinchZoomPan/PinchZoomPan';
-import Tree from '../Tree/Tree';
+import PinchZoomPan from 'components/PinchZoomPan/PinchZoomPan';
+import Tree from 'components/Tree/Tree';
 
 const WIDTH = 70;
 const HEIGHT = 80;

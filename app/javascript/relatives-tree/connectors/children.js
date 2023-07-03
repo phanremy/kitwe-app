@@ -1,7 +1,8 @@
-import { getParentsX, withType } from '../utils/family';
-import { getUnitX, nodeCount, nodeIds } from '../utils/units';
-import { inAscOrder, max, min, withId, withIds } from '../utils';
-import { HALF_SIZE, NODES_IN_COUPLE, SIZE } from '../constants';
+import { getParentsX, withType } from 'relatives-tree/utils/family';
+import { getUnitX, nodeCount, nodeIds } from 'relatives-tree/utils/units';
+import { inAscOrder, max, min, withId, withIds } from 'relatives-tree/utils';
+import { HALF_SIZE, NODES_IN_COUPLE, SIZE } from 'relatives-tree/constants';
+
 export const children = (families) => (families
     .filter(withType("root", "child"))
     .reduce((connectors, family) => {

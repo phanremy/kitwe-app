@@ -1,5 +1,6 @@
-import { NODES_IN_COUPLE } from '../constants';
+import { NODES_IN_COUPLE } from 'relatives-tree/constants';
 import { byGender, relToNode, withRelType } from './index';
+
 const inDescOrderOfChildCount = (a, b) => (b.children.length - a.children.length);
 const getSpouse = (store, spouses) => {
     const toNode = relToNode(store);

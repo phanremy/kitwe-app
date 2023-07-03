@@ -1,5 +1,6 @@
-import { getSpouseNodesFunc } from './getSpouseNodesFunc';
-import { newUnit } from './units';
+import { getSpouseNodesFunc } from 'relatives-tree/utils/getSpouseNodesFunc';
+import { newUnit } from 'relatives-tree/utils/units';
+
 const toArray = (nodes) => nodes.map(node => Array.of(node));
 export const createChildUnitsFunc = (store) => {
     const getSpouseNodes = getSpouseNodesFunc(store);

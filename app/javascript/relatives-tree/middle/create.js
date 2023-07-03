@@ -1,12 +1,13 @@
-import { createChildUnitsFunc } from '../utils/createChildUnitsFunc';
-import { createFamilyFunc } from '../children/create';
-import { getSpouseNodesFunc } from '../utils/getSpouseNodesFunc';
-import { setDefaultUnitShift } from '../utils/setDefaultUnitShift';
-import { prop, withRelType } from '../utils';
-import { newFamily } from '../utils/family';
-import { unitsToNodes } from '../utils/units';
-import { NODES_IN_COUPLE } from '../constants';
-import { correctOverlaps } from './correctOverlaps';
+import { createChildUnitsFunc } from 'relatives-tree/utils/createChildUnitsFunc';
+import { createFamilyFunc } from 'relatives-tree/children/create';
+import { getSpouseNodesFunc } from 'relatives-tree/utils/getSpouseNodesFunc';
+import { setDefaultUnitShift } from 'relatives-tree/utils/setDefaultUnitShift';
+import { prop, withRelType } from 'relatives-tree/utils';
+import { newFamily } from 'relatives-tree/utils/family';
+import { unitsToNodes } from 'relatives-tree/utils/units';
+import { NODES_IN_COUPLE } from 'relatives-tree/constants';
+import { correctOverlaps } from 'relatives-tree/middle/correctOverlaps';
+
 export const createFamilyWithoutParents = (store) => {
     const family = newFamily(store.getNextId(), "root", true);
     family.children = createChildUnitsFunc(store)(family.id, store.root);

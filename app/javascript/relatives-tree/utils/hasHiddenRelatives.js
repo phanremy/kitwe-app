@@ -1,5 +1,6 @@
 import { withId, withIds } from './index';
-import { nodeIds } from './units';
+import { nodeIds } from 'relatives-tree/utils/units';
+
 const inUnits = (units, nodeId) => (units.some(unit => unit.nodes.some(withId(nodeId))));
 export const hasHiddenRelatives = (family, node) => {
     if (family.type !== "child" && inUnits(family.parents, node.id)) {

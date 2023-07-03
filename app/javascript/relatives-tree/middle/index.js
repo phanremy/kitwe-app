@@ -1,6 +1,7 @@
-import { hasDiffParents } from '../utils';
-import { rightOf } from '../utils/family';
-import { createBloodFamilies, createDiffTypeFamilies, createFamilyWithoutParents } from './create';
+import { hasDiffParents } from 'relatives-tree/utils';
+import { rightOf } from 'relatives-tree/utils/family';
+import { createBloodFamilies, createDiffTypeFamilies, createFamilyWithoutParents } from 'relatives-tree/middle/create';
+
 const arrangeFamilies = (families) => {
     for (let i = 1; i < families.length; i++) {
         families[i].X = rightOf(families[i - 1]);

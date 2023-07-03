@@ -1,5 +1,6 @@
-import { SIZE } from '../constants';
+import { SIZE } from 'relatives-tree/constants';
 import { prop } from './index';
+
 export const newUnit = (fid, nodes, isChild = false) => ({
     fid,
     child: isChild,

@@ -3,8 +3,8 @@ import { createMemo } from 'solid-js';
 import { For } from 'solid-js/web';
 import html from "solid-js/html";
 import calcTree from 'relatives-tree';
-import Connector from '../Connector/Connector';
-import Node from '../Node/Node';
+import Connector from 'components/Connector/Connector';
+import Node from 'components/Node/Node';
 
 function Tree(props) {
   const width = props.width / 2;

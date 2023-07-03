@@ -1,6 +1,7 @@
-import { prop, withId, withIds } from '../utils';
-import { unitsToNodes } from '../utils/units';
-import { setDefaultUnitShift } from '../utils/setDefaultUnitShift';
+import { prop, withId, withIds } from 'relatives-tree/utils';
+import { unitsToNodes } from 'relatives-tree/utils/units';
+import { setDefaultUnitShift } from 'relatives-tree/utils/setDefaultUnitShift';
+
 const moveSharedUnitToRight = (sharedIDs) => ((a, b) => {
     const foundA = a.nodes.some(withIds(sharedIDs));
     const foundB = b.nodes.some(withIds(sharedIDs));

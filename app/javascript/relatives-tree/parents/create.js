@@ -1,6 +1,7 @@
-import { byGender, prop } from '../utils';
-import { arrangeInOrder, newUnit } from '../utils/units';
-import { newFamily } from '../utils/family';
+import { byGender, prop } from 'relatives-tree/utils';
+import { arrangeInOrder, newUnit } from 'relatives-tree/utils/units';
+import { newFamily } from 'relatives-tree/utils/family';
+
 const getParentUnits = (store, unit) => (unit.nodes.reduce((units, child) => {
     const parents = store
         .getNodes(child.parents.map(prop('id')))
