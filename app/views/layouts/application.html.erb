@@ -24,7 +24,7 @@
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
 
-    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
+    <link rel="manifest" href="<%#= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -34,7 +34,7 @@
   </head>
   <body class="bg-gray-200 lg:flex overflow-y-hidden">
     <%= render 'shared/navbar' %>
-    <main class="w-full lg:mt-28 bg-white rounded p-5 overflow-y-scroll <%= profile_id_detected ? 'container-height-with-profile-id' : 'container-height-without-profile-id' %> lg:container-height">
+    <main class="w-full lg:mt-28 bg-white rounded lg:p-5 p-2 overflow-y-scroll <%= profile_id_detected ? 'container-height-with-profile-id' : 'container-height-without-profile-id' %> lg:container-height">
       <%= turbo_frame_tag 'flash' do %>
         <%= render 'shared/flash' %>
       <% end %>

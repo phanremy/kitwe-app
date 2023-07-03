@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import FamilyTree from '@balkangraph/familytree.js'
+// import FamilyTree from '@balkangraph/familytree.js'
 
 /*
  * Values:
@@ -11,8 +11,8 @@ import FamilyTree from '@balkangraph/familytree.js'
  */
 export default class extends Controller {
   initialize () {
-    console.log('family tree building')
-    console.log(this.element.dataset.familyTree)
+    // console.log('family tree building')
+    // console.log(this.element.dataset.familyTree)
     const family = new FamilyTree(this.element, {
       menu: {
         pdf: { text: "Export PDF" },

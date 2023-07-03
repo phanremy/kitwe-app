@@ -1,45 +1,31 @@
 import { Controller } from '@hotwired/stimulus'
+import { render } from "solid-js/web";
+import App from "components/App/App";
 
 export default class extends Controller {
   connect() {
-    // Fetch data from Rails, then call a method to handle the data
-    const data = JSON.parse(this.element.dataset.familyTree) // These are the data
-    this.updateFamilyTreeView(data)
+    this.updateFamilyTreeView();
+
+    var observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes") {
+          console.log(this.element.dataset.id);
+
+          // Example of accessing the element for which
+          // event was triggered
+          // mutation.target.textContent = "Attribute of the element changed";
+          this.updateFamilyTreeView();
+        }
+      });
+    });
+
+    observer.observe(this.element, {
+      attributes: true //configure it to listen to attribute changes
+    });
   }
 
-  updateFamilyTreeView(data) {
-    data.forEach(person => {
-      // Create a new div for the person
-      const personDiv = document.createElement("div")
-      personDiv.textContent = person.name
-
-      // If the person has parents, add them to the div
-      if (person.pids) {
-        const parentDiv = document.createElement("div")
-        parentDiv.textContent = "Parents: "
-        person.pids.forEach(pid => {
-          const parent = data.find(p => p.id === pid)
-          if (parent) {
-            parentDiv.textContent += parent.name + " "
-          }
-        })
-        personDiv.appendChild(parentDiv)
-      }
-
-      // If the person has a mother and father, add them to the div
-      else if (person.mid && person.fid) {
-        const parentDiv = document.createElement("div")
-        const mother = data.find(p => p.id === person.mid)
-        const father = data.find(p => p.id === person.fid)
-        if (mother && father) {
-          parentDiv.textContent = "Mother: " + mother.name + ", Father: " + father.name
-        }
-        personDiv.appendChild(parentDiv)
-      }
-
-      // Append the person's div to the family tree div
-
-      this.element.appendChild(personDiv)
-    })
+  updateFamilyTreeView() {
+    this.element.innerHTML = "";
+    render(App, this.element);
   }
 }
