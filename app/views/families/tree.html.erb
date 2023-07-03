@@ -1,8 +1,9 @@
 <%= turbo_frame_tag :family_tree do %>
-  <div id="family_tree"
+  <div id="family-tree"
        <%# style="width:100%; height:70vh;" %>
        <%# data-controller="family_tree_balkan" %>
-       <%# data-controller="family_tree_creator" %>
+       data-id="HkqEDLvxE"
+       data-controller="family_tree_creator"
        data-family-tree="<%#= @data.to_json %>">
   </div>
   <script type="module">
@@ -52,8 +53,8 @@
     //     `);
     // }
 
-    import { render } from "solid-js/web";
-    import App from "components/App/App";
-    render(App, document.getElementById('family_tree'));
+    // import { render } from "solid-js/web";
+    // import App from "components/App/App";
+    // render(App, document.getElementById('family_tree'));
   </script>
 <% end %>

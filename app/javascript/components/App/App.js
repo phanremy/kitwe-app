@@ -69,7 +69,7 @@ const HEIGHT = 80;
 // ]
 
 // const myID = 'vRSjcaDGj';
-const myID = 'HkqEDLvxE';
+// const myID = 'HkqEDLvxE';
 
 const nodes = [
   {
@@ -710,6 +710,8 @@ const nodes = [
 ]
 
 function App() {
+  const myID = document.getElementById('family-tree').dataset.id;
+
   const [rootId, setRootId] = createSignal(myID);
 
   const onResetClick = () => {
@@ -720,6 +722,7 @@ function App() {
   const onChangeRoot = (id) => {
     // console.log(`Change root from ${rootId()} to ${id}`)
     setRootId(id)
+    document.getElementById('family-tree').dataset.id = id
     // console.log(`rootId ${rootId()}`)
   };
 
