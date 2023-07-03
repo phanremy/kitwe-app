@@ -1,8 +1,5 @@
 import { Show } from 'solid-js/web';
-// import { ExtNode } from 'relatives-tree/lib/types';
 import html from "solid-js/html";
-
-// import css from './Node.module.css';
 
 function Node(props) {
   const onClick = () => props.onSubClick(props.node.id);

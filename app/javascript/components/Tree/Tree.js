@@ -1,11 +1,10 @@
+import { createSignal } from 'solid-js';
 import { createMemo } from 'solid-js';
 import { For } from 'solid-js/web';
 import html from "solid-js/html";
 import calcTree from 'relatives-tree';
 import Connector from '../Connector/Connector';
 import Node from '../Node/Node';
-
-// import css from './Tree.module.css';
 
 function Tree(props) {
   const width = props.width / 2;
@@ -19,27 +18,30 @@ function Tree(props) {
   );
 
   const Connectors = () => {
+
     // console.group(`Connectors`)
     //   console.log(tree().connectors)
     //   console.log(width)
     //   console.log(height)
     // console.groupEnd()
+
     return html`
       <${For} each=${tree().connectors}>
         ${(connector) => {
-          // console.log(connector, width, height)
           return (html`<${Connector} connector=${connector} width=${width} height=${height}/>`)
         }}
       </For>`;
   };
 
   const Nodes = () => {
+
     // console.group(`Nodes`)
     //   console.log(tree().nodes)
     //   console.log(props.width)
     //   console.log(props.height)
     //   console.log(props.onChangeRoot)
     // console.groupEnd()
+
     return html`
       <${For} each=${tree().nodes}>
         ${(node) => {

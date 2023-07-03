@@ -2,8 +2,6 @@ import { onCleanup } from 'solid-js';
 import { create } from 'pinch-zoom-pan';
 import html from "solid-js/html";
 
-// import css from './PinchZoomPan.module.css';
-
 function PinchZoomPan(props) {
   let element;
   let cleanup;

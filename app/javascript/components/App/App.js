@@ -1,14 +1,9 @@
 import { createSignal } from 'solid-js';
 import { Show } from 'solid-js/web';
 import html from "solid-js/html";
-import calcTree from 'relatives-tree';
 import PinchZoomPan from '../PinchZoomPan/PinchZoomPan';
 import Tree from '../Tree/Tree';
 
-// import { Node } from 'relatives-tree/lib/types';
-// import nodes from 'relatives-tree/samples/average-tree.json';
-// import css from './App.module.css';
-// const tree = calcTree({}, { rootId });
 const WIDTH = 70;
 const HEIGHT = 80;
 
@@ -73,6 +68,7 @@ const HEIGHT = 80;
 //   }
 // ]
 
+// const myID = 'vRSjcaDGj';
 const myID = 'HkqEDLvxE';
 
 const nodes = [
@@ -717,15 +713,15 @@ function App() {
   const [rootId, setRootId] = createSignal(myID);
 
   const onResetClick = () => {
-    console.log(`Reset from ${rootId()} to ${myID}`)
+    // console.log(`Reset from ${rootId()} to ${myID}`)
     setRootId(myID)
   };
-  const onChangeRoot = (id) => {
-    console.log(`Change root from ${rootId()} to ${id}`)
-    setRootId(id)
-    console.log(`rootId ${rootId()}`)
-  };
 
+  const onChangeRoot = (id) => {
+    // console.log(`Change root from ${rootId()} to ${id}`)
+    setRootId(id)
+    // console.log(`rootId ${rootId()}`)
+  };
 
 // <${PinchZoomPan}
 //   min=${0.5}
@@ -742,13 +738,19 @@ function App() {
 //   />
 // </PinchZoomPan>
 
+  // console.group('App');
+  //   console.log(`rootId ${rootId}`)
+  //   console.log(onChangeRoot)
+  //   console.log(onResetClick)
+  // console.groupEnd();
+
   return (
     html`
       <>
         <div class="solid__app__root">
           <header class="solid__app__header">
             <h1 class="solid__app__title">
-              Family Tree
+              Family Tree of ${rootId}
             </h1>
             <small>
               <a target="_blank" href="https://github.com/SanichKotikov/solid-family-tree-example">Credits to SanichKotikov</a>
