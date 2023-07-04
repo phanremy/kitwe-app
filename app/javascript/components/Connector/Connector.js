@@ -1,5 +1,4 @@
 import html from "solid-js/html";
-// import { Connector as TreeConnector } from 'relatives-tree/lib/types';
 
 const MIN_THICKNESS = 1;
 

@@ -81,7 +81,6 @@ h2 {
   display: flex;
   height: 100%;
   flex-direction: column;
-  /* background: #eee; */
 }
 
 .solid__app__header {
@@ -91,7 +90,6 @@ h2 {
   align-items: center;
   justify-content: space-between;
   background: #fff;
-  /* border-bottom: 1px solid #ddd; */
   z-index: 999;
 }
 
@@ -125,7 +123,9 @@ h2 {
 }
 
 .solid__node__id {
-  margin-left: 4px;
+  display: flex;
+  align-items: end;
+  color: white;
   font-size: 7px;
   line-height: 1;
   opacity: .7;
@@ -142,25 +142,16 @@ h2 {
   flex: 1;
   border: 2px solid rgba(0, 0, 0, .2);
   border-radius: 10px 0;
-}
-
-.solid__node__male {
-  background: #a4ecff;
-}
-
-.solid__node__female {
-  background: #fdaed8;
+  background-position: center;
+  background-size: cover;
 }
 
 .solid__node__isRoot {
-  border-color: rgba(0, 0, 0, .4);;
+  border: thick double rgb(229 231 235) !important;
 }
 
 .solid__node__sub {
   position: absolute;
-  /* top: 6px;
-  right: 14px;
-  width: 14px;*/
   top: 2px;
   right: 9px;
   width: 25px;
@@ -169,14 +160,7 @@ h2 {
   border: 1px solid rgba(0, 0, 0, .2);
   border-radius: 4px 0;
   cursor: pointer;
-}
-
-.solid__node__sub.solid__node__male {
-  background: #fdaed8;
-}
-
-.solid__node__sub.solid__node__female {
-  background: #a4ecff;
+  background: rgb(229 231 235);
 }
 
 .solid__pinchzoompan__root {
@@ -201,8 +185,6 @@ h2 {
 
 .solid__tree__root {
   background: #fff;
-  /* border: 1px solid #ddd;
-  border-radius: 8px; */
 }
 
 /* SOLID JS FAMILY TREE CREATOR - END */

@@ -7,70 +7,6 @@ import Tree from 'components/Tree/Tree';
 const WIDTH = 70;
 const HEIGHT = 80;
 
-// const myID = 'kuVISwh7w';
-
-// const nodes = [
-//   {
-//     "id": "kuVISwh7w",
-//     "gender": "male",
-//     "parents": [],
-//     "siblings": [],
-//     "spouses": [],
-//     "children": []
-//   }
-// ]
-
-// const myID = 'dyTpfj6sr';
-
-// const nodes = [
-//   {
-//     "id": "dyTpfj6sr",
-//     "gender": "male",
-//     "spouses": [],
-//     "siblings": [],
-//     "parents": [],
-//     "children": [
-//       {
-//         "id": "ahfR5lR2s",
-//         "type": "blood"
-//       },
-//       {
-//         "id": "aoF9dn5Ew",
-//         "type": "blood"
-//       }
-//     ]
-//   },
-//   {
-//     "id": "ahfR5lR2s",
-//     "gender": "female",
-//     "spouses": [],
-//     "siblings": [],
-//     "parents": [
-//       {
-//         "id": "dyTpfj6sr",
-//         "type": "blood"
-//       }
-//     ],
-//     "children": []
-//   },
-//   {
-//     "id": "aoF9dn5Ew",
-//     "gender": "male",
-//     "spouses": [],
-//     "siblings": [],
-//     "parents": [
-//       {
-//         "id": "dyTpfj6sr",
-//         "type": "blood"
-//       }
-//     ],
-//     "children": []
-//   }
-// ]
-
-// const myID = 'vRSjcaDGj';
-// const myID = 'HkqEDLvxE';
-
 const nodes = [
   {
     "id": "HkqEDLvxE",
@@ -715,15 +651,12 @@ function App() {
   const [rootId, setRootId] = createSignal(myID);
 
   const onResetClick = () => {
-    // console.log(`Reset from ${rootId()} to ${myID}`)
     setRootId(myID)
   };
 
   const onChangeRoot = (id) => {
-    // console.log(`Change root from ${rootId()} to ${id}`)
     setRootId(id)
     document.getElementById('family-tree').dataset.id = id
-    // console.log(`rootId ${rootId()}`)
   };
 
 // <${PinchZoomPan}

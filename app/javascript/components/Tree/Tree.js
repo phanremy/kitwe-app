@@ -66,9 +66,6 @@ function Tree(props) {
   //   console.log(height)
   // console.groupEnd()
 
-  // width: tree().canvas.width * width + `px`,
-  // height: tree().canvas.height * height + `px`,
-
   return (
     html`
       <div
