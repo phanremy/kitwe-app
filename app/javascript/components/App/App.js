@@ -1,7 +1,6 @@
 import { createSignal } from 'solid-js';
 import { Show } from 'solid-js/web';
 import html from "solid-js/html";
-import PinchZoomPan from 'components/PinchZoomPan/PinchZoomPan';
 import Tree from 'components/Tree/Tree';
 
 const WIDTH = 70;
@@ -659,21 +658,6 @@ function App() {
     document.getElementById('family-tree').dataset.id = id
   };
 
-// <${PinchZoomPan}
-//   min=${0.5}
-//   max=${2.5}
-//   captureWheel
-//   class="solid__app__wrapper"
-// >
-//   <${Tree}
-//     nodes=${nodes}
-//     rootId=${rootId()}
-//     width=${WIDTH}
-//     height=${HEIGHT}
-//     onChangeRoot=${onChangeRoot}
-//   />
-// </PinchZoomPan>
-
   // console.group('App');
   //   console.log(`rootId ${rootId}`)
   //   console.log(onChangeRoot)
@@ -705,7 +689,8 @@ function App() {
             </button>
           </Show>
         </div>
-      </>`
+      </>
+    `
   );
 }
 
