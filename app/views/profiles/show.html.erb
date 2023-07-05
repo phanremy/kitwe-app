@@ -40,6 +40,9 @@
 <div class="py-2">
   <span class="text-xs"><%= t('phone', scope: 'activerecord.attributes.profile') %>:</span> <%= @profile.phone %>
 </div>
+<div class="py-2">
+  <span class="text-xs"><%= t('gender', scope: 'activerecord.attributes.profile') %>:</span> <%= @profile.gender %>
+</div>
 
 <% if @profile.birth_date %>
   <div class="py-2">

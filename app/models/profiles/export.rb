@@ -24,7 +24,7 @@ module Profiles
 
     def row_infos(profile)
       [profile.designation, profile.pseudo, profile.first_name, profile.last_name, profile.email, profile.phone,
-       profile.birth_date, profile.parents&.csv_designation, profile.partner_csv_designations,
+       profile.gender, profile.birth_date, profile.parents&.csv_designation, profile.partner_csv_designations,
        profile.category, profile.small_photo_url, profile.creator.email]
     end
   end

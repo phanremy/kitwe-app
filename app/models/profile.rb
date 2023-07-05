@@ -22,12 +22,13 @@ class Profile < ApplicationRecord
   # has_many :profile_events,           dependent: :delete_all
   # has_many :events,                   inverse_of: :profiles, through: :profile_events
 
+  before_save :nullify_gender
   after_save :nullify_photo_url
 
   PRIVACIES = %w[public only_shared only_friends private].freeze
   ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name first_name_privacy last_name last_name_privacy email email_privacy
-                       phone phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
+                       phone gender phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
                        notes parents_id category photo].freeze
   CSV_HEADERS = { 'Designation' => nil,
                   'Pseudo' => 'pseudo',
@@ -35,12 +36,15 @@ class Profile < ApplicationRecord
                   'Last name' => 'last_name',
                   'Email' => 'email',
                   'Phone' => 'phone',
+                  'Gender' => 'gender',
                   'Birthday' => 'birth_date',
                   'Parents' => nil,
                   'Couples' => nil,
                   'Category' => 'category',
                   'Photo url' => 'photo_url',
                   'Exporter' => nil }.freeze
+
+  ALLOWED_GENDER = [nil, 'male', 'female'].freeze
 
   MAX_DEGREE_OF_SEPARATION = 10
   WITH_SELF_CAPTION = 'with nobody'
@@ -102,6 +106,12 @@ class Profile < ApplicationRecord
     return unless photo.url && photo_url
 
     update!(photo_url: nil)
+  end
+
+  def nullify_gender
+    return if [nil, 'male', 'female'].include?(gender)
+
+    self.gender = nil
   end
 
   def next_birthday

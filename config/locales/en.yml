@@ -83,6 +83,7 @@ en:
         linkedin_url: Linkedin
         category: Category
         notes: Notes
+        gender: Gender
     errors:
       models:
         couple:

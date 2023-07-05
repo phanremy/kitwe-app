@@ -28,6 +28,10 @@
       <%= form.select :parents_id, profile_parents_options(params[:couple_id]), {}, class: 'w-full' %>
     </div>
     <div class="relative focus-within:border-blue-500 mb-5">
+      <%= form.label :gender, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.select :gender, Profile::ALLOWED_GENDER, {}, class: 'w-full' %>
+    </div>
+    <div class="relative focus-within:border-blue-500 mb-5">
       <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.select :category, profile_category_attribute_options, {}, class: 'w-full' %>
     </div>
