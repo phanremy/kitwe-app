@@ -41,8 +41,9 @@ end
 
 puts 'Start Seed'
 
-admin = User.find_or_create_by(email: 'user1@example.com') { |user| user.password = 'yhnujm' }
-visitor = User.find_or_create_by(email: 'user3@example.com') { |user| user.password = 'yhnujm' }
+admin = User.find_or_create_by(email: 'user1@example.com') { |user| user.password = 'y3nUjm' }
+User.find_or_create_by(email: 'user2@example.com') { |user| user.password = 'y3nUjm' }
+visitor = User.find_or_create_by(email: 'user3@example.com') { |user| user.password = 'y3nUjm' }
 
 # Post.create!(title: 'Visitor\'s first post', body: 'This is the first post of the visitor', user: visitor)
 # Post.create!(title: 'Admin\'s first post', body: 'This is the first post of the admin', user: admin)

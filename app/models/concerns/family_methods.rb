@@ -5,10 +5,10 @@ module FamilyMethods
 
   included do
     def partner_ids
-      Couple.where(profile1_id: self)
-            .or(Couple.where(profile2_id: self))
-            .pluck(:profile1_id, :profile2_id)
-            .flatten - [id]
+      (Couple.where(profile1_id: self)
+             .or(Couple.where(profile2_id: self))
+             .pluck(:profile1_id, :profile2_id)
+             .flatten - [id]).compact
     end
 
     def couples
