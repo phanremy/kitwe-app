@@ -11,7 +11,7 @@ module Profiles
     # [:id, :gender, :parents, :siblings, :spouses, :children]
     def call
       profile_full_family.map do |profile|
-        { id: profile.id.to_s, name: profile.designation, gender: 'male' || 'female',
+        { id: profile.id.to_s, designation: profile.designation, gender: 'male' || 'female',
           parents: profile.parents_profiles.map { |parent| { id: parent.id.to_s, type: 'blood' } },
           siblings: profile.sibling_profiles.map { |sibling| { id: sibling.id.to_s, type: 'blood' } },
           spouses: profile.partner_ids.map { |id| { id: id.to_s, type: 'married' } },

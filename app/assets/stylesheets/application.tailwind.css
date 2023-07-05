@@ -112,8 +112,10 @@ h2 {
 
 .solid__app__reset {
   position: absolute;
-  top: 60px;
-  right: 10px;
+  /* top: 60px;
+  right: 10px; */
+  bottom: 10px;
+  left: 10px;
   padding: 4px 10px;
   line-height: 1;
   background: #fff;
