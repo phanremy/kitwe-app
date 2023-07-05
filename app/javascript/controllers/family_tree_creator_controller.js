@@ -1,6 +1,6 @@
 import { Controller } from '@hotwired/stimulus'
-import { render } from "solid-js/web";
-import App from "components/App/App";
+import { render } from 'solid-js/web';
+import App from 'family-tree/components/App/App';
 
 export default class extends Controller {
   connect() {
@@ -8,12 +8,12 @@ export default class extends Controller {
 
     var observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
-        if (mutation.type === "attributes") {
+        if (mutation.type === 'attributes') {
           console.log(this.element.dataset.id);
 
           // Example of accessing the element for which
           // event was triggered
-          // mutation.target.textContent = "Attribute of the element changed";
+          // mutation.target.textContent = 'Attribute of the element changed';
           this.updateFamilyTreeView();
         }
       });
@@ -25,7 +25,7 @@ export default class extends Controller {
   }
 
   updateFamilyTreeView() {
-    this.element.innerHTML = "";
+    this.element.innerHTML = '';
     render(App, this.element);
   }
 }

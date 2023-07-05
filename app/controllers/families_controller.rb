@@ -11,18 +11,10 @@ class FamiliesController < ApplicationController
   def index; end
 
   def tree
-    @data = Profiles::FamilyTreeBalkan.new(params[:profile_id]).call
-    # [:id, :name, :pids, :mid, :fid, :url, :img]
-  end
+    return unless params[:profile_id]
 
-  # def create
-  #   render turbo_stream: turbo_stream.update(
-  #     :family_tree,
-  #     partial: 'family_tree',
-  #     locals: { data: Profiles::FamilyTree.new(params[:family_profile_id]).call,
-  #               profile_id: params[:family_profile_id] }
-  #   )
-  # end
+    @data = Profiles::FamilyTreeCreator.new(params[:profile_id]).call
+  end
 
   private
 

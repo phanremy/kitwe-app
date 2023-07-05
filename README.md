@@ -11,4 +11,4 @@ She/he creates profile for her/his acquaintances, and keep tracks of information
 - Ruby `3.0.3`
 - Ruby on Rails `7.0`
 - [Hotwire](https://hotwired.dev/)
-- [Materializecss](https://materializecss.com/)
+- [SolidJS](https://www.solidjs.com/)

@@ -1,60 +1,8 @@
 <%= turbo_frame_tag :family_tree do %>
   <div id="family-tree"
-       <%# style="width:100%; height:70vh;" %>
-       <%# data-controller="family_tree_balkan" %>
-       data-id="HkqEDLvxE"
        data-controller="family_tree_creator"
-       data-family-tree="<%#= @data.to_json %>">
+       data-initial-id="<%= params[:profile_id] %>"
+       data-id="<%= params[:profile_id] %>"
+       data-family-tree="<%= @data.to_json %>">
   </div>
-  <script type="module">
-    // import {
-    //   createSignal,
-    //   onCleanup,
-    // } from "solid-js";
-    // import html from "solid-js/html";
-
-    // const App = () => {
-    //     const [count, setCount] = createSignal(0),
-    //     timer = setInterval(() => setCount(count() + 1), 1000);
-    //   onCleanup(() => clearInterval(timer));
-    //   return html`<div>${count}</div>`;
-    // };
-
-    // import h from "solid-js/html";
-    // const App = () => {
-    //     const [count, setCount] = createSignal(0),
-    //     timer = setInterval(() => setCount(count() + 1), 1000);
-    //   onCleanup(() => clearInterval(timer));
-    //   // return html`<div>${count}</div>`;
-    //   // or
-    //   return h("div", {}, count);
-    // };
-
-    // const App = () => {
-    //   // create a reactive signal for time
-    //   const [time, setTime] = createSignal(0);
-
-    //   // create an interval to update the time every second
-    //   const interval = setInterval(() => {
-    //     setTime(time() + 1);
-    //   }, 1000);
-
-    //   // clean up the interval when the component is unmounted
-    //   onCleanup(() => { clearInterval(interval); });
-
-    //   // function to reset the time
-    //   const resetTime = () => { setTime(0);};
-
-    //   return (html`
-    //     <>
-    //       <div>Time: ${time}</div>
-    //       <button onClick=${resetTime}>Reset timer</button>
-    //     </>
-    //     `);
-    // }
-
-    // import { render } from "solid-js/web";
-    // import App from "components/App/App";
-    // render(App, document.getElementById('family_tree'));
-  </script>
 <% end %>
