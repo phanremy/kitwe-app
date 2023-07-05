@@ -16,13 +16,13 @@ module FamilyMethods
     end
 
     def sibling_profiles
-      return unless parents
+      return [] unless parents
 
       parents.children
     end
 
     def parents_profiles
-      return nil if parents.nil?
+      return [] if parents.nil?
 
       Profile.where(id: parents_ids)
     end

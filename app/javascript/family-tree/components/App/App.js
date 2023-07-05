@@ -18,7 +18,7 @@ function App() {
   };
 
   const onChangeRoot = (id) => {
-    setRootId(id)
+    // setRootId(id)
     // Temporary hack to update the rootId in the DOM so that the Stimulus controller can pick it up
     document.getElementById('family-tree').dataset.id = id
   };
