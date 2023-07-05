@@ -83,13 +83,16 @@ h2 {
   flex-direction: column;
 }
 
-.solid__app__header {
+.solid__app__footer {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
   display: flex;
-  height: 48px;
-  padding: 0 20px;
+  height: 30px;
+  width: 100%;
+  padding: 0 1.5rem;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
   z-index: 999;
 }
 
@@ -111,11 +114,7 @@ h2 {
 }
 
 .solid__app__reset {
-  position: absolute;
-  /* top: 60px;
-  right: 10px; */
-  bottom: 10px;
-  left: 10px;
+  width: fit-content;
   padding: 4px 10px;
   line-height: 1;
   background: #fff;

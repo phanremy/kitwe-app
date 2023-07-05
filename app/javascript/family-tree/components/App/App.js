@@ -39,14 +39,6 @@ function App() {
     html`
       <>
         <div class="solid__app__root">
-          <header class="solid__app__header">
-            <h1 class="solid__app__title">
-              Family Tree of ${initialId}
-            </h1>
-            <small>
-              Credits to <a target="_blank" href="https://github.com/SanichKotikov/solid-family-tree-example">SanichKotikov</a>
-            </small>
-          </header>
           <${Tree}
             nodes=${nodes}
             rootId=${rootId()}
@@ -55,11 +47,16 @@ function App() {
             height=${HEIGHT}
             onChangeRoot=${onChangeRoot}
           />
-          <${Show} when=${rootId() !== initialId}>
-            <button type="button" class="solid__app__reset" onClick=${onResetClick}>
-              Reset
-            </button>
-          </Show>
+          <footer class="solid__app__footer">
+            <small>
+              Credits to <a target="_blank" href="https://github.com/SanichKotikov/solid-family-tree-example">SanichKotikov</a>
+            </small>
+            <${Show} when=${rootId() !== initialId}>
+              <button type="button" class="solid__app__reset" onClick=${onResetClick}>
+                Reset
+              </button>
+            </Show>
+          </footer>
         </div>
       </>
     `
