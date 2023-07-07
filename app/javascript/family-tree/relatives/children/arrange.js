@@ -6,6 +6,13 @@ import { arrangeParentsIn } from 'family-tree/relatives/utils/arrangeParentsIn';
 const arrangeNextFamily = (family, nextFamily) => {
     const unit = family.parents[0];
     const index = nextFamily.children.findIndex(sameAs(unit));
+    // console.group('arrangeNextFamily');
+    //   console.log(family.parents[0])
+    //   console.log(nextFamily.children)
+    //   console.log(index)
+      //   console.log(sameAs(unit))
+      //   console.log(unit)
+    // console.groupEnd();
     index === 0
         ? nextFamily.X = getUnitX(family, unit) - nextFamily.children[index].pos
         : nextFamily.children[index].pos = getUnitX(family, unit) - nextFamily.X;

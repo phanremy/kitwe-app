@@ -28,7 +28,7 @@ function Node(props) {
               "background-image": `linear-gradient(180deg, rgba(9,111,121,0) 0%, rgba(0,0,0,1) 150%), url(${props.node.img})`, /* W3C */
             }}
           >
-            <div class="solid__node__id">${props.node.designation}</div>
+            <div class="solid__node__id">${props.node.name}</div>
           </div>
           <${Show} when=${props.node.hasSubTree}>
             <div
