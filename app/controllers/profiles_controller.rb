@@ -7,8 +7,8 @@ class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show children]
 
   before_action :validate_url_token, only: %i[show children]
-  before_action :set_profiles, only: %i[index birthdays]
-  before_action :set_profile, except: %i[index new create birthdays children]
+  before_action :set_profiles, only: %i[index birth_dates]
+  before_action :set_profile, except: %i[index new create birth_dates children]
 
   load_and_authorize_resource
 
@@ -22,8 +22,8 @@ class ProfilesController < ApplicationController
   end
   # @events = @profile.events
 
-  def birthdays
-    @birthdays_data = Profiles::Birthdays.new(@profiles).call
+  def birth_dates
+    @birth_dates_data = Profiles::BirthDates.new(@profiles).call
   end
 
   def children
@@ -94,7 +94,8 @@ class ProfilesController < ApplicationController
   def set_profiles
     @profiles = Profile.accessible_by(current_ability).order(updated_at: :desc)
     @profiles = @profiles.designation_query(params[:search]) if params[:search].present?
-    @profiles = @profiles.birth_date_query(params[:birthdays]) if params[:birthdays].present?
+    @profiles = @profiles.birth_date_query(params[:birthday]) if params[:birthday].present?
+    @profiles = @profiles.gender_query(params[:gender]) if params[:gender].present?
     @profiles = @profiles.category_query(params[:category]) if params[:category].present?
   end
 

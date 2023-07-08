@@ -19,25 +19,24 @@ module ProfilesHelper
     options_for_select(options, @profile.parents&.id || couple_id)
   end
 
-  def profile_category_attribute_options(category = nil)
-    profile_category_options(%w[family friend colleague], category)
+  def profile_gender_attribute_options
+    select_options('gender', %w[male female], @profile&.gender)
   end
 
-  def profile_category_search_options(category = nil)
-    profile_category_options(%w[without family friend colleague], category)
+  def profile_gender_search_options(gender_option)
+    select_options('gender', %w[not_specified male female], gender_option)
   end
 
-  def profile_category_options(options, category)
-    options = [nil] + options.map { |option| [I18n.t("profiles.category.#{option}"), option] }
-
-    options_for_select(options, @profile&.category || category)
+  def profile_category_attribute_options
+    select_options('category', %w[family friend colleague], @profile&.category || category_option)
   end
 
-  def profile_birthday_options(birthday_option)
-    options = [nil] + %w[without with centenarian]
-              .map { |option| [I18n.t("profiles.birthday.#{option}"), option] }
+  def profile_category_search_options(category_option)
+    select_options('category', %w[without family friend colleague], @profile&.category || category_option)
+  end
 
-    options_for_select(options, birthday_option)
+  def profile_birth_date_search_options(birth_date_option)
+    select_options('birth_date', %w[without with centenarian], birth_date_option)
   end
 
   def couple_profile_options(profile1_id:, profile2_id:, blocked: true)
@@ -59,5 +58,13 @@ module ProfilesHelper
       safe_join([I18n.t('child_of'),
                  partners_links(parents)])
     end
+  end
+
+  private
+
+  def select_options(kind, options, selected_option)
+    options = [nil] + options.map { |option| [I18n.t("profiles.#{kind}.#{option}"), option] }
+
+    options_for_select(options, selected_option)
   end
 end

@@ -44,7 +44,7 @@ class Profile < ApplicationRecord
                   'Photo url' => 'photo_url',
                   'Exporter' => nil }.freeze
 
-  ALLOWED_GENDER = [nil, 'male', 'female'].freeze
+  _ALLOWED_GENDERS = [nil, 'male', 'female'].freeze
 
   MAX_DEGREE_OF_SEPARATION = 10
   WITH_SELF_CAPTION = 'with nobody'
@@ -70,6 +70,16 @@ class Profile < ApplicationRecord
   scope :category_query, lambda { |value|
                            value == 'without' ? where(category: '') : where(category: value)
                          }
+
+  # not_specified male female
+  scope :gender_query, lambda { |value|
+    case value
+    when 'not_specified'
+      where(gender: nil)
+    else
+      where(gender: value)
+    end
+  }
 
   # without with centenarian
   scope :birth_date_query, lambda { |value|

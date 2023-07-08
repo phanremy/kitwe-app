@@ -3,7 +3,8 @@
                        search_url: profiles_path,
                        filter_url: new_profile_filter_path(search: params[:search],
                                                            category: params[:category],
-                                                           birthdays: params[:birthdays]) %>
+                                                           gender: params[:gender],
+                                                           birthday: params[:birthday]) %>
   <div class="lg:w-auto w-full flex flex-wrap justify-between items-center">
     <div class="mb-5 mr-2 text-sm">
       <%= @profile_ids.count %> profiles

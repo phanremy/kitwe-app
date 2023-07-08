@@ -30,7 +30,7 @@ Rails.application.routes.draw do
         get '/tree', to: 'families#tree', as: 'tree'
       end
     end
-    get '/birthdays', to: 'profiles#birthdays', as: 'profile_birthdays'
+    get '/birthdays', to: 'profiles#birth_dates', as: 'profile_birth_dates'
     get '/children', to: 'profiles#children', as: 'profile_children'
     # resources :events
     # resources :friendships

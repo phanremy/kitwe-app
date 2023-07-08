@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Profiles
-  class Birthdays
+  class BirthDates
     def initialize(profiles)
       @profiles = profiles
     end

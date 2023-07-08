@@ -28,7 +28,10 @@ module FamilyMethods
     end
 
     def children_profiles
-      couples.map(&:children).flatten
+      # TODO: transform into an sql request (?)
+      couples.map(&:children)
+             .flatten
+             .sort_by { |profile| [profile.birth_date ? 1 : 0, profile.birth_date] }
     end
   end
 end

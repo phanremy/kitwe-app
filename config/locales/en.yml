@@ -22,7 +22,7 @@ en:
     not_found: No relationships
     with_children_error: This relationship has associated children to be taken care of first.
 
-  birthdays:
+  birth_dates:
     not_found: No birthdays found
 
   profiles:
@@ -42,15 +42,19 @@ en:
     with_couples_error: This profile has associated relationships to be taken care of first.
     category:
       any: ""
-      without: no category
-      family: family
-      friend: friend
-      colleague: colleague
-    birthday:
+      without: No category
+      family: Family
+      friend: Friend
+      colleague: Colleague
+    birth_date:
       any: ""
-      with: with birthdays
-      without: without birthdays
-      centenarian: centenarians
+      with: With birthdays
+      without: Without birthdays
+      centenarian: Centenarians
+    gender:
+      not_specified: Not specified
+      male: Male
+      female: Female
 
   export:
     copy: Copy to Clipboard

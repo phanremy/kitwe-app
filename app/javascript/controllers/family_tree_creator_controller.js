@@ -26,6 +26,11 @@ export default class extends Controller {
 
   updateFamilyTreeView() {
     this.element.innerHTML = '';
-    render(App, this.element);
+    try {
+      render(App, this.element);
+    } catch (error) {
+      console.error(error);
+      this.element.innerHTML = 'An error occurred, please try again later';
+    }
   }
 }

@@ -1,0 +1,20 @@
+<div class="flex justify-between">
+  <%= render 'search', filter: false,
+                       search_url: profile_birth_dates_path %>
+</div>
+<% if @birth_dates_data.count.zero? %>
+  <p><%= t('birth_dates.not_found') %></p>
+<% else %>
+  <% @birth_dates_data.each do |birth_date_datum| %>
+    <h1 class="text-xl py-2 text-gray-500"><%= year_month_label(birth_date_datum[0]) %></h1>
+    <% birth_date_datum[1].each do |birth_date| %>
+      <p>
+        <%= link_to profile_path(birth_date[:id]) do %>
+          <%= birth_date[:name] %>
+        <% end %>
+        - <%= l birth_date[:date], format: :fr_long %>
+        - <%= birth_date[:age] %> years old in <%= (birth_date[:date] - Date.today).to_i %> days
+      </p>
+    <% end %>
+  <% end %>
+<% end %>
