@@ -2,8 +2,19 @@
 
 # top level description of ProfilesHelper
 module ProfilesHelper
+  # TODO: refacto
+  def detect_profile_id
+    if (params[:controller] == 'profiles' && params[:action] == 'show') ||
+       (params[:controller] == 'profiles/cards' && params[:action] == 'show')
+      params[:id]
+    else
+      params[:profile_id]
+    end
+  end
+
   def profile_id_detected
-    (params[:controller] == 'profiles' && params[:action] == 'show') || params[:profile_id]
+    (params[:controller] == 'profiles' && params[:action] == 'show') || params[:profile_id] ||
+      (params[:controller] == 'profiles/cards' && params[:action] == 'show')
   end
 
   def profile_privacy_options
@@ -50,7 +61,7 @@ module ProfilesHelper
 
     options_for_select(collection.map { |profile| [profile&.designation, profile&.id] }, first)
   end
-  # TO DO: do something to make dynamically show only available options for the second pairing
+  # TODO: do something to make dynamically show only available options for the second pairing
   # (cannot be paired with an already paired profile)
 
   def child_of(parents)

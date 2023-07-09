@@ -10,28 +10,29 @@ Rails.application.routes.draw do
   resource :downloads, only: :create
 
   resources :profiles do
-    scope module: 'profiles' do
+    scope module: 'profiles', as: 'profile' do
+      member do
+        resource :card, only: :show
+      end
       collection do
-        resources :filters, only: :new,
-                            as: :profile_filters
-
-        resources :exports, only: :create,
-                            as: :profile_exports
-
-        resources :imports, only: %w[new create],
-                            as: :profile_imports
+        resources :filters, only: :new
+        resources :exports, only: :create
+        resources :imports, only: %w[new create]
       end
     end
   end
   scope "(:profile_id)" do
-    resources :couples, controllers: 'couples', except: :show
+    # TODO: put in resource profile
+    resources :couples, controllers: 'couples', except: %i[show]
+
     resources :families, only: %w[index] do
       collection do
         get '/tree', to: 'families#tree', as: 'tree'
       end
     end
     get '/birthdays', to: 'profiles#birth_dates', as: 'profile_birth_dates'
-    get '/children', to: 'profiles#children', as: 'profile_children'
+
+    # get '/children', to: 'profiles#children', as: 'profile_children'
     # resources :events
     # resources :friendships
   end

@@ -56,7 +56,7 @@ module Profiles
         flash.now[:error] = @result.errors.to_sentence
         render_modal_flash
       else
-        flash.now[:success] = "Import Ccmpleted for #{@result.imported_profile_count} profiles"
+        flash.now[:success] = "Import Completed for #{@result.imported_profile_count} profiles"
         render turbo_stream: turbo_stream.update(
           :import_form,
           partial: 'profiles/imports/create'

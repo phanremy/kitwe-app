@@ -26,16 +26,6 @@ class ProfilesController < ApplicationController
     @birth_dates_data = Profiles::BirthDates.new(@profiles).call
   end
 
-  def children
-    if params[:profile_id]
-      profile = Profile.find(params[:profile_id])
-      @children = profile.children_profiles
-      @couples = profile.couples
-    else
-      @children = @profiles.where.not(parents_id: nil)
-    end
-  end
-
   def new
     @profile = Profile.new
   end
