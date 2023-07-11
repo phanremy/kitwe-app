@@ -1,73 +1,72 @@
-<% if @profile.parents_id %>
-  <div id="profile_parents">
-    <div class="flex justify-between items-center">
-      <b class="py-5">
-        Parents
-      </b>
-    </div>
+<div id="profile_parents" class="border rounded mb-2 p-2">
+  <div class="flex justify-between items-center">
+    <b class="py-5">
+      Parents
+    </b>
+  </div>
+  <%# if @profile.parents_id %>
     <ul>
-      <li class="flex flex-wrap">
+      <li class="flex flex-wrap py-2">
         <%= child_of(@profile.parents) %>
       </li>
     </ul>
-  </div>
-<% end %>
+  <%# end %>
+</div>
 
-<% if @children.count.positive? %>
-  <div id="profile_children">
-    <div class="flex justify-between items-center">
-      <b class="py-5">
-        Children
-      </b>
+<div id="profile_children" class="border rounded mb-2 p-2">
+  <div class="flex justify-between items-center">
+    <b class="py-5">
+      Children
+    </b>
+    <%= render layout: 'shared/options', locals: { page_header: false } do %>
       <% if @couples.count.positive? %>
-        <%= render layout: 'shared/options', locals: { page_header: false } do %>
           <% @couples.each do |couple| %>
-            <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_profile_path(profile_id: params[:profile_id], couple_id: couple.id), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_profile_path(profile_id: params[:id], couple_id: couple.id), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
           <% end %>
-        <% end %>
+      <% else %>
+        <%= link_to 'Create relationship first', new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
       <% end %>
-    </div>
-    <ul>
-      <% @children.each do |child| %>
-        <li class="flex flex-wrap">
-          <%= link_to child.designation, profile_path(child) %>
-          : 
-          <%= child_of(child.parents) %>
-        </li>
-      <% end %>
-    </ul>
+    <% end %>
   </div>
-<% end %>
 
-<% if @couples.count.positive? %>
-  <div id="profile_couples">
-    <div class="flex justify-between items-center">
-      <b class="py-5">
-        Spouses
-      </b>
-      <% if can? :manage, Couple %>
-        <%= render layout: 'shared/options', locals: { page_header: false } do %>
-          <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-        <% end %>
+  <ul>
+    <% @children.each do |child| %>
+      <li class="flex flex-wrap py-2">
+        <%= link_to child.designation, profile_path(child) %>
+        : 
+        <%= child_of(child.parents) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="profile_couples" class="border rounded p-2">
+  <div class="flex justify-between items-center">
+    <b class="py-5">
+      Spouses
+    </b>
+    <% if can? :manage, Couple %>
+      <%= render layout: 'shared/options', locals: { page_header: false } do %>
+        <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 
-    <ul>
-      <% @couples.each do |couple| %>
-        <li class="py-2">
-          <div class="flex items-center">
-            <div class="flex w-full">
-              <%= partners_links(couple) %>
-            </div>
-
-            <%= render layout: 'shared/options', locals: { page_header: false } do %>
-              <%= link_to t('children.create_new'), new_profile_path(couple_id: couple.id, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
-              <%= link_to t('edit'), edit_couple_path(couple, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-              <%= button_to t('delete'), couple_path(couple), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-            <% end %>
+  <ul>
+    <% @couples.each do |couple| %>
+      <li class="py-2">
+        <div class="flex items-center">
+          <div class="flex w-full">
+            <%= partners_links(couple) %>
           </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
+          <%= render layout: 'shared/options', locals: { page_header: false } do %>
+            <%= link_to t('children.create_new'), new_profile_path(couple_id: couple.id, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+            <%= link_to t('edit'), edit_couple_path(couple, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%= button_to t('delete'), couple_path(couple), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
