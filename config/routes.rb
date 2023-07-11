@@ -32,7 +32,6 @@ Rails.application.routes.draw do
     end
     get '/birthdays', to: 'profiles#birth_dates', as: 'profile_birth_dates'
 
-    # get '/children', to: 'profiles#children', as: 'profile_children'
     # resources :events
     # resources :friendships
   end

@@ -26,7 +26,7 @@ export default class extends Controller {
 
   updateFamilyTreeView() {
     this.element.innerHTML = '';
-    // TODO: do not render if funky family tree
+    // TODO: do not render if buggy family tree
     try {
       render(App, this.element);
     } catch (error) {
