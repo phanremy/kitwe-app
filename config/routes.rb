@@ -11,9 +11,6 @@ Rails.application.routes.draw do
 
   resources :profiles do
     scope module: 'profiles', as: 'profile' do
-      member do
-        resource :card, only: :show
-      end
       collection do
         resources :filters, only: :new
         resources :exports, only: :create
@@ -26,6 +23,12 @@ Rails.application.routes.draw do
     resources :couples, controllers: 'couples', except: %i[show]
 
     resources :families, only: %w[index] do
+      scope module: 'families' do
+        collection do
+          resource :outline, only: %w[create]
+        end
+      end
+      # TODO: create TreesController
       collection do
         get '/tree', to: 'families#tree', as: 'tree'
       end
