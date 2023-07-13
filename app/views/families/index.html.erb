@@ -15,8 +15,8 @@
       <% end %>
     </div>
 
-    <%= form_with url: outline_path, method: :post do |form| %>
-      <%= form.text_field :id %>
+    <%= form_with url: outline_path, method: :post, html: { id: 'tree-interaction-form' }, data: { controller: 'form' } do |form| %>
+      <%= form.text_field :id, id: 'tree-interaction-id' %>
       <%= form.submit %>
     <% end %>
   </div>
