@@ -38,7 +38,9 @@ function App() {
   return (
     html`
       <>
-        <div class="solid__app__root">
+        <div class="solid__app__root"
+             data-controller="tree-interaction"
+             data-tree-interaction-form-outlet="#tree-interaction-form">
           <${Tree}
             nodes=${nodes}
             rootId=${rootId()}

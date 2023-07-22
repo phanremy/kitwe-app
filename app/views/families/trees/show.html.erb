@@ -1,6 +1,6 @@
-<%= turbo_frame_tag :family_tree do %>
+<%= turbo_frame_tag :tree do %>
   <div id="family-tree"
-       data-controller="family_tree_creator"
+       data-controller="tree-creator"
        data-initial-id="<%= params[:profile_id] %>"
        data-id="<%= params[:profile_id] %>"
        data-family-tree="<%= @data.to_json %>">

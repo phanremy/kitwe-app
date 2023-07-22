@@ -124,12 +124,11 @@ h2 {
 }
 
 .solid__node__id {
-  display: flex;
-  align-items: end;
   color: white;
   font-size: 7px;
   line-height: 1;
   opacity: .7;
+  height: fit-content;
 }
 
 .solid__node__root {
@@ -140,6 +139,7 @@ h2 {
 
 .solid__node__inner {
   display: flex;
+  align-items: end;
   flex: 1;
   border: 2px solid rgba(0, 0, 0, .2);
   border-radius: 10px 0;

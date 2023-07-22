@@ -2,8 +2,20 @@
 
 # top level description of ProfilesHelper
 module ProfilesHelper
+  # TODO: refacto
+  def detect_profile_id
+    if (params[:controller] == 'profiles' && params[:action] == 'show') ||
+       (params[:controller] == 'profiles/cards' && params[:action] == 'show')
+      params[:id]
+    else
+      params[:profile_id]
+    end
+  end
+
   def profile_id_detected
-    (params[:controller] == 'profiles' && params[:action] == 'show') || params[:profile_id]
+    (params[:controller] == 'profiles' && params[:action] == 'show') ||
+      (params[:controller] == 'profiles/cards' && params[:action] == 'show') ||
+      params[:profile_id]
   end
 
   def profile_privacy_options
@@ -39,6 +51,8 @@ module ProfilesHelper
     select_options('birth_date', %w[without with centenarian], birth_date_option)
   end
 
+  # TODO: do something to make dynamically show only available options for the second pairing
+  # (cannot be paired with an already paired profile)
   def couple_profile_options(profile1_id:, profile2_id:, blocked: true)
     collection = if blocked
                    [Profile.find(profile1_id)]
@@ -50,17 +64,6 @@ module ProfilesHelper
 
     options_for_select(collection.map { |profile| [profile&.designation, profile&.id] }, first)
   end
-  # TO DO: do something to make dynamically show only available options for the second pairing
-  # (cannot be paired with an already paired profile)
-
-  def child_of(parents)
-    content_tag(:div, class: 'flex') do
-      safe_join([I18n.t('child_of'),
-                 partners_links(parents)])
-    end
-  end
-
-  private
 
   def select_options(kind, options, selected_option)
     options = [nil] + options.map { |option| [I18n.t("profiles.#{kind}.#{option}"), option] }

@@ -10,31 +10,31 @@ Rails.application.routes.draw do
   resource :downloads, only: :create
 
   resources :profiles do
-    scope module: 'profiles' do
+    scope module: 'profiles', as: 'profile' do
       collection do
-        resources :filters, only: :new,
-                            as: :profile_filters
-
-        resources :exports, only: :create,
-                            as: :profile_exports
-
-        resources :imports, only: %w[new create],
-                            as: :profile_imports
+        resources :filters, only: :new
+        resources :exports, only: :create
+        resources :imports, only: %w[new create]
       end
     end
   end
+
   scope "(:profile_id)" do
-    resources :couples, controllers: 'couples', except: :show
+    resources :couples, controllers: 'couples', except: %i[index show]
+
     resources :families, only: %w[index] do
-      collection do
-        get '/tree', to: 'families#tree', as: 'tree'
+      scope module: 'families', as: 'families' do
+        collection do
+          resource :outline, only: %w[create]
+          resource :tree, only: %w[show]
+        end
       end
     end
-    get '/birthdays', to: 'profiles#birth_dates', as: 'profile_birth_dates'
-    get '/children', to: 'profiles#children', as: 'profile_children'
     # resources :events
     # resources :friendships
   end
+
+  get '/birthdays', to: 'profiles#birth_dates', as: 'profile_birth_dates'
 
   resources :posts
   get '/open-modal', to: 'pages#open_modal', as: 'open_modal'
