@@ -7,5 +7,6 @@ export default class extends Controller {
 
   proceed(event) {
     console.log(event)
+    this.element.requestSubmit()
   }
 }
