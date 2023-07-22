@@ -15,7 +15,11 @@ export default class extends Controller {
 
     this.nodeTargets.forEach((node) => { node.classList.remove('solid__node__isRoot') })
     event.target.classList.toggle('solid__node__isRoot')
-    document.getElementById('tree-interaction-id').value = event.target.dataset.nodeId
-    this.formOutlet.proceed(`form submit ${event.target.dataset.nodeId}`)
+    const formOutlineId = document.getElementById('tree-interaction-id')
+
+    if (formOutlineId.value !== event.target.dataset.nodeId) {
+      formOutlineId.value = event.target.dataset.nodeId
+      this.formOutlet.proceed(`form submit ${event.target.dataset.nodeId}`)
+    }
   }
 }
