@@ -105,7 +105,6 @@ class Profile < ApplicationRecord
     errors.add :base, "Another profile goes by the same designation: #{designation}"
   end
 
-  # TODO
   def forbidden_designation?
     return unless [Profile::WITH_SELF_CAPTION].include?(designation)
 

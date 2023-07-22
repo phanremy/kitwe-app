@@ -1,7 +1,3 @@
-<%#= form_with path: tree_families_path, method: :post, local: true, data: { turbo: true, turbo_frame: '', controller: '' } do |form| %>
-  <%#= form.select :family_profile_id, couple_profile_options(params[:profile_id]), {} %>
-  <%#= form.submit t('submit'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
-<%# end %>
 <%= turbo_frame_tag :family_tree do %>
   <div class="relative h-full">
     <%= turbo_frame_tag :tree, src: tokenized_url('tree', profile_id: params[:profile_id]) do %>
@@ -15,8 +11,10 @@
       <% end %>
     </div>
 
-    <%= form_with url: outline_path, method: :post, html: { id: 'tree-interaction-form' }, data: { controller: 'form' } do |form| %>
-      <%= form.text_field :id, id: 'tree-interaction-id' %>
+    <%= form_with url: families_outline_path, method: :post, html: { id: 'tree-interaction-form' }, data: { controller: 'form' } do |form| %>
+      <%= form.hidden_field :token, value: params[:token] %>
+      <%= form.text_field :id, value: params[:profile_id] %>
+      <%= form.text_field :outline_id, id: 'tree-interaction-id' %>
       <%= form.submit %>
     <% end %>
   </div>

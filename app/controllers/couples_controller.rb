@@ -4,8 +4,6 @@
 class CouplesController < ApplicationController
   include Tokenizer
 
-  skip_before_action :authenticate_user!, only: %i[index]
-  before_action :validate_url_token, only: %i[index]
   load_and_authorize_resource
 
   def new
@@ -28,7 +26,6 @@ class CouplesController < ApplicationController
 
   def update
     if @couple.update(couple_params)
-      # ProfileEvent.find_or_create
       flash.now[:success] = 'Couple was successfully updated'
       redirect_path
     else
@@ -66,7 +63,7 @@ class CouplesController < ApplicationController
 
   def redirect_path
     if params[:profile_id]
-      redirect_to profile_card_path(params[:profile_id], profile_id: nil)
+      redirect_to profile_path(params[:profile_id], profile_id: nil)
     else
       redirect_to root_path
     end

@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
 
   before_action :validate_url_token, only: %i[show children]
   before_action :set_profiles, only: %i[index birth_dates]
-  before_action :set_profile, except: %i[index new create birth_dates children]
+  before_action :set_profile, only: %i[show edit]
 
   load_and_authorize_resource
 
@@ -19,8 +19,12 @@ class ProfilesController < ApplicationController
 
   def show
     @tokenized_url = tokenized_url('profile', id: @profile.id)
+    # @profile
+    @couples = Couple.includes(:profile1, :profile2)
+                     .accessible_by(current_ability)
+                     .related_to(params[:id])
+    @children = @profile.children_profiles
   end
-  # @events = @profile.events
 
   def birth_dates
     @birth_dates_data = Profiles::BirthDates.new(@profiles).call
@@ -75,7 +79,7 @@ class ProfilesController < ApplicationController
   def create_success_redirection
     if params[:coupled_with].present?
       Couple.create!(profile1_id: params[:coupled_with], profile2_id: @profile.id, creator_id: current_user.id)
-      redirect_to couples_path(profile_id: params[:coupled_with])
+      redirect_to profile_path(params[:coupled_with], profile_id: nil)
     else
       redirect_to @profile
     end

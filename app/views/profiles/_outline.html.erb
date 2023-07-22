@@ -19,7 +19,7 @@
       <b class="py-5 mr-4">
         Spouses
       </b>
-      <% if can? :manage, Couple %>
+      <% if can? :manage, profile %>
         <%= render layout: 'shared/options', locals: { page_header: false } do %>
           <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
         <% end %>
@@ -48,13 +48,15 @@
       <b class="py-5 mr-4">
         Children
       </b>
-      <%= render layout: 'shared/options', locals: { page_header: false } do %>
-        <% if couples.count.positive? %>
-            <% couples.each do |couple| %>
-              <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_profile_path(profile_id: params[:id], couple_id: couple.id), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-            <% end %>
-        <% else %>
-          <%= link_to 'Create relationship first', new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+      <% if can? :manage, profile %>
+        <%= render layout: 'shared/options', locals: { page_header: false } do %>
+          <% if couples.count.positive? %>
+              <% couples.each do |couple| %>
+                <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_profile_path(profile_id: params[:id], couple_id: couple.id), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+              <% end %>
+          <% else %>
+            <%= link_to 'Create relationship first', new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <% end %>
         <% end %>
       <% end %>
     </div>

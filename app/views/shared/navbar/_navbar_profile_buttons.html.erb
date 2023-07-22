@@ -1,7 +1,3 @@
 <% profile_id = detect_profile_id %>
 <%= render 'shared/navbar/profile_buttons', category: :profile, url: tokenized_url('profile', { id: profile_id, profile_id: nil }) %>
-<%# if can? :manage, Profile.find(profile_id) %>
-  <%#= render 'shared/navbar/profile_buttons', category: :couples, url: profile_card_url(id: profile_id, profile_id: nil) %>
-  <%#= render 'shared/navbar/profile_buttons', category: :children, url: profile_children_url(profile_id: profile_id) %>
-<%# end %>
 <%= render 'shared/navbar/profile_buttons', category: :families, url: tokenized_url('families', { profile_id: profile_id }) %>

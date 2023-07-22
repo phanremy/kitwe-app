@@ -9,7 +9,6 @@ module Profiles
     end
 
     # [:id, :gender, :parents, :siblings, :spouses, :children]
-    # TODO: manage gender (put all male if necessary)
     def call
       profile_full_family.map do |profile|
         {

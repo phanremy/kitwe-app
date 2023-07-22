@@ -14,8 +14,6 @@ module Profiles
     end
 
     def create
-      # TODO: validate csv headers
-      # TODO: CsvExport model working with token exchange
       return render_no_inputs if params[:file].nil? && params[:token].blank?
       return render_wrong_token if wrong_token?
 

@@ -18,26 +18,23 @@ Rails.application.routes.draw do
       end
     end
   end
+
   scope "(:profile_id)" do
-    # TODO: put in resource profile
-    resources :couples, controllers: 'couples', except: %i[show]
+    resources :couples, controllers: 'couples', except: %i[index show]
 
     resources :families, only: %w[index] do
-      scope module: 'families' do
+      scope module: 'families', as: 'families' do
         collection do
           resource :outline, only: %w[create]
+          resource :tree, only: %w[show]
         end
       end
-      # TODO: create TreesController
-      collection do
-        get '/tree', to: 'families#tree', as: 'tree'
-      end
     end
-    get '/birthdays', to: 'profiles#birth_dates', as: 'profile_birth_dates'
-
     # resources :events
     # resources :friendships
   end
+
+  get '/birthdays', to: 'profiles#birth_dates', as: 'profile_birth_dates'
 
   resources :posts
   get '/open-modal', to: 'pages#open_modal', as: 'open_modal'
