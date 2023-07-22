@@ -13,9 +13,8 @@
 
     <%= form_with url: families_outline_path, method: :post, html: { id: 'tree-interaction-form' }, data: { controller: 'form' } do |form| %>
       <%= form.hidden_field :token, value: params[:token] %>
-      <%= form.text_field :id, value: params[:profile_id] %>
-      <%= form.text_field :outline_id, id: 'tree-interaction-id' %>
-      <%= form.submit %>
+      <%= form.hidden_field :id, value: params[:profile_id] %>
+      <%= form.hidden_field :outline_id, id: 'tree-interaction-id' %>
     <% end %>
   </div>
 <% end %>
