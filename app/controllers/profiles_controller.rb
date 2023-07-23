@@ -19,11 +19,6 @@ class ProfilesController < ApplicationController
 
   def show
     @tokenized_url = tokenized_url('profile', id: @profile.id)
-    # @profile
-    @couples = Couple.includes(:profile1, :profile2)
-                     .accessible_by(current_ability)
-                     .related_to(params[:id])
-    @children = @profile.children_profiles
   end
 
   def birth_dates

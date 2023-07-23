@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # TODO: refacto
   def default_url_options
     { profile_id: params[:profile_id] }
   end
