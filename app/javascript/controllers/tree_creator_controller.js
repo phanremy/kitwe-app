@@ -9,7 +9,7 @@ export default class extends Controller {
     var observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.type === 'attributes') {
-          console.log(this.element.dataset.id);
+          // console.log(this.element.dataset.id);
 
           // Example of accessing the element for which
           // event was triggered

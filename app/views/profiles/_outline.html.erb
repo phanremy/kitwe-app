@@ -1,4 +1,4 @@
-<div class="pt-5 relative" data-controller="remove">
+<div class="pt-5 relative" data-controller="remove" data-close-if-click-out-of-panel="true">
   <div class="p-5" style="width: fit-content">
     <% if profile.parents_id %>
       <div id="profile_parents" class="border rounded mb-2 p-2">
@@ -21,7 +21,7 @@
           Spouses
         </b>
         <% if can? :manage, profile %>
-          <%= render layout: 'shared/options', locals: { page_header: false } do %>
+          <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
             <%= link_to t('couples.create_new'), new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
           <% end %>
         <% end %>
@@ -34,7 +34,7 @@
               <%= other_partner_link(couple, profile) %>
             </div>
 
-            <%= render layout: 'shared/options', locals: { page_header: false } do %>
+            <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
               <%= link_to t('children.create_new'), new_profile_path(couple_id: couple.id, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
               <%= link_to t('edit'), edit_couple_path(couple, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
               <%= button_to t('delete'), couple_path(couple), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
@@ -50,7 +50,7 @@
           Children
         </b>
         <% if can? :manage, profile %>
-          <%= render layout: 'shared/options', locals: { page_header: false } do %>
+          <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
             <% if couples.count.positive? %>
                 <% couples.each do |couple| %>
                   <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_profile_path(profile_id: params[:id], couple_id: couple.id), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
@@ -72,7 +72,7 @@
     </div>
   </div>
   <% unless params['controller'] == 'profiles' %>
-    <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+    <span class="absolute top-0 bottom-0 right-0 px-4 py-3 h-fit">
       <svg class="fill-current h-6 w-6" role="button" xmlns="" viewBox="0 0 20 20" data-action="click->remove#proceed">
         <title>Close</title>
         <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
