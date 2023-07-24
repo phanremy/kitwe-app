@@ -1,21 +1,24 @@
 <div class="pt-5 relative" data-controller="remove" data-close-if-click-out-of-panel="true">
   <div class="p-5" style="width: fit-content">
-    <% if profile.parents_id %>
-      <div id="profile_parents" class="border rounded mb-2 p-2">
-        <div class="flex justify-between items-center">
-          <b class="py-5 mr-4">
-            Parents
-          </b>
-        </div>
-        <ul>
-          <% profile.parents_profiles.each do |parent| %>
-            <li class="flex items-center justify-between py-2">
-              <%= link_to parent.designation, profile_path(parent) %>
-            </li>
+    <div id="profile_parents" class="border rounded mb-2 p-2">
+      <div class="flex justify-between items-center">
+        <b class="py-5 mr-4">
+          Parents
+        </b>
+        <% if can? :manage, profile %>
+          <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+            <%= link_to t('profiles.edit'), edit_families_profile_path(profile), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
           <% end %>
-        </ul>
+        <% end %>
       </div>
-    <% end %>
+      <ul>
+        <% profile.parents_profiles.each do |parent| %>
+          <li class="flex items-center justify-between py-2">
+            <%= link_to parent.designation, profile_path(parent) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
     <div id="profile_couples" class="border rounded p-2 mb-2">
       <div class="flex justify-between items-center">

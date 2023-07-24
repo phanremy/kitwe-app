@@ -1,41 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   root 'profiles#index'
   resource :modal_shared_links, only: :create
   resource :shared_links, only: :create
   resource :downloads, only: :create
 
-  resources :profiles do
-    scope module: 'profiles', as: 'profile' do
-      collection do
-        resources :filters, only: :new
-        resources :exports, only: :create
-        resources :imports, only: %w[new create]
-      end
-    end
-  end
+  draw :profile
 
   scope "(:profile_id)" do
     resources :couples, controllers: 'couples', except: %i[index show]
 
-    resources :families, only: %w[index] do
-      scope module: 'families', as: 'families' do
-        collection do
-          resource :outline, only: %w[create]
-          resource :tree, only: %w[show]
-        end
-      end
-    end
+    draw :family
     # resources :events
     # resources :friendships
   end
 
-  get '/birthdays', to: 'profiles#birth_dates', as: 'profile_birth_dates'
-
-  resources :posts
+  # resources :posts
   get '/open-modal', to: 'pages#open_modal', as: 'open_modal'
 end
