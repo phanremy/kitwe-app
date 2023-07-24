@@ -1,26 +1,26 @@
-<div class="pt-5 relative" data-controller="remove" data-close-if-click-out-of-panel="true">
+<%= render layout: 'shared/family_card' do %>
   <div class="p-5" style="width: fit-content">
-    <div id="profile_parents" class="border rounded mb-2 p-2">
+    <div id="profile_parents" class="<%#= border rounded %> mb-2 p-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
           Parents
         </b>
         <% if can? :manage, profile %>
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
-            <%= link_to t('profiles.edit'), edit_families_profile_path(profile), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%= link_to t('profiles.edit'), edit_families_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
           <% end %>
         <% end %>
       </div>
       <ul>
         <% profile.parents_profiles.each do |parent| %>
-          <li class="flex items-center justify-between py-2">
+          <li class="flex items-center justify-between py-1">
             <%= link_to parent.designation, profile_path(parent) %>
           </li>
         <% end %>
       </ul>
     </div>
 
-    <div id="profile_couples" class="border rounded p-2 mb-2">
+    <div id="profile_couples" class="<%#= border rounded %> p-2 mb-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
           Spouses
@@ -34,7 +34,7 @@
 
       <ul>
         <% couples.each do |couple| %>
-          <li class="flex items-center justify-between py-2">
+          <li class="flex items-center justify-between py-1">
             <div class="flex w-full mr-4">
               <%= other_partner_link(couple, profile) %>
             </div>
@@ -50,7 +50,7 @@
       </ul>
     </div>
 
-    <div id="profile_children" class="border rounded p-2">
+    <div id="profile_children" class="<%#= border rounded %> p-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
           Children
@@ -59,10 +59,10 @@
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
             <% if couples.count.positive? %>
                 <% couples.each do |couple| %>
-                  <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_profile_path(profile_id: params[:id], couple_id: couple.id), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                  <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_profile_path(profile_id: params[:id], couple_id: couple.id), class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
                 <% end %>
             <% else %>
-              <%= link_to 'Create relationship first', new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+              <%= link_to 'Create relationship first', new_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
             <% end %>
           <% end %>
         <% end %>
@@ -70,17 +70,11 @@
 
       <ul>
         <% children.each do |child| %>
-          <li class="flex items-center justify-between py-2">
+          <li class="flex items-center justify-between py-1">
             <%= link_to child.designation, profile_path(child) %>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
-  <span class="absolute top-0 bottom-0 right-0 px-4 py-3 h-fit">
-    <svg class="fill-current h-6 w-6" role="button" xmlns="" viewBox="0 0 20 20" data-action="click->remove#proceed">
-      <title>Close</title>
-      <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/>
-    </svg>
-  </span>
-</div>
+<% end %>

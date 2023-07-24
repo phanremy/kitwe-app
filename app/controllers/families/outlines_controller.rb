@@ -10,14 +10,9 @@ module Families
 
     def create
       @profile = Profile.find(params[:outline_id])
-      @couples = Couple.includes(:profile1, :profile2)
-                       .related_to(params[:outline_id])
+      @couples = Couple.includes(:profile1, :profile2).related_to(params[:outline_id])
       @children = @profile.children_profiles
-      locals = {
-        profile: @profile,
-        couples: @couples,
-        children: @children
-      }
+      locals = { profile: @profile, couples: @couples, children: @children }
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
