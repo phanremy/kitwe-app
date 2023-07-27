@@ -8,13 +8,15 @@ Rails.application.routes.draw do
 
   draw :profile
 
-  scope "(:profile_id)" do
-    resources :couples, controllers: 'couples', except: %i[index show]
+  resources :profiles, only: %i[index show] do
+    resources :couples, controllers: 'couples', except: %i[index show destroy]
 
     draw :family
     # resources :events
     # resources :friendships
   end
+
+  resources :couples, only: %i[destroy]
 
   # resources :posts
   get '/open-modal', to: 'pages#open_modal', as: 'open_modal'

@@ -5,9 +5,9 @@ module Tokenizer
 
   ALLOWED_URLS = {
     'profile' => :profile_url,
-    'families' => :families_url,
-    'tree' => :families_tree_url,
-    'outline' => :families_outline_url
+    'families' => :profile_families_url,
+    'tree' => :profile_families_tree_url,
+    'outline' => :profile_families_outline_url
   }.freeze
 
   def tokenized_url(type, params)
@@ -53,9 +53,9 @@ module Tokenizer
   def allowed_urls
     [
       profile_url(profile_id, profile_id: nil),
-      families_url(profile_id: profile_id),
-      families_tree_url(profile_id: profile_id),
-      families_outline_url(profile_id: profile_id)
+      profile_families_url(profile_id: profile_id),
+      profile_families_tree_url(profile_id: profile_id),
+      profile_families_outline_url(profile_id: profile_id)
     ].compact
   end
 

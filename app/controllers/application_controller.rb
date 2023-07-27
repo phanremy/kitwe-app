@@ -26,9 +26,9 @@ class ApplicationController < ActionController::Base
   end
 
   # TODO: refacto
-  def default_url_options
-    { profile_id: params[:profile_id] }
-  end
+  # def default_url_options
+  #   { profile_id: params[:profile_id] }
+  # end
 
   def render_flash
     render turbo_stream: turbo_stream.update('flash', partial: 'shared/flash')
