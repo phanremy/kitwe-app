@@ -30,6 +30,9 @@ class Profile < ApplicationRecord
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name first_name_privacy last_name last_name_privacy email email_privacy
                        phone gender phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
                        notes parents_id category photo].freeze
+
+  OUTLINE_FORM_ATTRIBUTES = FORM_ATTRIBUTES
+
   CSV_HEADERS = { 'Designation' => nil,
                   'Pseudo' => 'pseudo',
                   'First name' => 'first_name',

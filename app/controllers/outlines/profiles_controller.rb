@@ -6,13 +6,35 @@ module Outlines
     # before_action :set_profile, only: %i[show edit]
     load_and_authorize_resource
 
-    def show
-    end
-
     def new
+      @profile = Profile.new
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            :outline,
+            partial: 'outlines/profiles/form',
+            locals: { profile: @profile }
+          )
+        end
+      end
     end
 
     def create
+      @profile = Profile.new(profile_params)
+      if @profile.save
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.update(
+              :outline,
+              partial: 'outlines/profiles/form',
+              locals: { profile: @profile }
+            )
+          end
+        end
+      else
+        flash.now[:error] = @profile.errors.full_messages
+        render_flash
+      end
     end
 
     def edit
@@ -21,7 +43,7 @@ module Outlines
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
             :outline,
-            partial: 'outlines/profiles/edit',
+            partial: 'outlines/profiles/form',
             locals: { profile: @profile }
           )
         end
@@ -29,9 +51,25 @@ module Outlines
     end
 
     def update
+      if @profile.update(profile_params)
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.remove(:outline)
+          end
+        end
+      else
+        flash.now[:error] = @profile.errors.full_messages
+        render_flash
+      end
     end
 
     def destroy
+    end
+
+    private
+
+    def profile_params
+      params.require(:profile).permit(Profile::OUTLINE_FORM_ATTRIBUTES)
     end
   end
 end
