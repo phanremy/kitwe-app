@@ -11,10 +11,19 @@ Rails.application.routes.draw do
   resources :profiles, only: %i[index show] do
     resources :couples, controllers: 'couples', except: %i[index show destroy]
 
-    draw :family
+    resources :families, only: %w[index] do
+      scope module: 'families', as: 'families' do
+        collection do
+          resource :outline, only: %w[create]
+          resource :tree, only: %w[show]
+        end
+      end
+    end
     # resources :events
     # resources :friendships
   end
+
+  draw :outline
 
   resources :couples, only: %i[destroy]
 

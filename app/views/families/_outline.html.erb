@@ -7,15 +7,15 @@
         </b>
         <% if can? :manage, profile %>
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
-            <%#= link_to t('profiles.edit'), edit_families_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-            <%= link_to t('profiles.edit'), '', data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%#= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
           <% end %>
         <% end %>
       </div>
       <ul>
         <% profile.parents_profiles.each do |parent| %>
           <li class="flex items-center justify-between py-1">
-            <%= link_to parent.designation, profile_path(parent) %>
+            <%= parent.designation %>
           </li>
         <% end %>
       </ul>
@@ -29,7 +29,7 @@
         <% if can? :manage, profile %>
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
             <%#= link_to t('couples.create_new'), new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-            <%= link_to t('couples.create_new'), '', class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%= link_to t('couples.create_new'), new_outlines_couple_path, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
           <% end %>
         <% end %>
       </div>
@@ -38,14 +38,14 @@
         <% couples.each do |couple| %>
           <li class="flex items-center justify-between py-1">
             <div class="flex w-full mr-4">
-              <%= other_partner_link(couple, profile) %>
+              <%= couple.other_partner(profile).designation %>
             </div>
             <% if can? :manage, profile %>
               <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
-                <%#= link_to t('children.create_new'), new_families_profile_path(couple_id: couple.id, profile_id: params[:id]), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+                <%#= link_to t('children.create_new'), new_outlines_profile_path(couple_id: couple.id, profile_id: params[:id]), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
                 <%#= link_to t('edit'), edit_profile_couple_path(couple, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-                <%= link_to t('children.create_new'), '', data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
-                <%= link_to t('edit'), '', class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                <%= link_to t('children.create_new'), new_outlines_profile_path(profile, couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+                <%= link_to t('edit'), 'edit_outlines_couple_path', class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
                 <%= button_to t('delete'), couple_path(couple), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
               <% end %>
             <% end %>
@@ -63,12 +63,12 @@
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
             <% if couples.count.positive? %>
                 <% couples.each do |couple| %>
-                  <%#= link_to t('children.create_new_for', couple_designation: couple.designation), new_families_profile_path(profile_id: params[:id], couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
-                  <%= link_to t('children.create_new_for', couple_designation: couple.designation), '', data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
+                  <%#= link_to t('children.create_new_for', couple_designation: couple.designation), new_outlines_profile_path(profile_id: params[:id], couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
+                  <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
                 <% end %>
             <% else %>
               <%#= link_to 'Create relationship first', new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
-              <%= link_to 'Create relationship first', '', class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
+              <%= link_to 'Create relationship first', new_outlines_couple_path, class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
             <% end %>
           <% end %>
         <% end %>
@@ -77,8 +77,7 @@
       <ul>
         <% children.each do |child| %>
           <li class="flex items-center justify-between py-1">
-            <%#= link_to child.designation, families_profile_path(child), data: { turbo_stream: true } %>
-            <%= link_to child.designation, '', data: { turbo_stream: true } %>
+            <%= child.designation %>
           </li>
         <% end %>
       </ul>
