@@ -38,7 +38,7 @@
         <% couples.each do |couple| %>
           <li class="flex items-center justify-between py-1">
             <div class="flex w-full mr-4">
-              <%= couple.other_partner(profile).designation %>
+              <%= couple.other_partner_designation(profile) %>
             </div>
             <% if can? :manage, profile %>
               <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>

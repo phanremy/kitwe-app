@@ -37,6 +37,11 @@ class Couple < ApplicationRecord
     partners.reject { |partner| partner == profile }.first
   end
 
+  def other_partner_designation(profile)
+    partners.reject { |partner| partner == profile }
+            .first&.designation || 'Single'
+  end
+
   def designation
     partner1 = profile1.designation
     partner2 = profile2&.designation
