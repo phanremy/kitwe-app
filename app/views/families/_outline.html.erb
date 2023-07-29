@@ -1,14 +1,19 @@
 <%= render layout: 'shared/outline_card' do %>
   <div class="p-5" style="width: fit-content">
+    <% if can? :manage, profile %>
+      <%= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class:'border hover:bg-gray-50 py-2 px-4 rounded cursor-pointer' %>
+    <% end %>
     <div id="profile_parents" class="<%#= border rounded %> mb-2 p-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
           Parents
         </b>
         <% if can? :manage, profile %>
-          <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
-            <%#= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-            <%= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <% if profile.parents_id.nil? %>
+            <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+              <%#= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+              <%= link_to t('parents.new'), new_outlines_profile_parent_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -28,8 +33,8 @@
         </b>
         <% if can? :manage, profile %>
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
-            <%#= link_to t('couples.create_new'), new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-            <%= link_to t('couples.create_new'), new_outlines_couple_path, data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%#= link_to t('couples.new'), new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%= link_to t('couples.new'), new_outlines_profile_couple_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
           <% end %>
         <% end %>
       </div>
@@ -42,10 +47,10 @@
             </div>
             <% if can? :manage, profile %>
               <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
-                <%#= link_to t('children.create_new'), new_outlines_profile_path(couple_id: couple.id, profile_id: params[:id]), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+                <%#= link_to t('children.new'), new_outlines_profile_path(couple_id: couple.id, profile_id: params[:id]), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
                 <%#= link_to t('edit'), edit_profile_couple_path(couple, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-                <%= link_to t('children.create_new'), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
-                <%= link_to t('edit'), 'edit_outlines_couple_path', class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                <%= link_to t('children.new'), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+                <%= link_to t('edit'), 'edit_outlines_profile_couple_path(profile)', class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
                 <%= button_to t('delete'), couple_path(couple), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
               <% end %>
             <% end %>
@@ -63,12 +68,12 @@
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
             <% if couples.count.positive? %>
                 <% couples.each do |couple| %>
-                  <%#= link_to t('children.create_new_for', couple_designation: couple.designation), new_outlines_profile_path(profile_id: params[:id], couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
-                  <%= link_to t('children.create_new_for', couple_designation: couple.designation), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
+                  <%#= link_to t('children.new_for', couple_designation: couple.designation), new_outlines_profile_path(profile_id: params[:id], couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
+                  <%= link_to t('children.new_for', couple_designation: couple.designation), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
                 <% end %>
             <% else %>
               <%#= link_to 'Create relationship first', new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
-              <%= link_to 'Create relationship first', new_outlines_couple_path, class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
+              <%= link_to 'Create relationship first', new_outlines_profile_couple_path(profile), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
             <% end %>
           <% end %>
         <% end %>

@@ -11,12 +11,12 @@ en:
   submit: Submit
 
   children:
-    create_new: Create a child from this relationship
-    create_new_for: Create a child from %{couple_designation}
+    new: Create a child from this relationship
+    new_for: Create a child from %{couple_designation}
     not_found: No children
 
   couples:
-    create_new: Register a new relationship
+    new: Register a new relationship
     destroy_success: Relationship was successfully deleted.
     not_found: No relationships
     with_children_error: This relationship has associated children to be taken care of first.
@@ -25,7 +25,8 @@ en:
     not_found: No birthdays found
 
   profiles:
-    create_new: Create a new profile
+    new: Create a new profile
+    edit: Edit profile
     import_option: Import profiles
     imports:
       form:

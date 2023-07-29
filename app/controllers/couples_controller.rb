@@ -53,10 +53,6 @@ class CouplesController < ApplicationController
     @current_ability ||= ::Ability.new(current_user)
   end
 
-  def set_event
-    @couple = Couple.find(params[:id])
-  end
-
   def couple_params
     params.require(:couple).permit(:profile1_id, :profile2_id, :creator_id)
   end

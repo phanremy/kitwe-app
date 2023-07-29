@@ -24,11 +24,7 @@ module Outlines
       if @profile.save
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream: turbo_stream.update(
-              :outline,
-              partial: 'outlines/profiles/form',
-              locals: { profile: @profile }
-            )
+            render turbo_stream: turbo_stream.update(:outline, '')
           end
         end
       else
@@ -54,7 +50,7 @@ module Outlines
       if @profile.update(profile_params)
         respond_to do |format|
           format.turbo_stream do
-            render turbo_stream: turbo_stream.remove(:outline)
+            render turbo_stream: turbo_stream.update(:outline, '')
           end
         end
       else
