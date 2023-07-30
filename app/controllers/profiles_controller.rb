@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# top level documentation for ProfilesController
 class ProfilesController < ApplicationController
   include Tokenizer
 

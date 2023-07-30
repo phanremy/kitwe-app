@@ -53,7 +53,7 @@ module ProfilesHelper
 
   # TODO: do something to make dynamically show only available options for the second pairing
   # (cannot be paired with an already paired profile)
-  def couple_profile_options(profile1_id:, profile2_id:, blocked: true)
+  def couple_profile_options(profile1_id:, profile2_id:, blocked: false)
     collection = if blocked
                    [Profile.find(profile1_id)]
                  else

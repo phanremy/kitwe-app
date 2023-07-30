@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# top level documentation for CreateProfiles
 class CreateProfiles < ActiveRecord::Migration[7.0]
   # rubocop: disable Metrics/MethodLength
   def change

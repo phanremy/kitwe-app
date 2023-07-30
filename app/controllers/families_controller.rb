@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# # top level documentation for FamiliesController
 class FamiliesController < ApplicationController
   include Tokenizer
 

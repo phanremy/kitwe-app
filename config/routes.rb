@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   draw :profile
 
   resources :profiles, only: %i[index show] do
-    resources :couples, controllers: 'couples', except: %i[index show destroy]
+    resources :couples, controllers: 'couples', except: %i[show destroy]
 
     resources :families, only: %w[index] do
       scope module: 'families', as: 'families' do

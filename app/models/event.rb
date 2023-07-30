@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# # top level documentation for Event
 class Event < ApplicationRecord
   # has_paper_trail
 

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# # top level documentation for EventsController
 class EventsController < ApplicationController
   #   load_and_authorize_resource
 

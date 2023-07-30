@@ -11,6 +11,7 @@ class Ability
     can :manage, Post
     can :manage, Profile, creator: user
     can :manage, Couple, creator: user
+    can [:new, :create], :parent
     can [:new, :create], :import
     can [:create], :export
     can :manage, :family

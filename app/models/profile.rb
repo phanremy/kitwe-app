@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# top level documentation for Profile
 class Profile < ApplicationRecord
   include IdentityMethods
   include FamilyMethods

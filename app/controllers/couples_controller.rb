@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
-# # top level documentation for CouplesController
 class CouplesController < ApplicationController
   include Tokenizer
 
   load_and_authorize_resource
+
+  def index
+    @profile = Profile.find(params[:profile_id])
+    @couples = @profile.couples
+  end
 
   def new
     @couple = Couple.new

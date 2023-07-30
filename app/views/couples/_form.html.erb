@@ -4,7 +4,7 @@
     <%= form.select :profile1_id, couple_profile_options(profile1_id: params[:profile_id], profile2_id: nil, blocked: true), {}, disabled: true %>
   </div>
   <div class="mb-6 flex items-center">
-    <%= form.select :profile2_id, couple_profile_options(profile1_id: params[:profile_id], profile2_id: @couple.profile2_id, blocked: false), {} %>
+    <%= form.select :profile2_id, couple_profile_options(profile1_id: params[:profile_id], profile2_id: @couple.profile2_id), {} %>
     <%= link_to t('profiles.new'), new_profile_path(coupled_with: params[:profile_id]), class: "ml-2" %>
   </div>
   <div class="actions">
