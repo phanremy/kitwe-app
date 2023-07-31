@@ -25,7 +25,8 @@ class Profile < ApplicationRecord
   after_save :nullify_photo_url
 
   PRIVACIES = %w[public only_shared only_friends private].freeze
-  ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
+  _ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
+  ESSENTIALS = %w[pseudo first_name last_name].freeze
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name first_name_privacy last_name last_name_privacy email email_privacy
                        phone gender phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
                        notes parents_id category photo].freeze

@@ -21,6 +21,7 @@
 </div>
 
 <div class="flex justify-between flex-wrap">
+  <%# profile info %>
   <div>
     <div class="py-2">
       <span class="text-xs"><%= t('category', scope: 'activerecord.attributes.profile') %>:</span> <%= @profile.category %>
@@ -76,7 +77,6 @@
         </div>
       <% end %>
     <% end %>
-
     <div class="py-2">
       <span class="text-xs"><%= t('notes', scope: 'activerecord.attributes.profile') %>:</span> <%= @profile.notes %>
     </div>
@@ -84,9 +84,9 @@
     <%#= t('tiktok_url', scope: 'activerecord.attributes.profile') %> <%#= @profile.tiktok_url %> <br>
     <%#= t('twitter_url', scope: 'activerecord.attributes.profile') %> <%#= @profile.twitter_url %> <br>
     <%#= t('linkedin_url', scope: 'activerecord.attributes.profile') %> <%#= @profile.linkedin_url %> <br>
-
   </div>
 
+  <%# profile outline %>
   <% if can? :manage, @profile %>
     <%= render 'profiles/outline', profile: @profile, couples: @couples, children: @children %>
   <% end %>
