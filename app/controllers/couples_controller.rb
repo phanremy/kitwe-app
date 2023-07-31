@@ -18,7 +18,7 @@ class CouplesController < ApplicationController
     @couple = Couple.new(couple_params)
     @couple.profile1_id = params[:profile_id] if params[:profile_id]
     if @couple.save
-      flash[:success] = 'Event successfully created'
+      flash[:success] = I18n.t('couples.create_success')
       redirect_path
     else
       flash.now[:error] = @couple.errors.full_messages
@@ -30,7 +30,7 @@ class CouplesController < ApplicationController
 
   def update
     if @couple.update(couple_params)
-      flash.now[:success] = 'Couple was successfully updated'
+      flash.now[:success] = I18n.t('couples.update_success')
       redirect_path
     else
       flash.now[:error] = @couple.errors.full_messages

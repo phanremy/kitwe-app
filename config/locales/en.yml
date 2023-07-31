@@ -17,9 +17,15 @@ en:
 
   couples:
     new: Register a new relationship
+    create_success: Relationship was successfully created.
+    update_success: Relationship was successfully updated.
     destroy_success: Relationship was successfully deleted.
     not_found: No relationships
     with_children_error: This relationship has associated children to be taken care of first.
+
+  parents:
+    create_success: "Parents created"
+    at_least_one_parent_error: "At least one parent's nickname is required"
 
   birth_dates:
     not_found: No birthdays found

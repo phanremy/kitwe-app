@@ -2,8 +2,9 @@
 
 module Outlines
   class ParentsController < ApplicationController
+    include TurboOutline
+
     authorize_resource class: false
-    before_action :create_parents, only: :create
 
     def new
       @profile = Profile.find(params[:profile_id])
@@ -19,14 +20,14 @@ module Outlines
     end
 
     def create
+      create_parents
       if @errors
         flash.now[:error] = @errors
         render_flash
       else
+        @success_message = I18n.t('parents.create_success')
         respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.update(:outline, '')
-          end
+          format.turbo_stream { family_tree_turbo_response }
         end
       end
     end
@@ -34,22 +35,30 @@ module Outlines
     private
 
     def create_parents
-      profiles = []
+      @parents = []
       ActiveRecord::Base.transaction do
-        profiles << Profile.create!(creator_id: current_user.id, gender: 'male', pseudo: params[:father_pseudo]) if params[:father_pseudo].present?
-        profiles << Profile.create!(creator_id: current_user.id, gender: 'female', pseudo: params[:mother_pseudo]) if params[:mother_pseudo].present?
-        create_couples(profiles)
+        parents_info.each do |gender, pseudo|
+          next unless pseudo.present?
+
+          @parents << Profile.create!(creator_id: current_user.id, gender: gender, pseudo: pseudo)
+        end
+
+        create_couples
       end
     rescue StandardError => e
       @errors = e
     end
 
-    def create_couples(profiles)
-      if profiles.count.positive?
-        couple = Couple.create!(profile1_id: profiles.first.id, profile2_id: profiles.second&.id, creator_id: current_user.id)
+    def parents_info
+      { male: params[:father_pseudo], female: params[:mother_pseudo] }
+    end
+
+    def create_couples
+      if @parents.count.positive?
+        couple = Couple.create!(profile1_id: @parents.first.id, profile2_id: @parents.second&.id, creator_id: current_user.id)
         Profile.find(params[:profile_id]).update!(parents_id: couple.id)
       else
-        @errors = 'At least one parent nickname is required'
+        @errors = I18n.t('parents.at_least_one_parent_error')
       end
     end
   end
