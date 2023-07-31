@@ -4,8 +4,8 @@
 module ProfilesHelper
   # TODO: refacto
   def detect_profile_id
-    if (params[:controller] == 'profiles' && params[:action] == 'show') ||
-       (params[:controller] == 'profiles/cards' && params[:action] == 'show')
+    if params[:controller] == 'profiles' && params[:action] == 'show'
+      #  (params[:controller] == 'profiles/cards' && params[:action] == 'show')
       params[:id]
     else
       params[:profile_id]
@@ -13,9 +13,8 @@ module ProfilesHelper
   end
 
   def profile_id_detected
-    (params[:controller] == 'profiles' && params[:action] == 'show') ||
-      (params[:controller] == 'profiles/cards' && params[:action] == 'show') ||
-      params[:profile_id]
+    (params[:controller] == 'profiles' && params[:action] == 'show') || params[:profile_id]
+    # (params[:controller] == 'profiles/cards' && params[:action] == 'show') ||
   end
 
   def profile_privacy_options

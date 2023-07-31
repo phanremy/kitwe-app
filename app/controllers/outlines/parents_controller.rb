@@ -34,15 +34,23 @@ module Outlines
     private
 
     def create_parents
+      profiles = []
       ActiveRecord::Base.transaction do
-        @profile = Profile.find(params[:profile_id])
-        profile1 = Profile.create!(creator_id: current_user.id, gender: 'male', pseudo: params[:father_pseudo])
-        profile2 = Profile.create!(creator_id: current_user.id, gender: 'female', pseudo: params[:mother_pseudo])
-        couple = Couple.create!(profile1_id: profile1.id, profile2_id: profile2.id, creator_id: current_user.id)
-        @profile.update!(parents_id: couple.id)
+        profiles << Profile.create!(creator_id: current_user.id, gender: 'male', pseudo: params[:father_pseudo]) if params[:father_pseudo].present?
+        profiles << Profile.create!(creator_id: current_user.id, gender: 'female', pseudo: params[:mother_pseudo]) if params[:mother_pseudo].present?
+        create_couples(profiles)
       end
     rescue StandardError => e
       @errors = e
+    end
+
+    def create_couples(profiles)
+      if profiles.count.positive?
+        couple = Couple.create!(profile1_id: profiles.first.id, profile2_id: profiles.second&.id, creator_id: current_user.id)
+        Profile.find(params[:profile_id]).update!(parents_id: couple.id)
+      else
+        @errors = 'At least one parent nickname is required'
+      end
     end
   end
 end

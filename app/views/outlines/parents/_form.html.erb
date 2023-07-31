@@ -3,11 +3,11 @@
     <%= form_with url: outlines_profile_parents_path(profile) do |form| %>
       <div class="relative my-5 border-b-2 focus-within:border-blue-500">
         <%= form.text_field :father_pseudo, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
-        <%= form.label :father_pseudo, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+        <%= form.label :father_pseudo, "Father's nickname", class: 'absolute top-0 -z-1 duration-300 origin-0' %>
       </div>
       <div class="relative my-5 border-b-2 focus-within:border-blue-500">
         <%= form.text_field :mother_pseudo, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
-        <%= form.label :mother_pseudo, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+        <%= form.label :mother_pseudo, "Mother's nickname", class: 'absolute top-0 -z-1 duration-300 origin-0' %>
       </div>
       <div class="actions">
         <%= form.submit t('submit'), class:'w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
