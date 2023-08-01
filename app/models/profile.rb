@@ -137,10 +137,7 @@ class Profile < ApplicationRecord
   end
 
   def small_photo_url
-    photo.url(width: 150, height: 150, crop: 'fill') || photo_url || default_photo_url
-  end
-
-  def default_photo_url
-    'https://res.cloudinary.com/phanremy/image/upload/c_fill,h_200,w_200/v1/kitwe-app/4t9oyyi4b1bfeb31422erbela2qs'
+    photo.url(width: 150, height: 150, crop: 'fill') || photo_url ||
+      ActionController::Base.helpers.asset_path('default_photo.jpeg')
   end
 end
