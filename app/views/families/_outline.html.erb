@@ -53,8 +53,8 @@
                 <%#= link_to t('children.new'), new_outlines_profile_path(couple_id: couple.id, profile_id: params[:id]), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
                 <%#= link_to t('edit'), edit_profile_couple_path(couple, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
                 <%= link_to t('children.new'), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
-                <%= link_to t('edit'), 'edit_outlines_profile_couple_path(profile)', class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-                <%= button_to t('delete'), couple_path(couple), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                <%#= link_to t('edit'), edit_outlines_profile_couple_path(couple, profile_id: profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                <%= button_to t('delete'), outlines_profile_couple_path(couple, profile_id: profile), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
               <% end %>
             <% end %>
           </li>

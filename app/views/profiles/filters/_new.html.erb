@@ -6,15 +6,15 @@
     </div>
     <div class="relative my-4 border-b-2 focus-within:border-blue-500">
       <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%= form.select :category, profile_category_search_options(params[:category]), {}, class: 'w-full' %>
+      <%= form.select :category, profile_category_search_options(params[:category]), {}, class: 'w-full rounded' %>
     </div>
     <div class="relative my-4 border-b-2 focus-within:border-blue-500">
       <%= form.label :gender, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%= form.select :gender, profile_gender_search_options(params[:gender]), {}, class: 'w-full' %>
+      <%= form.select :gender, profile_gender_search_options(params[:gender]), {}, class: 'w-full rounded' %>
     </div>
     <div class="relative my-4 border-b-2 focus-within:border-blue-500">
       <%= form.label :birthday, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%= form.select :birthday, profile_birth_date_search_options(params[:birthday]), {}, class: 'w-full' %>
+      <%= form.select :birthday, profile_birth_date_search_options(params[:birthday]), {}, class: 'w-full rounded' %>
     </div>
     <div class="actions">
       <%= form.submit t('filter'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>

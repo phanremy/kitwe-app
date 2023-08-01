@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 /* FOR FLOATING FORM FIELD : https://notiz.dev/blog/floating-form-field-with-tailwindcss */
+input, textarea {
+  --tw-ring-shadow: 0 0 #000 !important;
+}
+
 input:focus-within ~ label {
   @apply transform scale-75 -translate-y-6 text-blue-500;
 }

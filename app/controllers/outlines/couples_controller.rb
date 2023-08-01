@@ -30,25 +30,16 @@ module Outlines
       end
     end
 
-    def edit
+    def destroy
+      @profile = Profile.find(params[:profile_id])
       @couple = Couple.find(params[:id])
-      respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.update(
-            :outline,
-            partial: 'outlines/couples/form',
-            locals: { couple: @couple }
-          )
-        end
-      end
-    end
-
-    def update
-      @profile = @couple.profile1
-      if @couple.update(couple_params)
-        family_tree_turbo_response(success_message: I18n.t('couples.update_success'))
+      if @couple.children.count.positive?
+        flash.now[:error] = I18n.t('couples.with_children_error')
+        render_flash
+      elsif @couple.destroy
+        family_tree_turbo_response(success_message: I18n.t('couples.destroy_success'))
       else
-        flash.now[:error] = @couple.errors.full_messages
+        flash.now[:error] = I18n.t('general_error')
         render_flash
       end
     end
