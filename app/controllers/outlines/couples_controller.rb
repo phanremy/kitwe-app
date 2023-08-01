@@ -2,6 +2,7 @@
 
 module Outlines
   class CouplesController < ApplicationController
+    include TurboOutline
     load_and_authorize_resource
 
     def new
@@ -20,12 +21,9 @@ module Outlines
     def create
       @couple = Couple.new(couple_params)
       @couple.profile1_id = params[:profile_id] if params[:profile_id]
+      @profile = @couple.profile1
       if @couple.save
-        respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.update(:outline, '')
-          end
-        end
+        family_tree_turbo_response(success_message: I18n.t('couples.create_success'))
       else
         flash.now[:error] = @couple.errors.full_messages
         render_flash
@@ -46,12 +44,9 @@ module Outlines
     end
 
     def update
+      @profile = @couple.profile1
       if @couple.update(couple_params)
-        respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.update(:outline, '')
-          end
-        end
+        family_tree_turbo_response(success_message: I18n.t('couples.update_success'))
       else
         flash.now[:error] = @couple.errors.full_messages
         render_flash

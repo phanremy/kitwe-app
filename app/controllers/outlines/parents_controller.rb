@@ -20,15 +20,13 @@ module Outlines
     end
 
     def create
+      @profile = Profile.find(params[:profile_id])
       create_parents
       if @errors
         flash.now[:error] = @errors
         render_flash
       else
-        @success_message = I18n.t('parents.create_success')
-        respond_to do |format|
-          format.turbo_stream { family_tree_turbo_response }
-        end
+        family_tree_turbo_response(success_message: I18n.t('parents.create_success'))
       end
     end
 
@@ -56,7 +54,7 @@ module Outlines
     def create_couples
       if @parents.count.positive?
         couple = Couple.create!(profile1_id: @parents.first.id, profile2_id: @parents.second&.id, creator_id: current_user.id)
-        Profile.find(params[:profile_id]).update!(parents_id: couple.id)
+        @profile.update!(parents_id: couple.id)
       else
         @errors = I18n.t('parents.at_least_one_parent_error')
       end

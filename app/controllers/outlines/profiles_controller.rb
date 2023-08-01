@@ -2,8 +2,7 @@
 
 module Outlines
   class ProfilesController < ApplicationController
-    # before_action :set_profiles, only: %i[index birth_dates]
-    # before_action :set_profile, only: %i[show edit]
+    include TurboOutline
     load_and_authorize_resource
 
     def new
@@ -22,11 +21,10 @@ module Outlines
     def create
       @profile = Profile.new(profile_params)
       if @profile.save
-        respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.update(:outline, '')
-          end
+        if params[:coupled_with].present?
+          Couple.create!(profile1_id: params[:coupled_with], profile2_id: @profile.id, creator_id: current_user.id)
         end
+        family_tree_turbo_response(success_message: I18n.t('profiles.create_success'))
       else
         flash.now[:error] = @profile.errors.full_messages
         render_flash
@@ -48,17 +46,14 @@ module Outlines
 
     def update
       if @profile.update(profile_params)
-        respond_to do |format|
-          format.turbo_stream do
-            render turbo_stream: turbo_stream.update(:outline, '')
-          end
-        end
+        family_tree_turbo_response(success_message: I18n.t('profiles.update_success'))
       else
         flash.now[:error] = @profile.errors.full_messages
         render_flash
       end
     end
 
+    # TODO: Implement destroy
     def destroy
     end
 

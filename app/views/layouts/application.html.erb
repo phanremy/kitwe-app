@@ -35,10 +35,10 @@
   <body class="bg-gray-200 lg:flex overflow-y-hidden">
     <%= render 'shared/navbar' %>
     <main class="w-full lg:mt-28 bg-white rounded lg:p-5 p-2 overflow-y-scroll h-[80vh] lg:h-[85vh]">
-      <%= turbo_frame_tag 'flash' do %>
+      <%= turbo_frame_tag :flash do %>
         <%= render 'shared/flash' %>
       <% end %>
-      <%= turbo_frame_tag 'modal' do %>
+      <%= turbo_frame_tag :modal do %>
       <% end %>
       <%= yield %>
     </div>

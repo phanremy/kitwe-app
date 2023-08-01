@@ -33,6 +33,9 @@ en:
   profiles:
     new: Create a new profile
     edit: Edit profile
+    create_success: Profile was successfully created.
+    update_success: Profile was successfully updated.
+    destroy_success: Profile was successfully deleted.
     import_option: Import profiles
     imports:
       form:
@@ -44,7 +47,6 @@ en:
     export_option: Export all filtered profiles
     not_found: No profiles found
     share_link: Share this profile
-    destroy_success: Profile was successfully deleted.
     with_couples_error: This profile has associated relationships to be taken care of first.
     category:
       any: ""
