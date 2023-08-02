@@ -55,9 +55,24 @@ module Outlines
 
     # TODO: Implement destroy
     def destroy
+      set_profiles
+      if @profile_to_destroy.couples.count.positive?
+        flash.now[:error] = I18n.t('profiles.with_couples_error')
+        render_flash
+      elsif @profile_to_destroy.destroy
+        family_tree_turbo_response(success_message: I18n.t('profiles.destroy_success'))
+      else
+        flash.now[:error] = I18n.t('general_error')
+        render_flash
+      end
     end
 
     private
+
+    def set_profiles
+      @profile = Profile.find(params[:profile_id])
+      @profile_to_destroy = Profile.find(params[:id])
+    end
 
     def profile_params
       params.require(:profile).permit(Profile::OUTLINE_FORM_ATTRIBUTES)

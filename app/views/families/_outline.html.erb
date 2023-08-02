@@ -1,12 +1,18 @@
 <%= render layout: 'shared/outline_card' do %>
   <div class="p-5" style="width: fit-content">
-    <div class="flex justify-center items-center">
-      <p><%= profile.designation %></p>
+    <div class="flex items-center justify-between py-1 px-2">
+      <p class="mr-4"><%= profile.designation %></p>
+      <% if can? :manage, profile %>
+        <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+          <%#= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <%= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <% if params[:outline_id] != params[:id] %>
+            <%= button_to t('delete'), outlines_profile_path(params[:outline_id], profile_id: params[:id]), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
-    <% if can? :manage, profile %>
-      <%= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class:'border hover:bg-gray-50 py-2 block text-center px-4 mt-3 rounded cursor-pointer' %>
-    <% end %>
-    <div id="profile_parents" class="<%#= border rounded %> mb-2 p-2">
+    <div id="profile_parents" class="mb-2 p-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
           Parents
@@ -29,7 +35,7 @@
       </ul>
     </div>
 
-    <div id="profile_couples" class="<%#= border rounded %> p-2 mb-2">
+    <div id="profile_couples" class="p-2 mb-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
           Spouses
@@ -62,7 +68,7 @@
       </ul>
     </div>
 
-    <div id="profile_children" class="<%#= border rounded %> p-2">
+    <div id="profile_children" class="p-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
           Children

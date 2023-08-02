@@ -121,6 +121,7 @@ h2 {
   line-height: 1;
   opacity: .7;
   height: fit-content;
+  line-break: anywhere;
 }
 
 .solid__node__root {

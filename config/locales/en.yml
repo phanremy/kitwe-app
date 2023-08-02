@@ -24,7 +24,8 @@ en:
     with_children_error: This relationship has associated children to be taken care of first.
 
   parents:
-    create_success: "Parents created"
+    new: Create parents
+    create_success: Parents created
     at_least_one_parent_error: "At least one parent's nickname is required"
 
   birth_dates:
