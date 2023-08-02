@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# top level documentation for Profile
 class Profile < ApplicationRecord
   include IdentityMethods
   include FamilyMethods
@@ -26,10 +25,14 @@ class Profile < ApplicationRecord
   after_save :nullify_photo_url
 
   PRIVACIES = %w[public only_shared only_friends private].freeze
-  ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
+  _ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
+  ESSENTIALS = %w[pseudo first_name last_name].freeze
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name first_name_privacy last_name last_name_privacy email email_privacy
                        phone gender phone_privacy birth_date birth_date_privacy tiktok_url twitter_url linkedin_url
                        notes parents_id category photo].freeze
+
+  OUTLINE_FORM_ATTRIBUTES = FORM_ATTRIBUTES
+
   CSV_HEADERS = { 'Designation' => nil,
                   'Pseudo' => 'pseudo',
                   'First name' => 'first_name',
@@ -134,10 +137,7 @@ class Profile < ApplicationRecord
   end
 
   def small_photo_url
-    photo.url(width: 150, height: 150, crop: 'fill') || photo_url || default_photo_url
-  end
-
-  def default_photo_url
-    'https://res.cloudinary.com/phanremy/image/upload/c_fill,h_200,w_200/v1/kitwe-app/4t9oyyi4b1bfeb31422erbela2qs'
+    photo.url(width: 150, height: 150, crop: 'fill') || photo_url ||
+      ActionController::Base.helpers.asset_path('default_photo.jpeg')
   end
 end

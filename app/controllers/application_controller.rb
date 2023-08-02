@@ -25,15 +25,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def default_url_options
-    { profile_id: params[:profile_id] }
-  end
-
   def render_flash
-    render turbo_stream: turbo_stream.update('flash', partial: 'shared/flash')
+    render turbo_stream: turbo_stream.update(:flash, partial: 'shared/flash')
   end
 
   def render_modal_flash
-    render turbo_stream: turbo_stream.update('modal_flash', partial: 'shared/flash')
+    render turbo_stream: turbo_stream.update(:modal_flash, partial: 'shared/flash')
   end
 end

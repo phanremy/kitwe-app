@@ -9,21 +9,11 @@ module Families
     authorize_resource class: false
 
     def create
-      @profile = Profile.find(params[:outline_id])
-      @couples = Couple.includes(:profile1, :profile2)
-                       .accessible_by(current_ability)
-                       .related_to(params[:outline_id])
-      @children = @profile.children_profiles
-      locals = {
-        profile: @profile,
-        couples: @couples,
-        children: @children
-      }
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
             :outline,
-            partial: 'profiles/outline',
+            partial: 'families/outline',
             locals: locals
           )
         end
@@ -31,6 +21,13 @@ module Families
     end
 
     private
+
+    def locals
+      @profile = Profile.find(params[:outline_id])
+      @couples = Couple.includes(:profile1, :profile2).related_to(params[:outline_id])
+      @children = @profile.children_profiles
+      { profile: @profile, couples: @couples, children: @children }
+    end
 
     def current_ability
       @current_ability ||= ::Ability.new(current_user, params[:token])

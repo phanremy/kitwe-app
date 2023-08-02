@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
-# # top level documentation for CouplesController
 class CouplesController < ApplicationController
   include Tokenizer
 
   load_and_authorize_resource
+
+  def index
+    @profile = Profile.find(params[:profile_id])
+    @couples = @profile.couples
+  end
 
   def new
     @couple = Couple.new
@@ -14,7 +18,7 @@ class CouplesController < ApplicationController
     @couple = Couple.new(couple_params)
     @couple.profile1_id = params[:profile_id] if params[:profile_id]
     if @couple.save
-      flash[:success] = 'Event successfully created'
+      flash[:success] = I18n.t('couples.create_success')
       redirect_path
     else
       flash.now[:error] = @couple.errors.full_messages
@@ -26,7 +30,7 @@ class CouplesController < ApplicationController
 
   def update
     if @couple.update(couple_params)
-      flash.now[:success] = 'Couple was successfully updated'
+      flash.now[:success] = I18n.t('couples.update_success')
       redirect_path
     else
       flash.now[:error] = @couple.errors.full_messages
@@ -51,10 +55,6 @@ class CouplesController < ApplicationController
 
   def current_ability
     @current_ability ||= ::Ability.new(current_user)
-  end
-
-  def set_event
-    @couple = Couple.find(params[:id])
   end
 
   def couple_params

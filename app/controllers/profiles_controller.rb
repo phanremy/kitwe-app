@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# top level documentation for ProfilesController
 class ProfilesController < ApplicationController
   include Tokenizer
 
@@ -19,7 +18,6 @@ class ProfilesController < ApplicationController
 
   def show
     @tokenized_url = tokenized_url('profile', id: @profile.id)
-    # @profile
     @couples = Couple.includes(:profile1, :profile2)
                      .accessible_by(current_ability)
                      .related_to(params[:id])
@@ -37,7 +35,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     if @profile.save
-      flash[:success] = 'Profile successfully created'
+      flash[:success] = I18n.t('profiles.create_success')
       create_success_redirection
     else
       flash.now[:error] = @profile.errors.full_messages
@@ -49,7 +47,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      flash.now[:success] = 'Profile was successfully updated'
+      flash.now[:success] = I18n.t('profiles.update_success')
       redirect_to @profile
     else
       flash.now[:error] = @profile.errors.full_messages

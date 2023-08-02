@@ -1,0 +1,100 @@
+<%= render layout: 'shared/outline_card' do %>
+  <div class="p-5" style="width: fit-content">
+    <div class="flex items-center justify-between py-1 px-2">
+      <p class="mr-4"><%= profile.designation %></p>
+      <% if can? :manage, profile %>
+        <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+          <%#= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <%= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <% if params[:outline_id] != params[:id] %>
+            <%= button_to t('delete'), outlines_profile_path(params[:outline_id], profile_id: params[:id]), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div id="profile_parents" class="mb-2 p-2">
+      <div class="flex justify-between items-center">
+        <b class="py-5 mr-4">
+          Parents
+        </b>
+        <% if can? :manage, profile %>
+          <% if profile.parents_id.nil? %>
+            <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+              <%#= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+              <%= link_to t('parents.new'), new_outlines_profile_parent_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <ul>
+        <% profile.parents_profiles.each do |parent| %>
+          <li class="flex items-center justify-between py-1">
+            <%= parent.designation %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div id="profile_couples" class="p-2 mb-2">
+      <div class="flex justify-between items-center">
+        <b class="py-5 mr-4">
+          Spouses
+        </b>
+        <% if can? :manage, profile %>
+          <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+            <%#= link_to t('couples.new'), new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <%= link_to t('couples.new'), new_outlines_profile_couple_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <ul>
+        <% couples.each do |couple| %>
+          <li class="flex items-center justify-between py-1">
+            <div class="flex w-full mr-4">
+              <%= couple.other_partner_designation(profile) %>
+            </div>
+            <% if can? :manage, profile %>
+              <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+                <%#= link_to t('children.new'), new_outlines_profile_path(couple_id: couple.id, profile_id: params[:id]), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+                <%#= link_to t('edit'), edit_profile_couple_path(couple, profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                <%= link_to t('children.new'), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+                <%#= link_to t('edit'), edit_outlines_profile_couple_path(couple, profile_id: profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                <%= button_to t('delete'), outlines_profile_couple_path(couple, profile_id: profile), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+              <% end %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div id="profile_children" class="p-2">
+      <div class="flex justify-between items-center">
+        <b class="py-5 mr-4">
+          Children
+        </b>
+        <% if can? :manage, profile %>
+          <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+            <% if couples.count.positive? %>
+                <% couples.each do |couple| %>
+                  <%#= link_to t('children.new_for', couple_designation: couple.designation), new_outlines_profile_path(profile_id: params[:id], couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm', role:'menuitem', tabindex:'-1' %>
+                  <%= link_to t('children.new_for', couple_designation: couple.designation), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                <% end %>
+            <% else %>
+              <%#= link_to 'Create relationship first', new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
+              <%= link_to 'Create relationship first', new_outlines_profile_couple_path(profile), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <ul>
+        <% children.each do |child| %>
+          <li class="flex items-center justify-between py-1">
+            <%= child.designation %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

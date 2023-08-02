@@ -11,21 +11,32 @@ en:
   submit: Submit
 
   children:
-    create_new: Create a child from this relationship
-    create_new_for: Create a child from %{couple_designation}
+    new: Create a child from this relationship
+    new_for: Create a child from %{couple_designation}
     not_found: No children
 
   couples:
-    create_new: Register a new relationship
+    new: Register a new relationship
+    create_success: Relationship was successfully created.
+    update_success: Relationship was successfully updated.
     destroy_success: Relationship was successfully deleted.
     not_found: No relationships
     with_children_error: This relationship has associated children to be taken care of first.
+
+  parents:
+    new: Create parents
+    create_success: Parents created
+    at_least_one_parent_error: "At least one parent's nickname is required"
 
   birth_dates:
     not_found: No birthdays found
 
   profiles:
-    create_new: Create a new profile
+    new: Create a new profile
+    edit: Edit profile
+    create_success: Profile was successfully created.
+    update_success: Profile was successfully updated.
+    destroy_success: Profile was successfully deleted.
     import_option: Import profiles
     imports:
       form:
@@ -37,7 +48,6 @@ en:
     export_option: Export all filtered profiles
     not_found: No profiles found
     share_link: Share this profile
-    destroy_success: Profile was successfully deleted.
     with_couples_error: This profile has associated relationships to be taken care of first.
     category:
       any: ""
@@ -74,7 +84,7 @@ en:
   activerecord:
     attributes:
       profile:
-        pseudo: Pseudonym
+        pseudo: Nickname
         first_name: First name
         last_name: Last name
         email: Email

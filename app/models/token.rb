@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# top level documentation for Token
 class Token < ApplicationRecord
   belongs_to :user, optional: true
   validates :name, :content, presence: true

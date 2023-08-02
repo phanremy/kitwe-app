@@ -4,8 +4,8 @@
 module ProfilesHelper
   # TODO: refacto
   def detect_profile_id
-    if (params[:controller] == 'profiles' && params[:action] == 'show') ||
-       (params[:controller] == 'profiles/cards' && params[:action] == 'show')
+    if params[:controller] == 'profiles' && params[:action] == 'show'
+      #  (params[:controller] == 'profiles/cards' && params[:action] == 'show')
       params[:id]
     else
       params[:profile_id]
@@ -13,9 +13,8 @@ module ProfilesHelper
   end
 
   def profile_id_detected
-    (params[:controller] == 'profiles' && params[:action] == 'show') ||
-      (params[:controller] == 'profiles/cards' && params[:action] == 'show') ||
-      params[:profile_id]
+    (params[:controller] == 'profiles' && params[:action] == 'show') || params[:profile_id]
+    # (params[:controller] == 'profiles/cards' && params[:action] == 'show') ||
   end
 
   def profile_privacy_options
@@ -53,7 +52,7 @@ module ProfilesHelper
 
   # TODO: do something to make dynamically show only available options for the second pairing
   # (cannot be paired with an already paired profile)
-  def couple_profile_options(profile1_id:, profile2_id:, blocked: true)
+  def couple_profile_options(profile1_id:, profile2_id:, blocked: false)
     collection = if blocked
                    [Profile.find(profile1_id)]
                  else

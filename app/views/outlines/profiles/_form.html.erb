@@ -1,0 +1,64 @@
+<%= render layout: 'shared/outline_card' do %>
+  <div class="p-5" style="width: fit-content">
+    <%= form_with model: [:outlines, profile] do |form| %>
+      <%= form.hidden_field :creator_id, value: current_user&.id %>
+      <%= hidden_field_tag :coupled_with, params[:coupled_with] %>
+      <div class="relative my-5 border-b-2 focus-within:border-blue-500">
+        <%= form.text_field :pseudo, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
+        <%= form.label :pseudo, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+      </div>
+      <div class="flex flex-wrap my-5 ">
+        <div class="my-4 flex flex-grow relative border-b-2 focus-within:border-blue-500">
+          <%= form.text_field :first_name, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+          <%= form.label :first_name, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+          <%= form.select :first_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
+        </div>
+        <div class="my-4 flex flex-grow relative border-b-2 focus-within:border-blue-500">
+          <%= form.text_field :last_name, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+          <%= form.label :last_name, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+          <%= form.select :last_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
+        </div>
+      </div>
+      <div class="flex relative my-5 border-b-2 focus-within:border-blue-500">
+        <%= form.date_field :birth_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+        <%= form.label :birth_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+        <%= form.select :birth_date_privacy, profile_privacy_options, {}, class: 'hidden' %>
+      </div>
+      <div class="flex flex-wrap justify-between">
+        <div class="relative focus-within:border-blue-500 mb-5">
+          <%= form.label :parents_id, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+          <%= form.select :parents_id, profile_parents_options(params[:couple_id]), {}, class: 'w-full rounded' %>
+        </div>
+        <div class="relative focus-within:border-blue-500 mb-5">
+          <%= form.label :gender, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+          <%= form.select :gender, profile_gender_attribute_options, {}, class: 'w-full rounded' %>
+        </div>
+      </div>
+      <div>
+        <%= form.label :photo, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+        <div class="col-span-2 mt-0">
+          <div class="flex max-w-lg items-center justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6">
+            <div class="space-y-1 flex flex-col justify-center items-center">
+              <% if profile.photo.attached? %>
+                <%= cl_image_tag profile.photo.key, height: 100, width: 100, crop: :fill %>
+              <% else %>
+                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                  <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              <% end %>
+              <div class="flex text-sm text-gray-600">
+                <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500">
+                  <%= form.file_field :photo, accept: 'image/png,image/gif,image/jpeg', class: 'xsr-only' %>
+                </label>
+              </div>
+              <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <%= form.submit t('submit'), class:'w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

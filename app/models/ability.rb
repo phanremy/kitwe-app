@@ -11,13 +11,14 @@ class Ability
     can :manage, Post
     can :manage, Profile, creator: user
     can :manage, Couple, creator: user
-    can [:new, :create], :import
+    can %i[new create], :parent
+    can %i[new create], :import
     can [:create], :export
     can :manage, :family
     can :create, :modal_shared_link
     can :create, :shared_link
     can :create, :download
-    can [:new, :create], :filter
+    can %i[new create], :filter
 
     # Define abilities for the passed in user here. For example:
     #
