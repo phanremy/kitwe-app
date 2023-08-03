@@ -137,7 +137,6 @@ class Profile < ApplicationRecord
   end
 
   def small_photo_url
-    photo.url(width: 150, height: 150, crop: 'fill') || photo_url ||
-      ActionController::Base.helpers.asset_path('default_photo.jpeg')
+    photo.url(width: 150, height: 150, crop: 'fill') || photo_url
   end
 end

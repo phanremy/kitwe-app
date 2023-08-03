@@ -24,6 +24,7 @@ function Node(props) {
               ['solid__node__isRoot']: props.isRoot,
             }}
             style=${{
+              "background-color": `#e5e7eb`, /* fallback2 */
               "background-image": `url(${props.node.img})`, /* fallback */
               "background-image": `linear-gradient(180deg, rgba(9,111,121,0) 0%, rgba(0,0,0,1) 150%), url(${props.node.img})`, /* W3C */
             }}
