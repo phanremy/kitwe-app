@@ -121,7 +121,10 @@ h2 {
   line-height: 1;
   opacity: .7;
   height: fit-content;
-  line-break: anywhere;
+  line-break: normal;
+  max-height: 30%;
+  overflow: hidden;
+  word-break: break-word;
 }
 
 .solid__node__root {

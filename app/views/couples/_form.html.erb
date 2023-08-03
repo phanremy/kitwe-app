@@ -1,4 +1,4 @@
-<%= form_with model: @couple do |form| %>
+<%= form_with model: [:profile, @couple] do |form| %>
   <%= form.hidden_field :creator_id, value: current_user&.id %>
   <div class="mb-6">
     <%= form.select :profile1_id, couple_profile_options(profile1_id: params[:profile_id], profile2_id: nil, blocked: true), {}, class: 'rounded' ,disabled: true %>

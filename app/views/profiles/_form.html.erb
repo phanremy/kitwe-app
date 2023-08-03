@@ -29,7 +29,7 @@
     </div>
     <div class="relative focus-within:border-blue-500 mb-5">
       <%= form.label :gender, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%= form.select :gender, profile_gender_attribute_options, {}, class: 'w-full rounded' %>
+      <%= form.select :gender, profile_gender_attribute_options(params[:coupled_with]), {}, class: 'w-full rounded' %>
     </div>
     <div class="relative focus-within:border-blue-500 mb-5">
       <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>

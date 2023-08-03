@@ -30,8 +30,9 @@ module ProfilesHelper
     options_for_select(options, @profile.parents&.id || couple_id)
   end
 
-  def profile_gender_attribute_options
-    select_options('gender', %w[male female], @profile&.gender)
+  def profile_gender_attribute_options(profile_id = nil)
+    gender = Profile.find_by(id: profile_id)&.gender == 'male' ? 'female' : 'male'
+    select_options('gender', %w[male female], @profile&.gender || gender)
   end
 
   def profile_gender_search_options(gender_option)

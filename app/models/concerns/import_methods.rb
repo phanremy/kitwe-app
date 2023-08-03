@@ -3,10 +3,12 @@
 module ImportMethods
   extend ActiveSupport::Concern
 
-  def self.find_by_designation(value)
-    # TODO: manage query chinese characters
-    # designation_query(value).select { |profile| profile.designation == value }.first
-    select { |profile| profile.designation == value }.first
+  included do
+    def self.find_by_designation(value)
+      # TODO: manage query chinese characters
+      # designation_query(value).select { |profile| profile.designation == value }.first
+      select { |profile| profile.designation == value }.first
+    end
   end
 
   def partner_csv_designations

@@ -101,6 +101,6 @@ class ProfilesController < ApplicationController
   end
 
   def redirect_to_new
-    redirect_to new_profile_path if @profiles.empty?
+    redirect_to new_profile_path if @profiles.empty? && params[:commit] != 'Filter'
   end
 end

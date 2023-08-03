@@ -9,7 +9,8 @@ export const min = (arr) => Math.min.apply(null, arr);
 export const max = (arr) => Math.max.apply(null, arr);
 export const toMap = (items) => (new Map(items.map((item) => [item.id, { ...item }])));
 export const hasDiffParents = (node) => node.parents.map(prop('type')).filter(unique).length > 1;
-export const byGender = (target) => (a, b) => (b.gender !== target) ? -1 : 0;
+// export const byGender = (target) => (a, b) => (b.gender !== target) ? -1 : 0;
+export const byGender = (target) => (a, b) => (a.gender == 'female') ? 0 : -1;
 export const relToNode = (store) => (rel) => store.getNode(rel.id);
 export const withRelType = (...types) => (item) => types.includes(item.type);
 //# sourceMappingURL=index.js.map
