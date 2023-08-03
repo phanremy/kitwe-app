@@ -11,25 +11,35 @@ module Profiles
     # [:id, :gender, :parents, :siblings, :spouses, :children]
     def call
       profile_full_family.map do |profile|
-        {
-          id: profile.id.to_s,
+        { id: profile.id.to_s,
           name: profile.designation,
           gender: profile.gender || 'male',
           url: host ? profile_url(profile, host: host) : profile_path(profile),
-          img: profile.small_photo_url
-        }.merge(family_links(profile))
+          img: profile.small_photo_url }.merge(family_links(profile))
       end
+    rescue StandardError => e
+      return e
     end
 
     private
 
     def family_links(profile)
-      {
+      result = {
         parents: profile.parents_profiles.map { |parent| { id: parent.id.to_s, type: 'blood' } },
         siblings: profile.sibling_profiles.map { |sibling| { id: sibling.id.to_s, type: 'blood' } },
         spouses: profile.partner_ids.map { |id| { id: id.to_s, type: 'married' } },
         children: profile.children_profiles.map { |child| { id: child.id.to_s, type: 'blood' } }
       }
+
+      return result if non_duplicate_ids(result)
+
+      raise 'Strange tree'
+    end
+
+    def non_duplicate_ids(result)
+      ids = result.values.flatten.map { |hash| hash[:id] }
+
+      ids.uniq.count == ids.count
     end
 
     def host
