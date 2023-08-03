@@ -8,12 +8,13 @@
   <% @birth_dates_data.each do |birth_date_datum| %>
     <h1 class="text-xl py-2 text-gray-500"><%= year_month_label(birth_date_datum[0]) %></h1>
     <% birth_date_datum[1].each do |birth_date| %>
+      <% day_gap = (birth_date[:date] - Date.today).to_i %>
       <p>
         <%= link_to profile_path(birth_date[:id]) do %>
           <%= birth_date[:name] %>
         <% end %>
         - <%= l birth_date[:date], format: :fr_long %>
-        - <%= birth_date[:age] %> years old in <%= (birth_date[:date] - Date.today).to_i %> days
+        - <%= birth_date[:age] %> years old <%= day_gap.zero? ? 'today' : "in #{pluralize(day_gap, 'day' )}" %>
       </p>
     <% end %>
   <% end %>

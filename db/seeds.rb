@@ -51,8 +51,7 @@ visitor = User.find_or_create_by(email: 'user3@example.com') { |user| user.passw
 if Profile.count.zero?
   date = profile_date
 
-  Profile.create!(pseudo: nil,
-                  creator_id: visitor.id,
+  Profile.create!(pseudo: nil, creator_id: visitor.id, gender: 'male',
                   first_name: 'Jean', first_name_privacy: 'public',
                   last_name: 'Chevalier', last_name_privacy: 'public',
                   email: 'jean.chevalier@example.com', email_privacy: 'public',
@@ -65,8 +64,7 @@ if Profile.count.zero?
   jc = Profile.last
   Couple.create!(profile1_id: jc.id, profile2_id: nil, creator_id: visitor.id)
 
-  Profile.create!(pseudo: 'anonymous',
-                  creator_id: visitor.id,
+  Profile.create!(pseudo: 'anonymous', creator_id: visitor.id, gender: 'female',
                   first_name: 'Valentin', first_name_privacy: 'private',
                   last_name: 'Dupont', last_name_privacy: 'private',
                   email: nil, email_privacy: 'private',
@@ -81,8 +79,7 @@ if Profile.count.zero?
 
   date = profile_date
 
-  Profile.create(pseudo: nil,
-                 creator_id: visitor.id,
+  Profile.create(pseudo: nil, creator_id: visitor.id, gender: 'male',
                  first_name: 'Julien', first_name_privacy: 'only_friends',
                  last_name: 'Alfonso', last_name_privacy: 'only_friends',
                  email: 'julien.alfonso@example.com', email_privacy: 'only_friends',
@@ -96,8 +93,7 @@ if Profile.count.zero?
   Couple.create!(profile1_id: anonymous.id, profile2_id: ja.id, creator_id: visitor.id)
 
   date = profile_date
-  Profile.create!(pseudo: 'WC',
-                  creator_id: visitor.id,
+  Profile.create!(pseudo: 'WC', creator_id: visitor.id, gender: 'male',
                   first_name: 'William', first_name_privacy: 'only_friends',
                   last_name: 'Cloitre', last_name_privacy: 'only_friends',
                   email: 'william.cloitre@example.com', email_privacy: 'only_friends',
@@ -110,55 +106,82 @@ if Profile.count.zero?
 end
 
 if Profile.find_by(pseudo: 'papa').nil?
-  pat_grand_pa = Profile.create!({ pseudo: 'Paternal Grand Ma', creator: admin }.merge(random_info))
-  pat_grand_ma = Profile.create!({ pseudo: 'Paternal Grand Pa', creator: admin }.merge(random_info))
+  pat_grand_pa = Profile.create!({ pseudo: 'Paternal Grand Ma', creator: admin, gender: 'female' }.merge(random_info)
+)
+  pat_grand_ma = Profile.create!({ pseudo: 'Paternal Grand Pa', creator: admin, gender: 'male' }.merge(random_info))
   pat_grand_parents = Couple.create!(
     profile1_id: pat_grand_pa.id, profile2_id: pat_grand_ma.id, creator_id: admin.id
   )
 
-  mat_grand_pa = Profile.create!({ pseudo: 'Maternal Grand Ma', creator: admin }.merge(random_info))
-  mat_grand_ma = Profile.create!({ pseudo: 'Maternal Grand Pa', creator: admin }.merge(random_info))
+  mat_grand_pa = Profile.create!({ pseudo: 'Maternal Grand Ma', creator: admin, gender: 'female' }.merge(random_info))
+  mat_grand_ma = Profile.create!({ pseudo: 'Maternal Grand Pa', creator: admin, gender: 'male' }.merge(random_info))
   mat_grand_parents = Couple.create!(
     profile1_id: mat_grand_pa.id, profile2_id: mat_grand_ma.id, creator_id: admin.id
   )
 
-  dad = Profile.create!({ pseudo: 'Dad', parents_id: pat_grand_parents.id, creator: admin }.merge(random_info))
-  mom = Profile.create!({ pseudo: 'Mom', parents_id: mat_grand_parents.id, creator: admin }.merge(random_info))
+  mom = Profile.create!(
+    { pseudo: 'Mom', parents_id: mat_grand_parents.id, creator: admin, gender: 'female' }.merge(random_info)
+  )
+  dad = Profile.create!(
+    { pseudo: 'Dad', parents_id: pat_grand_parents.id, creator: admin, gender: 'male' }.merge(random_info)
+  )
   parents = Couple.create!(
     profile1_id: dad.id, profile2_id: mom.id, creator_id: admin.id
   )
 
-  mistress = Profile.create!({ pseudo: 'Mistress', creator: admin }.merge(random_info))
+  mistress = Profile.create!({ pseudo: 'Mistress', creator: admin, gender: 'female' }.merge(random_info))
   affair = Couple.create!(
     profile1_id: dad.id, profile2_id: mistress.id, creator_id: admin.id
   )
 
-  me = Profile.create!({ pseudo: 'Me', parents_id: parents.id, creator: admin }.merge(random_info))
-  _sister = Profile.create!({ pseudo: 'Sister', parents_id: parents.id, creator: admin }.merge(random_info))
-  _brother_in_law = Profile.create!({ pseudo: 'Brother in Law', parents_id: affair.id, creator: admin }.merge(random_info))
+  me = Profile.create!(
+    { pseudo: 'Me', parents_id: parents.id, creator: admin, gender: 'female' }.merge(random_info)
+  )
+  _sister = Profile.create!(
+    { pseudo: 'Sister', parents_id: parents.id, creator: admin, gender: 'female' }.merge(random_info)
+  )
+  _brother_in_law = Profile.create!(
+    { pseudo: 'Brother in Law', parents_id: affair.id, creator: admin, gender: 'male' }.merge(random_info)
+  )
 
-  pat_aunt = Profile.create!({ pseudo: 'Paternal Aunt', parents_id: pat_grand_parents.id, creator: admin }.merge(random_info))
-  _mat_uncle = Profile.create!({ pseudo: 'Uncle', parents_id: mat_grand_parents.id, creator: admin }.merge(random_info))
+  pat_aunt = Profile.create!(
+    { pseudo: 'Paternal Aunt', parents_id: pat_grand_parents.id, creator: admin, gender: 'female' }.merge(random_info)
+  )
+  _mat_uncle = Profile.create!(
+    { pseudo: 'Uncle', parents_id: mat_grand_parents.id, creator: admin, gender: 'male' }.merge(random_info)
+  )
 
-  pat_aunt_bf = Profile.create!({ pseudo: 'Paternal Aunt Bf', creator: admin }.merge(random_info))
+  pat_aunt_bf = Profile.create!(
+    { pseudo: 'Paternal Aunt Bf', creator: admin, gender: 'male' }.merge(random_info)
+  )
   pat_family = Couple.create!(
     profile1_id: pat_aunt.id, profile2_id: pat_aunt_bf.id, creator_id: admin.id
   )
 
-  _cousin = Profile.create!({ pseudo: 'Cousin', parents_id: pat_family.id, creator: admin }.merge(random_info))
+  _cousin = Profile.create!(
+    { pseudo: 'Cousin', parents_id: pat_family.id, creator: admin, gender: 'male' }.merge(random_info)
+  )
 
-  bf_dad = Profile.create!({ pseudo: 'BF Dad', creator: admin }.merge(random_info))
-  bf_mom = Profile.create!({ pseudo: 'BF Mom', creator: admin }.merge(random_info))
+  bf_dad = Profile.create!(
+    { pseudo: 'BF Dad', creator: admin, gender: 'male' }.merge(random_info)
+  )
+  bf_mom = Profile.create!(
+    { pseudo: 'BF Mom', creator: admin, gender: 'female' }.merge(random_info)
+  )
   bf_parents = Couple.create!(
     profile1_id: bf_dad.id, profile2_id: bf_mom.id, creator_id: admin.id
   )
 
-  boyfriend = Profile.create!({ pseudo: 'boyfriend', parents_id: bf_parents.id, creator: admin }.merge(random_info))
+  boyfriend = Profile.create!(
+    { pseudo: 'boyfriend', parents_id: bf_parents.id, creator: admin, gender: 'male' }.merge(random_info)
+  )
   relation = Couple.create!(
     profile1_id: me.id, profile2_id: boyfriend.id, creator_id: admin.id
   )
 
-  _adopted = Profile.create!({ pseudo: 'Adopted Daughter', parents_id: relation.id, creator: admin }.merge(random_info))
+  _adopted = Profile.create!(
+    { pseudo: 'Adopted Daughter', parents_id: relation.id, creator: admin, gender: 'female' }.merge(random_info)
+  )
 end
 
 puts 'End Seed'

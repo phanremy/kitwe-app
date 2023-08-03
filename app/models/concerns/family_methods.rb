@@ -17,7 +17,7 @@ module FamilyMethods
   def sibling_profiles
     return [] unless parents
 
-    parents.children
+    parents.children.where.not(id: id)
   end
 
   def parents_profiles

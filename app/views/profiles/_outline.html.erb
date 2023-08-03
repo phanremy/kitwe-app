@@ -79,7 +79,7 @@
       </div>
 
       <ul>
-        <% profile.parents.siblings_of(profile).each do |sibling| %>
+        <% profile.sibling_profiles.each do |sibling| %>
           <li class="flex items-center justify-between py-2">
             <%= link_to sibling.designation, profile_path(sibling) %>
           </li>
