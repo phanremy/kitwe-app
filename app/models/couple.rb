@@ -42,6 +42,10 @@ class Couple < ApplicationRecord
             .first&.designation || 'Single'
   end
 
+  def siblings_of(profile)
+    children.where.not(id: profile.id)
+  end
+
   def designation
     partner1 = profile1.designation
     partner2 = profile2&.designation

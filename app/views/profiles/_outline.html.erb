@@ -2,7 +2,7 @@
   <% if profile.parents_id %>
     <div id="profile_parents" class="border rounded mb-2 p-2">
       <div class="flex justify-between items-center">
-        <b class="py-5 mr-4">
+        <b class="py-2 mr-4">
           Parents
         </b>
       </div>
@@ -16,7 +16,7 @@
 
   <div id="profile_couples" class="border rounded p-2 mb-2">
     <div class="flex justify-between items-center">
-      <b class="py-5 mr-4">
+      <b class="py-2 mr-4">
         Spouses
       </b>
       <%# if can? :manage, profile %>
@@ -43,9 +43,9 @@
     </ul>
   </div>
 
-  <div id="profile_children" class="border rounded p-2">
+  <div id="profile_children" class="border rounded p-2 mb-2">
     <div class="flex justify-between items-center">
-      <b class="py-5 mr-4">
+      <b class="py-2 mr-4">
         Children
       </b>
       <%# if can? :manage, profile %>
@@ -69,4 +69,22 @@
       <% end %>
     </ul>
   </div>
+
+  <% if profile.parents_id %>
+    <div id="profile_siblings" class="border rounded p-2">
+      <div class="flex justify-between items-center">
+        <b class="py-2 mr-4">
+          Siblings
+        </b>
+      </div>
+
+      <ul>
+        <% profile.parents.siblings_of(profile).each do |sibling| %>
+          <li class="flex items-center justify-between py-2">
+            <%= link_to sibling.designation, profile_path(sibling) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>

@@ -31,6 +31,9 @@ en:
   birth_dates:
     not_found: No birthdays found
 
+  siblings:
+    new: Create a sibling from the same parents
+
   profiles:
     new: Create a new profile
     edit: Edit profile

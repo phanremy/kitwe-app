@@ -68,7 +68,7 @@
       </ul>
     </div>
 
-    <div id="profile_children" class="p-2">
+    <div id="profile_children" class="p-2 mb-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
           Children
@@ -92,6 +92,29 @@
         <% children.each do |child| %>
           <li class="flex items-center justify-between py-1">
             <%= child.designation %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div id="profile_siblings" class="p-2">
+      <div class="flex justify-between items-center">
+        <b class="py-2 mr-4">
+          Siblings
+        </b>
+        <% if can? :manage, profile %>
+          <% if profile.parents_id %>
+            <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
+              <%= link_to t('siblings.new'), new_outlines_profile_path(couple_id: profile.parents_id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <ul>
+        <% profile.parents&.siblings_of(profile)&.each do |sibling| %>
+          <li class="flex items-center justify-between py-2">
+            <%= link_to sibling.designation, profile_path(sibling) %>
           </li>
         <% end %>
       </ul>
