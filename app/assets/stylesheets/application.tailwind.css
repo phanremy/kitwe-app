@@ -150,13 +150,13 @@ h2 {
 
 .solid__node__sub {
   position: absolute;
-  top: 2px;
-  right: 9px;
+  bottom: 2px;
+  left: 10px;
   width: 25px;
   height: 10px;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, .2);
-  border-radius: 4px 0;
+  border-radius: 0 4px;
   cursor: pointer;
   background: rgb(229 231 235);
 }
