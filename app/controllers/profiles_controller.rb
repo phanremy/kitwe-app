@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
 
   before_action :validate_url_token, only: %i[show children]
   before_action :set_profiles, only: %i[index birth_dates]
+  before_action :redirect_to_new, only: %i[index birth_dates]
   before_action :set_profile, only: %i[show edit]
 
   load_and_authorize_resource
@@ -97,5 +98,9 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(Profile::FORM_ATTRIBUTES)
+  end
+
+  def redirect_to_new
+    redirect_to new_profile_path if @profiles.empty?
   end
 end

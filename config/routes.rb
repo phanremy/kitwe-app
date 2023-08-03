@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'profiles#index'
+  root 'pages#homepage'
   resource :modal_shared_links, only: :create
   resource :shared_links, only: :create
   resource :downloads, only: :create
