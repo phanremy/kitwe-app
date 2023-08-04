@@ -26,6 +26,7 @@ export default class extends Controller {
 
   updateFamilyTreeView() {
     this.element.innerHTML = '';
+    // TODO: all male if error before catch
     try {
       render(App, this.element);
     } catch (error) {

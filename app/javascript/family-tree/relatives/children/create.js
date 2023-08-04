@@ -17,7 +17,6 @@ const getChildUnitsFunc = (store) => {
 };
 export const createFamilyFunc = (store) => {
     const getChildUnits = getChildUnitsFunc(store);
-    // TODO: Deactivate .sort(byGender(store.root.gender)); if gender make family tree bug
     return (parentIDs, type = "root", isMain = false) => {
         const family = newFamily(store.getNextId(), type, isMain);
         const parents = parentIDs

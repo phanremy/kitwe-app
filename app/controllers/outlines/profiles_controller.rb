@@ -53,7 +53,6 @@ module Outlines
       end
     end
 
-    # TODO: Implement destroy
     def destroy
       set_profiles
       if @profile_to_destroy.couples.count.positive?

@@ -2,7 +2,6 @@
 
 # top level description of ProfilesHelper
 module ProfilesHelper
-  # TODO: refacto
   def detect_profile_id
     if params[:controller] == 'profiles' && params[:action] == 'show'
       #  (params[:controller] == 'profiles/cards' && params[:action] == 'show')
@@ -51,8 +50,6 @@ module ProfilesHelper
     select_options('birth_date', %w[without with centenarian], birth_date_option)
   end
 
-  # TODO: do something to make dynamically show only available options for the second pairing
-  # (cannot be paired with an already paired profile)
   def couple_profile_options(profile1_id:, profile2_id:, blocked: false)
     collection = if blocked
                    [Profile.find(profile1_id)]

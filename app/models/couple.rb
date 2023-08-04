@@ -17,8 +17,6 @@ class Couple < ApplicationRecord
                        where(profile1_id: value).or(where(profile2_id: value))
                      }
 
-  # TODO: do something to check profile_id pairing in both ways
-
   def couple_with_oneself?
     return unless profile1_id == profile2_id
 

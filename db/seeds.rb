@@ -163,17 +163,17 @@ if Profile.find_by(pseudo: 'papa').nil?
   )
 
   bf_dad = Profile.create!(
-    { pseudo: 'BF Dad', creator: admin, gender: 'male' }.merge(random_info)
+    { pseudo: 'BF\'s Dad', creator: admin, gender: 'male' }.merge(random_info)
   )
   bf_mom = Profile.create!(
-    { pseudo: 'BF Mom', creator: admin, gender: 'female' }.merge(random_info)
+    { pseudo: 'BF\'s Mom', creator: admin, gender: 'female' }.merge(random_info)
   )
   bf_parents = Couple.create!(
     profile1_id: bf_dad.id, profile2_id: bf_mom.id, creator_id: admin.id
   )
 
   boyfriend = Profile.create!(
-    { pseudo: 'boyfriend', parents_id: bf_parents.id, creator: admin, gender: 'male' }.merge(random_info)
+    { pseudo: 'Boyfriend', parents_id: bf_parents.id, creator: admin, gender: 'male' }.merge(random_info)
   )
   relation = Couple.create!(
     profile1_id: me.id, profile2_id: boyfriend.id, creator_id: admin.id

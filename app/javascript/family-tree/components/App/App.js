@@ -35,6 +35,7 @@ function App() {
   //   console.log(onResetClick)
   // console.groupEnd();
 
+  // Pinch to zoom
   return (
     html`
       <>
@@ -50,9 +51,6 @@ function App() {
             onChangeRoot=${onChangeRoot}
           />
           <footer class="solid__app__footer">
-            <small>
-              Credits to <a target="_blank" href="https://github.com/SanichKotikov/solid-family-tree-example">SanichKotikov</a>
-            </small>
             <${Show} when=${rootId() !== initialId}>
               <button type="button" class="solid__app__reset" onClick=${onResetClick}>
                 Reset

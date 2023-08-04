@@ -141,8 +141,6 @@ class Profile < ApplicationRecord
   end
 
   def default_photo_url
-    return if Rails.env.production?
-
-    "https://res.cloudinary.com/phanremy/image/upload/c_fill,h_200,w_200/v1/kitwe-app/4t9oyyi4b1bfeb31422erbela2qs"
+    ActionController::Base.helpers.asset_path('user.png')
   end
 end

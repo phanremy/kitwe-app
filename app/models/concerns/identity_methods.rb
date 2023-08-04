@@ -16,6 +16,7 @@ module IdentityMethods
     [first_name, last_name].join(' ').strip
   end
 
+  # TODO: Play with designation and full_designation in outline and family tree
   def designation
     option_bis = email.present? ? email : phone
     option = full_name.present? ? full_name : option_bis
