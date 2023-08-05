@@ -7,7 +7,6 @@ She/he creates profile for her/his acquaintances, and keep tracks of information
 
 Credits to SanichKotikov for the [SolidJS Family Tree](https://github.com/SanichKotikov/solid-family-tree-example) and the [relatives tree library](https://github.com/SanichKotikov/relatives-tree)
 
-
 ## Technical Stack
 
 - Ruby `3.0.3`

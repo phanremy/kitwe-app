@@ -12,6 +12,7 @@
         <% end %>
       <% end %>
     </div>
+
     <div id="profile_parents" class="mb-2 p-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
@@ -81,8 +82,8 @@
                   <%= link_to t('children.new_for', couple_designation: couple.designation), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
                 <% end %>
             <% else %>
-              <%#= link_to 'Create relationship first', new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
-              <%= link_to 'Create relationship first', new_outlines_profile_couple_path(profile), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
+              <%#= link_to t('children.no_couple'), new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
+              <%= link_to t('children.no_couple'), new_outlines_profile_couple_path(profile), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
             <% end %>
           <% end %>
         <% end %>

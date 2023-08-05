@@ -1,5 +1,5 @@
 en:
-  advanced_filter: Advanced Filter
+  advanced_filter: Advanced
   confirm_delete: Are you sure? Deleting is permanent
   delete: Delete
   edit: Edit
@@ -14,9 +14,10 @@ en:
     new: Create a child from this relationship
     new_for: Create a child from %{couple_designation}
     not_found: No children
+    no_couple: Create a relationship first
 
   couples:
-    new: Register a new relationship
+    new: Create a new relationship
     create_success: Relationship was successfully created.
     update_success: Relationship was successfully updated.
     destroy_success: Relationship was successfully deleted.
