@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   resources :couples, only: %i[destroy]
 
+  resources :users, only: %i[index]
+
   # resources :posts
   get '/open-modal', to: 'pages#open_modal', as: 'open_modal'
 end

@@ -1,0 +1,21 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Profiles count</th>
+      <th>Admin</th>
+      <th>Confirmed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr class="border">
+        <td class="border"><%= user.email %></td>
+        <td class="border"><%= user.profiles.count %></td>
+        <td class="border"><%= user.admin? %></td>
+        <td class="border"><%= user.confirmed? %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -8,17 +8,8 @@ class Ability
 
     return unless user
 
-    can :manage, Post
-    can :manage, Profile, creator: user
-    can :manage, Couple, creator: user
-    can %i[new create], :parent
-    can %i[new create], :import
-    can [:create], :export
-    can :manage, :family
-    can :create, :modal_shared_link
-    can :create, :shared_link
-    can :create, :download
-    can %i[new create], :filter
+    user_abilities(user)
+    admin_abilities(user)
 
     # Define abilities for the passed in user here. For example:
     #
@@ -55,5 +46,25 @@ class Ability
     can [:index], :family
     can [:show], :tree
     can [:create], :outline
+  end
+
+  def admin_abilities(user)
+    return if !user.admin? && %w[user2@example.com pocari04@gmail.com].exclude?(user.email)
+
+    can :manage, User
+    # can :manage, Post
+  end
+
+  def user_abilities(user)
+    can :manage, Profile, creator: user
+    can :manage, Couple, creator: user
+    can %i[new create], :parent
+    can %i[new create], :import
+    can [:create], :export
+    can :manage, :family
+    can :create, :modal_shared_link
+    can :create, :shared_link
+    can :create, :download
+    can %i[new create], :filter
   end
 end
