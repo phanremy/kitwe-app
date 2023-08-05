@@ -26,7 +26,7 @@ en:
 
   parents:
     new: Create parents
-    create_success: Parents created
+    create_success: Parents were successfully created.
     at_least_one_parent_error: "At least one parent's nickname is required"
 
   birth_dates:
