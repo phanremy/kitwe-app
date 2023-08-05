@@ -18,6 +18,7 @@ en:
 
   couples:
     new: Create a new relationship
+    delete: Delete relationship with %{partner}
     create_success: Relationship was successfully created.
     update_success: Relationship was successfully updated.
     destroy_success: Relationship was successfully deleted.

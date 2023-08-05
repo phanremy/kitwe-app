@@ -37,8 +37,7 @@ function Node(props) {
           <${Show} when=${props.node.hasSubTree}>
             <div
               class="solid__node__sub"
-              onClick=${onClick}
-            />
+              onClick=${onClick}>...</div>
           </Show>
         </div>`
   );

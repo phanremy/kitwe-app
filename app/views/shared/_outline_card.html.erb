@@ -1,5 +1,7 @@
-<div class="pt-5 relative" data-controller="remove" data-close-if-click-out-of-panel="true">
-  <%= yield %>
+<div class="pt-8 relative" data-controller="remove" data-close-if-click-out-of-panel="true">
+  <div class="p-5" style="width: fit-content">
+    <%= yield %>
+  </div>
   <span class="absolute top-0 bottom-0 right-0 px-4 py-3 h-fit">
     <svg class="fill-current h-6 w-6" role="button" xmlns="" viewBox="0 0 20 20" data-action="click->remove#proceed">
       <title>Close</title>

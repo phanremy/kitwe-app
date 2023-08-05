@@ -145,7 +145,8 @@ h2 {
 }
 
 .solid__node__isRoot {
-  border: thick double rgb(229 231 235) !important;
+  /* border: thick double rgb(229 231 235) !important; */
+  box-shadow: 4px -4px teal;
 }
 
 .solid__node__sub {
@@ -159,6 +160,11 @@ h2 {
   border-radius: 0 4px;
   cursor: pointer;
   background: rgb(229 231 235);
+  line-height: 0;
+  font-size: x-small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .solid__pinchzoompan__root {

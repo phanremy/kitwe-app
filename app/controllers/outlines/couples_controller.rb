@@ -33,10 +33,7 @@ module Outlines
     def destroy
       @profile = Profile.find(params[:profile_id])
       @couple = Couple.find(params[:id])
-      if @couple.children.count.positive?
-        flash.now[:error] = I18n.t('couples.with_children_error')
-        render_flash
-      elsif @couple.destroy
+      if @couple.destroy
         family_tree_turbo_response(success_message: I18n.t('couples.destroy_success'))
       else
         flash.now[:error] = I18n.t('general_error')
