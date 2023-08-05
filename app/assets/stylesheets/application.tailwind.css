@@ -146,7 +146,8 @@ h2 {
 
 .solid__node__isRoot {
   /* border: thick double rgb(229 231 235) !important; */
-  box-shadow: 4px -4px teal;
+  /* box-shadow: 4px -4px darkblue; */
+  box-shadow: 4px -4px #ffa200; /* orange or darkblue */
 }
 
 .solid__node__sub {
