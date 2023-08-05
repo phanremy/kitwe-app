@@ -9,4 +9,10 @@ class User < ApplicationRecord
   has_many :couples, foreign_key: 'creator_id', dependent: :destroy
   has_many :profiles, foreign_key: 'creator_id', dependent: :destroy
   has_many :posts, dependent: :destroy
+
+  after_create :create_own_profile
+
+  def create_own_profile
+    Profile.create(creator_id: id, email: email, pseudo: email.split('@').first)
+  end
 end

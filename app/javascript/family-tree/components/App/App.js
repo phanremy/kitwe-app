@@ -53,16 +53,16 @@ function App() {
           />
           <footer class="solid__app__footer">
             <div>
-              <${Show} when=${degradedMode === '1'}>
-                <small>
-                  Degraded mode
-                </small>
+              <${Show} when=${rootId() !== initialId}>
+                <button type="button" class="solid__app__reset" onClick=${onResetClick}>
+                  Reset
+                </button>
               </Show>
             </div>
-            <${Show} when=${rootId() !== initialId}>
-              <button type="button" class="solid__app__reset" onClick=${onResetClick}>
-                Reset
-              </button>
+            <${Show} when=${degradedMode === '1'}>
+              <small>
+                Degraded mode
+              </small>
             </Show>
           </footer>
         </div>
