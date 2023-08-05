@@ -23,6 +23,7 @@ module Families
     private
 
     def locals
+      # TODO: check if outline_id and profile_id are related
       @profile = Profile.find(params[:outline_id])
       @couples = Couple.includes(:profile1, :profile2).related_to(params[:outline_id])
       @children = @profile.children_profiles

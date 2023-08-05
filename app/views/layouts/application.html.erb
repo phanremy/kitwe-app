@@ -3,6 +3,8 @@
   <head>
     <%#= favicon_link_tag %>
     <title>KITWE - Keep in touch with Everything and Everyone</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -24,7 +26,7 @@
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
     <meta name="twitter:image:src" content="<%= meta_image %>">
 
-    <link rel="manifest" href="<%#= asset_path 'manifest.json' %>">
+    <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
 
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
