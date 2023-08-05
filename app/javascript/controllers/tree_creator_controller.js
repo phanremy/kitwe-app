@@ -28,10 +28,20 @@ export default class extends Controller {
     this.element.innerHTML = '';
     // TODO: all male if error before catch
     try {
-      render(App, this.element);
+      this.render()
     } catch (error) {
       console.error(error);
       this.element.innerHTML = 'An error occurred, please try again later';
+    }
+  }
+
+  render() {
+    try {
+      render(App, this.element);
+    } catch (error) {
+      this.element.dataset.degradedMode = '1';
+      console.error('Degraded mode activated');
+      render(App, this.element);
     }
   }
 }

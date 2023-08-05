@@ -11,6 +11,7 @@ function App() {
   const initialId = dataset.initialId;
   const id = dataset.id;
   const nodes = JSON.parse(dataset.familyTree);
+  const degradedMode = dataset.degradedMode;
 
   const [rootId, setRootId] = createSignal(id);
 
@@ -51,6 +52,13 @@ function App() {
             onChangeRoot=${onChangeRoot}
           />
           <footer class="solid__app__footer">
+            <div>
+              <${Show} when=${degradedMode === '1'}>
+                <small>
+                  Degraded mode
+                </small>
+              </Show>
+            </div>
             <${Show} when=${rootId() !== initialId}>
               <button type="button" class="solid__app__reset" onClick=${onResetClick}>
                 Reset

@@ -19,9 +19,16 @@ export const createFamilyFunc = (store) => {
     const getChildUnits = getChildUnitsFunc(store);
     return (parentIDs, type = "root", isMain = false) => {
         const family = newFamily(store.getNextId(), type, isMain);
-        const parents = parentIDs
-            .map(id => store.getNode(id))
-            .sort(byGender(store.root.gender));
+        let parents = parentIDs.map(id => store.getNode(id))
+
+        // TODO: refacto
+        if (document.getElementById('family-tree').dataset.degradedMode !== '1')  {
+          parents = parents.sort(byGender(store.root.gender));
+        }
+
+        // const parents = parentIDs
+        //     .map(id => store.getNode(id))
+        //     .sort(byGender(store.root.gender));
         family.parents = [newUnit(family.id, parents)];
         family.children = getChildUnits(family.id, parents);
         setDefaultUnitShift(family);
