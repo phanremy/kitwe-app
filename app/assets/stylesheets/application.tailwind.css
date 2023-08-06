@@ -142,12 +142,21 @@ h2 {
   border-radius: 10px 0;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .solid__node__isRoot {
   /* border: thick double rgb(229 231 235) !important; */
   /* box-shadow: 4px -4px darkblue; */
-  box-shadow: 4px -4px #ffa200; /* orange or darkblue */
+  /* #E5E7EB grey */
+  /* #FFA200 orange */
+  /* #4169E1 royal blue */
+  /* -webkit-box-shadow: 4px -4px 4px 0px #FFA200;
+  box-shadow: 4px -4px 4px 0px #FFA200; */
+  /* -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 4px -4px 4px 0px rgba(255,162,0,0);
+  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 4px -4px 4px 0px rgba(255,162,0,0); */
+  -webkit-box-shadow: 4px -4px 1px 0px #c3c4c8, -2px 2px 1px 0px #c3c4c8;
+  box-shadow: 4px -4px 1px 0px #c3c4c8, -2px 2px 1px 0px #c3c4c8;
 }
 
 .solid__node__sub {
@@ -193,3 +202,9 @@ h2 {
 }
 
 /* SOLID JS FAMILY TREE CREATOR - END */
+
+/* SLIM SELECT  */
+
+.ss-main {
+  @apply w-full border-gray-500 py-2 px-3 !important;
+}

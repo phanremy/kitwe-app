@@ -1,10 +1,13 @@
 <%= form_with model: [:profile, @couple] do |form| %>
   <%= form.hidden_field :creator_id, value: current_user&.id %>
-  <div class="mb-6">
-    <%= form.select :profile1_id, couple_profile_options(profile1_id: params[:profile_id], profile2_id: nil, blocked: true), {}, class: 'rounded' ,disabled: true %>
-  </div>
-  <div class="mb-6 flex items-center">
-    <%= form.select :profile2_id, couple_profile_options(profile1_id: params[:profile_id], profile2_id: @couple.profile2_id), {}, class: 'rounded' %>
+  <%= form.hidden_field :profile1_id, value: params[:profile_id] %>
+  <div class="w-full lg:w-1/2 flex flex-col justify-between items-center my-5">
+    <%= form.select :profile2_id,
+                    couple_profile_options(profile1_id: params[:profile_id], profile2_id: @couple.profile2_id),
+                    {},
+                    { class: 'rounded',
+                      data: { controller: 'slim-select' } }%>
+    <p class="my-5">Or</p>
     <%= link_to t('profiles.new'), new_profile_path(coupled_with: params[:profile_id]), class: "ml-2" %>
   </div>
   <div class="actions">

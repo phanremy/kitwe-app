@@ -10,6 +10,7 @@ import TreeCreatorController from 'controllers/tree_creator_controller'
 import TreeInteractionController from 'controllers/tree_interaction_controller'
 import Form from 'controllers/form_controller'
 import ClipboardController from 'controllers/clipboard_controller'
+import SlimSelectController from 'controllers/slim_select_controller'
 
 window.Stimulus = Application.start()
 Stimulus.register('modal-open', ModalOpenController)
@@ -20,3 +21,4 @@ Stimulus.register('tree-creator', TreeCreatorController)
 Stimulus.register('tree-interaction', TreeInteractionController)
 Stimulus.register('form', Form)
 Stimulus.register('clipboard', ClipboardController)
+Stimulus.register('slim-select', SlimSelectController)

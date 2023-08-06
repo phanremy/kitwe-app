@@ -83,7 +83,7 @@
               <% end %>
           <% else %>
             <%#= link_to t('children.no_couple'), new_profile_couple_path(profile_id: params[:id]), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
-            <%= link_to t('children.no_couple'), new_outlines_profile_couple_path(profile), class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
+            <%= link_to t('children.no_couple'), new_outlines_profile_path(coupled_with: profile.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 text-sm py-2', role:'menuitem', tabindex:'-1' %>
           <% end %>
         <% end %>
       <% end %>
