@@ -59,11 +59,6 @@ function App() {
                 </button>
               </Show>
             </div>
-            <${Show} when=${degradedMode === '1'}>
-              <small>
-                Degraded mode
-              </small>
-            </Show>
           </footer>
         </div>
       </>
