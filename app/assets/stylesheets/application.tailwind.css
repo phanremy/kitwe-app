@@ -208,3 +208,7 @@ h2 {
 .ss-main {
   @apply w-full border-gray-500 py-2 px-3 !important;
 }
+
+#outline-turbo {
+  @apply overflow-auto z-20 w-screen md:w-fit lg:w-fit min-w-[300px] max-h-[80vh] lg:max-h-[85vh] absolute right-0 top-[96px] lg:top-[112px];
+}
