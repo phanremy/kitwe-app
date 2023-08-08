@@ -1,4 +1,17 @@
 en:
+  month:
+    january: January
+    february: February
+    march: March
+    april: April
+    may: May
+    june: June
+    july: July
+    august: August
+    september: September
+    october: October
+    november: November
+    december: December
   advanced_filter: Advanced
   confirm_delete: Are you sure? Deleting is permanent
   delete: Delete
@@ -8,15 +21,19 @@ en:
   log_in: Log in
   log_out: Log out
   search_a_profile: Search a profile
-  submit: Submit
+  submit: Save
+  or: Or
 
   children:
+    title: Children
     new: Create a child from this relationship
     new_for: Create a child from %{couple_designation}
     not_found: No children
     no_couple: Create a relationship first
 
   couples:
+    title: Spouses
+    no_other_partner: No other partner
     new: Create a new relationship
     delete: Delete relationship with %{partner}
     create_success: Relationship was successfully created.
@@ -26,17 +43,21 @@ en:
     with_children_error: This relationship has associated children to be taken care of first.
 
   parents:
+    title: Parents
     new: Create parents
     create_success: Parents were successfully created.
     at_least_one_parent_error: "At least one parent's nickname is required"
 
-  birth_dates:
-    not_found: No birthdays found
-
   siblings:
+    title: Siblings
     new: Create a sibling from the same parents
 
+  birth_dates:
+    title: Birthdays
+    not_found: No birthdays found
+
   profiles:
+    title: Profiles
     new: Create a new profile
     edit: Edit profile
     create_success: Profile was successfully created.
@@ -73,6 +94,9 @@ en:
   export:
     copy: Copy to Clipboard
     download: Download in CSV
+
+  shared_links:
+    success: Copied in clipboard
 
   privacy:
     public: Public

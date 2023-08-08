@@ -37,7 +37,7 @@ class Couple < ApplicationRecord
 
   def other_partner_designation(profile)
     partners.reject { |partner| partner == profile }
-            .first&.designation || 'Single'
+            .first&.designation || I18n.t('couples.no_other_partner')
   end
 
   def siblings_of(profile)

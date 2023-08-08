@@ -3,7 +3,7 @@
     <div id="profile_parents" class="border rounded mb-2 p-2">
       <div class="flex justify-between items-center">
         <b class="py-2 mr-4">
-          Parents
+          <%= t('parents.title') %>
         </b>
       </div>
       <ul>
@@ -18,7 +18,7 @@
     <div id="profile_couples" class="border rounded p-2 mb-2">
       <div class="flex justify-between items-center">
         <b class="py-2 mr-4">
-          Spouses
+          <%= t('couples.title') %>
         </b>
         <%# if can? :manage, profile %>
           <%#= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
@@ -49,7 +49,7 @@
     <div id="profile_children" class="border rounded p-2 mb-2">
       <div class="flex justify-between items-center">
         <b class="py-2 mr-4">
-          Children
+          <%= t('children.title') %>
         </b>
         <%# if can? :manage, profile %>
           <%#= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
@@ -78,7 +78,7 @@
     <div id="profile_siblings" class="border rounded p-2">
       <div class="flex justify-between items-center">
         <b class="py-2 mr-4">
-          Siblings
+          <%= t('siblings.title') %>
         </b>
       </div>
 

@@ -22,7 +22,7 @@ module CouplesHelper
     other_partner = couple.other_partner(profile)
 
     if other_partner.blank?
-      'Single'
+      I18n.t('couples.no_other_partner')
     else
       link_to(other_partner.designation, profile_path(other_partner.id, profile_id: nil))
     end

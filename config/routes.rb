@@ -8,26 +8,27 @@ Rails.application.routes.draw do
 
   draw :profile
 
-  resources :profiles, only: %i[index show] do
-    resources :couples, controllers: 'couples', except: %i[show destroy]
+  scope '(:locale)', locale: /fr|en/ do
+    resources :profiles, only: %i[index show] do
+      resources :couples, controllers: 'couples', except: %i[show destroy]
 
-    resources :families, only: %w[index] do
-      scope module: 'families', as: 'families' do
-        collection do
-          resource :outline, only: %w[create]
-          resource :tree, only: %w[show]
+      resources :families, only: %w[index] do
+        scope module: 'families', as: 'families' do
+          collection do
+            resource :outline, only: %w[create]
+            resource :tree, only: %w[show]
+          end
         end
       end
+      # resources :events
+      # resources :friendships
     end
-    # resources :events
-    # resources :friendships
+
+    draw :outline
+    resources :users, only: %i[index]
   end
 
-  draw :outline
-
   resources :couples, only: %i[destroy]
-
-  resources :users, only: %i[index]
 
   # resources :posts
   get '/open-modal', to: 'pages#open_modal', as: 'open_modal'

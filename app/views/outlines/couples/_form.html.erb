@@ -4,7 +4,7 @@
     <%= form.hidden_field :profile1_id, value: params[:profile_id] %>
     <div class="flex flex-col justify-between items-center my-5">
       <%= form.select :profile2_id, couple_profile_options(profile1_id: params[:profile_id], profile2_id: couple.profile2_id, blocked: false), {}, class: 'w-full rounded' %>
-      <p class="my-5">Or</p>
+      <p class="my-5"><%= t('or') %></p>
       <%= link_to t('profiles.new'), new_outlines_profile_path(coupled_with: params[:profile_id]), data: { turbo_stream: true }, class: "ml-2" %>
     </div>
     <div class="actions">

@@ -52,10 +52,10 @@ module Tokenizer
 
   def allowed_urls
     [
-      profile_url(profile_id, profile_id: nil),
-      profile_families_url(profile_id: profile_id),
-      profile_families_tree_url(profile_id: profile_id),
-      profile_families_outline_url(profile_id: profile_id)
+      profile_url(profile_id, profile_id: nil, locale: nil),
+      profile_families_url(profile_id: profile_id, locale: nil),
+      profile_families_tree_url(profile_id: profile_id, locale: nil),
+      profile_families_outline_url(profile_id: profile_id, locale: nil)
     ].compact
   end
 

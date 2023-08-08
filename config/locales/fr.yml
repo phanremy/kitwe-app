@@ -1,0 +1,135 @@
+fr:
+  month:
+    january: Janvier
+    february: Février
+    march: Mars
+    april: Avril
+    may: Mai
+    june: Juin
+    july: Juillet
+    august: Août
+    september: Septembre
+    october: Octobre
+    november: Novembre
+    december: Décembre
+  advanced_filter: Avancé
+  confirm_delete: Êtes-vous sûr ? La suppression est permanente
+  delete: Supprimer
+  edit: Modifier
+  filter: Filtrer
+  general_error: Quelque chose s'est mal passé
+  log_in: Se connecter
+  log_out: Se déconnecter
+  search_a_profile: Rechercher un profil
+  submit: Enregistrer
+  or: Ou
+
+  children:
+    title: Enfants
+    new: Créer un enfant de cette relation
+    new_for: Créer un enfant de %{couple_designation}
+    not_found: Pas d'enfants
+    no_couple: Créer d'abord une relation
+
+  couples:
+    title: Conjoint(e)s
+    no_other_partner: Pas d'autre partenaire
+    new: Créer une nouvelle relation
+    delete: Supprimer la relation
+    create_success: La relation a été créée avec succès
+    update_success: La relation a été mise à jour avec succès
+    destroy_success: La relation a été supprimée avec succès
+    not_found: Pas de relations
+    with_children_error: Cette relation a des enfants associés qui doivent être pris en charge en premier
+
+  parents:
+    title: Parents
+    new: Créer des parents
+    create_success: Les parents ont été créés avec succès
+    at_least_one_parent_error: "Le surnom d'au moins un parent est requis"
+
+  siblings:
+    title: Frères et sœurs
+    new: Créer un frère ou une sœur à partir des mêmes parents
+
+  birth_dates:
+    title: Anniversaires
+    not_found: Pas d'anniversaires trouvés
+
+  profiles:
+    title: Profiles
+    new: Créer un nouveau profil
+    edit: Modifier le profil
+    create_success: Le profil a été créé avec succès
+    update_success: Le profil a été mis à jour avec succès
+    destroy_success: Le profil a été supprimé avec succès
+    import_option: Importer des profils
+    imports:
+      form:
+        title: Importer jusqu'à 100 profils
+        description: "Avertissement : Les profils existants avec la même désignation auront leurs informations et relations mises à jour"
+        csv_label: Télécharger un fichier CSV
+        token_label: Fournir le jeton
+        or: OU
+    export_option: Exporter tous les profils filtrés
+    not_found: Pas de profils trouvés
+    share_link: Partager ce profil
+    with_couples_error: Ce profil a des relations associées qui doivent être prises en charge en premier
+    category:
+      any: ""
+      without: Pas de catégorie
+      family: Famille
+      friend: Ami(e)
+      colleague: Collègue
+    birth_date:
+      any: ""
+      with: Avec anniversaires
+      without: Sans anniversaires
+      centenarian: Centenaires
+    gender:
+      not_specified: Non spécifié
+      male: Homme
+      female: Femme
+
+  export:
+    copy: Copier dans le presse-papiers
+    download: Télécharger au format CSV
+
+  shared_links:
+    success: Copié dans le presse-papiers !
+
+
+  privacy:
+    public: Public
+    only_involved: Uniquement les personnes impliquées
+    only_shared: Uniquement les personnes avec qui le profil est partagé
+    only_friends: Uniquement les ami(e)s
+    private: Privé
+
+  date:
+    formats:
+      fr_long: "%A %e %B %Y"
+      fr_short: "%e %B %Y"
+
+  activerecord:
+    attributes:
+      profile:
+        pseudo: Surnom
+        first_name: Prénom
+        last_name: Nom de famille
+        email: Email
+        phone: Numéro de téléphone
+        birth_date: Date d'anniversaire
+        wedding_date: Date de mariage
+        tiktok_url: Tiktok
+        twitter_url: Twitter
+        linkedin_url: Linkedin
+        category: Catégorie
+        notes: Notes
+        gender: Genre
+    errors:
+      models:
+        couple:
+          attributes:
+            profile1_id:
+              uniqueness: déjà associé(e) avec le partenaire 2

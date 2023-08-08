@@ -3,6 +3,7 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
   before_action :authenticate_user!
+  before_action :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
     if current_user.nil?
@@ -31,5 +32,29 @@ class ApplicationController < ActionController::Base
 
   def render_modal_flash
     render turbo_stream: turbo_stream.update(:modal_flash, partial: 'shared/flash')
+  end
+
+  private
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
+  def set_locale
+    I18n.locale = params_locale || browser_locale || I18n.default_locale
+  end
+
+  def browser_locale
+    request.env['HTTP_ACCEPT_LANGUAGE'].to_s.scan(/^[a-z]{2}/).find do |locale|
+      available_locale(locale)
+    end
+  end
+
+  def params_locale
+    available_locale(params[:locale])
+  end
+
+  def available_locale(locale)
+    I18n.available_locales.find { |candidate| locale&.to_sym == candidate }
   end
 end

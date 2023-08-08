@@ -15,7 +15,7 @@
     <div class="mb-2 p-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
-          Parents
+          <%= t('parents.title') %>
         </b>
         <% if can? :manage, profile %>
           <% if profile.parents_id.nil? %>
@@ -39,7 +39,7 @@
     <div class="p-2 mb-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
-          Spouses
+          <%= t('couples.title') %>
         </b>
         <% if can? :manage, profile %>
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
@@ -71,7 +71,7 @@
     <div class="p-2 mb-2">
       <div class="flex justify-between items-center">
         <b class="py-5 mr-4">
-          Children
+          <%= t('children.title') %>
         </b>
         <% if can? :manage, profile %>
           <%= render layout: 'shared/dropdown_options', locals: { page_header: false } do %>
@@ -100,7 +100,7 @@
     <div class="p-2">
       <div class="flex justify-between items-center">
         <b class="py-2 mr-4">
-          Siblings
+          <%= t('siblings.title') %>
         </b>
         <% if can? :manage, profile %>
           <% if profile.parents_id %>

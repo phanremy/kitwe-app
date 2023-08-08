@@ -4,7 +4,7 @@ class ModalSharedLinksController < ApplicationController
   authorize_resource class: false
 
   def create
-    flash.now[:success] = 'Copied in clipboard'
+    flash.now[:success] = I18n.t('shared_links.success')
     render_modal_flash
   end
 
