@@ -23,6 +23,7 @@ en:
   search_a_profile: Search a profile
   submit: Save
   or: Or
+  language_switch: Changer en %{language}
 
   children:
     title: Children

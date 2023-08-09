@@ -23,6 +23,7 @@ fr:
   search_a_profile: Rechercher un profil
   submit: Enregistrer
   or: Ou
+  language_switch: Switch to %{language}
 
   children:
     title: Enfants
