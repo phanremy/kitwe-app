@@ -9,18 +9,15 @@
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
         <%= form.text_field :first_name, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
         <%= form.label :first_name, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-        <%= form.select :first_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :last_name, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :last_name, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :last_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
   </div>
   <div class="flex relative my-8 border-b-2 focus-within:border-blue-500">
     <%= form.date_field :birth_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
     <%= form.label :birth_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%= form.select :birth_date_privacy, profile_privacy_options, {}, class: 'hidden' %>
   </div>
   <div class="flex flex-wrap justify-between">
     <div class="relative focus-within:border-blue-500 mb-5">
@@ -44,12 +41,10 @@
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :email, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :email, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :email_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :phone, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :phone, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :phone_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
   </div>
   <%# <div class="flex"> %>

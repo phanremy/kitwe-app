@@ -17,17 +17,6 @@ def profile_date
   date
 end
 
-def random_privacy
-  {
-    first_name_privacy: %w[public only_shared only_friends private].sample,
-    last_name_privacy: %w[public only_shared only_friends private].sample,
-    email_privacy: %w[public only_shared only_friends private].sample,
-    phone_privacy: %w[public only_shared only_friends private].sample,
-    birth_date_privacy: %w[public only_shared only_friends private].sample,
-    wedding_date_privacy: %w[public only_shared only_friends private].sample
-  }
-end
-
 def random_info
   {
     first_name: Faker::Name.first_name,
@@ -36,7 +25,7 @@ def random_info
     phone: Faker::PhoneNumber.phone_number_with_country_code ,
     birth_date: profile_date,
     wedding_date: profile_date
-  }.merge(random_privacy)
+  }
 end
 
 puts 'Start Seed'
@@ -52,27 +41,24 @@ if Profile.count.zero?
   date = profile_date
 
   Profile.create!(pseudo: nil, creator_id: visitor.id, gender: 'male',
-                  first_name: 'Jean', first_name_privacy: 'public',
-                  last_name: 'Chevalier', last_name_privacy: 'public',
-                  email: 'jean.chevalier@example.com', email_privacy: 'public',
-                  phone: '0123456', phone_privacy: 'public',
-                  birth_date: date - 30.year, birth_date_privacy: 'public',
-                  wedding_date: date, wedding_date_privacy: 'public',
-                  address_privacy: 'public',
-                  kids_privacy: 'public')
+                  first_name: 'Jean',
+                  last_name: 'Chevalier',
+                  email: 'jean.chevalier@example.com',
+                  phone: '0123456',
+                  birth_date: date - 30.year,
+                  death_date: date + 30.year,
+                  wedding_date: date)
 
   jc = Profile.last
   Couple.create!(profile1_id: jc.id, profile2_id: nil, creator_id: visitor.id)
 
   Profile.create!(pseudo: 'anonymous', creator_id: visitor.id, gender: 'female',
-                  first_name: 'Valentin', first_name_privacy: 'private',
-                  last_name: 'Dupont', last_name_privacy: 'private',
-                  email: nil, email_privacy: 'private',
-                  phone: nil, phone_privacy: 'private',
-                  birth_date: nil, birth_date_privacy: 'private',
-                  wedding_date: nil, wedding_date_privacy: 'private',
-                  address_privacy: 'private',
-                  kids_privacy: 'private',
+                  first_name: 'Valentin',
+                  last_name: 'Dupont',
+                  email: nil,
+                  phone: nil,
+                  birth_date: nil,
+                  wedding_date: nil,
                   parents_id: Couple.first.id)
 
   anonymous = Profile.last
@@ -80,28 +66,24 @@ if Profile.count.zero?
   date = profile_date
 
   Profile.create(pseudo: nil, creator_id: visitor.id, gender: 'male',
-                 first_name: 'Julien', first_name_privacy: 'only_friends',
-                 last_name: 'Alfonso', last_name_privacy: 'only_friends',
-                 email: 'julien.alfonso@example.com', email_privacy: 'only_friends',
-                 phone: '0123456', phone_privacy: 'public',
-                 birth_date: date - 30.year, birth_date_privacy: 'public',
-                 wedding_date: nil, wedding_date_privacy: 'only_friends',
-                 address_privacy: 'only_friends',
-                 kids_privacy: 'only_friends')
+                 first_name: 'Julien',
+                 last_name: 'Alfonso',
+                 email: 'julien.alfonso@example.com',
+                 phone: '0123456',
+                 birth_date: date - 30.year,
+                 wedding_date: nil)
 
   ja = Profile.last
   Couple.create!(profile1_id: anonymous.id, profile2_id: ja.id, creator_id: visitor.id)
 
   date = profile_date
   Profile.create!(pseudo: 'WC', creator_id: visitor.id, gender: 'male',
-                  first_name: 'William', first_name_privacy: 'only_friends',
-                  last_name: 'Cloitre', last_name_privacy: 'only_friends',
-                  email: 'william.cloitre@example.com', email_privacy: 'only_friends',
-                  phone: nil, phone_privacy: 'private',
-                  birth_date: nil, birth_date_privacy: 'private',
-                  wedding_date: date, wedding_date_privacy: 'only_friends',
-                  address_privacy: 'only_friends',
-                  kids_privacy: 'only_friends',
+                  first_name: 'William',
+                  last_name: 'Cloitre',
+                  email: 'william.cloitre@example.com',
+                  phone: nil,
+                  birth_date: nil,
+                  wedding_date: date,
                   parents_id: Couple.last.id)
 end
 
