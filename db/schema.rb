@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_05_084650) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_10_215423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_084650) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id"
+    t.string "status", default: "in_a_relationship"
     t.index ["creator_id"], name: "index_couples_on_creator_id"
     t.index ["profile1_id", "profile2_id"], name: "index_couples_on_profile1_id_and_profile2_id", unique: true
     t.index ["profile1_id"], name: "index_couples_on_profile1_id"
@@ -110,25 +111,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_084650) do
     t.bigint "user_id"
     t.string "pseudo"
     t.string "first_name"
-    t.string "first_name_privacy", default: "public", null: false
     t.string "last_name"
-    t.string "last_name_privacy", default: "public", null: false
     t.string "email"
-    t.string "email_privacy", default: "public", null: false
     t.string "phone"
-    t.string "phone_privacy", default: "public", null: false
     t.date "birth_date"
-    t.string "birth_date_privacy", default: "public", null: false
     t.string "tiktok_url"
     t.string "twitter_url"
     t.string "linkedin_url"
     t.text "notes"
     t.string "address"
-    t.string "address_privacy", default: "public", null: false
     t.date "wedding_date"
-    t.string "wedding_date_privacy", default: "public", null: false
     t.string "kids"
-    t.string "kids_privacy", default: "public", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "creator_id", null: false
@@ -136,6 +129,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_05_084650) do
     t.string "category", default: ""
     t.string "photo_url"
     t.string "gender"
+    t.boolean "deceased", default: false
+    t.date "death_date"
     t.index ["category"], name: "index_profiles_on_category"
     t.index ["creator_id"], name: "index_profiles_on_creator_id"
     t.index ["parents_id"], name: "index_profiles_on_parents_id"

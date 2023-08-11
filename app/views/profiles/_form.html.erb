@@ -9,18 +9,28 @@
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
         <%= form.text_field :first_name, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
         <%= form.label :first_name, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-        <%= form.select :first_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :last_name, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :last_name, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :last_name_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
   </div>
   <div class="flex relative my-8 border-b-2 focus-within:border-blue-500">
     <%= form.date_field :birth_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
     <%= form.label :birth_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%= form.select :birth_date_privacy, profile_privacy_options, {}, class: 'hidden' %>
+  </div>
+  <div data-controller="toggle-class"
+       data-toggle-class-class-name-value="">
+    <div class="flex relative my-8 justify-start items-center">
+      <%= form.check_box :deceased, data: { action: "click->toggle-class#proceed"} %>
+      <%= form.label :deceased, class: 'ml-2 text-xs', style: 'transform: none !important;' %>
+    </div>
+    <div class="flex relative my-8 border-b-2 focus-within:border-blue-500 <%= 'hidden' unless @profile.deceased? %>"
+         data-toggle-class-target="element"
+         data-toggle-class-name="hidden">
+      <%= form.date_field :death_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.label :death_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+    </div>
   </div>
   <div class="flex flex-wrap justify-between">
     <div class="relative focus-within:border-blue-500 mb-5">
@@ -44,28 +54,12 @@
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :email, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :email, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :email_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
     <div class="my-4 md:my-0 flex flex-grow relative border-b-2 focus-within:border-blue-500">
       <%= form.text_field :phone, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :phone, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-      <%= form.select :phone_privacy, profile_privacy_options, {}, class: 'hidden' %>
     </div>
   </div>
-  <%# <div class="flex"> %>
-    <%# <div class="flex-grow relative border-b-2 focus-within:border-blue-500"> %>
-      <%#= form.text_field :tiktok_url, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%#= form.label :tiktok_url, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%# </div> %>
-    <%# <div class="flex-grow relative border-b-2 focus-within:border-blue-500"> %>
-      <%#= form.text_field :twitter_url, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%#= form.label :twitter_url, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%# </div> %>
-    <%# <div class="flex-grow relative border-b-2 focus-within:border-blue-500"> %>
-      <%#= form.text_field :linkedin_url, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%#= form.label :linkedin_url, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%# </div> %>
-  <%# </div> %>
   <div class="relative my-8 border-b-2 focus-within:border-blue-500">
     <%= form.text_area :notes, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
     <%= form.label :notes, class: 'absolute top-0 -z-1 duration-300 origin-0' %>

@@ -16,10 +16,6 @@ module ProfilesHelper
     # (params[:controller] == 'profiles/cards' && params[:action] == 'show') ||
   end
 
-  def profile_privacy_options
-    Profile::PRIVACIES.map { |option| [t(option, scope: :privacy), option] }
-  end
-
   def profile_parents_options(couple_id = nil)
     options = [nil] +
               Couple.includes(:profile1, :profile2)

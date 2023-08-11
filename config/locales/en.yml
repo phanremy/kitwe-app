@@ -21,7 +21,7 @@ en:
   log_in: Log in
   log_out: Log out
   search_a_profile: Search a profile
-  submit: Save
+  submit: Submit
   or: Or
   language_switch: Changer en %{language}
 
@@ -61,6 +61,7 @@ en:
     title: Profiles
     new: Create a new profile
     edit: Edit profile
+    edit_advanced: Edit profile (Advanced)
     create_success: Profile was successfully created.
     update_success: Profile was successfully updated.
     destroy_success: Profile was successfully deleted.
@@ -99,6 +100,9 @@ en:
   shared_links:
     success: Copied in clipboard
 
+  outlines:
+    go_to_advanced_form: Go to advanced form
+
   privacy:
     public: Public
     only_involved: Involved only
@@ -120,6 +124,8 @@ en:
         email: Email
         phone: Phone number
         birth_date: Birthday
+        death_date: Day of death
+        deceased: Deceased
         wedding_date: Wedding Date
         tiktok_url: Tiktok
         twitter_url: Twitter
