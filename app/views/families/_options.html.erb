@@ -1,0 +1,9 @@
+<div data-controller="clipboard"
+      data-clipboard-target-value="#token-url">
+  <%= render layout: 'shared/dropdown_options', locals: { default_visible: true } do %>
+    <%= button_to t('families.share_link'), shared_links_path, method: :post, id: 'token-url', data: { 'clipboard-text': @tokenized_url }, class: 'w-full text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
+    <%= link_to 'Show deceased', '#', class: 'w-full text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
+    <%= link_to 'Show gender', '#', class: 'w-full text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
+    <%#= link_to 'hello', '/', class: 'w-full text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
+  <% end %>
+</div>

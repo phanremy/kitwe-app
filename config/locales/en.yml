@@ -43,6 +43,9 @@ en:
     not_found: No relationships
     with_children_error: This relationship has associated children to be taken care of first.
 
+  families:
+    share_link: Share this family
+
   parents:
     title: Parents
     new: Create parents

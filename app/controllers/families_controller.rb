@@ -7,7 +7,10 @@ class FamiliesController < ApplicationController
   before_action :validate_url_token, only: %i[index]
   authorize_resource class: false
 
-  def index; end
+  def index
+    @profile = Profile.find_by(id: params[:profile_id])
+    @tokenized_url = tokenized_url('families', profile_id: @profile.id)
+  end
 
   private
 

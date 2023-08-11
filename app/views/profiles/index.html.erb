@@ -9,13 +9,15 @@
     <div class="mb-5 mr-2 text-sm">
       <%= @profile_ids.count %> profiles
     </div>
-    <%= render layout: 'shared/dropdown_options', locals: { page_header: true } do %>
-      <%= link_to t('profiles.new'), new_profile_path, class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-      <%= button_to t('profiles.export_option'), profile_exports_path, method: :post, params: { profile_ids: @profile_ids }, class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
-      <%= turbo_frame_tag :import do %>
-        <%= link_to t('profiles.import_option'), new_profile_import_path, class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+    <div class="mb-5">
+      <%= render layout: 'shared/dropdown_options', locals: { default_visible: false } do %>
+        <%= link_to t('profiles.new'), new_profile_path, class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+        <%= button_to t('profiles.export_option'), profile_exports_path, method: :post, params: { profile_ids: @profile_ids }, class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+        <%= turbo_frame_tag :import do %>
+          <%= link_to t('profiles.import_option'), new_profile_import_path, class: 'w-full text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
 <ul>
