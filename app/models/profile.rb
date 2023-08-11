@@ -29,7 +29,7 @@ class Profile < ApplicationRecord
   ESSENTIALS = %w[pseudo first_name last_name].freeze
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name last_name email
                        phone gender birth_date tiktok_url twitter_url linkedin_url
-                       notes parents_id category photo].freeze
+                       notes parents_id category photo deceased death_date].freeze
 
   OUTLINE_FORM_ATTRIBUTES = FORM_ATTRIBUTES
 

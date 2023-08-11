@@ -56,6 +56,17 @@
       </div>
     <% end %>
 
+    <% if @profile.deceased %>
+      <div class="py-2 flex items-center justify-start">
+        <span class="text-xs mr-1"><%= t('deceased', scope: 'activerecord.attributes.profile') %></span>
+        <% if @profile.death_date %>
+          <div class="">
+            (<span class="text-xs mr-1"><%= t('death_date', scope: 'activerecord.attributes.profile') %>:</span> <%= l @profile.death_date, format: :fr_short %>)
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
     <% if false %>
       <% if @profile.wedding_date %>
         <div class="flex items-center justify-start">

@@ -124,6 +124,8 @@ en:
         email: Email
         phone: Phone number
         birth_date: Birthday
+        death_date: Day of death
+        deceased: Deceased
         wedding_date: Wedding Date
         tiktok_url: Tiktok
         twitter_url: Twitter

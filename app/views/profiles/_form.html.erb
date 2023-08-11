@@ -19,6 +19,19 @@
     <%= form.date_field :birth_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
     <%= form.label :birth_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
   </div>
+  <div data-controller="toggle-class"
+       data-toggle-class-class-name-value="">
+    <div class="flex relative my-8 justify-start items-center">
+      <%= form.check_box :deceased, data: { action: "click->toggle-class#proceed"} %>
+      <%= form.label :deceased, class: 'ml-2 text-xs', style: 'transform: none !important;' %>
+    </div>
+    <div class="flex relative my-8 border-b-2 focus-within:border-blue-500 <%= 'hidden' unless @profile.deceased? %>"
+         data-toggle-class-target="element"
+         data-toggle-class-name="hidden">
+      <%= form.date_field :death_date, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
+      <%= form.label :death_date, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+    </div>
+  </div>
   <div class="flex flex-wrap justify-between">
     <div class="relative focus-within:border-blue-500 mb-5">
       <%= form.label :parents_id, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
@@ -47,20 +60,6 @@
       <%= form.label :phone, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
     </div>
   </div>
-  <%# <div class="flex"> %>
-    <%# <div class="flex-grow relative border-b-2 focus-within:border-blue-500"> %>
-      <%#= form.text_field :tiktok_url, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%#= form.label :tiktok_url, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%# </div> %>
-    <%# <div class="flex-grow relative border-b-2 focus-within:border-blue-500"> %>
-      <%#= form.text_field :twitter_url, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%#= form.label :twitter_url, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%# </div> %>
-    <%# <div class="flex-grow relative border-b-2 focus-within:border-blue-500"> %>
-      <%#= form.text_field :linkedin_url, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
-      <%#= form.label :linkedin_url, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
-    <%# </div> %>
-  <%# </div> %>
   <div class="relative my-8 border-b-2 focus-within:border-blue-500">
     <%= form.text_area :notes, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
     <%= form.label :notes, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
