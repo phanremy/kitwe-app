@@ -73,7 +73,7 @@ function Tree(props) {
         style=${{
           position: 'relative',
           width: '100%',
-          height: '70vh',
+          height: '40vh',
         }}
       >
         ${Connectors()}

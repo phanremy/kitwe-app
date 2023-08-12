@@ -9,13 +9,13 @@ function calcSide(size, factor, thickness) {
 function Connector({ connector, width, height, thickness = MIN_THICKNESS }) {
   const [x1, y1, x2, y2] = connector;
 
-  // console.group(`connector`)
-  //   console.log(connector)
-  //   console.log(`width: ${calcSide(x2 - x1, width, thickness) + 'px'}`)
-  //   console.log(x2, x1, width, thickness)
-  //   console.log(`height: ${calcSide(y2 - y1, height, thickness) + 'px'}`)
-  //   console.log(y2, y1, height, thickness)
-  // console.groupEnd()
+  console.group(`connector`)
+    console.log(connector)
+    console.log(`width: ${calcSide(x2 - x1, width, thickness) + 'px'}`)
+    console.log(x2, x1, width, thickness)
+    console.log(`height: ${calcSide(y2 - y1, height, thickness) + 'px'}`)
+    console.log(y2, y1, height, thickness)
+  console.groupEnd()
 
   return (
     html`<i
