@@ -39,7 +39,7 @@ export default class extends Controller {
     try {
       render(App, this.element);
     } catch (error) {
-      this.element.dataset.degradedMode = '1';
+      document.getElementById('degraded-mode').checked = true;
       console.error(error);
       console.error('Degraded mode activated');
       render(App, this.element);

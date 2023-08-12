@@ -159,6 +159,16 @@ h2 {
   box-shadow: 4px -4px 1px 0px #c3c4c8, -2px 2px 1px 0px #c3c4c8;
 }
 
+.solid__node__isMale {
+  -webkit-box-shadow: 0px 0px 0px 6px cornflowerblue;
+  box-shadow: 0px 0px 0px 6px cornflowerblue;
+}
+
+.solid__node__isFemale {
+  -webkit-box-shadow: 0px 0px 0px 6px indianred;
+  box-shadow: 0px 0px 0px 6px indianred;
+}
+
 .solid__node__sub {
   position: absolute;
   bottom: 2px;

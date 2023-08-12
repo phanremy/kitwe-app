@@ -47,6 +47,7 @@ function Tree(props) {
         ${(node) => {
           return (html`
             <${Node}
+              gender=${node.gender}
               isRoot=${node.id === props.initialId}
               node=${node}
               style=${{

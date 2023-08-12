@@ -22,7 +22,7 @@ export const createFamilyFunc = (store) => {
         let parents = parentIDs.map(id => store.getNode(id))
 
         // TODO: refacto
-        if (document.getElementById('family-tree').dataset.degradedMode !== '1')  {
+        if (document.getElementById('degraded-mode').unchecked)  {
           parents = parents.sort(byGender(store.root.gender));
         }
 

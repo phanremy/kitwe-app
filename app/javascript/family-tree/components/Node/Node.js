@@ -15,6 +15,7 @@ function Node(props) {
   //   console.log(props.onSubClick)
   //   console.log(onClick)
   // console.groupEnd()
+  console.log(props.gender)
 
   return (
     html`<div class="solid__node__root" style=${props.style}>
@@ -22,6 +23,8 @@ function Node(props) {
             class="solid__node__inner"
             classList=${{
               ['solid__node__isRoot']: props.isRoot,
+              ['solid__node__isMale']: props.gender === 'male',
+              ['solid__node__isFemale']: props.gender === 'female'
             }}
             style=${{
               "background-color": `#e5e7eb`, /* fallback2 */
