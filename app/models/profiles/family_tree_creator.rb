@@ -11,19 +11,25 @@ module Profiles
     # [:id, :gender, :parents, :siblings, :spouses, :children]
     def call
       profile_full_family.map do |profile|
-        {
-          id: profile.id.to_s,
-          name: profile.designation,
-          gender: profile.gender || 'male',
-          # url: host ? profile_url(profile, host: host) : profile_path(profile),
-          img: profile.small_photo_url
-        }.merge(family_links(profile))
+        profile_info(profile)
+          .merge(family_links(profile))
       end
     rescue StandardError => e
       return e
     end
 
     private
+
+    def profile_info(profile)
+      {
+        id: profile.id.to_s,
+        name: profile.designation,
+        gender: profile.gender,
+        deceased: profile.deceased,
+        # url: host ? profile_url(profile, host: host) : profile_path(profile),
+        img: profile.small_photo_url
+      }
+    end
 
     def family_links(profile)
       result = {

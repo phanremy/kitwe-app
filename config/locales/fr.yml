@@ -21,7 +21,7 @@ fr:
   log_in: Se connecter
   log_out: Se déconnecter
   search_a_profile: Rechercher un profil
-  submit: Enregistrer
+  submit: Soumettre
   or: Ou
   language_switch: Switch to %{language}
 

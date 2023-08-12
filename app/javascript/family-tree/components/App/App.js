@@ -11,7 +11,10 @@ function App() {
   const initialId = dataset.initialId;
   const id = dataset.id;
   const nodes = JSON.parse(dataset.familyTree);
-  const degradedMode = dataset.degradedMode;
+  // const degradedMode = dataset.degradedMode;
+  // const showGender = dataset.showGender;
+  // const showDeceased = dataset.showDeceased;
+  // const showCoupleStatus = dataset.showCoupleStatus;
 
   const [rootId, setRootId] = createSignal(id);
 

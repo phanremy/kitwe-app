@@ -10,11 +10,41 @@
       </div>
       <%= form_with url: profile_families_outline_path,
                     method: :post,
-                    html: { id: 'tree-interaction-form' },
+                    html: { class: 'hidden', id: 'tree-interaction-form' },
                     data: { controller: 'form', 'form-initial-submit-value': false } do |form| %>
         <%= form.hidden_field :token, value: params[:token] %>
-        <%= form.hidden_field :id, value: params[:profile_id] %>
-        <%= form.hidden_field :outline_id, value: params[:profile_id], id: 'tree-interaction-id' %>
+        <div class="flex justify-between w-[50rem]">
+          <section>
+            <%= form.label :show_outline %>
+            <%= form.check_box :show_outline, checked: true, required: true %>
+          </section>
+          <section>
+            <%= form.label :degraded_mode %>
+            <%= form.check_box :degraded_mode %>
+          </section>
+          <section>
+            <%= form.label :show_gender %>
+            <%= form.check_box :show_gender %>
+          </section>
+          <section>
+            <%= form.label :show_deceased %>
+            <%= form.check_box :show_deceased %>
+          </section>
+          <section>
+            <%= form.label :show_couple_status %>
+            <%= form.check_box :show_couple_status, checked: true %>
+          </section>
+        </div>
+        <div class="flex w-full">
+          <section class="flex flex-col">
+            <%= form.label :id %>
+            <%= form.text_field :id, value: params[:profile_id] %>
+          </section>
+          <section class="flex flex-col">
+            <%= form.label :outline_id %>
+            <%= form.text_field :outline_id, value: params[:profile_id], id: 'tree-interaction-id' %>
+          </section>
+        </div>
       <% end %>
     </div>
   <% end %>
