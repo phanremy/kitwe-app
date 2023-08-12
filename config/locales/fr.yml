@@ -43,6 +43,9 @@ fr:
     not_found: Pas de relations
     with_children_error: Cette relation a des enfants associés qui doivent être pris en charge en premier
 
+  families:
+    share_link: Partager cette famille
+
   parents:
     title: Parents
     new: Créer des parents
@@ -61,6 +64,7 @@ fr:
     title: Profiles
     new: Créer un nouveau profil
     edit: Modifier le profil
+    edit_advanced: Modifier le profil (Options Avancées)
     create_success: Le profil a été créé avec succès
     update_success: Le profil a été mis à jour avec succès
     destroy_success: Le profil a été supprimé avec succès
@@ -99,6 +103,8 @@ fr:
   shared_links:
     success: Copié dans le presse-papiers !
 
+  outlines:
+    go_to_advanced_form: Aller au formulaire avancé
 
   privacy:
     public: Public
@@ -121,6 +127,8 @@ fr:
         email: Email
         phone: Numéro de téléphone
         birth_date: Date d'anniversaire
+        death_date: Date de décès
+        deceased: Décédé(e)
         wedding_date: Date de mariage
         tiktok_url: Tiktok
         twitter_url: Twitter
