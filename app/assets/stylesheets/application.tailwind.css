@@ -143,30 +143,38 @@ h2 {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-origin: border-box;
 }
 
 .solid__node__isRoot {
-  /* border: thick double rgb(229 231 235) !important; */
-  /* box-shadow: 4px -4px darkblue; */
-  /* #E5E7EB grey */
-  /* #FFA200 orange */
-  /* #4169E1 royal blue */
-  /* -webkit-box-shadow: 4px -4px 4px 0px #FFA200;
-  box-shadow: 4px -4px 4px 0px #FFA200; */
-  /* -webkit-box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 4px -4px 4px 0px rgba(255,162,0,0);
-  box-shadow: -10px 0px 13px -7px #000000, 10px 0px 13px -7px #000000, 4px -4px 4px 0px rgba(255,162,0,0); */
   -webkit-box-shadow: 4px -4px 1px 0px #c3c4c8, -2px 2px 1px 0px #c3c4c8;
   box-shadow: 4px -4px 1px 0px #c3c4c8, -2px 2px 1px 0px #c3c4c8;
 }
 
 .solid__node__isMale {
-  -webkit-box-shadow: 0px 0px 0px 6px cornflowerblue;
-  box-shadow: 0px 0px 0px 6px cornflowerblue;
+  -webkit-box-shadow: 0px 0px 0px 4px cornflowerblue;
+  box-shadow: 0px 0px 0px 4px cornflowerblue;
 }
 
 .solid__node__isFemale {
-  -webkit-box-shadow: 0px 0px 0px 6px indianred;
-  box-shadow: 0px 0px 0px 6px indianred;
+  -webkit-box-shadow: 0px 0px 0px 4px indianred;
+  box-shadow: 0px 0px 0px 4px indianred;
+}
+
+.solid__node__isDeceased:before, .solid__node__isDeceased:after {
+  position: absolute;
+  left: 34px;
+  top: 6px;
+  content: ' ';
+  height: 66px;
+  width: 2px;
+  background-color: darkred;
+}
+.solid__node__isDeceased:before {
+  transform: rotate(45deg);
+}
+.solid__node__isDeceased:after {
+  transform: rotate(-45deg);
 }
 
 .solid__node__sub {

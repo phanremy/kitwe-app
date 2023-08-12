@@ -11,9 +11,8 @@ function App() {
   const initialId = dataset.initialId;
   const id = dataset.id;
   const nodes = JSON.parse(dataset.familyTree);
-  // const degradedMode = dataset.degradedMode;
-  // const showGender = dataset.showGender;
-  // const showDeceased = dataset.showDeceased;
+  const showGender = document.getElementById('show-gender').checked;
+  const showDeceased = document.getElementById('show-deceased').checked;
   // const showCoupleStatus = dataset.showCoupleStatus;
 
   const [rootId, setRootId] = createSignal(id);
@@ -52,6 +51,8 @@ function App() {
             initialId=${initialId}
             width=${WIDTH}
             height=${HEIGHT}
+            showGender=${showGender}
+            showDeceased=${showDeceased}
             onChangeRoot=${onChangeRoot}
           />
           <footer class="solid__app__footer">

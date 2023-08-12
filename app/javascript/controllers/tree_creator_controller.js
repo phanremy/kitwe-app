@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 import { render } from 'solid-js/web';
 import App from 'family-tree/components/App/App';
+import { switchToDegratedMode } from 'family-tree/relatives/utils/degradedMode';
 
 export default class extends Controller {
   connect() {
@@ -26,7 +27,6 @@ export default class extends Controller {
 
   updateFamilyTreeView() {
     this.element.innerHTML = '';
-    // TODO: all male if error before catch
     try {
       this.render()
     } catch (error) {
@@ -39,9 +39,8 @@ export default class extends Controller {
     try {
       render(App, this.element);
     } catch (error) {
-      document.getElementById('degraded-mode').checked = true;
       console.error(error);
-      console.error('Degraded mode activated');
+      switchToDegratedMode();
       render(App, this.element);
     }
   }

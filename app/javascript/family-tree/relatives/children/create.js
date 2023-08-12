@@ -3,6 +3,7 @@ import { newUnit } from 'family-tree/relatives/utils/units';
 import { newFamily } from 'family-tree/relatives/utils/family';
 import { setDefaultUnitShift } from 'family-tree/relatives/utils/setDefaultUnitShift';
 import { createChildUnitsFunc } from 'family-tree/relatives/utils/createChildUnitsFunc';
+import { isNotDegradedMode } from 'family-tree/relatives/utils/degradedMode';
 
 const hasSameRelation = (node) => ((rel) => !node || node.children.some(withId(rel.id)));
 const getChildUnitsFunc = (store) => {
@@ -22,7 +23,7 @@ export const createFamilyFunc = (store) => {
         let parents = parentIDs.map(id => store.getNode(id))
 
         // TODO: refacto
-        if (document.getElementById('degraded-mode').unchecked)  {
+        if (isNotDegradedMode())  {
           parents = parents.sort(byGender(store.root.gender));
         }
 

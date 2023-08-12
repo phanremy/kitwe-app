@@ -5,7 +5,7 @@ module ImportMethods
 
   included do
     def self.find_by_designation(value)
-      # TODO: manage query chinese characters
+      # TODO: manage query chinese & arabic characters
       # designation_query(value).select { |profile| profile.designation == value }.first
       select { |profile| profile.designation == value }.first
     end
