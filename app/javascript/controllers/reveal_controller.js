@@ -11,10 +11,9 @@ import { Controller } from '@hotwired/stimulus'
 //     To: "transform opacity-0 scale-95"
 // -->
 
+// TODO: split in toggleClass and hideIfOutsideClick Controller
 export default class extends Controller {
-  static get targets() {
-    return [ "button", "content" ]
-  }
+  static targets = [ "button", "content" ]
 
   connect () {
     // this.contentTarget.style.width = "0px"

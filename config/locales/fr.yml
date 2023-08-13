@@ -21,7 +21,7 @@ fr:
   log_in: Se connecter
   log_out: Se déconnecter
   search_a_profile: Rechercher un profil
-  submit: Enregistrer
+  submit: Soumettre
   or: Ou
   language_switch: Switch to %{language}
 
@@ -105,6 +105,9 @@ fr:
 
   outlines:
     go_to_advanced_form: Aller au formulaire avancé
+    options:
+      show_deceased: Montrer les profils décédés
+      show_gender: Montrer les genres
 
   privacy:
     public: Public

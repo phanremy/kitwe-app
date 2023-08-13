@@ -34,7 +34,6 @@ function Tree(props) {
   };
 
   const Nodes = () => {
-
     // console.group(`Nodes`)
     //   console.log(tree().nodes)
     //   console.log(props.width)
@@ -49,6 +48,10 @@ function Tree(props) {
             <${Node}
               isRoot=${node.id === props.initialId}
               node=${node}
+              gender=${node.gender}
+              deceased=${node.deceased}
+              showGender=${props.showGender}
+              showDeceased=${props.showDeceased}
               style=${{
                 width: `${props.width}px`,
                 height: `${props.height}px`,
@@ -66,14 +69,16 @@ function Tree(props) {
   //   console.log(height)
   // console.groupEnd()
 
+
+  // height: '70vh',
+
   return (
     html`
       <div
         class="solid__tree__root"
         style=${{
           position: 'relative',
-          width: '100%',
-          height: '70vh',
+          width: '100%'
         }}
       >
         ${Connectors()}

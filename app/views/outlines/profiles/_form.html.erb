@@ -61,6 +61,8 @@
     <div class="actions">
       <%= form.submit t('submit'), class:'w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
     </div>
-    <%= link_to t('go_to_advanced_form', scope: 'outlines'), edit_profile_path(profile), target: '_top' %>
+    <% if profile.persisted? %>
+      <%= link_to t('go_to_advanced_form', scope: 'outlines'), edit_profile_path(profile), target: '_top' %>
+    <% end %>
   <% end %>
 <% end %>
