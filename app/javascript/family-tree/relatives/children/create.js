@@ -22,7 +22,6 @@ export const createFamilyFunc = (store) => {
         const family = newFamily(store.getNextId(), type, isMain);
         let parents = parentIDs.map(id => store.getNode(id))
 
-        // TODO: refacto
         if (isNotDegradedMode())  {
           parents = parents.sort(byGender(store.root.gender));
         }

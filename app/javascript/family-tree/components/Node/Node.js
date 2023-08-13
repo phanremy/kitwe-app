@@ -20,6 +20,10 @@ function Node(props) {
   return (
     html`<div class="solid__node__root" style=${props.style}>
           <div
+            id="solid__node__${props.node.id}"
+            data-tree-interaction-target='node'
+            data-action="click->tree-interaction#onNodeClick"
+            data-node-id=${props.node.id}
             class="solid__node__inner"
             classList=${{
               ['solid__node__isRoot']: props.isRoot,
@@ -27,14 +31,10 @@ function Node(props) {
               ['solid__node__isFemale']: props.gender === 'female' && props.showGender
             }}
             style=${{
-              "background-color": `dimgray`, /* deceased and fallback2 */
+              "background-color": showDeceased ? `dimgray` : `#e5e7eb`, /* deceased and fallback2 */
               "background-image": showDeceased ? `none` :`url(${props.node.img})`, /* fallback */
               "background-image": showDeceased ? `none` : `linear-gradient(180deg, rgba(9,111,121,0) 0%, rgba(0,0,0,1) 150%), url(${props.node.img})`, /* W3C */
-            }}
-            data-tree-interaction-target='node'
-            data-action="click->tree-interaction#onNodeClick"
-            data-node-id=${props.node.id}
-          >
+            }}>
             <${Show} when=${showDeceased}>
               <div class="solid__node__isDeceased"></div>
             </Show>

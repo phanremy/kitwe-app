@@ -11,7 +11,10 @@
       <%= form_with url: profile_families_outline_path,
                     method: :post,
                     html: { class: '', id: 'tree-interaction-form' },
-                    data: { controller: 'form', 'form-initial-submit-value': false } do |form| %>
+                    data: { controller: 'form tree-interaction',
+                            'form-initial-submit-value': false,
+                            'tree-interaction-family-tree-outlet': '#family-tree',
+                            'action': 'change->tree-interaction#onFormChange' } do |form| %>
         <%= form.hidden_field :token, value: params[:token] %>
         <div class="flex justify-between w-[50rem]">
           <section>

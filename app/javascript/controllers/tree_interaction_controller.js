@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static outlets = ['form']
+  static outlets = ['form', 'familyTree']
   static targets = ['node']
 
   onNodeClick(event) {
@@ -14,5 +14,10 @@ export default class extends Controller {
 
     document.getElementById('outline-id').value = event.target.dataset.nodeId
     this.formOutlet.proceed(`form submit ${event.target.dataset.nodeId}`)
+  }
+
+  onFormChange(event) {
+    console.log(event)
+    this.familyTreeOutlet.dataset.id
   }
 }
