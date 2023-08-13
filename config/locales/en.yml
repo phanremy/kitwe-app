@@ -105,6 +105,9 @@ en:
 
   outlines:
     go_to_advanced_form: Go to advanced form
+    options:
+      show_deceased: Show passed away profiles
+      show_gender: Show genders
 
   privacy:
     public: Public

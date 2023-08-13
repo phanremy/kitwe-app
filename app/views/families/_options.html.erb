@@ -5,7 +5,7 @@
     <% %w[deceased gender].each do |option| %>
       <label class="switch px-4 py-2 flex justify-between items-center" data-action="click->tree-option#toggle" data-option="show<%= option.capitalize %>">
         <span class="w-full text-xs text-left" id="show-<%= option %>">
-          <span class=" text-gray-900"><%= t(".show_#{option}") %></span>
+          <span class=" text-gray-900"><%= t("outlines.options.show_#{option}") %></span>
         </span>
         <input type="checkbox" role="switch" aria-checked="false" aria-labelledby="show-<%= option %>">
         <span class="slider round"></span>
