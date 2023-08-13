@@ -3,7 +3,7 @@ import { newUnit } from 'family-tree/relatives/utils/units';
 import { newFamily } from 'family-tree/relatives/utils/family';
 import { setDefaultUnitShift } from 'family-tree/relatives/utils/setDefaultUnitShift';
 import { createChildUnitsFunc } from 'family-tree/relatives/utils/createChildUnitsFunc';
-import { isNotDegradedMode } from 'family-tree/relatives/utils/degradedMode';
+import { isNotDegradedMode } from 'family-tree/relatives/utils/treeTogglingOptions';
 
 const hasSameRelation = (node) => ((rel) => !node || node.children.some(withId(rel.id)));
 const getChildUnitsFunc = (store) => {

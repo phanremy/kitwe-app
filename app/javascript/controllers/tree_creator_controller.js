@@ -1,28 +1,12 @@
 import { Controller } from '@hotwired/stimulus'
 import { render } from 'solid-js/web';
 import App from 'family-tree/components/App/App';
-import { switchToDegratedMode } from 'family-tree/relatives/utils/degradedMode';
+import { switchDegradedMode } from 'family-tree/relatives/utils/treeTogglingOptions';
 
 export default class extends Controller {
   connect() {
     this.updateFamilyTreeView();
-
-    var observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes') {
-          // console.log(this.element.dataset.id);
-
-          // Example of accessing the element for which
-          // event was triggered
-          // mutation.target.textContent = 'Attribute of the element changed';
-          this.updateFamilyTreeView();
-        }
-      });
-    });
-
-    observer.observe(this.element, {
-      attributes: true //configure it to listen to attribute changes
-    });
+    this.createMutationObserver();
   }
 
   updateFamilyTreeView() {
@@ -40,8 +24,22 @@ export default class extends Controller {
       render(App, this.element);
     } catch (error) {
       console.error(error);
-      switchToDegratedMode();
+      switchDegradedMode('on');
       render(App, this.element);
     }
+  }
+
+  createMutationObserver() {
+    var observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes') {
+          this.updateFamilyTreeView();
+        }
+      });
+    });
+
+    observer.observe(this.element, {
+      attributes: true
+    });
   }
 }

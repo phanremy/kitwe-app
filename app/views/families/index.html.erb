@@ -1,4 +1,4 @@
-<div class="flex justify-between h-full">
+<div class="flex justify-between">
   <%= turbo_frame_tag :family_tree do %>
     <div class="relative h-full">
       <div class="mt-10">
@@ -10,44 +10,11 @@
       </div>
       <%= form_with url: profile_families_outline_path,
                     method: :post,
-                    html: { class: '', id: 'tree-interaction-form' },
-                    data: { controller: 'form tree-interaction',
-                            'form-initial-submit-value': false,
-                            'tree-interaction-family-tree-outlet': '#family-tree',
-                            'action': 'change->tree-interaction#onFormChange' } do |form| %>
+                    html: { id: 'tree-interaction-form' },
+                    data: { controller: 'form tree-interaction', 'form-initial-submit-value': false,} do |form| %>
         <%= form.hidden_field :token, value: params[:token] %>
-        <div class="flex justify-between w-[50rem]">
-          <section>
-            <%= form.label :show_outline %>
-            <%= form.check_box :show_outline,  id: 'show-outline', checked: true, required: true %>
-          </section>
-          <section>
-            <%= form.label :degraded_mode %>
-            <%= form.check_box :degraded_mode, id: 'degraded-mode', checked: false %>
-          </section>
-          <section>
-            <%= form.label :show_gender %>
-            <%= form.check_box :show_gender, id: 'show-gender', checked: false %>
-          </section>
-          <section>
-            <%= form.label :show_deceased %>
-            <%= form.check_box :show_deceased, id: 'show-deceased', checked: false %>
-          </section>
-          <section>
-            <%= form.label :show_couple_status %>
-            <%= form.check_box :show_couple_status, id: 'show-couple-status', checked: false %>
-          </section>
-        </div>
-        <div class="flex w-full">
-          <section class="flex flex-col">
-            <%= form.label :id %>
-            <%= form.text_field :id, id: 'profile-id', value: params[:profile_id] %>
-          </section>
-          <section class="flex flex-col">
-            <%= form.label :outline_id %>
-            <%= form.text_field :outline_id, id: 'outline-id', value: params[:profile_id] %>
-          </section>
-        </div>
+        <%= form.hidden_field :id, value: params[:profile_id] %>
+        <%= form.hidden_field :outline_id, value: params[:profile_id], id: 'outline-id' %>
       <% end %>
     </div>
   <% end %>

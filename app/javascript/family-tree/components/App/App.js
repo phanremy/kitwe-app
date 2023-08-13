@@ -2,6 +2,7 @@ import { createSignal } from 'solid-js';
 import { Show } from 'solid-js/web';
 import html from 'solid-js/html';
 import Tree from 'family-tree/components/Tree/Tree';
+import { isShowingGender, isShowingDeceased } from 'family-tree/relatives/utils/treeTogglingOptions';
 
 const WIDTH = 70;
 const HEIGHT = 80;
@@ -11,14 +12,14 @@ function App() {
   const initialId = dataset.initialId;
   const id = dataset.id;
   const nodes = JSON.parse(dataset.familyTree);
-  const showGender = document.getElementById('show-gender').checked;
-  const showDeceased = document.getElementById('show-deceased').checked;
+  const showGender = isShowingGender();
+  const showDeceased = isShowingDeceased();
   // const showCoupleStatus = dataset.showCoupleStatus;
 
   const [rootId, setRootId] = createSignal(id);
 
   const updateId = (updatedId) => {
-    // Temporary hack to update the rootId in the DOM so that the Stimulus controller can pick it up
+    // Update the rootId in the DOM so that the Stimulus controller can pick it up
     document.getElementById('family-tree').dataset.id = updatedId
   }
 
