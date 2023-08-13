@@ -8,7 +8,7 @@ const WIDTH = 70;
 const HEIGHT = 80;
 
 function App() {
-  const dataset = document.getElementById('family-tree').dataset;
+  const dataset = document.getElementById('tree-data').dataset;
   const initialId = dataset.initialId;
   const id = dataset.id;
   const nodes = JSON.parse(dataset.familyTree);
@@ -20,7 +20,7 @@ function App() {
 
   const updateId = (updatedId) => {
     // Update the rootId in the DOM so that the Stimulus controller can pick it up
-    document.getElementById('family-tree').dataset.id = updatedId
+    document.getElementById('tree-data').dataset.id = updatedId
   }
 
   const onResetClick = () => {

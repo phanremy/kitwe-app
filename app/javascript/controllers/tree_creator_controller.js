@@ -38,8 +38,9 @@ export default class extends Controller {
       });
     });
 
-    observer.observe(this.element, {
-      attributes: true
-    });
+    // id: tree-data : div
+    observer.observe(this.element, { attributes: true });
+    // id: tree : turboframe
+    observer.observe(this.element.parentElement, { attributes: true });
   }
 }
