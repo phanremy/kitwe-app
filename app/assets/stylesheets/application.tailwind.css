@@ -74,16 +74,13 @@ h2 {
   flex-direction: column;
 }
 
-.solid__app__footer {
+.solid__app__header {
   position: absolute;
-  bottom: 4px;
-  left: 0;
-  display: flex;
+  top: -34px;
+  left: -16px;
   height: 30px;
   width: 100%;
   padding: 0 1.5rem;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .solid__app__title {

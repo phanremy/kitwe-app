@@ -43,6 +43,13 @@ function App() {
   return (
     html`
       <>
+        <div class="solid__app__header">
+          <${Show} when=${rootId() !== initialId}>
+            <button type="button" class="solid__app__reset" onClick=${onResetClick}>
+              Reset
+            </button>
+          </Show>
+        </div>
         <div class="solid__app__root"
              data-controller="tree-interaction"
              data-tree-interaction-form-outlet="#tree-interaction-form">
@@ -56,15 +63,6 @@ function App() {
             showDeceased=${showDeceased}
             onChangeRoot=${onChangeRoot}
           />
-          <footer class="solid__app__footer">
-            <div>
-              <${Show} when=${rootId() !== initialId}>
-                <button type="button" class="solid__app__reset" onClick=${onResetClick}>
-                  Reset
-                </button>
-              </Show>
-            </div>
-          </footer>
         </div>
       </>
     `

@@ -69,14 +69,16 @@ function Tree(props) {
   //   console.log(height)
   // console.groupEnd()
 
+
+  // height: '70vh',
+
   return (
     html`
       <div
         class="solid__tree__root"
         style=${{
           position: 'relative',
-          width: '100%',
-          height: '70vh',
+          width: '100%'
         }}
       >
         ${Connectors()}
