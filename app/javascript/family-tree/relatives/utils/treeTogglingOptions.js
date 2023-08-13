@@ -1,31 +1,17 @@
-const dataset = () => {
-  return document.getElementById('family-tree').dataset
-}
-
 export const isNotDegradedMode = () => {
-  return !(dataset.degradedMode === 'on');
+  return !(document.getElementById('family-tree').dataset.degradedMode === 'on');
 };
 
 export const switchDegradedMode = (option) => {
-  dataset.degradedMode = option;
-  console.log('Degraded mode activated');
+  document.getElementById('family-tree').dataset.degradedMode = option;
+  console.log(`Degraded mode ${option}`);
 };
 
 export const isShowingGender = () => {
-  return (dataset.showGender === 'on');
-};
-
-export const switchShowGender = (option) => {
-  dataset.showGender = option;
-  console.log('Show Gender activated');
+  return (document.getElementById('family-tree').dataset.showGender === 'on');
 };
 
 export const isShowingDeceased = () => {
-  return (dataset.showDeceased === 'on');
-};
-
-export const switchShowDeceased = (option) => {
-  dataset.showDeceased = option;
-  console.log('Degraded mode activated');
+  return (document.getElementById('family-tree').dataset.showDeceased === 'on');
 };
 //# sourceMappingURL=createChildUnitsFunc.js.map

@@ -11,7 +11,7 @@
       <%= form_with url: profile_families_outline_path,
                     method: :post,
                     html: { id: 'tree-interaction-form' },
-                    data: { controller: 'form tree-interaction', 'form-initial-submit-value': false,} do |form| %>
+                    data: { controller: 'form', 'form-initial-submit-value': false,} do |form| %>
         <%= form.hidden_field :token, value: params[:token] %>
         <%= form.hidden_field :id, value: params[:profile_id] %>
         <%= form.hidden_field :outline_id, value: params[:profile_id], id: 'outline-id' %>
