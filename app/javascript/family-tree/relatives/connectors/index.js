@@ -4,4 +4,5 @@ import { children } from 'family-tree/relatives/connectors/children';
 
 const toConnectors = (families) => (fn) => fn(families);
 export const connectors = (families) => ([parents, middle, children].map(toConnectors(families)).flat());
+export const middleAddOns = (families) => ([middle].map(toConnectors(families)).flat());
 //# sourceMappingURL=index.js.map

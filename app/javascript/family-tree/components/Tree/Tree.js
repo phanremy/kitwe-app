@@ -5,6 +5,7 @@ import html from 'solid-js/html';
 import calcTree from 'family-tree/relatives';
 import Connector from 'family-tree/components/Connector/Connector';
 import Node from 'family-tree/components/Node/Node';
+import MiddleAddOn from 'family-tree/components/MiddleAddOn/MiddleAddOn';
 
 function Tree(props) {
   const width = props.width / 2;
@@ -18,29 +19,24 @@ function Tree(props) {
   );
 
   const Connectors = () => {
-
-    // console.group(`Connectors`)
-    //   console.log(tree().connectors)
-    //   console.log(width)
-    //   console.log(height)
-    // console.groupEnd()
-
     return html`
       <${For} each=${tree().connectors}>
         ${(connector) => {
-          return (html`<${Connector} connector=${connector} width=${width} height=${height}/>`)
+          return (html`<${Connector} connector=${connector} width=${width} height=${height} />`)
+        }}
+      </For>`;
+  };
+
+  const MiddleAddOns = () => {
+    return html`
+      <${For} each=${tree().middleAddOns}>
+        ${(middleAddOn) => {
+          return (html`<${MiddleAddOn} middleAddOn=${middleAddOn} width=${width} height=${height} />`)
         }}
       </For>`;
   };
 
   const Nodes = () => {
-    // console.group(`Nodes`)
-    //   console.log(tree().nodes)
-    //   console.log(props.width)
-    //   console.log(props.height)
-    //   console.log(props.onChangeRoot)
-    // console.groupEnd()
-
     return html`
       <${For} each=${tree().nodes}>
         ${(node) => {
@@ -62,16 +58,6 @@ function Tree(props) {
       </For>`;
   };
 
-  // console.group(`tree`)
-  //   console.log(tree())
-  //   console.log(tree().canvas)
-  //   console.log(width)
-  //   console.log(height)
-  // console.groupEnd()
-
-
-  // height: '70vh',
-
   return (
     html`
       <div
@@ -82,6 +68,7 @@ function Tree(props) {
         }}
       >
         ${Connectors()}
+        ${MiddleAddOns()}
         ${Nodes()}
      </div>`
   );

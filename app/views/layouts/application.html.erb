@@ -37,7 +37,7 @@
     <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet"></link>
   </head>
   <body class="bg-gray-200 lg:flex overflow-y-hidden">
-    <div class="absolute bottom-0 right-0 mr-5">
+    <div class="absolute bottom-0 right-0 mr-5 z-10">
       <%= turbo_frame_tag :flash do %>
         <%= render 'shared/flash' %>
       <% end %>

@@ -33,12 +33,6 @@ function App() {
     updateId(updatedId)
   };
 
-  // console.group('App');
-  //   console.log(`rootId ${rootId}`)
-  //   console.log(onChangeRoot)
-  //   console.log(onResetClick)
-  // console.groupEnd();
-
   // Pinch to zoom
   return (
     html`
