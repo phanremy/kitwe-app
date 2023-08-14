@@ -1,6 +1,7 @@
-<div data-controller="clipboard tree-option"
-      data-clipboard-target-value="#token-url">
-  <%= render layout: 'shared/dropdown_options', locals: { default_visible: true } do %>
+<div class="absolute left-0 bottom-0"
+     data-controller="clipboard tree-option"
+     data-clipboard-target-value="#token-url">
+  <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: true, is_left: true, is_top: false } do %>
     <%= button_to t('families.share_link'), shared_links_path, method: :post, id: 'token-url', data: { 'clipboard-text': @tokenized_url }, class: 'text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
     <% %w[deceased gender].each do |option| %>
       <label class="switch px-4 py-2 flex justify-between items-center" data-action="click->tree-option#toggle" data-option="show<%= option.capitalize %>">

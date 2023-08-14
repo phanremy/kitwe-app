@@ -75,15 +75,13 @@ h2 {
 }
 
 /* with turbo family_tree
-top: -34px;
-left: -16px; w*/
+ -25px; */
 .solid__app__header {
   position: absolute;
   top: 0px;
-  left: -25px;
+  left: 0px;
   height: 30px;
   width: 100%;
-  padding: 0 1.5rem;
 }
 
 .solid__app__title {
