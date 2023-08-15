@@ -1,6 +1,6 @@
 import html from 'solid-js/html';
 
-const MIN_THICKNESS = 1;
+const MIN_THICKNESS = 5;
 
 function calcSide(size, factor, thickness) {
   return Math.max(MIN_THICKNESS, size * factor + thickness);

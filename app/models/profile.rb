@@ -49,7 +49,7 @@ class Profile < ApplicationRecord
 
   _ALLOWED_GENDERS = [nil, 'male', 'female'].freeze
 
-  MAX_DEGREE_OF_SEPARATION = 10
+  MAX_DEGREE_OF_SEPARATION = 20
   WITH_SELF_CAPTION = 'with nobody'
 
   validate :any_essential_info_present?
