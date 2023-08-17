@@ -106,6 +106,7 @@ en:
   outlines:
     go_to_advanced_form: Go to advanced form
     options:
+      show_couple_status: Show relationship status
       show_deceased: Show passed away profiles
       show_gender: Show genders
 

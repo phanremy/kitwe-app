@@ -1,6 +1,5 @@
-import { createSignal } from 'solid-js';
 import { createMemo } from 'solid-js';
-import { For } from 'solid-js/web';
+import { For, Show } from 'solid-js/web';
 import html from 'solid-js/html';
 import calcTree from 'family-tree/relatives';
 import Connector from 'family-tree/components/Connector/Connector';
@@ -68,7 +67,9 @@ function Tree(props) {
         }}
       >
         ${Connectors()}
-        ${MiddleAddOns()}
+        <${Show} when=${props.showCoupleStatus}>
+          ${MiddleAddOns()}
+        </Show>
         ${Nodes()}
      </div>`
   );
