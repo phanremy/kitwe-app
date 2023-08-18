@@ -21,7 +21,7 @@ module Outlines
     def update
       @couple = Couple.find(params[:id])
       @profile = @couple.profile1
-      if @couple.update(status: params[:couple][:status])
+      if @couple.profile2_id.present? && @couple.update(status: params[:couple][:status])
         family_tree_turbo_response(success_message: I18n.t('couples.edit_success'))
       else
         flash.now[:error] = I18n.t('general_error')

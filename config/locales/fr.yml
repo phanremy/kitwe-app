@@ -34,7 +34,7 @@ fr:
 
   couples:
     title: Conjoint(e)s
-    no_other_partner: Pas d'autre partenaire
+    no_other_partner: Pas de partenaire
     new: Créer une nouvelle relation
     edit: Modifier la relation
     delete: Supprimer la relation

@@ -30,14 +30,14 @@ end
 
 puts 'Start Seed'
 
-admin = User.find_or_create_by(email: 'user1@example.com') { |user| user.password = 'y3nUjm' }
-User.find_or_create_by(email: 'user2@example.com') { |user| user.password = 'y3nUjm' }
-visitor = User.find_or_create_by(email: 'user3@example.com') { |user| user.password = 'y3nUjm' }
+admin = User.find_or_create_by(email: 'user1@example.com') { |user| user.password = 'password' }
+User.find_or_create_by(email: 'user2@example.com') { |user| user.password = 'password' }
+visitor = User.find_or_create_by(email: 'user3@example.com') { |user| user.password = 'password' }
 
 # Post.create!(title: 'Visitor\'s first post', body: 'This is the first post of the visitor', user: visitor)
 # Post.create!(title: 'Admin\'s first post', body: 'This is the first post of the admin', user: admin)
 
-if Profile.count.zero?
+if Profile.find_by(first_name: 'Jean').nil?
   date = profile_date
 
   Profile.create!(pseudo: nil, creator_id: visitor.id, gender: 'male',
@@ -50,7 +50,7 @@ if Profile.count.zero?
                   wedding_date: date)
 
   jc = Profile.last
-  Couple.create!(profile1_id: jc.id, profile2_id: nil, creator_id: visitor.id)
+  Couple.create!(profile1_id: jc.id, profile2_id: nil, creator_id: visitor.id, status: 'in_a_relationship')
 
   Profile.create!(pseudo: 'anonymous', creator_id: visitor.id, gender: 'female',
                   first_name: 'Valentin',
@@ -74,7 +74,7 @@ if Profile.count.zero?
                  wedding_date: nil)
 
   ja = Profile.last
-  Couple.create!(profile1_id: anonymous.id, profile2_id: ja.id, creator_id: visitor.id)
+  Couple.create!(profile1_id: anonymous.id, profile2_id: ja.id, creator_id: visitor.id, status: 'separated')
 
   date = profile_date
   Profile.create!(pseudo: 'WC', creator_id: visitor.id, gender: 'male',
@@ -87,9 +87,8 @@ if Profile.count.zero?
                   parents_id: Couple.last.id)
 end
 
-if Profile.find_by(pseudo: 'papa').nil?
-  pat_grand_pa = Profile.create!({ pseudo: 'Paternal Grand Ma', creator: admin, gender: 'female' }.merge(random_info)
-)
+if Profile.find_by(pseudo: 'Paternal Grand Ma').nil?
+  pat_grand_pa = Profile.create!({ pseudo: 'Paternal Grand Ma', creator: admin, gender: 'female' }.merge(random_info))
   pat_grand_ma = Profile.create!({ pseudo: 'Paternal Grand Pa', creator: admin, gender: 'male' }.merge(random_info))
   pat_grand_parents = Couple.create!(
     profile1_id: pat_grand_pa.id, profile2_id: pat_grand_ma.id, creator_id: admin.id

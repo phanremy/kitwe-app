@@ -34,7 +34,7 @@ en:
 
   couples:
     title: Spouses
-    no_other_partner: No other partner
+    no_other_partner: No partner
     new: Create a new relationship
     edit: Edit relationship
     delete: Delete relationship with %{partner}
