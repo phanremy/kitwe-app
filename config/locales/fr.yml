@@ -17,7 +17,7 @@ fr:
   delete: Supprimer
   edit: Modifier
   filter: Filtrer
-  general_error: Quelque chose s'est mal passé
+  general_error: Quelque chose s'est mal passé, veuillez réessayer plus tard
   log_in: Se connecter
   log_out: Se déconnecter
   search_a_profile: Rechercher un profil
@@ -36,12 +36,19 @@ fr:
     title: Conjoint(e)s
     no_other_partner: Pas d'autre partenaire
     new: Créer une nouvelle relation
+    edit: Modifier la relation
     delete: Supprimer la relation
     create_success: La relation a été créée avec succès
+    edit_success: La relation a été modifiée avec succès
     update_success: La relation a été mise à jour avec succès
     destroy_success: La relation a été supprimée avec succès
     not_found: Pas de relations
     with_children_error: Cette relation a des enfants associés qui doivent être pris en charge en premier
+    status:
+      in_a_relationship: En couple
+      married: Marié(e)
+      separated: Séparé(e)
+      divorced: Divorcé(e)
 
   families:
     share_link: Partager cette famille

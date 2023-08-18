@@ -27,23 +27,23 @@ module ProfilesHelper
 
   def profile_gender_attribute_options(profile_id = nil)
     gender = Profile.find_by(id: profile_id)&.gender == 'male' ? 'female' : 'male'
-    select_options('gender', %w[male female], @profile&.gender || gender)
+    select_options('profiles.gender', %w[male female], @profile&.gender || gender)
   end
 
   def profile_gender_search_options(gender_option)
-    select_options('gender', %w[not_specified male female], gender_option)
+    select_options('profiles.gender', %w[not_specified male female], gender_option)
   end
 
   def profile_category_attribute_options
-    select_options('category', %w[family friend colleague], @profile&.category || category_option)
+    select_options('profiles.category', %w[family friend colleague], @profile&.category || category_option)
   end
 
   def profile_category_search_options(category_option)
-    select_options('category', %w[without family friend colleague], @profile&.category || category_option)
+    select_options('profiles.category', %w[without family friend colleague], @profile&.category || category_option)
   end
 
   def profile_birth_date_search_options(birth_date_option)
-    select_options('birth_date', %w[without with centenarian], birth_date_option)
+    select_options('profiles.birth_date', %w[without with centenarian], birth_date_option)
   end
 
   def couple_profile_options(profile1_id:, profile2_id:, blocked: false)
@@ -58,8 +58,12 @@ module ProfilesHelper
     options_for_select(collection.map { |profile| [profile&.designation, profile&.id] }, first)
   end
 
-  def select_options(kind, options, selected_option)
-    options = [nil] + options.map { |option| [I18n.t("profiles.#{kind}.#{option}"), option] }
+  def couple_status_attribute_options(status_option)
+    select_options('couples.status', Couple::STATUS, status_option)
+  end
+
+  def select_options(scope, options, selected_option)
+    options = [nil] + options.map { |option| [I18n.t("#{scope}.#{option}"), option] }
 
     options_for_select(options, selected_option)
   end

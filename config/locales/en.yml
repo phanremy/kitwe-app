@@ -17,7 +17,7 @@ en:
   delete: Delete
   edit: Edit
   filter: Filter
-  general_error: Something went wrong
+  general_error: Something went wrong, please try again later
   log_in: Log in
   log_out: Log out
   search_a_profile: Search a profile
@@ -36,12 +36,19 @@ en:
     title: Spouses
     no_other_partner: No other partner
     new: Create a new relationship
+    edit: Edit relationship
     delete: Delete relationship with %{partner}
-    create_success: Relationship was successfully created.
-    update_success: Relationship was successfully updated.
-    destroy_success: Relationship was successfully deleted.
+    create_success: Relationship was successfully created
+    edit_success: Relationship was successfully edited
+    update_success: Relationship was successfully updated
+    destroy_success: Relationship was successfully deleted
     not_found: No relationships
-    with_children_error: This relationship has associated children to be taken care of first.
+    with_children_error: This relationship has associated children to be taken care of first
+    status:
+      in_a_relationship: In a relationship
+      married: Married
+      separated: Separated
+      divorced: Divorced
 
   families:
     share_link: Share this family
@@ -65,9 +72,9 @@ en:
     new: Create a new profile
     edit: Edit profile
     edit_advanced: Edit profile (Advanced)
-    create_success: Profile was successfully created.
-    update_success: Profile was successfully updated.
-    destroy_success: Profile was successfully deleted.
+    create_success: Profile was successfully created
+    update_success: Profile was successfully updated
+    destroy_success: Profile was successfully deleted
     import_option: Import profiles
     imports:
       form:
