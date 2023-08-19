@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :couples, foreign_key: 'creator_id', dependent: :destroy
   has_many :profiles, foreign_key: 'creator_id', dependent: :destroy
   has_many :posts, dependent: :destroy
+  has_many :tokens, dependent: :destroy
 
   after_create :create_own_profile
 
