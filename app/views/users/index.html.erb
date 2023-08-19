@@ -6,6 +6,7 @@
       <th>Profiles count</th>
       <th>Admin</th>
       <th>Confirmed</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -15,6 +16,12 @@
         <td class="border"><%= user.profiles.count %></td>
         <td class="border"><%= user.admin? %></td>
         <td class="border"><%= user.confirmed? %></td>
+        <td class="border">
+          <div class="flex">
+            <%= link_to 'Edit', edit_user_path(user), class: "text-blue-400 hover:text-blue-500 hover:underline mx-5" %>
+            <%= button_to 'Destroy', user_path(user), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: "text-red-400 hover:text-red-500 hover:underline mr-5" if user != current_user %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -6,22 +6,22 @@ class TailwindBuilder < ActionView::Helpers::FormBuilder
 
   def text_field(attribute, options = {})
     super(attribute, options.merge(class: 'appearance-none block w-full text-gray-700 ' \
-                                          'border border-gray-400 rounded px-3 leading-tight bg-white'))
+                                          'border-none border-gray-400 rounded px-3 leading-tight bg-white'))
   end
 
   def text_area(attribute, options = {})
     super(attribute, options.merge(class: 'appearance-none block w-full text-gray-700 ' \
-                                          'border border-gray-400 rounded px-3 leading-tight bg-white'))
+                                          'border-none border-gray-400 rounded px-3 leading-tight bg-white'))
   end
 
   def date_field(attribute, options = {})
     super(attribute, options.merge(class: 'appearance-none block w-full text-gray-700 ' \
-                                          'border border-gray-400 rounded px-3 leading-tight bg-white'))
+                                          'border-none border-gray-400 rounded px-3 leading-tight bg-white'))
   end
 
   def select(object_name, method_name, template_object, options = {})
     super(object_name, method_name, template_object,
-          options.merge(class: 'border border-gray-400 rounded px-3 leading-tight bg-white',
+          options.merge(class: 'border-none border-gray-400 rounded px-3 leading-tight bg-white',
                         style: 'min-width: 9em'))
   end
 
