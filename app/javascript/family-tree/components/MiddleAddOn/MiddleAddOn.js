@@ -1,4 +1,5 @@
 import html from 'solid-js/html';
+import { Show } from 'solid-js/web';
 
 const MIN_THICKNESS = 5;
 
@@ -11,17 +12,55 @@ function MiddleAddOn({ middleAddOn, width, height, thickness = MIN_THICKNESS }) 
 
   // horizontal and vertical offsets for 1 bar in the middle (separated)
   // 2 bars surrounding the middle (divorced)
+
+  const Separated = () => {
+    return (
+      html`<i
+            style=${{
+              position: 'absolute',
+              width: '20px',
+              height: '1px',
+              background: 'black',
+              transform: `translate(${(x1 + x2)/2 * width - (thickness / 2) - 7}px, ${y1 * height - (thickness / 2) + 2}px) rotate(130deg)`,
+              pointerEvents: 'none',
+            }}
+          />`
+    );
+  };
+
+  const Divorced = () => {
+    return (
+      html`<i
+            style=${{
+              position: 'absolute',
+              width: '20px',
+              height: '1px',
+              background: 'black',
+              transform: `translate(${(x1 + x2)/2 * width - (thickness / 2) - 5}px, ${y1 * height - (thickness / 2) + 2}px) rotate(130deg)`,
+              pointerEvents: 'none',
+            }}
+          />
+          <i
+            style=${{
+              position: 'absolute',
+              width: '20px',
+              height: '1px',
+              background: 'black',
+              transform: `translate(${(x1 + x2)/2 * width - (thickness / 2) - 9}px, ${y1 * height - (thickness / 2) + 2}px) rotate(130deg)`,
+              pointerEvents: 'none',
+            }}
+          />`
+    );
+  };
+
   return (
-    html`<i
-          style=${{
-            position: 'absolute',
-            width: '20px',
-            height: '1px',
-            background: 'black',
-            transform: `translate(${(x1 + x2)/2 * width - (thickness / 2) - 7}px, ${y1 * height - (thickness / 2) + 2}px) rotate(130deg)`,
-            pointerEvents: 'none',
-          }}
-        />`
+    html`
+      <${Show} when=${status === 'divorced'}>
+        ${Divorced()}
+      </Show>
+      <${Show} when=${status === 'separated'}>
+        ${Separated()}
+      </Show>`
   );
 }
 

@@ -6,7 +6,7 @@ const calcConnectors = (family) => ((connectors, unit) => {
     const pX = getParentsX(family, unit);
     const pY = family.Y + HALF_SIZE;
     if (nodeCount(unit) === NODES_IN_COUPLE)
-        connectors.push([pX - HALF_SIZE, pY, pX + HALF_SIZE, pY]);
+        connectors.push([pX - HALF_SIZE, pY, pX + HALF_SIZE, pY, unit.nodes[0].spouses[0].type]);
     return connectors;
 });
 export const parentsMiddle = (families) => (families
