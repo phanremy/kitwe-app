@@ -35,9 +35,7 @@ module Profiles
       result = {
         parents: profile.parents_profiles.map { |parent| { id: parent.id.to_s, type: 'blood' } },
         siblings: profile.sibling_profiles.map { |sibling| { id: sibling.id.to_s, type: 'blood' } },
-        spouses: profile.couples
-                        .map { |couple| { id: couple.other_partner(profile)&.id.to_s, type: couple.status } }
-                        .reject { |data| data[:id].blank? },
+        spouses: profile.couples_family_links,
         children: profile.children_profiles.map { |child| { id: child.id.to_s, type: 'blood' } }
       }
 
