@@ -16,6 +16,7 @@ module Profiles
       @couples = Couple.where(creator: user)
     end
 
+    # TODO: import couple status and desceased
     def call
       ActiveRecord::Base.transaction do
         CSV.foreach(@file.path, **@options) { |row| import(row) } if @file

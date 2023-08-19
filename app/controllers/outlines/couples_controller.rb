@@ -5,8 +5,8 @@ module Outlines
     include TurboOutline
     load_and_authorize_resource
 
-    def new
-      @couple = Couple.new
+    def edit
+      @couple = Couple.find(params[:id])
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
@@ -18,14 +18,13 @@ module Outlines
       end
     end
 
-    def create
-      @couple = Couple.new(couple_params)
-      @couple.profile1_id = params[:profile_id] if params[:profile_id]
+    def update
+      @couple = Couple.find(params[:id])
       @profile = @couple.profile1
-      if @couple.save
-        family_tree_turbo_response(success_message: I18n.t('couples.create_success'))
+      if @couple.profile2_id.present? && @couple.update(status: params[:couple][:status])
+        family_tree_turbo_response(success_message: I18n.t('couples.edit_success'))
       else
-        flash.now[:error] = @couple.errors.full_messages
+        flash.now[:error] = I18n.t('general_error')
         render_flash
       end
     end

@@ -7,7 +7,7 @@ const calcConnectors = (family, families) => ((connectors, unit) => {
     const pX = getUnitX(family, unit) + HALF_SIZE;
     const pY = family.Y + HALF_SIZE;
     if (nodeCount(unit) === NODES_IN_COUPLE) {
-        connectors.push([pX, pY, pX + SIZE, pY]);
+        connectors.push([pX, pY, pX + SIZE, pY, unit.nodes[0].spouses[0].type]);
     }
     else if (nodeCount(unit) === 1 && unit.nodes[0].spouses.length) {
         families
@@ -16,7 +16,7 @@ const calcConnectors = (family, families) => ((connectors, unit) => {
             other.parents.forEach(parent => {
                 if (parent.nodes.some(withId(unit.nodes[0].spouses[0].id))) {
                     const xX = [pX, getUnitX(other, parent) + HALF_SIZE].sort(inAscOrder);
-                    connectors.push([xX[0], pY, xX[1], pY]);
+                    connectors.push([xX[0], pY, xX[1], pY, unit.nodes[0].spouses[0].type]);
                 }
             });
         });

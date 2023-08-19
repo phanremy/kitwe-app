@@ -54,11 +54,14 @@
           <% partner = couple.other_partner_designation(profile) %>
           <li class="flex items-center justify-between py-1">
             <div class="flex w-full mr-4">
-              <%= partner %>
+              <%= partner %>  <%= couple_status(couple.status) %>
             </div>
             <% if can? :manage, profile %>
               <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>
                 <%= link_to t('children.new'), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
+                <% if couple.profile2_id.present? %>
+                  <%= link_to t('couples.edit'), edit_outlines_profile_couple_path(couple, profile_id: profile.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
+                <% end %>
                 <%= button_to t('couples.delete', partner: partner), outlines_profile_couple_path(couple, profile_id: profile), method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
               <% end %>
             <% end %>

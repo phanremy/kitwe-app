@@ -7,11 +7,15 @@ class Couple < ApplicationRecord
 
   has_many :children, class_name: 'Profile', foreign_key: 'parents_id', dependent: :nullify
 
+  STATUS = %w[in_a_relationship married separated divorced].freeze
+
   validates :profile1_id,
             presence: true,
             uniqueness: { scope: :profile2_id,
                           message: :uniqueness }
   validate :couple_with_oneself?
+  validates :status,
+            inclusion: { in: Couple::STATUS }
 
   scope :related_to, lambda { |value|
                        where(profile1_id: value).or(where(profile2_id: value))

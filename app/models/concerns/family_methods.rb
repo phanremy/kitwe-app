@@ -31,4 +31,10 @@ module FamilyMethods
            .flatten
            .sort_by { |profile| [profile.birth_date ? 1 : 0, profile.birth_date] }
   end
+
+  def couples_family_links
+    couples.map { |couple| { id: couple.other_partner(self)&.id.to_s, type: couple.status } }
+           .reject { |data| data[:id].blank? }
+           .sort_by { |data| data[:id] }
+  end
 end

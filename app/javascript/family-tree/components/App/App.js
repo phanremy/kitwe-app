@@ -2,7 +2,7 @@ import { createSignal } from 'solid-js';
 import { Show } from 'solid-js/web';
 import html from 'solid-js/html';
 import Tree from 'family-tree/components/Tree/Tree';
-import { isShowingGender, isShowingDeceased } from 'family-tree/relatives/utils/treeTogglingOptions';
+import { isShowingGender, isShowingDeceased, isShowingCoupleStatus } from 'family-tree/relatives/utils/treeTogglingOptions';
 
 const WIDTH = 70;
 const HEIGHT = 80;
@@ -14,7 +14,7 @@ function App() {
   const nodes = JSON.parse(dataset.familyTree);
   const showGender = isShowingGender();
   const showDeceased = isShowingDeceased();
-  // const showCoupleStatus = dataset.showCoupleStatus;
+  const showCoupleStatus = isShowingCoupleStatus();
 
   const [rootId, setRootId] = createSignal(id);
 
@@ -32,12 +32,6 @@ function App() {
     // setRootId(id)
     updateId(updatedId)
   };
-
-  // console.group('App');
-  //   console.log(`rootId ${rootId}`)
-  //   console.log(onChangeRoot)
-  //   console.log(onResetClick)
-  // console.groupEnd();
 
   // Pinch to zoom
   return (
@@ -59,9 +53,10 @@ function App() {
             initialId=${initialId}
             width=${WIDTH}
             height=${HEIGHT}
+            onChangeRoot=${onChangeRoot}
             showGender=${showGender}
             showDeceased=${showDeceased}
-            onChangeRoot=${onChangeRoot}
+            showCoupleStatus=${showCoupleStatus}
           />
         </div>
       </>
