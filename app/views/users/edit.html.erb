@@ -1,0 +1,23 @@
+<%= form_with model: @user, builder: TailwindBuilder do |form| %>
+  <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+    <%= form.text_field :email , class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
+    <%= form.label :email, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+  </div>
+  <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+    <%= form.text_field :password, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
+    <%= form.label :password, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+  </div>
+    <div class="relative my-8 border-b-2 focus-within:border-blue-500">
+    <%= form.text_field :password_confirmation, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " "%>
+    <%= form.label :password_confirmation, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
+  </div>
+  <div class="flex relative my-8 justify-start items-center">
+    <%= form.check_box :admin %>
+    <%= form.label :admin, class: 'ml-2 text-xs', style: 'transform: none !important;' %>
+  </div>
+    <div class="flex relative my-8 justify-start items-center">
+    <%= form.check_box :confirmed %>
+    <%= form.label :confirmed, class: 'ml-2 text-xs', style: 'transform: none !important;' %>
+  </div>
+  <%= form.submit t('submit') %>
+<% end %>

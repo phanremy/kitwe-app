@@ -4,6 +4,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user, token = nil)
+    can :read, Profile, creator: user
+
+    return if user && !user.confirmed?
+
     token_abilities(token)
 
     return unless user
