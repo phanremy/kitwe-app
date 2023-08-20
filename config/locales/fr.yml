@@ -18,8 +18,9 @@ fr:
   edit: Modifier
   filter: Filtrer
   general_error: Quelque chose s'est mal passé, veuillez réessayer plus tard
-  log_in: Se connecter
-  log_out: Se déconnecter
+  log_in: Connection
+  log_out: Déconnection
+  sign_up: Inscription
   search_a_profile: Rechercher un profil
   submit: Soumettre
   or: Ou
