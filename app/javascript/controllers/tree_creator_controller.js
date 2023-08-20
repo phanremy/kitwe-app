@@ -4,6 +4,9 @@ import App from 'family-tree/components/App/App';
 import { switchDegradedMode } from 'family-tree/relatives/utils/treeTogglingOptions';
 
 export default class extends Controller {
+  static values = { error: { type: Boolean, default: false } }
+
+
   connect() {
     this.updateFamilyTreeView();
     this.createMutationObserver();
@@ -12,6 +15,9 @@ export default class extends Controller {
   updateFamilyTreeView() {
     this.element.innerHTML = '';
     try {
+      if (this.errorValue) {
+        throw new Error(this.element.dataset.familyTree);
+      }
       this.render()
     } catch (error) {
       console.error(error);

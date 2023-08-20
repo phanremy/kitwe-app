@@ -17,10 +17,8 @@ module ProfilesHelper
   end
 
   def profile_parents_options(couple_id = nil)
-    options = [nil] +
-              Couple.includes(:profile1, :profile2)
-                    .accessible_by(current_ability)
-                    .map { |couple| [couple.designation, couple.id] }
+    options = ([nil] + Couple.includes(:profile1, :profile2).accessible_by(current_ability))
+              .map { |couple| [couple&.designation || ' ', couple&.id] }
 
     options_for_select(options, @profile.parents&.id || couple_id)
   end
@@ -55,7 +53,7 @@ module ProfilesHelper
 
     first = blocked ? profile1_id : profile2_id
 
-    options_for_select(collection.map { |profile| [profile&.designation, profile&.id] }, first)
+    options_for_select(collection.map { |profile| [profile&.designation || ' ', profile&.id] }, first)
   end
 
   def couple_status_attribute_options(status_option)
@@ -63,7 +61,7 @@ module ProfilesHelper
   end
 
   def select_options(scope, options, selected_option)
-    options = [nil] + options.map { |option| [I18n.t("#{scope}.#{option}"), option] }
+    options = [nil] + options.map { |option| [I18n.t("#{scope}.#{option}") || ' ', option] }
 
     options_for_select(options, selected_option)
   end

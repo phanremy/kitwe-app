@@ -22,7 +22,6 @@ module Profiles
 
     private
 
-    # TODO: export couple status and desceased
     def row_infos(profile)
       [profile.designation, profile.pseudo, profile.first_name, profile.last_name, profile.email, profile.phone,
        profile.gender, profile.birth_date, profile.parents&.csv_designation, profile.partner_csv_designations,
