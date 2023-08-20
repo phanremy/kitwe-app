@@ -26,8 +26,7 @@ module Profiles
         name: profile.designation,
         gender: profile.gender,
         deceased: profile.deceased,
-        # url: host ? profile_url(profile, host: host) : profile_path(profile),
-        img: profile.small_photo_url
+        img: profile.small_photo_url || profile.default_photo_url
       }
     end
 

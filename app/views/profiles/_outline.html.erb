@@ -31,7 +31,7 @@
         <% couples.each do |couple| %>
           <li class="flex items-center justify-between py-2">
             <div class="flex w-full mr-4">
-              <%= other_partner_link(couple, profile) %>
+              <%= other_partner_link(couple, profile) %>  <%= couple_status(couple.status) %>
             </div>
 
             <%#= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>

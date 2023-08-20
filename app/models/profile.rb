@@ -45,12 +45,14 @@ class Profile < ApplicationRecord
                   'Couples' => nil,
                   'Category' => 'category',
                   'Photo url' => 'photo_url',
-                  'Exporter' => nil }.freeze
+                  'Deceased' => 'deceased',
+                  'Day Of Death' => 'death_date',
+                  'Exporter' => nil, }.freeze
 
   _ALLOWED_GENDERS = [nil, 'male', 'female'].freeze
 
   MAX_DEGREE_OF_SEPARATION = 20
-  WITH_SELF_CAPTION = 'with nobody'
+  NO_OTHER_PARTNER = I18n.t('couples.no_other_partner', locale: :en)
 
   validate :any_essential_info_present?
   validate :profile_with_same_designation?
@@ -103,7 +105,7 @@ class Profile < ApplicationRecord
   end
 
   def forbidden_designation?
-    return unless [Profile::WITH_SELF_CAPTION].include?(designation)
+    return unless [Profile::NO_OTHER_PARTNER].include?(designation)
 
     errors.add :base, "Forbidden designation, please change it: #{designation}"
   end
@@ -131,7 +133,7 @@ class Profile < ApplicationRecord
   end
 
   def small_photo_url
-    photo.url(width: 150, height: 150, crop: 'fill') || photo_url || default_photo_url
+    photo.url(width: 150, height: 150, crop: 'fill') || photo_url
   end
 
   def default_photo_url

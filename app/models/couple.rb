@@ -7,6 +7,7 @@ class Couple < ApplicationRecord
 
   has_many :children, class_name: 'Profile', foreign_key: 'parents_id', dependent: :nullify
 
+  DEFAULT = 'in_a_relationship'
   STATUS = %w[in_a_relationship married separated divorced].freeze
 
   validates :profile1_id,
@@ -40,8 +41,7 @@ class Couple < ApplicationRecord
   end
 
   def other_partner_designation(profile)
-    partners.reject { |partner| partner == profile }
-            .first&.designation || I18n.t('couples.no_other_partner')
+    other_partner(profile)&.designation || I18n.t('couples.no_other_partner')
   end
 
   def siblings_of(profile)
@@ -57,7 +57,7 @@ class Couple < ApplicationRecord
   def csv_designation
     [
       profile1.designation,
-      profile2_id.nil? ? Profile::WITH_SELF_CAPTION : profile2.designation
+      profile2_id.nil? ? Profile::NO_OTHER_PARTNER : profile2.designation
     ].join(';')
   end
 end

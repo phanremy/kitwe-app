@@ -6,7 +6,7 @@ module OutlinesHelper
   end
 
   def couple_status(status)
-    return if status == 'in_a_relationship'
+    return if status == Couple::DEFAULT
 
     ['(', I18n.t("couples.status.#{status}"), ')'].join
   end

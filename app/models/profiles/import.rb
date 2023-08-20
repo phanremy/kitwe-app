@@ -16,7 +16,6 @@ module Profiles
       @couples = Couple.where(creator: user)
     end
 
-    # TODO: import couple status and desceased
     def call
       ActiveRecord::Base.transaction do
         CSV.foreach(@file.path, **@options) { |row| import(row) } if @file
@@ -58,17 +57,18 @@ module Profiles
 
       partner1_designation, partner2_designation = parents.split(';')
       partner1 = find_or_create_profile(partner1_designation)
-      partner2 = partner2_designation == Profile::WITH_SELF_CAPTION ? nil : find_or_create_profile(partner2_designation)
+      partner2 = partner2_designation == Profile::NO_OTHER_PARTNER ? nil : find_or_create_profile(partner2_designation)
       @couples.search_couple(partner1, partner2) || @couples.build(profile1: partner1, profile2: partner2).tap(&:save!)
     end
 
     def import_couples(partner1, row)
       return if row['Couples'].blank?
 
-      row['Couples'].split(';').each do |couple|
-        partner2 = couple == Profile::WITH_SELF_CAPTION ? nil : find_or_create_profile(couple)
+      row['Couples'].split(';').each do |couple_data|
+        couple, status = couple_data.rpartition('#').reject { |value| ['', '#'].include?(value) }
+        partner2 = couple == Profile::NO_OTHER_PARTNER ? nil : find_or_create_profile(couple)
         @couples.search_couple(partner1, partner2) ||
-          @couples.build(profile1: partner1, profile2: partner2).save!
+          @couples.build(profile1: partner1, profile2: partner2, status: status || Couple::DEFAULT).save!
       end
     end
 

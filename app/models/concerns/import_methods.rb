@@ -12,10 +12,12 @@ module ImportMethods
   end
 
   def partner_csv_designations
-    ids = partner_ids
-    designations = Profile.where(id: ids)
-                          .map(&:designation)
-    designations += [Profile::WITH_SELF_CAPTION] if ids.include?(nil)
-    designations.join(';')
+    results = couples.map { |couple| { designation: couple.other_partner(self)&.designation, status: couple.status } }
+    if results.map { |result| result[:designation] }.include?(nil)
+      results += [{ designation: Profile::NO_OTHER_PARTNER, status: Couple::DEFAULT }]
+    end
+    results.reject { |result| result[:designation].blank? }
+           .map { |result| [result[:designation], '#', result[:status]].join }
+           .join(';')
   end
 end
