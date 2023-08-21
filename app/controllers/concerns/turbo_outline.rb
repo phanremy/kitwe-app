@@ -22,7 +22,7 @@ module TurboOutline
       turbo_stream.update(
         :tree,
         partial: 'shared/tree',
-        locals: { id: @profile.id, data: @data.to_json }
+        locals: { id: @profile.id, data: @data }
       )
     ]
   end
