@@ -2,7 +2,7 @@
   <div class="text-right"
        data-controller="clipboard"
        data-clipboard-target-value="#token-url">
-    <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>
+    <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true, is_listening_to_click: true } do %>
       <%= link_to t('edit'), edit_profile_path, method: :get, class: 'text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
       <%= button_to t('profiles.share_link'), shared_links_path, method: :post, id: 'token-url', data: { 'clipboard-text': @tokenized_url }, class: 'w-full text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1' %>
       <%= link_to t('couples.new'), new_profile_couple_path(profile_id: params[:id]), method: :get, class: 'text-left text-gray-700 block px-4 py-2 text-xs', role:'menuitem', tabindex:'-1'%>

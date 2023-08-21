@@ -14,11 +14,14 @@ import { Controller } from '@hotwired/stimulus'
 // TODO: split in toggleClass and hideIfOutsideClick Controller
 export default class extends Controller {
   static targets = [ "button", "content" ]
+  static values = { listenClick: { type: Boolean, default: false } }
 
   connect () {
     // this.contentTarget.style.width = "0px"
     // this.contentTarget.classList.add('hidden')
-    this.setClickListenerOutOfContent()
+    if (this.listenClickValue) {
+      this.setClickListenerOutOfContent()
+    }
   }
 
   process () {

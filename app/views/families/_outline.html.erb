@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between py-1 px-2">
     <p class="mr-4"><%= profile.designation %></p>
     <% if can? :manage, profile %>
-      <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>
+      <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true, is_listening_to_click: true } do %>
         <%= link_to t('profiles.edit'), edit_outlines_profile_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
         <%= link_to t('profiles.edit_advanced'), edit_profile_path(profile), target: '_top', class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
         <% if params[:outline_id] != params[:id] %>
@@ -20,7 +20,7 @@
         </b>
         <% if can? :manage, profile %>
           <% if profile.parents_id.nil? %>
-            <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>
+            <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true, is_listening_to_click: true } do %>
               <%= link_to t('parents.new'), new_outlines_profile_parent_path(profile), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
             <% end %>
           <% end %>
@@ -43,7 +43,7 @@
           <%= t('couples.title') %>
         </b>
         <% if can? :manage, profile %>
-          <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>
+          <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true, is_listening_to_click: true } do %>
             <%= link_to t('couples.new'), new_outlines_profile_path(coupled_with: profile.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
           <% end %>
         <% end %>
@@ -57,7 +57,7 @@
               <%= partner %>  <%= couple_status(couple.status) %>
             </div>
             <% if can? :manage, profile %>
-              <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>
+              <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true, is_listening_to_click: true } do %>
                 <%= link_to t('children.new'), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1'  %>
                 <% if couple.profile2_id.present? %>
                   <%= link_to t('couples.edit'), edit_outlines_profile_couple_path(couple, profile_id: profile.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
@@ -78,7 +78,7 @@
           <%= t('children.title') %>
         </b>
         <% if can? :manage, profile %>
-          <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>
+          <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true, is_listening_to_click: true } do %>
             <% if couples.count.positive? %>
                 <% couples.each do |couple| %>
                   <%= link_to t('children.new_for', couple_designation: couple.designation), new_outlines_profile_path(couple_id: couple.id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
@@ -108,7 +108,7 @@
         </b>
         <% if can? :manage, profile %>
           <% if profile.parents_id %>
-            <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true } do %>
+            <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true, is_listening_to_click: true } do %>
               <%= link_to t('siblings.new'), new_outlines_profile_path(couple_id: profile.parents_id), data: { turbo_stream: true }, class: 'text-left text-gray-700 block px-4 py-2 text-sm', role:'menuitem', tabindex:'-1' %>
             <% end %>
           <% end %>
