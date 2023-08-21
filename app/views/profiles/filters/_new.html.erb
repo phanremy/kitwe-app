@@ -4,15 +4,15 @@
       <%= form.text_field :search, value: params[:search], class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.label :search, class: 'absolute top-0 -z-1 duration-300 origin-0' %>
     </div>
-    <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+    <div class="relative my-4 focus-within:border-blue-500">
       <%= form.label :category, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.select :category, profile_category_search_options(params[:category]), {}, class: 'w-full rounded' %>
     </div>
-    <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+    <div class="relative my-4 focus-within:border-blue-500">
       <%= form.label :gender, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.select :gender, profile_gender_search_options(params[:gender]), {}, class: 'w-full rounded' %>
     </div>
-    <div class="relative my-4 border-b-2 focus-within:border-blue-500">
+    <div class="relative my-4 focus-within:border-blue-500">
       <%= form.label :birthday, class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>
       <%= form.select :birthday, profile_birth_date_search_options(params[:birthday]), {}, class: 'w-full rounded' %>
     </div>
