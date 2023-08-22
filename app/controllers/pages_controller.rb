@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!
   skip_authorization_check
 
-  def homepage
+  def frontpage
     redirect_to profiles_path if user_signed_in?
   end
 
