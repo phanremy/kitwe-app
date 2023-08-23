@@ -1,0 +1,10 @@
+<%= render layout: 'shared/outline_card' do %>
+  <%= form_with model: [:outlines, :relation, couple] do |form| %>
+    <div class="actions">
+      <%= form.submit t('submit'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+    </div>
+  <% end %>
+  <%= turbo_frame_tag :relation_output do %>
+    Result here
+  <% end %>
+<% end %>
