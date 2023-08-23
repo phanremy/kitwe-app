@@ -3,10 +3,11 @@
 module Outlines
   class RelationsController < ApplicationController
     include TurboOutline
-    load_and_authorize_resource
+
+    authorize_resource class: false
 
     def new
-      @profile = Profile.new
+      @profile = Profile.find(params[:profile_id])
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
@@ -19,7 +20,8 @@ module Outlines
     end
 
     def create
-      @profile = Profile.new(profile_params)
+      @profile1 = Profile.find(params[:profile1_id])
+      @profile2 = Profile.find(params[:profile2_id])
       if true
         family_tree_turbo_response(success_message: I18n.t('profiles.create_success'))
       else
