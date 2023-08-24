@@ -3,7 +3,7 @@
   <%= form.hidden_field :profile1_id, value: params[:profile_id] %>
   <div class="w-full lg:w-1/2 flex flex-col justify-between items-center my-5">
     <%= form.select :profile2_id,
-                    couple_profile_options(profile1_id: params[:profile_id], profile2_id: @couple.profile2_id),
+                    profile_search_options(excluded_id: params[:profile_id], profile2_id: @couple.profile2_id),
                     {},
                     { class: 'rounded',
                       data: { controller: 'slim-select' } }%>

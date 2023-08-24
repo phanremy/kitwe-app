@@ -104,6 +104,9 @@ fr:
       male: Homme
       female: Femme
 
+  relations:
+    new: Voir les relations
+
   export:
     copy: Copier dans le presse-papiers
     download: Télécharger au format CSV

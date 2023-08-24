@@ -1,0 +1,9 @@
+<%= render layout: 'shared/outline_card' do %>
+  <%= turbo_frame_tag :relation_input,
+        src: edit_outlines_profile_relations_url(profile) do %>
+    <%= render partial: 'shared/spinner' %>
+  <% end %>
+  <%= turbo_frame_tag :relation_output do %>
+    Result here
+  <% end %>
+<% end %>

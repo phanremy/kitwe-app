@@ -7,7 +7,7 @@ class Ability
     can :read, Profile, creator: user
 
     # TODO: remove if possible
-    can %i[new create], :relation
+    can %i[new edit update], :relation
 
     return if user && !user.confirmed?
 
@@ -66,7 +66,7 @@ class Ability
     can :manage, Profile, creator: user
     can :manage, Couple, creator: user
     can %i[new create], :parent
-    can %i[new create], :relation
+    can %i[new edit update], :relation
     can %i[new create], :import
     can [:create], :export
     can :manage, :family

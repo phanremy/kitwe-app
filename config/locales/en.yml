@@ -104,6 +104,9 @@ en:
       male: Male
       female: Female
 
+  relations:
+    new: Check relations
+
   export:
     copy: Copy to Clipboard
     download: Download in CSV

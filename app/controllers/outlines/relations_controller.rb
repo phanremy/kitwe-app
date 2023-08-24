@@ -8,18 +8,25 @@ module Outlines
 
     def new
       @profile = Profile.find(params[:profile_id])
+
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
             :outline,
-            partial: 'outlines/relations/form',
+            partial: 'outlines/relations/card',
             locals: { profile: @profile }
           )
         end
       end
     end
 
-    def create
+    def edit
+      @profile = Profile.find(params[:profile_id])
+
+      render partial: 'outlines/relations/form', locals: { profile: @profile, profiles: @profile.full_family }
+    end
+
+    def update
       @profile1 = Profile.find(params[:profile1_id])
       @profile2 = Profile.find(params[:profile2_id])
       if true

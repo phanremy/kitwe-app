@@ -1,10 +1,12 @@
-<%= render layout: 'shared/outline_card' do %>
+<%= turbo_frame_tag :relation_input do %>
   <%= form_with url: outlines_profile_relations_path(profile) do |form| %>
+    <%= form.select :profile2_id,
+                    profile_search_options(excluded_id: profile, default_id: nil, profiles: profiles),
+                    {},
+                    { class: 'rounded',
+                      data: { controller: 'slim-select' } }%>
     <div class="actions">
       <%= form.submit t('submit'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
     </div>
-  <% end %>
-  <%= turbo_frame_tag :relation_output do %>
-    Result here
   <% end %>
 <% end %>
