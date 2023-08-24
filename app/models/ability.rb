@@ -8,6 +8,7 @@ class Ability
 
     # TODO: remove if possible
     can %i[new edit update], :relation
+    can [:index], :relation
 
     return if user && !user.confirmed?
 
@@ -66,7 +67,8 @@ class Ability
     can :manage, Profile, creator: user
     can :manage, Couple, creator: user
     can %i[new create], :parent
-    can %i[new edit update], :relation
+    # can %i[new create edit update], :relation
+    # can [:index], :family
     can %i[new create], :import
     can [:create], :export
     can :manage, :family

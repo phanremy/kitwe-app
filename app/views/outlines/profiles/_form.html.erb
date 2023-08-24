@@ -1,4 +1,4 @@
-<%= render layout: 'shared/outline_card' do %>
+<%= render layout: 'shared/outline_card', locals: { close_if_click_out: false } do %>
   <%= form_with model: [:outlines, profile] do |form| %>
     <%= form.hidden_field :creator_id, value: current_user&.id %>
     <%= hidden_field_tag :coupled_with, params[:coupled_with] %>

@@ -70,6 +70,9 @@ group :development do
   # gem "rack-mini-profiler"
   # Use Rubocop Rails with yml ignoring comments
   gem 'rubocop-rails'
+  # Use Solargraph for Ruby code intelligence [https://solargraph.org]
+  gem 'solargraph', require: false
+  gem 'solargraph-rails', require: false
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
   # Use console on exceptions pages [https://github.com/rails/web-console]

@@ -106,6 +106,7 @@ en:
 
   relations:
     new: Check relations
+    missing_input: Please fill in the required field
 
   export:
     copy: Copy to Clipboard

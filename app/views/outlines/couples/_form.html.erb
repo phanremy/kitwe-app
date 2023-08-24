@@ -1,4 +1,4 @@
-<%= render layout: 'shared/outline_card' do %>
+<%= render layout: 'shared/outline_card', locals: { close_if_click_out: false } do %>
   <%= form_with model: [:outlines, :profile, couple] do |form| %>
     <div class="flex flex-col justify-between items-center my-5">
       <%= form.select :status, couple_status_attribute_options(couple.status), {}, class: 'w-full rounded' %>

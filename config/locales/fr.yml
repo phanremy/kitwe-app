@@ -106,6 +106,7 @@ fr:
 
   relations:
     new: Voir les relations
+    missing_input: Veuillez remplir le champ requis
 
   export:
     copy: Copier dans le presse-papiers

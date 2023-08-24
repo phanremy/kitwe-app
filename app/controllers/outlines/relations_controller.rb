@@ -2,8 +2,6 @@
 
 module Outlines
   class RelationsController < ApplicationController
-    include TurboOutline
-
     authorize_resource class: false
 
     def new
@@ -13,7 +11,7 @@ module Outlines
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
             :outline,
-            partial: 'outlines/relations/card',
+            partial: 'outlines/relations/input_card',
             locals: { profile: @profile }
           )
         end
@@ -27,13 +25,14 @@ module Outlines
     end
 
     def update
-      @profile1 = Profile.find(params[:profile1_id])
-      @profile2 = Profile.find(params[:profile2_id])
-      if true
-        family_tree_turbo_response(success_message: I18n.t('profiles.create_success'))
-      else
-        flash.now[:error] = @profile.errors.full_messages
-        render_flash
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update(
+            :relation_output,
+            partial: 'outlines/relations/output_card',
+            locals: { profile1_id: params[:profile1_id], profile2_id: params[:profile2_id] }
+          )
+        end
       end
     end
   end
