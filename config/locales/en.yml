@@ -107,6 +107,7 @@ en:
   relations:
     new: Check relations
     missing_input: Please fill in the required field
+    user_not_signed_in: Create an account or log in to access this feature
 
   export:
     copy: Copy to Clipboard

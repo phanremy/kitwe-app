@@ -3,6 +3,7 @@
 module Outlines
   class RelationsController < ApplicationController
     authorize_resource class: false
+    skip_before_action :authenticate_user!, only: %i[new]
 
     def new
       @profile = Profile.find(params[:profile_id])

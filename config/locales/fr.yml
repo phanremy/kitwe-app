@@ -107,6 +107,7 @@ fr:
   relations:
     new: Voir les relations
     missing_input: Veuillez remplir le champ requis
+    user_not_signed_in: Créez un compte ou connectez-vous pour accéder à cette fonctionnalité
 
   export:
     copy: Copier dans le presse-papiers

@@ -229,5 +229,5 @@ h2 {
 }
 
 #outline-turbo {
-  @apply overflow-auto z-20 w-[85vw] m-8 md:w-fit lg:w-fit min-w-[300px] max-h-[80vh] lg:max-h-[85vh] absolute right-0 top-[96px] lg:top-[112px];
+  @apply overflow-auto z-20 w-[85vw] m-8 md:w-fit lg:w-fit min-w-[300px] max-h-[80vh] lg:max-h-[85vh] absolute right-0 top-0;
 }
