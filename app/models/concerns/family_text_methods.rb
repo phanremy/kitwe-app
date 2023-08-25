@@ -5,6 +5,8 @@ module FamilyTextMethods
 
   def idh
     ['#', id].join
+    # designation
+    # id
   end
 
   def full_family_text_description

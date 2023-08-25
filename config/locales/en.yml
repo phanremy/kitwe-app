@@ -124,7 +124,7 @@ en:
     api_call: " You are a genealogist and you are trying to find the family connection between 2 persons.
                 You shall answer in 1 sentence, as accurately as possible, telling what the family connection
                 of %{profile1} is with %{profile2}.
-                Each key of the family hash is a person of the family as an ID starting with a #.
+                Each key of the family hash is a person of the family as an ID.
                 Each value of the family hash is the description of the person in key.
                 The family hash is as follows. %{family_text_description}."
 

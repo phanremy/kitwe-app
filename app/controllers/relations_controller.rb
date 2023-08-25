@@ -45,9 +45,9 @@ class RelationsController < ApplicationController
     puts '------------------'
     puts '------------------'
     puts '------------------'
-    puts '------------------'
     puts 'START OF BODY CONTENT'
     puts body_content
+    puts model
     puts 'END OF BODY CONTENT'
     puts '------------------'
     puts '------------------'
@@ -55,19 +55,26 @@ class RelationsController < ApplicationController
   end
 
   def api_call_result
-    uri = URI(ENV.fetch('OPENAI_API_URL'))
+    uri = URI(openai_url)
 
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = (uri.scheme == 'https')
 
-    request = Net::HTTP::Post.new(ENV.fetch('OPENAI_API_URL'))
+    request = Net::HTTP::Post.new(openai_url)
     request['Content-Type'] = 'application/json'
     request['Authorization'] = "Bearer #{ENV.fetch('OPENAI_API_KEY')}"
     request.body = { messages: [{ role: 'user', content: body_content }],
-                     model: ENV.fetch('OPENAI_API_MODEL') }.to_json
-    #  model: 'gpt-4' }.to_json
+                     model: model }.to_json
 
     http.request(request)
+  end
+
+  def model
+    ENV.fetch('OPENAI_API_MODEL', 'gpt-4')
+  end
+
+  def openai_url
+    ENV.fetch('OPENAI_API_URL', 'https://api.openai.com/v1/chat/completions')
   end
 
   def profiles(id)
