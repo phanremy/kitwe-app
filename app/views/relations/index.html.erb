@@ -1,3 +1,7 @@
 <%= turbo_frame_tag :relation_output_ai_result do %>
   <%= @content %>
+  <br>
+  <small class="hidden">
+    <%= @error %>
+  </small>
 <% end %>

@@ -4,8 +4,10 @@
       src: edit_outlines_profile_relations_url(profile) do %>
       <%= render partial: 'shared/spinner' %>
     <% end %>
-    <%= turbo_frame_tag :relation_output do %>
-    <% end %>
+    <div class="w-full md:w-[300px] lg:w-[300px]">
+      <%= turbo_frame_tag :relation_output do %>
+      <% end %>
+    </div>
   <% else %>
     <%= t('relations.user_not_signed_in') %>
   <% end %>
