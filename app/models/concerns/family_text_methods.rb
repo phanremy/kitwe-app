@@ -4,9 +4,9 @@ module FamilyTextMethods
   extend ActiveSupport::Concern
 
   def idh
-    ['#', id].join
     # designation
     # id
+    ['#', id].join
   end
 
   def full_family_text_description

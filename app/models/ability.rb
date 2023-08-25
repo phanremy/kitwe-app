@@ -6,9 +6,7 @@ class Ability
   def initialize(user, token = nil)
     can :read, Profile, creator: user
 
-    # TODO: remove if possible
-    can %i[new edit update], :relation
-    can [:index], :relation
+    can %i[index new edit update], :relation
 
     return if user && !user.confirmed?
 
@@ -67,8 +65,6 @@ class Ability
     can :manage, Profile, creator: user
     can :manage, Couple, creator: user
     can %i[new create], :parent
-    # can %i[new create edit update], :relation
-    # can [:index], :family
     can %i[new create], :import
     can [:create], :export
     can :manage, :family
