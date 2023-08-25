@@ -10,27 +10,30 @@ module FamilyTextMethods
   def full_family_text_description
     return nil unless id.present?
 
-    full_family.map do |profile|
-      "#{profile.idh} is: #{profile.text_description.join(' ')}"
-    end.join('. ')
+    result = {}
+    full_family.each do |profile|
+      result[profile.idh] = profile.text_description
+    end
+    result
   end
 
   def text_description
     result = []
-    index = 1
     profile_data.each do |data|
       next unless data[:profiles].any?
 
-      result.push(" #{index}- the #{data[:description]} of #{data[:profiles].map(&:idh).to_sentence}")
-      index += 1
+      result.push(I18n.t('relation_of',
+                         scope: scope,
+                         relation: data[:description],
+                         profiles: data[:profiles].map(&:idh).to_sentence))
     end
-    result.push("#{index}- in a relationship with #{couples_ids.to_sentence}") if couples.present?
+    result.push(I18n.t('relationship_with', scope: scope, couples: couples_idhs.to_sentence)) if couples.present?
     result
   end
 
   private
 
-  def couples_ids
+  def couples_idhs
     couples.map { |couple| couple.other_partner(self)&.idh }
   end
 
@@ -46,33 +49,33 @@ module FamilyTextMethods
   def child_description
     case gender
     when 'male'
-      I18n.t('son', scope: scope)
+      I18n.t('description.son', scope: scope)
     when 'female'
-      I18n.t('daughter', scope: scope)
+      I18n.t('description.daughter', scope: scope)
     else
-      I18n.t('child', scope: scope)
+      I18n.t('description.child', scope: scope)
     end
   end
 
   def sibling_description
     case gender
     when 'male'
-      I18n.t('brother', scope: scope)
+      I18n.t('description.brother', scope: scope)
     when 'female'
-      I18n.t('sister', scope: scope)
+      I18n.t('description.sister', scope: scope)
     else
-      I18n.t('sibling', scope: scope)
+      I18n.t('description.sibling', scope: scope)
     end
   end
 
   def parent_description
     case gender
     when 'male'
-      I18n.t('father', scope: scope)
+      I18n.t('description.father', scope: scope)
     when 'female'
-      I18n.t('mother', scope: scope)
+      I18n.t('description.mother', scope: scope)
     else
-      I18n.t('parent', scope: scope)
+      I18n.t('description.parent', scope: scope)
     end
   end
 

@@ -108,15 +108,25 @@ en:
     new: Check relations
     missing_input: Please fill in the required field
     user_not_signed_in: Create an account or log in to access this feature
-    son: son
-    daughter: daughter
-    child: child
-    brother: brother
-    sister: sister
-    sibling: sibling
-    father: father
-    mother: mother
-    parent: parent
+    description:
+      son: the son
+      daughter: the daughter
+      child: the child
+      brother: the brother
+      sister: the sister
+      sibling: the sibling
+      father: the father
+      mother: the mother
+      parent: the parent
+    and: "and "
+    relationship_with: "is in a relationship with %{couples}"
+    relation_of: "is %{relation} of %{profiles}"
+    api_call: " You are a genealogist and you are trying to find the family connection between 2 persons.
+                You shall answer in 1 sentence, as accurately as possible, telling what the family connection
+                of %{profile1} is with %{profile2}.
+                Each key of the family hash is a person of the family as an ID starting with a #.
+                Each value of the family hash is the description of the person in key.
+                The family hash is as follows. %{family_text_description}."
 
   export:
     copy: Copy to Clipboard

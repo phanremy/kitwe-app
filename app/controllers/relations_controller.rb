@@ -65,6 +65,7 @@ class RelationsController < ApplicationController
     request['Authorization'] = "Bearer #{ENV.fetch('OPENAI_API_KEY')}"
     request.body = { messages: [{ role: 'user', content: body_content }],
                      model: ENV.fetch('OPENAI_API_MODEL') }.to_json
+    #  model: 'gpt-4' }.to_json
 
     http.request(request)
   end
@@ -75,12 +76,10 @@ class RelationsController < ApplicationController
   end
 
   def body_content
-    "
-      You are a genealogist and you are trying to find the family connection between 2 persons.
-      You will answer in 1 sentence, as accurate as possible, telling what the family connection
-      of #{profiles(@profile1_id).idh}
-      is with #{profiles(@profile2_id).idh} with the degree of separation between them.
-      The family is as follows. #{profiles(@profile1_id).full_family_text_description}.
-    ".squish
+    I18n.t('relations.api_call',
+           profile1: profiles(@profile1_id).idh,
+           profile2: profiles(@profile2_id).idh,
+           family_text_description: profiles(@profile1_id).full_family_text_description )
+        .squish
   end
 end
