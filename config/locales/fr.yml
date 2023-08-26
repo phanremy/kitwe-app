@@ -104,6 +104,29 @@ fr:
       male: Homme
       female: Femme
 
+  relations:
+    new: Voir les relations
+    missing_input: Veuillez remplir le champ requis
+    user_not_signed_in: Créez un compte ou connectez-vous pour accéder à cette fonctionnalité
+    description:
+      son: le fils
+      daughter: la fille
+      child: l'enfant
+      brother: le frère
+      sister: la soeur
+      sibling: le sibling
+      father: le père
+      mother: la mère
+      parent: le parent
+    and: "et "
+    relationship_with: "est en relation avec %{couples}"
+    relation_of: "est %{relation} de %{profiles}"
+    api_call: " Vous êtes un généalogiste et vous essayez de trouver le lien familial entre 2 personnes.
+                Répondez en une seule phrase, le plus précis possible, quel est le lien familial %{profile1} et %{profile2}.
+                Chaque clé du tableau généalogique est une personne de la famille identifiée par un numéro.
+                Chaque valeur du tableau généalogique est la description de la personne associée à la clé.
+                Voici le tableau généalogique : %{family_text_description}."
+
   export:
     copy: Copier dans le presse-papiers
     download: Télécharger au format CSV

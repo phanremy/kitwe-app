@@ -47,7 +47,7 @@ module Tokenizer
   private
 
   def jwt_secret
-    ENV.fetch('JWT_SECRET', nil) || 'ThisIsThe1&OnlyJWTSecretKeyFor02082023!'
+    ENV.fetch('JWT_SECRET_KEY', 'ThisIsThe1&OnlyJWTSecretKeyFor02082023!')
   end
 
   def allowed_urls

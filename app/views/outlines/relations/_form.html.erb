@@ -1,0 +1,15 @@
+<%= turbo_frame_tag :relation_input do %>
+  <%= form_with url: outlines_profile_relations_path(profile), method: :put, builder: TailwindBuilder do |form| %>
+    <%= form.hidden_field :profile1_id, value: profile.id %>
+    <%= form.text_field :profile1_designation, value: profile.designation, readonly: true %>
+    <p class="p-3 ml-4"><%= t('relations.and') %></p>
+    <%= form.select :profile2_id,
+                    profile_search_options(excluded_id: profile, default_id: nil, profiles: profiles),
+                    {},
+                    { class: 'rounded',
+                      data: { controller: 'slim-select' } }%>
+    <div class="actions">
+      <%= form.submit t('submit'), class:'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer' %>
+    </div>
+  <% end %>
+<% end %>

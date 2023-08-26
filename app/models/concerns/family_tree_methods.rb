@@ -33,4 +33,8 @@ module FamilyTreeMethods
      parents_ids,
      children_profiles&.pluck(:id)].flatten.uniq
   end
+
+  def default_photo_url
+    ActionController::Base.helpers.asset_path('user.png')
+  end
 end

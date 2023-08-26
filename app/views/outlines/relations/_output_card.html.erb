@@ -1,0 +1,4 @@
+<%= turbo_frame_tag :relation_output_ai_result,
+                    src: relations_path(profile1_id: profile1_id, profile2_id: profile2_id) do %>
+  <%= render partial: 'shared/spinner' %>
+<% end %>

@@ -1,0 +1,9 @@
+<%= turbo_frame_tag :relation_output_ai_result do %>
+  <div class="border p-4">
+    <%= @content %>
+  </div>
+  <br>
+  <small class="hidden">
+    <%= @error %>
+  </small>
+<% end %>

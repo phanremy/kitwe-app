@@ -6,6 +6,8 @@ class Ability
   def initialize(user, token = nil)
     can :read, Profile, creator: user
 
+    can %i[index new edit update], :relation
+
     return if user && !user.confirmed?
 
     token_abilities(token)
