@@ -22,6 +22,20 @@ module FamilyTreeMethods
     data
   end
 
+  def full_family_until(profile)
+    data = close_family
+
+    (1..Profile::MAX_DEGREE_OF_SEPARATION).to_a.each do |_degree|
+      temp = Profile.where(id: data.map(&:close_family).flatten.pluck(:id).uniq)
+
+      return temp if data.count == temp.count || temp.include?(profile)
+
+      data = temp
+    end
+
+    data
+  end
+
   def parents_ids
     [parents&.profile1_id, parents&.profile2_id]
   end
@@ -32,5 +46,9 @@ module FamilyTreeMethods
      partner_ids,
      parents_ids,
      children_profiles&.pluck(:id)].flatten.uniq
+  end
+
+  def default_photo_url
+    ActionController::Base.helpers.asset_path('user.png')
   end
 end

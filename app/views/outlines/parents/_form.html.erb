@@ -1,4 +1,4 @@
-<%= render layout: 'shared/outline_card' do %>
+<%= render layout: 'shared/outline_card', locals: { close_if_click_out: false } do %>
   <%= form_with url: outlines_profile_parents_path(profile) do |form| %>
     <div class="relative my-8 border-b-2 focus-within:border-blue-500">
       <%= form.text_field :father_pseudo, value: "#{profile.designation}'s Dad", class: 'block w-full appearance-none focus:outline-none bg-transparent border-none', placeholder: " " %>

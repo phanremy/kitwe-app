@@ -25,6 +25,9 @@ Rails.application.routes.draw do
     end
 
     draw :outline
+
+    resources :relations, only: %i[index]
+
     resources :users, only: %i[index edit update destroy]
 
     resources :couples, only: %i[destroy]

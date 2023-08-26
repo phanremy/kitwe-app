@@ -44,16 +44,10 @@ module ProfilesHelper
     select_options('profiles.birth_date', %w[without with centenarian], birth_date_option)
   end
 
-  def couple_profile_options(profile1_id:, profile2_id:, blocked: false)
-    collection = if blocked
-                   [Profile.find(profile1_id)]
-                 else
-                   [nil] + Profile.accessible_by(current_ability).where.not(id: profile1_id)
-                 end
+  def profile_search_options(excluded_id:, default_id:, profiles: Profile.accessible_by(current_ability))
+    collection = [nil] + profiles.where.not(id: excluded_id)
 
-    first = blocked ? profile1_id : profile2_id
-
-    options_for_select(collection.map { |profile| [profile&.designation || ' ', profile&.id] }, first)
+    options_for_select(collection.map { |profile| [profile&.designation || ' ', profile&.id] }, default_id)
   end
 
   def couple_status_attribute_options(status_option)

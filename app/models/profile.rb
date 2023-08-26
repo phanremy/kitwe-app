@@ -4,6 +4,7 @@ class Profile < ApplicationRecord
   include IdentityMethods
   include FamilyMethods
   include FamilyTreeMethods
+  include FamilyTextMethods
   include ImportMethods
 
   has_one_attached :photo
@@ -25,7 +26,6 @@ class Profile < ApplicationRecord
   after_save :nullify_photo_url
 
   PRIVACIES = %w[public only_shared only_friends private].freeze
-  _ESSENTIALS = %w[pseudo first_name last_name email phone].freeze
   ESSENTIALS = %w[pseudo first_name last_name].freeze
   FORM_ATTRIBUTES = %w[creator_id pseudo first_name last_name email
                        phone gender birth_date tiktok_url twitter_url linkedin_url
@@ -49,7 +49,7 @@ class Profile < ApplicationRecord
                   'Day Of Death' => 'death_date',
                   'Exporter' => nil, }.freeze
 
-  _ALLOWED_GENDERS = [nil, 'male', 'female'].freeze
+  ALLOWED_GENDERS = [nil, 'male', 'female'].freeze
 
   MAX_DEGREE_OF_SEPARATION = 20
   NO_OTHER_PARTNER = I18n.t('couples.no_other_partner', locale: :en)
@@ -117,7 +117,7 @@ class Profile < ApplicationRecord
   end
 
   def nullify_gender
-    return if [nil, 'male', 'female'].include?(gender)
+    return if ALLOWED_GENDERS.include?(gender)
 
     self.gender = nil
   end
@@ -134,9 +134,5 @@ class Profile < ApplicationRecord
 
   def small_photo_url
     photo.url(width: 150, height: 150, crop: 'fill') || photo_url
-  end
-
-  def default_photo_url
-    ActionController::Base.helpers.asset_path('user.png')
   end
 end
