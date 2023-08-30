@@ -42,7 +42,7 @@
       <% end %>
     </div>
     <%= render 'shared/navbar' %>
-    <main class="relative w-full lg:mt-28 bg-white rounded lg:p-5 p-2 overflow-y-scroll h-[80vh] lg:h-[85vh]">
+    <main class="relative w-full lg:mt-28 bg-white rounded <%= 'lg:p-5 p-2' unless frontpage? %> overflow-y-scroll h-[80vh] lg:h-[85vh]">
       <%= turbo_frame_tag :modal do %>
       <% end %>
       <%= yield %>
