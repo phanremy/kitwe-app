@@ -154,6 +154,20 @@ en:
       fr_long: "%A %e %B %Y"
       fr_short: "%e %B %Y"
 
+  application:
+    frontpage:
+      title1: Your closed ones, all in one place
+      title2: Keep in touch with Everything and Everyone
+      title3: Family trees and birthdays made easy
+      card1_title: Family trees and birthdays made easy
+      card1_text: Create your family tree and your friends' ones. Make bonds and never forget a name again
+      card2_title: Keep your family tree private
+      card2_text: You can keep your family tree private and share it only with your family and friends.
+      card3_title: Get to know your family connection
+      card3_text: You can check the family connection between 2 people in a family tree thanks to AI.
+      card4_title: Never forget important dates again
+      card4_text: Get notified when an important date is coming, for you and your loved ones.
+
   activerecord:
     attributes:
       profile:

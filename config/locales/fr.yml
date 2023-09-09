@@ -153,6 +153,19 @@ fr:
       fr_long: "%A %e %B %Y"
       fr_short: "%e %B %Y"
 
+  application:
+    frontpage:
+      title1: Gardez vos proches près de vous
+      title2: Arbres généalogiques et anniversaires rendus faciles
+      card1_title: Créez des arbres généalogiques facilement
+      card1_text: Créez des arbres généalogiques de votre famille et de vos proches. N'oubliez plus jamais un prénom.
+      card2_title: Gardez vos arbres généalogiques privées
+      card2_text: Vous pouvez garder vos arbres généalogiques privées ou les partager avec vos proches avec un lien magique.
+      card3_title: Connectez-vous avec vos proches
+      card3_text: Vous pouvez regarder la relation entre deux personnes dans un même arbre généalogique grâce à l'IA.
+      card4_title: N'oubliez plus jamais une date importante
+      card4_text: Soyez notifié des dates importantes de vous et vos proches.
+
   activerecord:
     attributes:
       profile:

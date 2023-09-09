@@ -1,35 +1,37 @@
-<small>
-  <ol>
-    <li>Frontpage coming soon!</li>
-  </ol>
-</small>
-
-<%# https://www.producthunt.com/launch %>
-<div class="flex flex-wrap w-full h-auto">
-  <div class="w-full lg:w-6/12 h-auto p-2">
-    <div class="w-[300px] h-[200px]" style="background-image: url(https://picsum.photos/300/200)">
+<div class="mb-5">
+  <div class="bg-gray-200 md:h-28 h-80">
+    <div class="mx-2 flex flex-col items-center justify-center text-center h-full">
+      <h1 class="text-3xl font-bold"><%= t('.title1') %></h1>
+      <br>
+      <h1 class="text-xl font-semibold"><%= t('.title2') %></h1>
     </div>
-    <h1>Getting started</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatibus.</p>
   </div>
-  <div class="w-full lg:w-6/12 h-auto p-2">
-    <div class="w-[300px] h-[200px]" style="background-image: url(https://picsum.photos/300/200)">
+  <div class="wave-body">
+    <div class="mb-5 wave">
     </div>
-    <h1>Getting started</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatibus.</p>
   </div>
 </div>
-<div class="flex flex-wrap w-full h-auto">
-  <div class="w-full lg:w-6/12 h-auto p-2">
-    <div class="w-[300px] h-[200px]" style="background-image: url(https://picsum.photos/300/200)">
-    </div>
-    <h1>Getting started</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatibus.</p>
+
+<%# https://www.producthunt.com/launch %>
+<div class="px-5">
+  <div class="flex flex-wrap w-full h-auto">
+    <%= render 'card',
+        image_url: 'https://picsum.photos/300/200',
+        title: t('.card1_title'),
+        description: t('.card1_text') %>
+    <%= render 'card',
+        image_url: 'https://picsum.photos/300/200',
+        title: t('.card2_title'),
+        description: t('.card2_text') %>
   </div>
-  <div class="w-full lg:w-6/12 h-auto p-2">
-    <div class="w-[300px] h-[200px]" style="background-image: url(https://picsum.photos/300/200)">
-    </div>
-    <h1>Getting started</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, voluptatibus.</p>
+  <div class="flex flex-wrap w-full h-auto">
+    <%= render 'card',
+        image_url: 'https://picsum.photos/300/200',
+        title: t('.card3_title'),
+        description: t('.card3_text') %>
+    <%= render 'card',
+        image_url: 'https://picsum.photos/300/200',
+        title: t('.card4_title'),
+        description: t('.card4_text') %>
   </div>
 </div>
