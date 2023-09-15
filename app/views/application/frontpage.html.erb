@@ -6,14 +6,13 @@
       <h1 class="text-xl font-semibold"><%= t('.title2') %></h1>
     </div>
   </div>
-  <div class="wave-body">
-    <div class="mb-5 wave">
+  <div class="wave-sample-footer-body">
+    <div class="wave-sample-footer">
     </div>
   </div>
 </div>
 
-<%# https://www.producthunt.com/launch %>
-<div class="px-5">
+<div class="lg:pl-[10rem] md:pl-5 pl-5 px-5">
   <div class="flex flex-wrap w-full h-auto">
     <%= render 'card',
         image_url: 'https://picsum.photos/300/200',
@@ -33,5 +32,34 @@
         image_url: 'https://picsum.photos/300/200',
         title: t('.card4_title'),
         description: t('.card4_text') %>
+  </div>
+</div>
+
+<div class="my-5">
+  <div class="wave-sample-header-body">
+    <div class="wave-sample-header">
+    </div>
+  </div>
+  <div class="bg-gray-200 md:h-28 h-80">
+    <div class="mx-2 flex flex-col items-center justify-center text-center h-full">
+      <h1 class="text-3xl font-bold"><%= t('.title3') %></h1>
+      <br>
+      <h1 class="text-xl font-semibold"><%= t('.title4') %></h1>
+    </div>
+  </div>
+  <div class="wave-sample-footer-body">
+    <div class="wave-sample-footer">
+    </div>
+  </div>
+</div>
+
+<div class="lg:pl-[10rem] md:pl-5 pl-5 px-5">
+  <%= t('.contact') %>
+</div>
+
+<div class="mt-5">
+  <div class="wave-sample-header-body">
+    <div class="wave-sample-header">
+    </div>
   </div>
 </div>

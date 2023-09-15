@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 300;
+  src: asset-url('/fonts/Poppins-Regular.ttf') format('font-ttf');
+}
+
+* {
+  font-family: 'Poppins'
+} */
+
 /* FOR FLOATING FORM FIELD : https://notiz.dev/blog/floating-form-field-with-tailwindcss */
 input, textarea {
   --tw-ring-shadow: 0 0 #000 !important;
@@ -233,22 +244,22 @@ h2 {
 }
 
 /* WAVE - START */
-.wave-body {
+/* .wave-header-body {
   overflow: hidden;
   margin: 0;
   padding: 0;
 }
 
-.wave {
+.wave-header {
   display: block;
   position: relative;
   height: 40px;
   width: 100%;
   background: rgb(229 231 235);
-  transform: scale(1, 1);
+  transform: scale(-1);
 }
 
-.wave:before {
+.wave-header:before {
   content: "";
   display: block;
   position: absolute;
@@ -260,7 +271,48 @@ h2 {
   top: 20px;
 }
 
-.wave:after {
+.wave-header:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  width: 100%;
+  height: 300px;
+  background-color: rgb(57, 27, 112);
+  left: 25%;
+  top: -240px;
+  clip-path: ellipse(100% 15% at -15% 100%);
+} */
+
+.wave-footer-body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.wave-footer {
+  display: block;
+  position: relative;
+  height: 40px;
+  width: 100%;
+  background: rgb(229 231 235);
+  transform: scale(1);
+  margin-bottom: 1.25rem;
+}
+
+.wave-footer:before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  width: 100%;
+  height: 300px;
+  background-color: white;
+  right: 25%;
+  top: 20px;
+}
+
+.wave-footer:after {
   content: "";
   display: block;
   position: absolute;

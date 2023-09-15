@@ -1,0 +1,60 @@
+<nav class="flex items-start flex-col min-w-[200px] p-2 bg-gray-200"
+     data-controller="reveal">
+  <div class="w-full flex justify-between items-center">
+    <div id='menu-logo' class="flex items-center flex-shrink-0">
+      <span class="font-semibold text-xl tracking-tight">
+        <%#= link_to 'KITWE', root_path, class: 'block mt-4 lg:inline-block mt-0 text-black-200' %>
+        <%= link_to root_path(profile_id: nil), class: 'block mt-4 mt-0 text-black-200' do %>
+          <%= render 'shared/logo' %>
+        <% end %>
+      </span>
+    </div>
+    <% if detect_profile_id %>
+      <div class="flex h-20 w-full justify-around mx-5">
+        <%= render 'shared/navbar/navbar_profile_buttons' %>
+      </div>
+    <% end %>
+    <div id='menu-dropdown-logo' class="block hover:text-white">
+      <button data-action="click->reveal#process"
+              data-reveal-target="button"
+              class="flex items-center px-3 py-2 border rounded text-black-200 border-gray-400 hover:border-white">
+        <svg class="block h-6 w-6 hover:text-white" xmlns="" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <title>Menu</title>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="hidden h-6 w-6 " xmlns="" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div id='menu-dropdown'
+       data-reveal-target="content"
+       class="hidden mt-5 ml-5 w-full transition-all delay-300">
+    <div class="text-sm flex flex-col flex-grow">
+      <%= link_to t('language_switch', language: switch_language), switch_locale_path, class: 'block mb-4 lg:inline-block text-black-200' %>
+      <% if user_signed_in? %>
+        <%= link_to t('log_out'), destroy_user_session_path, class: 'block mb-4 lg:inline-block text-black-200' %>
+        <%= link_to t('profiles.title'), profiles_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200' %>
+        <%= link_to t('birth_dates.title'), profile_birth_dates_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200' %>
+      <% else %>
+        <%= link_to t('log_in'), new_user_session_path, class: 'block mb-4 lg:inline-block text-black-200' %>
+        <%= link_to t('sign_up'), new_user_registration_path, class: 'block mb-4 lg:inline-block text-black-200' %>
+      <% end %>
+    </div>
+  </div>
+  <div id='menu-user-settings' class="hidden relative">
+    <div>
+      <button type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+        <span class="sr-only">Open user menu</span>
+        <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+      </button>
+    </div>
+    <div class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+      <%#= link_to 'Settings', user_path(current_user), class: 'block mb-4 lg:inline-block text-black-200' %>
+      <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+    </div>
+  </div>
+</nav>
