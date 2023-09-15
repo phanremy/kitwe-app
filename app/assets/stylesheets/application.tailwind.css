@@ -2,16 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-@font-face {
-  font-family: 'Poppins';
-  font-weight: 300;
-  src: asset-url('/fonts/Poppins-Regular.ttf') format('font-ttf');
+h1 {
+  font-family: 'Poppins', sans-serif, "Inter var";
+  font-weight: 600 !important;
 }
 
-* {
-  font-family: 'Poppins'
-} */
+h2 {
+  font-family: 'Poppins', sans-serif, "Inter var";
+  font-weight: 400 !important;
+}
 
 /* FOR FLOATING FORM FIELD : https://notiz.dev/blog/floating-form-field-with-tailwindcss */
 input, textarea {
