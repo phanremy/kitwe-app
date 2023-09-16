@@ -34,15 +34,22 @@
     <%= javascript_importmap_tags %>
 
     <link href="https://unpkg.com/slim-select@latest/dist/slimselect.css" rel="stylesheet"></link>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;1,600&display=swap');
+    </style>
   </head>
-  <body class="bg-gray-200 lg:flex overflow-y-hidden">
+  <body class="bg-gray-200 <%= 'lg:flex' unless frontpage? %> overflow-y-hidden">
     <div class="absolute bottom-0 right-0 mr-5 z-10">
       <%= turbo_frame_tag :flash do %>
         <%= render 'shared/flash' %>
       <% end %>
     </div>
-    <%= render 'shared/navbar' %>
-    <main class="relative w-full lg:mt-28 bg-white rounded lg:p-5 p-2 overflow-y-scroll h-[80vh] lg:h-[85vh]">
+    <% if frontpage? %>
+      <%= render 'shared/frontpage_navbar' %>
+    <% else %>
+      <%= render 'shared/navbar' %>
+    <% end %>
+    <main class="relative w-full bg-white rounded <%= 'lg:p-5 lg:mt-28 p-2' unless frontpage? %> overflow-y-scroll h-[80vh] lg:h-[85vh]">
       <%= turbo_frame_tag :modal do %>
       <% end %>
       <%= yield %>

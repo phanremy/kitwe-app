@@ -83,6 +83,14 @@ class RelationsController < ApplicationController
   end
 
   def body_content
+    # api_call: 'I will provide you with a hash structured like this:
+    # {"#27"=>["is the father of #33, #35, and #31", "is in a relationship with #28 and #29"],
+    # "#28"=>["is the mother of #32 and #31", "is in a relationship with #30 and #27"], ...}.
+    # The hash contains family tree information where each key represents a person identified by a unique number,
+    # and the corresponding value is an array of strings describing their relationships with others.
+    # Given this hash and the names of two persons identified by their unique numbers: %{profile1} and %{profile2},
+    # determine and describe the family connection between these two individuals in a single, accurate sentence.
+    # The family hash is as follows. %{family_text_description}'
     I18n.t('relations.api_call',
            profile1: profiles(@profile1_id).idh,
            profile2: profiles(@profile2_id).idh,

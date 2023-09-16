@@ -5,8 +5,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!
   skip_authorization_check
 
-  def homepage
-    redirect_to profiles_path if user_signed_in?
+  def frontpage
+    redirect_to profiles_path if user_signed_in? && !params[:force].present?
   end
 
   def open_modal
