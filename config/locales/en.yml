@@ -154,6 +154,31 @@ en:
       fr_long: "%A %e %B %Y"
       fr_short: "%e %B %Y"
 
+  application:
+    frontpage:
+      title1: Your closed ones, all in one place
+      title2: Keep in touch with Everything and Everyone
+      title3: Test it now for free
+      title4: Just need to sign up
+      title5: Find me on twitter
+      title6: Leave a feedback
+      first_section:
+        title:  “Nice to meet you! How are you and I related?”
+        description: There are always those family gatherings where we meet people and we don't know how we are related to them. With KITWE, you can check how you are related to anyone in your family tree.
+      second_section:
+        title: “When is your cousin's baby's birthday?”
+        description: Babies are generally not on Facebook, so you don't get notified when it's their birthday. With KITWE, you can get notified when it's your friend, your relatives, and their relatives' important dates.
+      third_section:
+        title: Do you still have our uncle's info?
+      card1_title: Family trees and birthdays made easy
+      card1_text: Create your family tree and your friends' ones. Make bonds and never forget a name again
+      card2_title: Keep your family tree private
+      card2_text: Keep your family tree private and share it only with your family and friends.
+      card3_title: Get to know your family connection
+      card3_text: Check the family connection between people in a family tree with AI.
+      card4_title: Never forget important dates again
+      card4_text: Get notified when an important date is coming, for you and your loved ones.
+
   activerecord:
     attributes:
       profile:

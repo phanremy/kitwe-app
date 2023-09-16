@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+h1 {
+  font-family: 'Poppins', sans-serif, "Inter var";
+  font-weight: 600 !important;
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif, "Inter var";
+  font-weight: 400 !important;
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif, "Inter var";
+  font-weight: 600 !important;
+  font-style: italic;
+}
+
 /* FOR FLOATING FORM FIELD : https://notiz.dev/blog/floating-form-field-with-tailwindcss */
 input, textarea {
   --tw-ring-shadow: 0 0 #000 !important;
@@ -231,3 +247,25 @@ h2 {
 #outline-turbo {
   @apply overflow-auto z-20 w-[85vw] m-8 md:w-fit lg:w-fit min-w-[300px] max-h-[80vh] lg:max-h-[85vh] absolute right-0 top-0;
 }
+
+/* 3D image - START */
+
+.wrap-original-transform {
+  perspective: 2000px;
+  transform-style: preserve-3d;
+}
+
+.original-transform {
+  transform: rotateX(-10deg) rotateY(-25deg);
+}
+
+.original-transform:hover {
+  transform: rotateX(0deg) rotateY(0deg);
+  transition: transform 1s ease-in-out;
+}
+
+.original-transform > div {
+  transform: translateZ(90px);
+}
+
+/* 3d image - END */

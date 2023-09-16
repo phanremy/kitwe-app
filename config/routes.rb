@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   scope '(:locale)', locale: /fr|en/ do
-    root 'pages#homepage'
+    root 'pages#frontpage'
     resource :modal_shared_links, only: :create
     resource :shared_links, only: :create
     resource :downloads, only: :create
