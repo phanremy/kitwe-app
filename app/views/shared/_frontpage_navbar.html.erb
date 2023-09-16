@@ -1,11 +1,12 @@
 <nav class="flex items-start flex-col min-w-[200px] p-2 bg-gray-200"
      data-controller="reveal">
   <div class="w-full flex justify-between items-center">
+    <span></span>
     <div id='menu-logo' class="flex items-center flex-shrink-0">
       <span class="font-semibold text-xl tracking-tight">
         <%#= link_to 'KITWE', root_path, class: 'block mt-4 lg:inline-block mt-0 text-black-200' %>
         <%= link_to root_path(profile_id: nil), class: 'block mt-4 mt-0 text-black-200' do %>
-          <%= render 'shared/logo' %>
+          <%= render 'shared/logo', small: false %>
         <% end %>
       </span>
     </div>
