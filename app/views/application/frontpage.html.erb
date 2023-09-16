@@ -1,18 +1,20 @@
-<div class="py-5 lg:pl-[10rem] md:pl-5 pl-5 px-5">
-  <div class="text-left w-full lg:w-1/2">
-    <div class="flex flex-wrap w-full h-auto">
-      <h3 class="text-2xl"><%= t('.first_section.title') %></h3>
+<div class="py-5">
+  <div class="py-5 lg:pl-[10rem] md:pl-5 pl-5 px-5">
+    <div class="text-left w-full lg:w-1/2">
+      <div class="flex flex-wrap w-full h-auto">
+        <h3 class="text-2xl"><%= t('.first_section.title') %></h3>
+      </div>
+      <p class="text-md"><%= t('.first_section.description') %></h2>
     </div>
-    <p class="text-md"><%= t('.first_section.description') %></h2>
   </div>
-</div>
 
-<div class="py-5 lg:pl-[10rem] md:pl-5 pl-5 px-5 flex justify-end items-center">
-  <div class="text-right w-full lg:w-2/3 pl-5 pr-0 lg:pl-0 lg:pr-[10rem]">
-    <div class="flex flex-wrap w-full h-auto">
-      <h3 class="text-2xl text-right"><%= t('.second_section.title') %></h3>
+  <div class="py-5 lg:pl-[10rem] md:pl-5 pl-5 px-5 flex justify-end items-center">
+    <div class="text-right w-full lg:w-2/3 pl-5 pr-0 lg:pl-0 lg:pr-[10rem]">
+      <div class="flex flex-wrap w-full h-auto">
+        <h3 class="text-2xl text-right"><%= t('.second_section.title') %></h3>
+      </div>
+      <p class="text-md"><%= t('.second_section.description') %></h2>
     </div>
-    <p class="text-md"><%= t('.second_section.description') %></h2>
   </div>
 </div>
 
@@ -61,21 +63,21 @@
 <div class="py-5 lg:pl-[10rem] md:pl-5 pl-5 px-5">
   <div class="flex flex-wrap w-full h-auto">
     <%= render 'card',
-        image_url: 'https://picsum.photos/300/200',
+        svg_tag: 'children',
         title: t('.card1_title'),
         description: t('.card1_text') %>
     <%= render 'card',
-        image_url: 'https://picsum.photos/300/200',
+        svg_tag: 'couples',
         title: t('.card2_title'),
         description: t('.card2_text') %>
   </div>
   <div class="flex flex-wrap w-full h-auto">
     <%= render 'card',
-        image_url: 'https://picsum.photos/300/200',
+        svg_tag: 'families',
         title: t('.card3_title'),
         description: t('.card3_text') %>
     <%= render 'card',
-        image_url: 'https://picsum.photos/300/200',
+        svg_tag: 'profile',
         title: t('.card4_title'),
         description: t('.card4_text') %>
   </div>
@@ -88,9 +90,12 @@
   </div> %>
   <div class="bg-gray-200 md:h-40 h-80">
     <div class="mx-2 flex items-center justify-around text-center h-full">
-      <p class="text-xl"><%= t('.title5') %></h1>
-      <br>
-      <p class="text-xl"><%= t('.title6') %></h1>
+      <%= link_to 'https://forms.gle/vnNXXZyyjGEV8Exe7', target:'_blank' do %>
+        <p class="text-xl"><%= t('.title6') %></p>
+      <% end %>
+      <%= link_to 'https://twitter.com/phan_remy', target:'_blank' do %>
+        <p class="text-xl"><%= t('.title5') %></p>
+      <% end %>
     </div>
   </div>
   <%# <div class="wave-sample-footer-body">
