@@ -33,7 +33,7 @@
        data-reveal-target="content"
        class="hidden mt-5 ml-5 w-full transition-all delay-300">
     <div class="text-sm flex flex-col flex-grow">
-      <%= link_to t('language_switch', language: switch_language), switch_locale_path, class: 'block mb-4 lg:inline-block text-black-200' %>
+      <%= link_to t('language_switch', language: switch_language), switch_locale_path(front:true), class: 'block mb-4 lg:inline-block text-black-200' %>
       <% if user_signed_in? %>
         <%= link_to t('profiles.title'), profiles_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200' %>
         <%= link_to t('birth_dates.title'), profile_birth_dates_path(profile_id: nil), class: 'block mb-4 lg:inline-block text-black-200' %>

@@ -25,6 +25,14 @@ en:
   submit: Submit
   or: Or
   language_switch: Changer en %{language}
+  years_old:
+    zero: born
+    one: 1 an
+    other: "%{count} ans"
+  in_x_days:
+    zero: today 🥳
+    one: tomorrow!!
+    other: in %{count} days
 
   children:
     title: Children

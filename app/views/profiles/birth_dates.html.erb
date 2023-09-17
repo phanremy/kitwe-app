@@ -14,7 +14,7 @@
           <%= birth_date[:name] %>
         <% end %>
         - <%= l birth_date[:date], format: :fr_long %>
-        - <%= birth_date[:age] %> years old <%= day_gap.zero? ? 'today' : "in #{pluralize(day_gap, 'day' )}" %>
+        - <%= t('years_old', count: birth_date[:age]) %> <%= t('in_x_days', count: day_gap) %>
       </p>
     <% end %>
   <% end %>

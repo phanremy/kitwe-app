@@ -21,7 +21,7 @@ module ApplicationHelper
     params[:locale]&.to_sym == :fr ? :en : :fr
   end
 
-  def switch_locale_path
-    url_for(locale: switch_locale, token: params[:token])
+  def switch_locale_path(front: nil)
+    url_for(locale: switch_locale, token: params[:token], front: front)
   end
 end

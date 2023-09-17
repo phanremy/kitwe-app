@@ -25,6 +25,14 @@ fr:
   submit: Soumettre
   or: Ou
   language_switch: Switch to %{language}
+  years_old:
+    zero: né(e)
+    one: 1 an
+    other: "%{count} ans"
+  in_x_days:
+    zero: aujourd'hui 🥳
+    one: demain !!
+    other: dans %{count} jours
 
   children:
     title: Enfants
