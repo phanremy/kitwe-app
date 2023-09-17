@@ -51,7 +51,9 @@
     <div class="mx-2 flex flex-col items-center justify-center text-center h-full">
       <h1 class="text-3xl"><%= t('.title3') %></h1>
       <br>
-      <p class="text-xl"><%= t('.title4') %></h1>
+      <%= link_to new_user_registration_path do %>
+        <p class="text-xl"><%= t('.title4') %></h1>
+      <% end %>
     </div>
   </div>
   <%# <div class="wave-sample-footer-body">
