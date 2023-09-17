@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def switch_locale
-    params[:locale]&.to_sym == :en ? :fr : :en
+    params[:locale]&.to_sym == :fr ? :en : :fr
   end
 
   def switch_locale_path
