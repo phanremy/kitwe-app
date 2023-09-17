@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def switch_language
-    switch_locale == :fr ? 'Français' : 'English'
+    switch_locale == :fr ? 'français' : 'English'
   end
 
   def switch_locale

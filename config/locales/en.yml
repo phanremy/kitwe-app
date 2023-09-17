@@ -24,7 +24,7 @@ en:
   search_a_profile: Search a profile
   submit: Submit
   or: Or
-  language_switch: Changer en %{language}
+  language_switch: Changer la langue en %{language}
   years_old:
     zero: born
     one: 1 an

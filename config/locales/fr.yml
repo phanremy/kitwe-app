@@ -24,7 +24,7 @@ fr:
   search_a_profile: Rechercher un profil
   submit: Soumettre
   or: Ou
-  language_switch: Switch to %{language}
+  language_switch: Switch language to %{language}
   years_old:
     zero: né(e)
     one: 1 an
