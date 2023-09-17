@@ -171,18 +171,21 @@ fr:
       title6: Laissez moi un commentaire
       first_section:
         title: “Enchanté ! Quel est notre lien de parenté ?”
-        description: "Il y a toujours ces réunions de famille où l'on rencontre des gens et où l'on ne sait pas comment on est lié à eux. Avec KITWE, vous pouvez vérifier comment vous êtes liés à n'importe qui dans votre arbre généalogique."
+        description: Il y a toujours ces réunions de famille où l'on rencontre des gens et où l'on ne sait pas comment on est lié à eux. Avec KITWE, vous pouvez vérifier comment vous êtes liés à n'importe qui dans votre arbre généalogique.
       second_section:
         title: “Quand est l'anniversaire du bébé de votre cousin ?”
-        description: "Les bébés ne sont généralement pas sur Facebook, alors vous ne recevez pas de notification quand c'est leur anniversaire. Avec KITWE, vous pouvez être informé des dates importantes de vos amis, de vos proches et de leurs proches."
+        description: Les bébés ne sont généralement pas sur Facebook, alors vous ne recevez pas de notification quand c'est leur anniversaire. Avec KITWE, vous pouvez être informé des dates importantes de vos amis, de vos proches et de leurs proches.
+      third_section:
+        title: “J'ai retrouvé tout votre arbre généalogique sur Google ! Vous n'avez pas peur pour vos données ?”
+        description: Avez-vous déjà taper votre nom sur un moteur de recherche pour retrouver vos données sur l'arbre généalogique fait par votre tante ? Cela n'arrivera pas avec KITWE.
       card1_title: Créez des arbres généalogiques facilement
-      card1_text: Créez des arbres généalogiques de votre famille et de vos proches. N'oubliez plus jamais un prénom.
-      card2_title: Gardez vos arbres généalogiques privées
-      card2_text: Gardez vos arbres généalogiques privées ou partager les avec vos proches avec un lien magique.
+      card1_text: Créez des arbres généalogiques de votre famille et de vos proches. N'oubliez plus jamais un prénom ou une date importante.
+      card2_title: Gardez vos arbres généalogiques privés
+      card2_text: Gardez vos arbres généalogiques privés ou partagez les avec vos proches avec un lien magique.
       card3_title: Connectez-vous avec vos proches
       card3_text: Vérifiez la relation entre deux personnes dans un même arbre généalogique généré par IA.
-      card4_title: N'oubliez plus jamais une date importante
-      card4_text: Soyez notifié des dates importantes de vous et vos proches.
+      card4_title: Ne craignez plus pour vos données
+      card4_text: Vos données sont sécurisées avec nous. Nous ne les utilisons pas. Nous ne les vendons pas. Nous n'avons même pas de pubs ni de cookies sur le site !
 
   activerecord:
     attributes:
