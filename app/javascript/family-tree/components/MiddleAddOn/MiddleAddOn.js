@@ -1,5 +1,6 @@
 import html from 'solid-js/html';
-import { Show } from 'solid-js/web';
+// import { Show } from 'solid-js/web';
+import { Show } from 'solid-js';
 
 const MIN_THICKNESS = 5;
 

@@ -1,5 +1,4 @@
-import { createSignal } from 'solid-js';
-import { Show } from 'solid-js/web';
+import { createSignal, Show } from 'solid-js';
 import html from 'solid-js/html';
 import Tree from 'family-tree/components/Tree/Tree';
 import { isShowingGender, isShowingDeceased, isShowingCoupleStatus } from 'family-tree/relatives/utils/treeTogglingOptions';

@@ -1,5 +1,6 @@
-import { createMemo } from 'solid-js';
-import { For, Show } from 'solid-js/web';
+import { createMemo, Show } from 'solid-js';
+import { For } from 'solid-js/web';
+// import { For, Show } from 'solid-js/web';
 import html from 'solid-js/html';
 import calcTree from 'family-tree/relatives';
 import Connector from 'family-tree/components/Connector/Connector';

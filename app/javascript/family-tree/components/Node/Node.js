@@ -1,4 +1,4 @@
-import { Show } from 'solid-js/web';
+import { Show } from 'solid-js';
 import html from 'solid-js/html';
 
 function Node(props) {
