@@ -1,3 +1,11 @@
+<style>
+  .bg-gray-200 {
+    background: rgb(229,231,235);
+    background: linear-gradient(90deg, rgba(193,195,199,1) 5%, rgba(229,231,235,1) 25%, rgba(229,231,235,1) 75%, rgba(193,195,199,1) 95%);
+    /* background: radial-gradient(circle, rgba(229,231,235,1) 5%, rgba(229,231,235,1) 33%, rgba(193,195,199,1) 46%, rgba(193,195,199,1) 54%); */
+  }
+</style>
+
 <div class="py-5">
   <div class="py-5 lg:pl-[10rem] md:pl-5 pl-5 px-5">
     <div class="text-left w-full lg:w-1/2">
@@ -72,7 +80,7 @@
 </div>
 
 <div class="py-5 lg:pl-[10rem] md:pl-5 pl-5 px-5">
-  <div class="flex flex-wrap w-full h-auto">
+  <div class="flex flex-wrap justify-around w-full h-auto">
     <%= render 'card',
         svg_tag: 'couples',
         title: t('.card1_title'),
@@ -82,13 +90,13 @@
         title: t('.card2_title'),
         description: t('.card2_text') %>
   </div>
-  <div class="flex flex-wrap w-full h-auto">
+  <div class="flex flex-wrap justify-around w-full h-auto">
     <%= render 'card',
         svg_tag: 'families',
         title: t('.card3_title'),
         description: t('.card3_text') %>
     <%= render 'card',
-        svg_tag: 'children',
+        svg_tag: 'privacy',
         title: t('.card4_title'),
         description: t('.card4_text') %>
   </div>
