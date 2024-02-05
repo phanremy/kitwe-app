@@ -87,7 +87,7 @@ en:
     import_option: Import profiles
     imports:
       form:
-        title: Import up to 100 profiles
+        title: Import up to 500 profiles
         description: "Warning: Existing profile with the same designation will have their info and relationships updated"
         csv_label: Upload a CSV file
         token_label: Provide token
