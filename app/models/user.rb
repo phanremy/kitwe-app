@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
+  attr_accessor :skip_password_validation # virtual attribute to skip password validation while saving
 
   has_many :couples, foreign_key: 'creator_id', dependent: :destroy
   has_many :profiles, foreign_key: 'creator_id', dependent: :destroy

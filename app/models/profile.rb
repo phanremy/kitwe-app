@@ -47,7 +47,7 @@ class Profile < ApplicationRecord
                   'Photo url' => 'photo_url',
                   'Deceased' => 'deceased',
                   'Day Of Death' => 'death_date',
-                  'Exporter' => nil, }.freeze
+                  'Exporter' => nil }.freeze
 
   ALLOWED_GENDERS = [nil, 'male', 'female'].freeze
 
