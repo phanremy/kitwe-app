@@ -11,7 +11,7 @@ module Outlines
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
-            :outline,
+            :modal,
             partial: 'outlines/parents/form',
             locals: { profile: @profile }
           )

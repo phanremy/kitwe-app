@@ -94,7 +94,7 @@ class RelationsController < ApplicationController
     I18n.t('relations.api_call',
            profile1: profiles(@profile1_id).idh,
            profile2: profiles(@profile2_id).idh,
-           family_text_description: profiles(@profile1_id).full_family_text_description )
+           family_text_description: profiles(@profile1_id).full_family_text_description)
         .squish
   end
 end

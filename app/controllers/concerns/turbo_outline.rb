@@ -17,7 +17,7 @@ module TurboOutline
 
   def turbo_stream_data
     [
-      turbo_stream.update(:outline, ''),
+      turbo_stream.update(:modal, ''),
       turbo_stream.update(:flash, partial: 'shared/flash'),
       turbo_stream.update(
         :tree,
