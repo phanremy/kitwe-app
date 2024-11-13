@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
-ruby '3.0.3'
+ruby '~> 3.3.5'
 
 # Use Acts as votable for upvotes
 gem 'acts_as_votable'
@@ -22,7 +22,7 @@ gem 'importmap-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 # Use jwt to create tokens
-gem 'jwt', '~> 2.2'
+gem 'jwt'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem 'kredis'
 # Use Pagy for paginating with infinite scrolling options
@@ -30,13 +30,13 @@ gem 'pagy'
 # Use Paper Trail for logging modifications
 # gem 'paper_trail'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
+gem 'pg'
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '~> 5.0'
+gem 'puma'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 7.0.3'
+gem 'rails'
 # Use for Rails Locale
-gem 'rails-i18n', '~> 7.0.0'
+gem 'rails-i18n'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Sass to process CSS
@@ -46,7 +46,7 @@ gem 'sprockets-rails'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails'
 # Use Tailwindcss-Rails to use Tailwind
-gem 'tailwindcss-rails', '~> 2.0'
+gem 'tailwindcss-rails'
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
