@@ -12,7 +12,7 @@ module Families
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
-            :outline,
+            :modal,
             partial: 'families/outline',
             locals: locals
           )

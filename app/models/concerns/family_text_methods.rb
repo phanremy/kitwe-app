@@ -4,9 +4,8 @@ module FamilyTextMethods
   extend ActiveSupport::Concern
 
   def idh
-    # designation
-    # id
-    ['#', id].join
+    count = MADE_UP_NAMES.count
+    id < count ? MADE_UP_NAMES[id] : MADE_UP_NAMES[id.modulo(count) + 1]
   end
 
   def full_family_text_description

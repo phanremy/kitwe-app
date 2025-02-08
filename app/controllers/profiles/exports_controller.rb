@@ -36,11 +36,11 @@ module Profiles
     end
 
     def acceptable_profile_ids_count
-      params[:profile_ids].count.between?(1, 100)
+      params[:profile_ids].count.between?(1, 500)
     end
 
     def render_error
-      flash.now[:alert] = 'You need to have between 1 to 100 filtered profiles'
+      flash.now[:alert] = 'You need to have between 1 to 500 filtered profiles'
       render_flash
     end
   end

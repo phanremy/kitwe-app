@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.3'
 
@@ -15,6 +15,9 @@ gem 'cancancan'
 gem 'cloudinary'
 # Use Devise for permission
 gem 'devise'
+# Use Importmap Rails to replace webpacker
+# Use Faker for seeding fake info or generaing alphanumeric skus
+gem 'faker'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem 'image_processing', '~> 1.2'
 # Use Importmap Rails to replace webpacker
@@ -57,8 +60,6 @@ group :development, :test do
   gem 'bullet'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
-  # Use Faker for seeding fake info
-  gem 'faker'
 end
 
 group :development do

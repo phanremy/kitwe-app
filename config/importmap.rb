@@ -12,9 +12,12 @@ pin "@rails/actioncable/src", to: "https://ga.jspm.io/npm:@rails/actioncable@7.0
 pin_all_from 'app/javascript/family-tree', under: 'family-tree'
 pin_all_from 'app/javascript/controllers', under: 'controllers'
 
-pin 'solid-js', to: 'https://cdn.skypack.dev/solid-js'
-pin 'solid-js/dom', to: 'https://cdn.skypack.dev/solid-js/dom'
-pin 'solid-js/web', to: 'https://cdn.skypack.dev/solid-js/web'
-pin 'solid-js/html', to: 'https://cdn.skypack.dev/solid-js/html'
+# pin 'solid-js', to: 'https://cdn.skypack.dev/solid-js'
+# pin 'solid-js/dom', to: 'https://cdn.skypack.dev/solid-js/dom'
+# pin 'solid-js/web', to: 'https://cdn.skypack.dev/solid-js/web'
+# pin 'solid-js/html', to: 'https://cdn.skypack.dev/solid-js/html'
+pin "solid-js", to: "https://ga.jspm.io/npm:solid-js@1.8.1/dist/solid.js"
+pin "solid-js/web", to: "https://ga.jspm.io/npm:solid-js@1.8.1/web/dist/web.js"
+pin "solid-js/html", to: "https://ga.jspm.io/npm:solid-js@1.8.1/html/dist/html.js"
 
 pin "slim-select", to: "https://ga.jspm.io/npm:slim-select@2.6.0/dist/slimselect.es.js"

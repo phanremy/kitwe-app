@@ -87,7 +87,7 @@ fr:
     import_option: Importer des profils
     imports:
       form:
-        title: Importer jusqu'à 100 profils
+        title: Importer jusqu'à 500 profils
         description: "Avertissement : Les profils existants avec la même désignation auront leurs informations et relations mises à jour"
         csv_label: Télécharger un fichier CSV
         token_label: Fournir le jeton

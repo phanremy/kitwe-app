@@ -11,7 +11,7 @@ module Outlines
       respond_to do |format|
         format.turbo_stream do
           render turbo_stream: turbo_stream.update(
-            :outline,
+            :modal,
             partial: 'outlines/parents/form',
             locals: { profile: @profile }
           )
@@ -53,7 +53,8 @@ module Outlines
 
     def create_couples
       if @parents.count.positive?
-        couple = Couple.create!(profile1_id: @parents.first.id, profile2_id: @parents.second&.id, creator_id: current_user.id)
+        couple = Couple.create!(profile1_id: @parents.first.id, profile2_id: @parents.second&.id,
+                                creator_id: current_user.id)
         @profile.update!(parents_id: couple.id)
       else
         @errors = I18n.t('parents.at_least_one_parent_error')

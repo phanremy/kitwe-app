@@ -1,4 +1,4 @@
-<%= render layout: 'shared/outline_card', locals: { close_if_click_out: true } do %>
+<%= render layout: 'shared/modal' do %>
   <div class="flex items-center justify-between py-1 px-2">
     <p class="mr-4"><%= profile.designation %></p>
     <%= render layout: 'shared/dropdown_options', locals: { is_default_visible: false, is_left: false, is_top: true, is_listening_to_click: true } do %>

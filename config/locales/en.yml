@@ -87,7 +87,7 @@ en:
     import_option: Import profiles
     imports:
       form:
-        title: Import up to 100 profiles
+        title: Import up to 500 profiles
         description: "Warning: Existing profile with the same designation will have their info and relationships updated"
         csv_label: Upload a CSV file
         token_label: Provide token
@@ -129,12 +129,16 @@ en:
     and: "and "
     relationship_with: "is in a relationship with %{couples}"
     relation_of: "is %{relation} of %{profiles}"
-    api_call: " You are a genealogist and you are trying to find the family connection between 2 persons.
-                You shall answer in 1 sentence, as accurately as possible, telling what the family connection
-                of %{profile1} is with %{profile2}.
-                Each key of the family hash is a person of the family as an ID.
-                Each value of the family hash is the description of the person in key.
-                The family hash is as follows. %{family_text_description}."
+    api_call:
+      "I will provide you with a hash structured like this:
+      {'Barabara D'Amore Dietrich'=>['is the father of Ahmad Reichel Gusikowski', 'is in a relationship with Almeda Leannon Hoppe V'],
+        'Almeda Leannon Hoppe V'=>['is the mother of Ahmad Reichel Gusikowski', 'is in a relationship with Barabara D'Amore Dietrich'],
+        'Ahmad Reichel Gusikowski'=>['is the son of Barabara D'Amore Dietrich and Almeda Leannon Hoppe V']}.
+      The hash contains family tree information where each key represents a person,
+      and the corresponding value is an array of strings describing their relationships with others.
+      Given this hash and the names of two persons: %{profile1} and %{profile2},
+      Determine and describe the family connection between these two individuals in a single, accurate sentence, without mentioning any other persons.
+      The family hash is as follows. %{family_text_description}"
 
   export:
     copy: Copy to Clipboard
