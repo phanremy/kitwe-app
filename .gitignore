@@ -36,7 +36,7 @@
 
 # Ignore javascript (vendor for importmaps)
 /node_modules
-# /vendor
+/vendor
 
 # Ignore debugger
 /.byebug_history
