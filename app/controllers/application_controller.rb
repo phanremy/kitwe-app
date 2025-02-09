@@ -2,10 +2,13 @@
 
 class ApplicationController < ActionController::Base
   include Pagy::Backend
+
   before_action :authenticate_user!
   before_action :set_locale
 
   rescue_from CanCan::AccessDenied do |exception|
+    # puts exception.action
+    # puts exception.subject
     if current_user.nil?
       respond_to do |format|
         format.json { head :forbidden }
@@ -27,11 +30,11 @@ class ApplicationController < ActionController::Base
   end
 
   def render_flash
-    render turbo_stream: turbo_stream.update(:flash, partial: 'shared/flash')
+    render turbo_stream: turbo_stream.update('flash', partial: 'shared/flash')
   end
 
   def render_modal_flash
-    render turbo_stream: turbo_stream.update(:modal_flash, partial: 'shared/flash')
+    render turbo_stream: turbo_stream.update('modal_flash', partial: 'shared/flash')
   end
 
   private
